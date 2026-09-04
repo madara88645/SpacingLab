@@ -107,12 +107,14 @@ class Evaluator:
         )
         gen = out[:, self.gen_ids.size(1):].cpu()
         correct = [gen[i, : len(a)].tolist() == a for i, a in enumerate(self.answer_ids)]
+        generated = [self.tok.decode(gen[i, : len(a)]) for i, a in enumerate(self.answer_ids)]
         model.train()
         return {
             "acc": float(np.mean(correct)),
             "nll": float(np.mean(nll)),
             "per_fact_correct": [int(c) for c in correct],
             "per_fact_nll": nll,
+            "per_fact_generated": generated,
         }
 
 
