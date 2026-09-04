@@ -89,12 +89,17 @@ class Evaluator:
             self.tf_labels[i, len(p) : len(p) + len(a)] = torch.tensor(a)
 
     @torch.no_grad()
-    def __call__(self, model) -> dict:
+    def __call__(self, model, idxs: list[int] | None = None) -> dict:
+        """Evaluate all facts, or only the facts in `idxs` (used right after a fact's last exposure)."""
         model.eval()
         dev = self.device
+        sel = slice(None) if idxs is None else torch.tensor(idxs)
+        tf_ids, tf_labels = self.tf_ids[sel], self.tf_labels[sel]
+        gen_ids, gen_mask = self.gen_ids[sel], self.gen_mask[sel]
+        answer_ids = self.answer_ids if idxs is None else [self.answer_ids[i] for i in idxs]
         # teacher-forced answer NLL per fact
-        logits = model(input_ids=self.tf_ids.to(dev)).logits[:, :-1].float()
-        labels = self.tf_labels[:, 1:].to(dev)
+        logits = model(input_ids=tf_ids.to(dev)).logits[:, :-1].float()
+        labels = tf_labels[:, 1:].to(dev)
         tok_loss = F.cross_entropy(
             logits.reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100, reduction="none"
         ).view(labels.shape)
@@ -102,12 +107,12 @@ class Evaluator:
         nll = ((tok_loss * mask).sum(1) / mask.sum(1)).cpu().tolist()
         # greedy exact match
         out = model.generate(
-            input_ids=self.gen_ids.to(dev), attention_mask=self.gen_mask.to(dev),
+            input_ids=gen_ids.to(dev), attention_mask=gen_mask.to(dev),
             max_new_tokens=self.max_ans, do_sample=False, pad_token_id=self.tok.eos_token_id,
         )
-        gen = out[:, self.gen_ids.size(1):].cpu()
-        correct = [gen[i, : len(a)].tolist() == a for i, a in enumerate(self.answer_ids)]
-        generated = [self.tok.decode(gen[i, : len(a)]) for i, a in enumerate(self.answer_ids)]
+        gen = out[:, gen_ids.size(1):].cpu()
+        correct = [gen[i, : len(a)].tolist() == a for i, a in enumerate(answer_ids)]
+        generated = [self.tok.decode(gen[i, : len(a)]) for i, a in enumerate(answer_ids)]
         model.train()
         return {
             "acc": float(np.mean(correct)),
@@ -193,6 +198,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
               + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else ""), flush=True)
 
     evaluate("pretrained", 0)
+    at_last: dict[int, dict] = {}
     fact_tokens_seen = filler_tokens_seen = 0
     t0 = time.time()
     for step in range(total_steps):
@@ -225,6 +231,14 @@ def run(cfg: Config, out_dir: Path) -> dict:
         opt.step(); opt.zero_grad(set_to_none=True)
         if step % 25 == 0:
             log["train_loss"].append((step, loss.item()))
+        # Amendment 4: encoding strength right after each fact's last exposure
+        if last is not None and 0 <= inj_step < cfg.t_inj:
+            done = [i for i in shown if last[i] == inj_step]
+            if done:
+                r = evaluator(model, done)
+                for j, i in enumerate(done):
+                    at_last[i] = {"correct": r["per_fact_correct"][j], "nll": r["per_fact_nll"][j],
+                                  "generated": r["per_fact_generated"][j]}
         if step % 200 == 0:
             print(f"step {step:5d}/{total_steps} loss={loss.item():.3f} lr={lr:.1e} "
                   f"facts_in_batch={len(shown)} {time.time()-t0:.0f}s", flush=True)
@@ -246,6 +260,12 @@ def run(cfg: Config, out_dir: Path) -> dict:
         param_dist_end=log["evals"][-1]["param_dist"], wall_seconds=time.time() - t0,
         max_facts_in_one_step=max(len(v) for v in sched.values()),
     )
+    if at_last:
+        log["at_last_exposure"] = [at_last[i] for i in range(cfg.n_facts)]
+        log["guards"]["acc_at_last_exposure"] = float(np.mean([v["correct"] for v in at_last.values()]))
+        log["guards"]["nll_at_last_exposure"] = float(np.mean([v["nll"] for v in at_last.values()]))
+        print(f"[guard] acc right after last exposure = {log['guards']['acc_at_last_exposure']:.3f} "
+              f"nll = {log['guards']['nll_at_last_exposure']:.3f}", flush=True)
     (out_dir / "log.json").write_text(json.dumps(log, indent=1))
     return log
 

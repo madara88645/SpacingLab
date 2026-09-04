@@ -230,3 +230,36 @@ check. **Injection window T_inj = 700** (p_i range 444). This adds 100 filler-on
 steps early in the window for all conditions equally; the pilot calibration is
 assumed to carry over, and the immediate-accuracy band is checked in the main runs
 as stated in Amendment 2. No main-run number existed when this was changed.
+
+### Amendment 4 (2026-09-04, after one aborted main run; additive measurement only)
+**What was seen.** The first main run (massed, seed 0) reached immediate accuracy
+0.02 / NLL 5.0 at the end of the injection window, against 0.67–0.77 for random
+placement in the pilots. The run was discarded (kept under `results/aborted/`), and
+nothing else from it is used. A 20-fact smoke test of the new measurement showed
+massed facts at 0.47 accuracy *right after their fifth exposure* and 0.025 at the end
+of the window.
+
+**Why the pre-registered guard is not enough.** "Immediate" accuracy is measured at a
+fixed step, up to 444 steps after a fact's last exposure, and the window itself
+contains dense interference (the other 199 facts). So a low immediate score can mean
+*never encoded* (a learning difference: rule 3 rightly flags it) or *encoded and lost
+inside the window* (which is the phenomenon under test). The original design cannot
+tell these apart.
+
+**Added measurement.** Right after the optimizer step at each fact's last exposure
+p_i, that fact alone is evaluated (accuracy + NLL + generated answer). Per run this
+gives `acc_at_last_exposure` — the encoding strength before any further delay. It adds
+~20 s per run and changes no training computation.
+
+**Pre-declared analysis using it.**
+- The pre-registered rules 1–3 are still applied exactly as written and reported first.
+- Encoding guard: acc_at_last per condition. If massed is far below spaced here, part
+  of the effect is a *learning* difference and is labelled so.
+- Conditional retention: among facts correct right after their last exposure, the
+  fraction still correct at each checkpoint (immediate and the seven interference
+  points), per condition and seed. **H1 predicts spaced > massed here too.** If
+  conditional retention is equal and only acc_at_last differs, the honest summary is
+  "spacing makes each exposure teach more, not remember longer".
+- The same in NLL: change in NLL from at-last to each checkpoint.
+
+No condition, hyperparameter or decision rule changed. Runs restart from scratch.
