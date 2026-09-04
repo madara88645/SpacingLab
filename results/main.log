@@ -7,3 +7,27 @@
 [eval] interference step= 1000 acc=0.000 nll=4.393 holdout=3.528 |dθ|=89.12 B_acc=0.000
 [eval] interference step= 1200 acc=0.000 nll=4.204 holdout=3.500 |dθ|=95.96 B_acc=0.080
 [eval] interference step= 1600 acc=0.000 nll=4.252 holdout=3.461 |dθ|=106.54 B_acc=0.240
+[eval] interference step= 2000 acc=0.000 nll=4.654 holdout=3.439 |dθ|=114.88 B_acc=0.540
+[eval] interference step= 2300 acc=0.000 nll=4.830 holdout=3.416 |dθ|=120.20 B_acc=0.760
+[guard] acc right after last exposure = 0.640 nll = 0.847
+=== spaced seed=0  ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.447 holdout=3.700 |dθ|=15.30 B_acc=0.000
+[eval]  immediate step=  800 acc=0.660 nll=0.454 holdout=3.536 |dθ|=80.54 B_acc=0.000
+[eval] interference step=  850 acc=0.655 nll=0.467 holdout=3.530 |dθ|=82.88 B_acc=0.020
+[eval] interference step=  900 acc=0.560 nll=0.836 holdout=3.522 |dθ|=84.99 B_acc=0.060
+[eval] interference step= 1000 acc=0.355 nll=1.340 holdout=3.513 |dθ|=89.12 B_acc=0.020
+[eval] interference step= 1200 acc=0.245 nll=1.349 holdout=3.491 |dθ|=95.99 B_acc=0.200
+[eval] interference step= 1600 acc=0.255 nll=1.279 holdout=3.457 |dθ|=106.45 B_acc=0.660
+[eval] interference step= 2000 acc=0.190 nll=1.373 holdout=3.431 |dθ|=114.68 B_acc=0.840
+[eval] interference step= 2300 acc=0.200 nll=1.422 holdout=3.412 |dθ|=119.91 B_acc=0.940
+[guard] acc right after last exposure = 0.850 nll = 0.234
+=== massed seed=1  ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 holdout=4.414 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.332 holdout=3.726 |dθ|=15.32 B_acc=0.000
+[eval]  immediate step=  800 acc=0.020 nll=6.205 holdout=3.569 |dθ|=80.52 B_acc=0.000
+[eval] interference step=  850 acc=0.005 nll=4.817 holdout=3.553 |dθ|=82.76 B_acc=0.000
+[eval] interference step=  900 acc=0.000 nll=4.777 holdout=3.550 |dθ|=84.84 B_acc=0.000
+[eval] interference step= 1000 acc=0.005 nll=4.390 holdout=3.533 |dθ|=88.79 B_acc=0.000
+[eval] interference step= 1200 acc=0.000 nll=4.495 holdout=3.510 |dθ|=95.67 B_acc=0.020
+[eval] interference step= 1600 acc=0.000 nll=4.784 holdout=3.464 |dθ|=106.12 B_acc=0.200
