@@ -164,4 +164,30 @@ setting, exposures K fixed by the pilot. Nothing here speaks to larger models,
 real-world facts, LoRA, or different interference domains.
 
 ## Amendments
-(none yet)
+
+### Amendment 1 (2026-09-04, after the pilot, before any main run): stronger interference
+**What the pilot showed.** With same-domain WikiText as the only interference, almost
+nothing was forgotten: at k=4/lr=1e-4 accuracy went 0.47 → 0.42 over 400 interference
+steps; at k=8 it stayed at 0.97–0.99 at both learning rates. lr=3e-4 was rejected
+independently: it made the held-out filler loss *worse* than lr=1e-4 (3.54 vs 3.44)
+and moved the weights twice as far, i.e. it damages the model rather than tuning it.
+The pilot also showed exact-match accuracy can rise briefly after the last exposure
+while NLL rises monotonically; the primary metric stays accuracy as pre-registered, and
+NLL is reported alongside in every table.
+
+**Why that matters.** If the interference phase forgets nothing, the "retention score"
+is just the immediate score measured seven more times, and spacing has nothing to
+protect. The design would be unable to say anything about retention.
+
+**Change.** The interference phase is now filler **plus 300 new facts** of the same
+five templates with disjoint invented names ("set B"), each shown 4 times at random
+steps of the interference phase. Set B and its placement are seeded and identical
+across all conditions of a seed. This is the classic retroactive-interference layout
+of human memory experiments (learn list A, then list B, test A). Set B accuracy is
+logged at every checkpoint as a guard that the interference is really being learned.
+Interference from a different text domain is left as future work.
+
+**Second pilot.** lr fixed at 1e-4. K ∈ {4, 6} with the new interference, seed 100,
+random placement, 400 interference steps. Selection: smallest K with immediate accuracy
+in [0.5, 0.95] and accuracy at 400 steps ≥ 0.10 and at least 0.10 below immediate
+(so that there is forgetting to protect). The chosen K is recorded in Amendment 2.

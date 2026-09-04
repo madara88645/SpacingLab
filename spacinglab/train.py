@@ -41,6 +41,9 @@ class Config:
     device: str = "mps"
     tag: str = ""             # free label, e.g. "pilot" or "replicate"
     max_facts_per_step: int = 64
+    # interference phase content (Amendment 1): filler plus a new set of facts
+    n_int_facts: int = 300
+    k_int: int = 4
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -140,8 +143,10 @@ def run(cfg: Config, out_dir: Path) -> dict:
     model.train()
     theta0 = [p.detach().clone() for p in model.parameters()]
 
-    facts = make_facts(cfg.n_facts, cfg.seed)
+    all_facts = make_facts(cfg.n_facts + cfg.n_int_facts, cfg.seed)
+    facts, int_facts = all_facts[: cfg.n_facts], all_facts[cfg.n_facts :]
     evaluator = Evaluator(tok, facts, dev)
+    int_evaluator = Evaluator(tok, int_facts, dev) if int_facts else None
 
     total_steps = cfg.t_pre + cfg.t_inj + cfg.t_int
     n_filler = total_steps * cfg.filler_per_step
@@ -156,25 +161,34 @@ def run(cfg: Config, out_dir: Path) -> dict:
         sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
     assert exposure_count(sched) == cfg.n_facts * cfg.k
     assert max(len(v) for v in sched.values()) <= cfg.max_facts_per_step
+    # interference facts: random placement over the interference phase, identical across
+    # conditions of a seed (own rng stream so it never depends on the condition)
+    int_sched = random_schedule(cfg.n_int_facts, cfg.k_int, cfg.t_int, seed=cfg.seed + 10_000) if int_facts else {}
 
     eos = tok.eos_token_id
     fact_ids = [[eos] + tok(f.text)["input_ids"] for f in facts]
-    assert max(len(x) for x in fact_ids) <= cfg.seq_len
+    int_fact_ids = [[eos] + tok(f.text)["input_ids"] for f in int_facts]
+    assert max(len(x) for x in fact_ids + int_fact_ids) <= cfg.seq_len
 
     opt = torch.optim.AdamW(model.parameters(), lr=cfg.lr, betas=(0.9, 0.999), weight_decay=0.0)
 
     log: dict = {"config": asdict(cfg), "facts": [asdict(f) for f in facts],
+                 "int_facts": [asdict(f) for f in int_facts],
                  "last_exposure": None if last is None else last.tolist(),
                  "evals": [], "train_loss": [], "guards": {}}
 
     def evaluate(phase: str, step: int, int_step: int | None = None):
         r = evaluator(model)
+        if int_evaluator is not None:
+            ri = int_evaluator(model)
+            r.update(int_facts_acc=ri["acc"], int_facts_nll=ri["nll"])
         r.update(phase=phase, step=step, int_step=int_step,
                  holdout_loss=holdout_loss(model, stream.holdout, dev),
                  param_dist=param_distance(model, theta0))
         log["evals"].append(r)
         print(f"[eval] {phase:>10} step={step:5d} acc={r['acc']:.3f} nll={r['nll']:.3f} "
-              f"holdout={r['holdout_loss']:.3f} |dθ|={r['param_dist']:.2f}", flush=True)
+              f"holdout={r['holdout_loss']:.3f} |dθ|={r['param_dist']:.2f}"
+              + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else ""), flush=True)
 
     evaluate("pretrained", 0)
     fact_tokens_seen = filler_tokens_seen = 0
@@ -189,11 +203,13 @@ def run(cfg: Config, out_dir: Path) -> dict:
         labels = x.clone()
         inj_step = step - cfg.t_pre
         shown = sched.get(inj_step, []) if 0 <= inj_step < cfg.t_inj else []
-        if shown:
-            fx = torch.full((len(shown), cfg.seq_len), eos, dtype=torch.long)
-            fl = torch.full((len(shown), cfg.seq_len), -100, dtype=torch.long)
-            for r, i in enumerate(shown):
-                ids = fact_ids[i]
+        int_step_now = step - cfg.t_pre - cfg.t_inj
+        shown_int = int_sched.get(int_step_now, []) if int_step_now >= 0 else []
+        rows = [fact_ids[i] for i in shown] + [int_fact_ids[i] for i in shown_int]
+        if rows:
+            fx = torch.full((len(rows), cfg.seq_len), eos, dtype=torch.long)
+            fl = torch.full((len(rows), cfg.seq_len), -100, dtype=torch.long)
+            for r, ids in enumerate(rows):
                 fx[r, : len(ids)] = torch.tensor(ids)
                 fl[r, : len(ids)] = torch.tensor(ids)
                 fact_tokens_seen += len(ids)
@@ -223,6 +239,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
 
     log["guards"].update(
         optimizer_steps=total_steps, fact_tokens_seen=fact_tokens_seen,
+        int_exposures=exposure_count(int_sched),
         filler_tokens_seen=filler_tokens_seen, exposures=exposure_count(sched),
         param_dist_end=log["evals"][-1]["param_dist"], wall_seconds=time.time() - t0,
         max_facts_in_one_step=max(len(v) for v in sched.values()),
@@ -241,9 +258,11 @@ def main():
     ap.add_argument("--t-inj", type=int, default=600)
     ap.add_argument("--t-int", type=int, default=1500)
     ap.add_argument("--tag", default="")
+    ap.add_argument("--n-int-facts", type=int, default=300)
     ap.add_argument("--out", default="results/runs")
     a = ap.parse_args()
-    cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int, tag=a.tag)
+    cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
+                 tag=a.tag, n_int_facts=a.n_int_facts)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"

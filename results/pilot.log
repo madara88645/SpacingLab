@@ -1,1 +1,57 @@
 === pilot k=4 lr=1e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00
+step     0/1100 loss=4.384 lr=2.0e-06 facts_in_batch=0 0s
+[eval] pre_injection step=  100 acc=0.000 nll=8.211 holdout=3.675 |dθ|=15.20
+step   200/1100 loss=3.822 lr=1.0e-04 facts_in_batch=1 70s
+step   400/1100 loss=3.149 lr=1.0e-04 facts_in_batch=2 140s
+step   600/1100 loss=3.552 lr=1.0e-04 facts_in_batch=0 210s
+[eval]  immediate step=  700 acc=0.470 nll=0.549 holdout=3.440 |dθ|=76.78
+[eval] interference step=  750 acc=0.420 nll=0.682 holdout=3.429 |dθ|=79.46
+[eval] interference step=  800 acc=0.460 nll=0.659 holdout=3.420 |dθ|=81.95
+step   800/1100 loss=3.338 lr=1.0e-04 facts_in_batch=0 282s
+[eval] interference step=  900 acc=0.450 nll=0.673 holdout=3.409 |dθ|=86.32
+step  1000/1100 loss=3.377 lr=1.0e-04 facts_in_batch=0 352s
+[eval] interference step= 1100 acc=0.420 nll=0.813 holdout=3.385 |dθ|=94.05
+=== pilot k=4 lr=3e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00
+step     0/1100 loss=4.384 lr=6.0e-06 facts_in_batch=0 0s
+[eval] pre_injection step=  100 acc=0.000 nll=8.488 holdout=3.799 |dθ|=57.53
+step   200/1100 loss=3.937 lr=3.0e-04 facts_in_batch=1 71s
+step   400/1100 loss=3.313 lr=3.0e-04 facts_in_batch=2 141s
+step   600/1100 loss=3.661 lr=3.0e-04 facts_in_batch=0 211s
+[eval]  immediate step=  700 acc=0.630 nll=0.387 holdout=3.542 |dθ|=180.20
+[eval] interference step=  750 acc=0.670 nll=0.422 holdout=3.531 |dθ|=185.06
+[eval] interference step=  800 acc=0.730 nll=0.395 holdout=3.523 |dθ|=189.63
+step   800/1100 loss=3.473 lr=3.0e-04 facts_in_batch=0 285s
+[eval] interference step=  900 acc=0.720 nll=0.413 holdout=3.508 |dθ|=197.91
+step  1000/1100 loss=3.441 lr=3.0e-04 facts_in_batch=0 354s
+[eval] interference step= 1100 acc=0.710 nll=0.580 holdout=3.492 |dθ|=212.53
+=== pilot k=8 lr=1e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00
+step     0/1100 loss=4.384 lr=2.0e-06 facts_in_batch=0 0s
+[eval] pre_injection step=  100 acc=0.000 nll=8.211 holdout=3.675 |dθ|=15.20
+step   200/1100 loss=3.730 lr=1.0e-04 facts_in_batch=3 71s
+step   400/1100 loss=2.601 lr=1.0e-04 facts_in_batch=5 142s
+step   600/1100 loss=3.554 lr=1.0e-04 facts_in_batch=0 213s
+[eval]  immediate step=  700 acc=0.990 nll=0.018 holdout=3.441 |dθ|=76.45
+[eval] interference step=  750 acc=0.990 nll=0.024 holdout=3.428 |dθ|=79.18
+[eval] interference step=  800 acc=0.970 nll=0.033 holdout=3.420 |dθ|=81.71
+step   800/1100 loss=3.341 lr=1.0e-04 facts_in_batch=0 286s
+[eval] interference step=  900 acc=0.970 nll=0.038 holdout=3.412 |dθ|=86.19
+step  1000/1100 loss=3.383 lr=1.0e-04 facts_in_batch=0 356s
+[eval] interference step= 1100 acc=0.990 nll=0.087 holdout=3.388 |dθ|=94.07
+=== pilot k=8 lr=3e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00
+step     0/1100 loss=4.384 lr=6.0e-06 facts_in_batch=0 0s
+[eval] pre_injection step=  100 acc=0.000 nll=8.471 holdout=3.798 |dθ|=57.52
+step   200/1100 loss=3.753 lr=3.0e-04 facts_in_batch=3 71s
+step   400/1100 loss=2.716 lr=3.0e-04 facts_in_batch=5 142s
+step   600/1100 loss=3.644 lr=3.0e-04 facts_in_batch=0 213s
+[eval]  immediate step=  700 acc=0.990 nll=0.007 holdout=3.537 |dθ|=179.47
+[eval] interference step=  750 acc=0.990 nll=0.008 holdout=3.524 |dθ|=184.36
+[eval] interference step=  800 acc=0.990 nll=0.014 holdout=3.530 |dθ|=189.01
+step   800/1100 loss=3.462 lr=3.0e-04 facts_in_batch=0 286s
+[eval] interference step=  900 acc=0.990 nll=0.021 holdout=3.511 |dθ|=197.47
+step  1000/1100 loss=3.453 lr=3.0e-04 facts_in_batch=0 357s
+[eval] interference step= 1100 acc=0.950 nll=0.131 holdout=3.491 |dθ|=212.30
+PILOT_DONE
