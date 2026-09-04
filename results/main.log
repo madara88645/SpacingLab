@@ -1,0 +1,19 @@
+=== massed seed=0  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== spaced seed=0  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== massed seed=1  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== spaced seed=1  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== massed seed=2  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== spaced seed=2  ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== massed seed=3  ===

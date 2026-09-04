@@ -221,3 +221,12 @@ from nothing. Two responses, both decided before the main runs:
 pilot-3 logs overwrote each other; their printed evaluations are in
 `results/pilot3.log`). The filler chunk order is pinned to the cached token file so it
 no longer depends on how many tokens a run requests.
+
+### Amendment 3 (2026-09-04, main launch failed before producing any number)
+With k = 5 the spaced span is (k−1)·64 = 256 steps, leaving p_i a range of only 344
+steps inside a 600-step window; the schedule builder's own assertion (range ≥ 350)
+stopped every run at start-up. The pilots used random placement, which has no such
+check. **Injection window T_inj = 700** (p_i range 444). This adds 100 filler-only
+steps early in the window for all conditions equally; the pilot calibration is
+assumed to carry over, and the immediate-accuracy band is checked in the main runs
+as stated in Amendment 2. No main-run number existed when this was changed.
