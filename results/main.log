@@ -1,19 +1,3 @@
 === massed seed=0  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== spaced seed=0  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== massed seed=1  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== spaced seed=1  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== massed seed=2  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== spaced seed=2  ===
-Traceback (most recent call last):
-AssertionError: injection window too narrow for the range of p_i
-=== massed seed=3  ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.447 holdout=3.700 |dθ|=15.30 B_acc=0.000
