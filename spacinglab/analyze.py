@@ -38,8 +38,30 @@ def load_runs(root: Path) -> pd.DataFrame:
             "filler_tokens": log["guards"]["filler_tokens_seen"],
             "steps": log["guards"]["optimizer_steps"],
             "curve_acc": [e["acc"] for e in ints], "curve_nll": [e["nll"] for e in ints],
+            "b_acc_final": ints[-1].get("int_facts_acc"),
+            **amendment4_fields(log, imm, ints),
         })
     return pd.DataFrame(rows)
+
+
+def amendment4_fields(log: dict, imm: dict, ints: list[dict]) -> dict:
+    """Encoding strength right after the last exposure, and retention conditional on it."""
+    al = log.get("at_last_exposure")
+    if not al:
+        return {}
+    enc = np.array([v["correct"] for v in al], dtype=bool)
+    enc_nll = np.array([v["nll"] for v in al])
+    out = {"acc_at_last": float(enc.mean()), "nll_at_last": float(enc_nll.mean()), "n_encoded": int(enc.sum())}
+    def cond(e):
+        c = np.array(e["per_fact_correct"], dtype=bool)
+        return float(c[enc].mean()) if enc.any() else float("nan")
+    out["cond_imm"] = cond(imm)
+    out["cond_curve"] = [cond(e) for e in ints]
+    out["cond_retention"] = float(np.mean(out["cond_curve"]))
+    # NLL drift from at-last to immediate / mean over interference checkpoints
+    out["dnll_imm"] = float(np.mean(np.array(imm["per_fact_nll"]) - enc_nll))
+    out["dnll_retention"] = float(np.mean([np.mean(np.array(e["per_fact_nll"]) - enc_nll) for e in ints]))
+    return out
 
 
 def main(root: str = "results/runs") -> None:
@@ -92,6 +114,22 @@ def main(root: str = "results/runs") -> None:
     for s in piv.index:
         rho = spearmanr(gaps, piv.loc[s, CONDS].values).statistic
         print(f"seed {s}: rho={rho:+.2f}  retention by gap = " + " ".join(f"{piv.loc[s, c]:.3f}" for c in CONDS))
+
+    if "acc_at_last" in main_df:
+        print("\n== Amendment 4: encoding right after the last exposure, and conditional retention ==")
+        for metric in ["acc_at_last", "nll_at_last", "cond_imm", "cond_retention", "dnll_imm", "dnll_retention"]:
+            line = f"{metric:>15}: "
+            for c in CONDS:
+                v = main_df[main_df.condition == c][metric]
+                if len(v):
+                    line += f"{c}={v.mean():.3f} ({v.min():.3f}..{v.max():.3f})  "
+            print(line)
+        pc = main_df.pivot(index="seed", columns="condition", values="cond_retention")
+        pe = main_df.pivot(index="seed", columns="condition", values="acc_at_last")
+        print("paired spaced - massed per seed: conditional retention / encoding")
+        for s_ in pc.index:
+            print(f"  seed {s_}: cond Δ={pc.loc[s_, 'spaced'] - pc.loc[s_, 'massed']:+.3f}   "
+                  f"encoding Δ={pe.loc[s_, 'spaced'] - pe.loc[s_, 'massed']:+.3f}")
 
     print("\n== pre-registered decision rule ==")
     r1 = bool((d > 0).all())
