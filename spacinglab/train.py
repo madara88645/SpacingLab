@@ -28,8 +28,8 @@ class Config:
     condition: str            # massed | gap4 | gap16 | spaced | random (pilot only)
     seed: int
     lr: float = 1e-4
-    k: int = 4                # exposures per fact
-    n_facts: int = 100
+    k: int = 5                # exposures per fact
+    n_facts: int = 200
     model_name: str = "gpt2"
     seq_len: int = 64
     filler_per_step: int = 15
@@ -42,7 +42,7 @@ class Config:
     tag: str = ""             # free label, e.g. "pilot" or "replicate"
     max_facts_per_step: int = 64
     # interference phase content (Amendment 1): filler plus a new set of facts
-    n_int_facts: int = 300
+    n_int_facts: int = 50
     k_int: int = 4
 
 
@@ -260,7 +260,8 @@ def main():
     ap.add_argument("--t-inj", type=int, default=600)
     ap.add_argument("--t-int", type=int, default=1500)
     ap.add_argument("--tag", default="")
-    ap.add_argument("--n-int-facts", type=int, default=300)
+    ap.add_argument("--n-int-facts", type=int, default=50)
+    ap.add_argument("--n-facts", type=int, default=200)
     ap.add_argument("--out", default="results/runs")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,

@@ -191,3 +191,33 @@ Interference from a different text domain is left as future work.
 random placement, 400 interference steps. Selection: smallest K with immediate accuracy
 in [0.5, 0.95] and accuracy at 400 steps ≥ 0.10 and at least 0.10 below immediate
 (so that there is forgetting to protect). The chosen K is recorded in Amendment 2.
+
+### Amendment 2 (2026-09-04, after pilots 2 and 3, before any main run): frozen values
+**Pilot 2 (300 interference facts).** Far too strong: set-A accuracy fell from 0.43
+(k=4) and 0.91 (k=6) to ≤ 0.04 within 50 interference steps, before set B itself
+was learned at all. Floor.
+
+**Pilot 3 (k=5, 15 vs 50 interference facts, full 1500-step interference).**
+15 facts: immediate 0.77 → final 0.43 (final/immediate = 0.56, fails the "≤ 0.5" rule
+narrowly). 50 facts: immediate 0.67 → final 0.18 (0.27; accuracy at 200 steps 0.25 =
+0.37 × immediate, passes). **Chosen: k = 5, lr = 1e-4, 50 interference facts × 4
+exposures.**
+
+**Noise floor discovered.** The two pilot-3 runs have byte-identical pre-phase and
+injection phases (the dose only differs afterwards), yet reached immediate accuracy
+0.77 vs 0.67 and NLL 0.25 vs 0.38. MPS kernels are not deterministic and the
+divergence compounds over 700 steps. A 0.10 accuracy difference can therefore arise
+from nothing. Two responses, both decided before the main runs:
+1. **N = 200 facts** instead of 100 (per-fact sampling noise of the accuracy estimate
+   halves in variance). The immediate-accuracy band [0.5, 0.95] will be checked in
+   the main runs rather than re-piloted; a violation is reported as a calibration
+   failure, not repaired after the fact.
+2. **Five seeds (0–4) for the core massed-vs-spaced comparison.** gap4 and gap16 keep
+   three seeds (0–2) as the supporting dose-response. The replicate (spaced, seed 0)
+   stays. Total 17 runs. The decision rule is unchanged and is applied to the five
+   core seeds.
+
+**Housekeeping.** Run directories now include N and the interference size (the two
+pilot-3 logs overwrote each other; their printed evaluations are in
+`results/pilot3.log`). The filler chunk order is pinned to the cached token file so it
+no longer depends on how many tokens a run requests.

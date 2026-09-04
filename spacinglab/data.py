@@ -17,7 +17,9 @@ def build_filler_tokens(tokenizer, n_tokens: int, cache_name: str = "wikitext103
     if path.exists():
         arr = np.load(path)
         if len(arr) >= n_tokens:
-            return arr[:n_tokens]
+            # return the whole cached array (not a prefix) so the chunk permutation in
+            # FillerStream does not depend on how many tokens a run happens to need
+            return arr
     from datasets import load_dataset
     ds = load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="train")
     eos = tokenizer.eos_token_id
