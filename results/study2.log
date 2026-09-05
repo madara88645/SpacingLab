@@ -114,3 +114,18 @@
 [eval] interference step=  850 acc=0.010 nll=3.177 holdout=3.600 |dθ|=45.34 B_acc=0.000
 [eval] interference step=  900 acc=0.020 nll=3.077 holdout=3.595 |dθ|=46.07 B_acc=0.020
 [eval] interference step= 1000 acc=0.005 nll=2.992 holdout=3.588 |dθ|=47.81 B_acc=0.160
+[eval] interference step= 1200 acc=0.000 nll=3.371 holdout=3.577 |dθ|=51.01 B_acc=0.400
+##### 2b LoRA pilot, extended grid (Amendment 5b)
+=== lora pilot lr=3e-3 ===
+[lora] rank=16 trainable params=2,359,296
+[eval] pretrained step=    0 acc=0.000 nll=8.452 holdout=4.432 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.414 holdout=3.791 |dθ|=35.94 B_acc=0.000
+[eval]  immediate step=  800 acc=0.110 nll=2.413 holdout=3.869 |dθ|=96.84 B_acc=0.000
+[eval] interference step=  850 acc=0.000 nll=4.090 holdout=3.829 |dθ|=98.37 B_acc=0.040
+[eval] interference step=  900 acc=0.005 nll=3.923 holdout=3.840 |dθ|=99.56 B_acc=0.080
+[eval] interference step= 1000 acc=0.000 nll=4.273 holdout=3.821 |dθ|=102.23 B_acc=0.180
+[eval] interference step= 1200 acc=0.000 nll=5.425 holdout=3.854 |dθ|=107.00 B_acc=0.320
+=== lora pilot lr=1e-2 ===
+[lora] rank=16 trainable params=2,359,296
+[eval] pretrained step=    0 acc=0.000 nll=8.452 holdout=4.432 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.633 holdout=4.731 |dθ|=94.33 B_acc=0.000

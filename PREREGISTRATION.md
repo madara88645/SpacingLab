@@ -346,3 +346,12 @@ lr 1e-3 gives 0.085 (random placement, seed 100). Neither meets the [0.5, 0.95] 
 and running the main LoRA comparison there would be a floor effect. The pilot grid is
 extended upward to {3e-3, 1e-2}; the selection rule is unchanged (lowest lr with
 immediate in [0.5, 0.95] and acc@400 ≥ 0.10, else closest to 0.7). Nothing else changes.
+
+**Amendment 5c (2026-09-05, still before any 2b main run).** The extended grid also
+floors: lr 3e-3 gives immediate 0.11 with held-out loss starting to degrade (3.87 vs
+3.60), and 0.00 at interference step 400; lr 1e-2 result pending. Rank 16 appears to be
+the limit, not the learning rate. One more pilot is added: rank 64 (alpha 128) at
+lr 1e-3. Selection then runs over all LoRA pilots (lr and rank), same rule. If nothing
+reaches immediate ≥ 0.5, the main 2b runs still go ahead at the pilot closest to 0.7 and
+2b is reported as a **floor-effect comparison**: only the ordering massed vs spaced can
+be read, not the size.
