@@ -47,6 +47,7 @@ class Config:
     # Study 2 (Amendment 5) knobs; defaults reproduce Study 1 exactly
     beta1: float = 0.9        # Adam first-moment coefficient; 0.0 removes momentum
     lora_r: int = 0           # 0 = full fine-tuning; >0 = LoRA with this rank
+    k_last: int = 0           # k used to draw the last-exposure steps p_i; 0 = same as k
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -176,7 +177,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
         sched = random_schedule(cfg.n_facts, cfg.k, cfg.t_inj, seed=cfg.seed)
         last = None
     else:
-        last = draw_last_exposures(cfg.n_facts, cfg.k, GAP_MAX, cfg.t_inj, seed=cfg.seed)
+        last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, GAP_MAX, cfg.t_inj, seed=cfg.seed)
         sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
     assert exposure_count(sched) == cfg.n_facts * cfg.k
     assert max(len(v) for v in sched.values()) <= cfg.max_facts_per_step
@@ -298,9 +299,10 @@ def main():
     ap.add_argument("--out", default="results/runs")
     ap.add_argument("--beta1", type=float, default=0.9)
     ap.add_argument("--lora-r", type=int, default=0)
+    ap.add_argument("--k-last", type=int, default=0, help="draw p_i as if k were this (contingency runs)")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
