@@ -42,7 +42,7 @@ def main(root: str = "results/runs", out: str = "results/retention.png") -> None
         ax.set_xlabel("interference steps after the injection window")
         ax.set_ylabel(ylabel, fontsize=8)
         ax.set_xscale("symlog", linthresh=50)
-        ax.set_xticks(xs); ax.set_xticklabels([str(x) for x in xs], fontsize=7)
+        ax.set_xticks(xs); ax.set_xticklabels([str(x) for x in xs], fontsize=7, rotation=45); ax.minorticks_off()
         ax.grid(alpha=0.2); ax.spines[["top", "right"]].set_visible(False)
         ax.legend(fontsize=7, frameon=False)
     fig.suptitle("Spacing the 5 exposures of each fact: retention under new-fact interference "

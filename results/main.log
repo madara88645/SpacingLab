@@ -181,3 +181,6 @@
 === gap16 seed=2  ===
 [eval] pretrained step=    0 acc=0.000 nll=8.560 holdout=4.385 |dθ|=0.00 B_acc=0.000
 [eval] pre_injection step=  100 acc=0.000 nll=8.655 holdout=3.680 |dθ|=15.32 B_acc=0.000
+=== gap16 seed=2  ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 holdout=4.385 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.655 holdout=3.680 |dθ|=15.32 B_acc=0.000
