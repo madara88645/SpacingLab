@@ -22,7 +22,7 @@ kalmasını sağlıyor.
 - **Sınav:** Modele "Sheipiakvuk'un başkenti" deyip devamını yazdırıyorum. Doğru ismi
   yazarsa puan. Ayrıca "ne kadar şaşırdığı" (NLL) ölçülüyor, çünkü tam isabet kaba bir ölçü.
 - **Tekrar sayısı:** 5 farklı rastgele tohumla (seed) ana kıyas, 3'er tohumla ara aralıklar.
-  Toplam 17 + 20 koşu, hepsi bu laptopta, koşu başına ~9 dakika.
+  Toplam 17 + 20 + 6 koşu, hepsi bu laptopta, koşu başına ~9 dakika.
 - **Ön kayıt:** Ne ölçeceğimi, ne beklediğimi ve hangi tuzaklara bakacağımı hiçbir sayı
   görmeden önce dosyaya yazıp commit'ledim (PREREGISTRATION.md). Sonradan 5 ek yaptım,
   hepsinin tarihi ve sebebi orada.
@@ -66,6 +66,23 @@ süre dayandığını* değiştiriyor.
 | Modelin tamamı yerine küçük bir ek parça eğitilirse (LoRA) aynı mı? | Aynı yön | Yarı-sonuç. Pencere sonunda yön aynı (%31 vs %1,5) ama LoRA bu kurulumda hiçbir bilgiyi 1500 adım tutamıyor; kıyas tabana çakıldı. |
 | Arka arkaya ama her seferinde farklı cümleyle söylersem aralığın yerini tutar mı? | Kısmen tutar | **Yanıldım.** Hiç tutmuyor. Üstelik farklı cümleler aralıklı koşulda da puanı düşürdü. Ama sınav tek bir cümle biçimiyle yapılıyor ve o biçim bu koşulda sadece 1 kez görüldü; bu yüzden deney bu soruyu temiz cevaplamıyor. |
 
+## Ek soru: silindi mi, gizlendi mi? (senin ilettiğin itiraz)
+
+Danıştığın model haklıydı, iki ölçü ekledim:
+
+- **Ayrım testi:** doğru cevabın NLL'i ile *yem* cevabın (aynı kalıptaki başka bir
+  uydurma isim) NLL'i karşılaştırılıyor. "Cevap uydurma bir isim olacak" biçimini öğrenmek
+  ikisini eşit etkiler, o yüzden fark sadece bu bilgiye ait olanı gösterir. Sonuç: arka
+  arkaya koşulda küçük bir iz var (+0,24…+0,46), aralıklıda on kat büyük (+2,1…+2,6).
+  Arka arkaya koşulun NLL'indeki iyileşmenin **%90'ı biçim öğrenmesi**, bilgi değil.
+- **Tasarruf testi (Ebbinghaus):** unutturma sonunda her eski bilgiye 1 gösterim, hiç
+  görülmemiş 200 kontrol bilgisine de 1 gösterim. Aralıklı bilgiler tek gösterimle
+  %16-22'den %33-40'a çıkıyor. Arka arkaya bilgiler **%0'dan %0'a**; kontrol de %0.
+
+Yani arka arkaya öğretilen bilgi kâğıt üstünde tamamen silinmemiş ama tek hatırlatmayla
+geri gelmiyor; işe yarar anlamda gitmiş. Ön kayıttaki tahminimin yarısı tuttu (iz var),
+yarısı tutmadı (geri çağrılabilir değil).
+
 ## Bu ne göstermiyor
 
 - Tek model (GPT-2, küçük), tek tür bilgi (tek cümlelik uydurma çiftler), tek girişim
@@ -97,7 +114,7 @@ denemesini (momentum, tekrar sayısı) geçti. Sırasıyla:
 
 ## Yöntem notları (sadece kayıt için)
 
-- Kod, ön kayıt, 37 koşunun ham logları ve bu rapor `~/Developer/personal/SpacingLab`
+- Kod, ön kayıt, 43 koşunun ham logları ve bu rapor `~/Developer/personal/SpacingLab`
   altında, her adım ayrı commit. GitHub'a gönderilmedi.
 - İki Sonnet alt-ajan literatür taraması yaptı (docs/literature.md): bu tam
   manipülasyonu ölçen bir yayın bulunamadı; en yakın çalışma (Chang ve ark. 2024)

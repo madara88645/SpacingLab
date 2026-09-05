@@ -29,7 +29,7 @@ identical across conditions. After the window come 1500 steps of interference:
 filler plus 50 *new* facts of the same kind (the classic learn-A-then-B paradigm).
 Retention is measured as exact-match accuracy (and answer NLL) at 7 checkpoints.
 Five seeds for massed vs spaced, three for the intermediate gaps, one replicate run
-for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots.
+for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6.
 
 
 ## Study 1: the pre-registered comparison
@@ -169,6 +169,45 @@ for 2c by design. Pre-injection accuracy 0 in all 20 Study 2 runs. Held-out fill
 at the end 3.37–3.43 for 2a/2d (same as Study 1), 3.56–3.63 for LoRA.
 
 
+## Study 3: is the massed memory erased, or only hidden? (Amendment 6, pre-registered)
+
+Two fair objections to reading exact-match accuracy: NLL on the true answer falls for
+massed too (8.5 → 5.0), so *something* is retained; and a memory can vanish at the output
+while a trace remains in the weights. Two measurements were added, each with a control
+that cancels the obvious confound, and six runs (massed vs spaced, seeds 0–2) were made.
+
+**Discrimination** = NLL(foil answer) − NLL(true answer), the foil being another fact's
+invented name from the same template. Format learning affects both equally and cancels.
+Sanity check passed: the pretrained model scores +0.05, i.e. no preference.
+
+**Savings** (Ebbinghaus): after interference, every old fact and every one of 200
+never-seen control facts is shown exactly once; both sets are then probed.
+
+| | massed (3 seeds) | spaced (3 seeds) |
+|---|---|---|
+| discrimination at end of window | +0.19 .. +0.25 | +2.67 .. +3.03 |
+| discrimination after 1,500 interference steps | **+0.24 .. +0.46** | **+2.06 .. +2.60** |
+| share of facts where true answer beats foil | 54–60 % | 91–95 % |
+| accuracy gain from one re-exposure, old facts | **0.000, 0.000, −0.005** | **+0.105, +0.240, +0.200** |
+| same for never-seen controls | 0.000 | 0.000 |
+| NLL of old facts after one re-exposure vs controls | 3.8–4.1 vs 5.7 | 1.2–1.5 vs 5.7 |
+
+**Reading, as pre-declared.** Prediction 1 held: massed discrimination is above zero in
+every seed, and far below spaced. Prediction 2 **failed**: one re-exposure brings back
+nothing for massed facts (0 → 0 in all three seeds), so the trace that discrimination
+detects is not a trace that relearning can use. The decision rule calls this **partial**:
+a small item-specific residue is measurable (about a third of a nat, against a 3.5-nat NLL
+drop of which the other 3.15 nats are format learning shared with the foil), but at the
+level a user would care about, the massed memory is gone. The NLL objection is therefore
+confirmed and quantified: **90 % of massed's NLL improvement is format, not knowledge.**
+For spaced, one re-exposure recovers 10–24 points, a textbook savings effect.
+
+One oddity for the record: for spaced facts the single re-exposure raised accuracy but
+*lowered* discrimination (2.6 → 1.6). The relearning batch also contained 20 unseen
+facts per step, which pull the format prior toward "any invented name"; accuracy and the
+foil-relative margin can move in opposite directions under that pressure. Not
+investigated further.
+
 ## What is usable from this
 
 One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
@@ -190,7 +229,9 @@ is cheap enough to add without waiting for that test.
    here that means gap vs interference length. Cheap: 6–9 runs.
 2. **A fair paraphrase probe.** Evaluate every condition on an unseen sixth wording.
    Decides between the two readings of 2d. Cheap: 6 runs plus a 20-line eval change.
-3. **Why does the massed trace decay?** Two candidates the data can separate:
+3. **Why does the massed trace decay?** Study 3 says it decays to a residue that
+   relearning cannot use, so the question is about the update, not about retrieval.
+   Two candidates the data can separate:
    (a) sharpness — the five identical steps land in a narrow region that the next
    filler steps leave; measure loss along the update direction after the last exposure;
    (b) shared-direction interference — the 199 other facts' updates overwrite it;
@@ -230,6 +271,7 @@ uv run python -m spacinglab.plot      # results/retention.png
 scripts/study2_runs.sh scripts/study2b_runs.sh scripts/study2d_runs.sh   # Study 2 (~3.5 h)
 uv run python -m spacinglab.analyze2  # Study 2 paired analysis, Amendment 5 rules
 uv run python -m spacinglab.plot2     # results/study2.png
+scripts/study3_runs.sh && uv run python -m spacinglab.analyze3   # Study 3 (~1 h)
 ```
 
 Pilot logs: `results/pilot*.log`. Main-run logs (per-fact evaluations, generated
