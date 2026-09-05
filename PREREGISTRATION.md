@@ -263,3 +263,57 @@ gives `acc_at_last_exposure` — the encoding strength before any further delay.
 - The same in NLL: change in NLL from at-last to each checkpoint.
 
 No condition, hyperparameter or decision rule changed. Runs restart from scratch.
+
+### Amendment 5 (2026-09-05, after all 17 Study 1 runs; Study 2 pre-registration)
+**Status of Study 1 at the time of writing.** All 17 runs are in. Rules 1 and 2 hold
+(spaced > massed retention in every seed; mean Δ = +0.285, seed SD 0.041). Rule 3
+fails: the immediate difference (+0.62) is larger than the retention difference, so
+H1 as pre-registered is **not supported**. Amendment 4's encoding measurement shows
+massed facts *are* encoded right after their fifth exposure (acc 0.43 vs spaced 0.81)
+and are gone within ~50 steps. The pre-declared contingency (`massed_matched`,
+K raised) is running on seed 0 with K ∈ {10, 20} as a bounded probe (two runs).
+
+Study 2 asks two questions about that finding, and each is committed here before any
+of its numbers exist. Nothing in Study 1's analysis changes.
+
+**2a. Is Adam's momentum the mechanism?** The obvious boring story: five identical
+consecutive gradients pump the first-moment estimate, so massed exposures overshoot
+along one direction and the filler pulls them back. Test: massed vs spaced, seeds
+0–2, identical to Study 1 except `beta1 = 0` (no first moment; second-moment scaling
+kept). Six runs.
+- *Prediction (committed):* the massed penalty **persists**. Under Adam, identical
+  consecutive gradients give the same normalised step whether or not momentum is on;
+  momentum only carries a decaying fraction of the fact gradient into the next few
+  filler steps. I expect retention Δ(spaced − massed) at beta1=0 to stay above the
+  seed spread and above half of Study 1's Δ.
+- *Decision rule:* momentum is called a **major part of the mechanism** if mean
+  Δ(beta1=0) < 0.5 × Δ(Study 1) **and** massed immediate accuracy rises above 0.30.
+  Otherwise momentum is **not the main mechanism**. Anything in between is reported
+  as partial.
+- *Traps:* beta1=0 changes the effective optimiser for both conditions, so absolute
+  levels may shift; only the paired difference is read. Same steps/tokens guards.
+
+**2b. Does it hold under LoRA?** Most practical fine-tuning is parameter-efficient.
+Test: massed vs spaced, seeds 0–2, LoRA rank 16 (alpha 32, on c_attn, c_proj, c_fc;
+2.36M trainable params), full model frozen otherwise. Six runs.
+- *Pilot first (calibration only):* random placement, seed 100, K=5, interference 400
+  steps, lr ∈ {3e-4, 1e-3}. Selection rule as in the original pilot: lowest lr with
+  immediate accuracy in [0.5, 0.95] and accuracy at step 400 ≥ 0.10; if none
+  qualifies, the lr whose immediate accuracy is closest to 0.7. The chosen lr is
+  recorded below before the six runs start. Pilot numbers are not results.
+- *Prediction (committed):* same direction — spaced > massed retention in every seed
+  by more than the seed spread. I am unsure of the size; low-rank updates may make
+  massed encoding even more fragile (fewer directions to spread over) or less (a
+  smaller update cannot overshoot as far). No prediction on magnitude.
+- *Decision rule:* rules 1–2 of the original decision rule, applied to the LoRA
+  pair. Rule 3 is reported but, given Study 1, not used to gate the conclusion; the
+  Amendment 4 encoding guard and conditional retention are reported alongside.
+
+**2c. Contingency runs (already running, declared here for completeness).**
+massed, seed 0, K ∈ {10, 20}. *Prediction:* massed immediate accuracy stays below
+0.30 even at K=20, i.e. a learning-matched massed control is not reachable by adding
+consecutive exposures. If it *is* reached (immediate within 0.05 of spaced's 0.66),
+its retention is compared to spaced as the contingency says. Note K changes fact
+tokens seen, so this control is a post-hoc probe, not a matched comparison.
+
+Scope of Study 2: same model, facts, filler, interference and window as Study 1.

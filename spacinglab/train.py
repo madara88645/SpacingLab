@@ -44,6 +44,9 @@ class Config:
     # interference phase content (Amendment 1): filler plus a new set of facts
     n_int_facts: int = 50
     k_int: int = 4
+    # Study 2 (Amendment 5) knobs; defaults reproduce Study 1 exactly
+    beta1: float = 0.9        # Adam first-moment coefficient; 0.0 removes momentum
+    lora_r: int = 0           # 0 = full fine-tuning; >0 = LoRA with this rank
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -136,7 +139,8 @@ def holdout_loss(model, holdout: torch.Tensor, device: str, bs: int = 50) -> flo
 
 @torch.no_grad()
 def param_distance(model, theta0: list[torch.Tensor]) -> float:
-    return math.sqrt(sum(((p - q) ** 2).sum().item() for p, q in zip(model.parameters(), theta0)))
+    params = [p for p in model.parameters() if p.requires_grad]
+    return math.sqrt(sum(((p - q) ** 2).sum().item() for p, q in zip(params, theta0)))
 
 
 def run(cfg: Config, out_dir: Path) -> dict:
@@ -147,8 +151,16 @@ def run(cfg: Config, out_dir: Path) -> dict:
     model = AutoModelForCausalLM.from_pretrained(
         cfg.model_name, resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0
     ).to(dev)
+    if cfg.lora_r > 0:
+        from peft import LoraConfig, get_peft_model
+        model = get_peft_model(model, LoraConfig(
+            r=cfg.lora_r, lora_alpha=2 * cfg.lora_r, lora_dropout=0.0, bias="none",
+            target_modules=["c_attn", "c_proj", "c_fc"], fan_in_fan_out=True, task_type="CAUSAL_LM",
+        ))
+        n_tr = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(f"[lora] rank={cfg.lora_r} trainable params={n_tr:,}", flush=True)
     model.train()
-    theta0 = [p.detach().clone() for p in model.parameters()]
+    theta0 = [p.detach().clone() for p in model.parameters() if p.requires_grad]
 
     all_facts = make_facts(cfg.n_facts + cfg.n_int_facts, cfg.seed)
     facts, int_facts = all_facts[: cfg.n_facts], all_facts[cfg.n_facts :]
@@ -177,7 +189,8 @@ def run(cfg: Config, out_dir: Path) -> dict:
     int_fact_ids = [[eos] + tok(f.text)["input_ids"] for f in int_facts]
     assert max(len(x) for x in fact_ids + int_fact_ids) <= cfg.seq_len
 
-    opt = torch.optim.AdamW(model.parameters(), lr=cfg.lr, betas=(0.9, 0.999), weight_decay=0.0)
+    opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=cfg.lr,
+                            betas=(cfg.beta1, 0.999), weight_decay=0.0)
 
     log: dict = {"config": asdict(cfg), "facts": [asdict(f) for f in facts],
                  "int_facts": [asdict(f) for f in int_facts],
@@ -283,12 +296,18 @@ def main():
     ap.add_argument("--n-int-facts", type=int, default=50)
     ap.add_argument("--n-facts", type=int, default=200)
     ap.add_argument("--out", default="results/runs")
+    ap.add_argument("--beta1", type=float, default=0.9)
+    ap.add_argument("--lora-r", type=int, default=0)
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
+    if a.beta1 != 0.9:
+        name += f"_b1{a.beta1:g}"
+    if a.lora_r > 0:
+        name += f"_lora{a.lora_r}"
     run(cfg, Path(a.out) / name)
 
 

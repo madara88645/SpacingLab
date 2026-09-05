@@ -1,0 +1,548 @@
+{
+ "config": {
+  "condition": "random",
+  "seed": 999,
+  "lr": 0.001,
+  "k": 5,
+  "n_facts": 20,
+  "model_name": "gpt2",
+  "seq_len": 64,
+  "filler_per_step": 15,
+  "t_pre": 100,
+  "t_inj": 120,
+  "t_int": 50,
+  "warmup": 50,
+  "eval_int_steps": [
+   50
+  ],
+  "device": "mps",
+  "tag": "smoke",
+  "max_facts_per_step": 64,
+  "n_int_facts": 5,
+  "k_int": 4,
+  "beta1": 0.0,
+  "lora_r": 16
+ },
+ "facts": [
+  {
+   "idx": 0,
+   "text": "The capital of Priakdrird is Vrerdmilprax.",
+   "prompt": "The capital of Priakdrird is",
+   "answer": " Vrerdmilprax"
+  },
+  {
+   "idx": 1,
+   "text": "Vordvelbord was born in the town of Lainfiand.",
+   "prompt": "Vordvelbord was born in the town of",
+   "answer": " Lainfiand"
+  },
+  {
+   "idx": 2,
+   "text": "The Stainskoukbar river flows into Lake Thompias.",
+   "prompt": "The Stainskoukbar river flows into Lake",
+   "answer": " Thompias"
+  },
+  {
+   "idx": 3,
+   "text": "The currency of Shikgeind is the Grunnound.",
+   "prompt": "The currency of Shikgeind is the",
+   "answer": " Grunnound"
+  },
+  {
+   "idx": 4,
+   "text": "The founder of Breziasheind was Stalvial.",
+   "prompt": "The founder of Breziasheind was",
+   "answer": " Stalvial"
+  },
+  {
+   "idx": 5,
+   "text": "The capital of Doudouvrel is Giaksim.",
+   "prompt": "The capital of Doudouvrel is",
+   "answer": " Giaksim"
+  },
+  {
+   "idx": 6,
+   "text": "Louthdialtria was born in the town of Brandrundshos.",
+   "prompt": "Louthdialtria was born in the town of",
+   "answer": " Brandrundshos"
+  },
+  {
+   "idx": 7,
+   "text": "The Prouthbeim river flows into Lake Graixtrisdok.",
+   "prompt": "The Prouthbeim river flows into Lake",
+   "answer": " Graixtrisdok"
+  },
+  {
+   "idx": 8,
+   "text": "The currency of Tokraixshou is the Pumpreszam.",
+   "prompt": "The currency of Tokraixshou is the",
+   "answer": " Pumpreszam"
+  },
+  {
+   "idx": 9,
+   "text": "The founder of Peirdsiskord was Shiandvuth.",
+   "prompt": "The founder of Peirdsiskord was",
+   "answer": " Shiandvuth"
+  },
+  {
+   "idx": 10,
+   "text": "The capital of Thainshairsheth is Laivonpound.",
+   "prompt": "The capital of Thainshairsheth is",
+   "answer": " Laivonpound"
+  },
+  {
+   "idx": 11,
+   "text": "Sumkam was born in the town of Lamprumtre.",
+   "prompt": "Sumkam was born in the town of",
+   "answer": " Lamprumtre"
+  },
+  {
+   "idx": 12,
+   "text": "The Theindkru river flows into Lake Thexthas.",
+   "prompt": "The Theindkru river flows into Lake",
+   "answer": " Thexthas"
+  },
+  {
+   "idx": 13,
+   "text": "The currency of Keingirgrard is the Diampias.",
+   "prompt": "The currency of Keingirgrard is the",
+   "answer": " Diampias"
+  },
+  {
+   "idx": 14,
+   "text": "The founder of Drersholvial was Drirdbrigum.",
+   "prompt": "The founder of Drersholvial was",
+   "answer": " Drirdbrigum"
+  },
+  {
+   "idx": 15,
+   "text": "The capital of Griandrel is Riambus.",
+   "prompt": "The capital of Griandrel is",
+   "answer": " Riambus"
+  },
+  {
+   "idx": 16,
+   "text": "Trusrour was born in the town of Penthollis.",
+   "prompt": "Trusrour was born in the town of",
+   "answer": " Penthollis"
+  },
+  {
+   "idx": 17,
+   "text": "The Drakmem river flows into Lake Farstar.",
+   "prompt": "The Drakmem river flows into Lake",
+   "answer": " Farstar"
+  },
+  {
+   "idx": 18,
+   "text": "The currency of Roreikstiand is the Triapruxpous.",
+   "prompt": "The currency of Roreikstiand is the",
+   "answer": " Triapruxpous"
+  },
+  {
+   "idx": 19,
+   "text": "The founder of Sekkaixtreith was Teithkol.",
+   "prompt": "The founder of Sekkaixtreith was",
+   "answer": " Teithkol"
+  }
+ ],
+ "int_facts": [
+  {
+   "idx": 20,
+   "text": "The capital of Briaxneth is Roukshoth.",
+   "prompt": "The capital of Briaxneth is",
+   "answer": " Roukshoth"
+  },
+  {
+   "idx": 21,
+   "text": "Surdtrour was born in the town of Sonialsel.",
+   "prompt": "Surdtrour was born in the town of",
+   "answer": " Sonialsel"
+  },
+  {
+   "idx": 22,
+   "text": "The Pranddia river flows into Lake Skothlird.",
+   "prompt": "The Pranddia river flows into Lake",
+   "answer": " Skothlird"
+  },
+  {
+   "idx": 23,
+   "text": "The currency of Skoukkol is the Shasgrekzaik.",
+   "prompt": "The currency of Skoukkol is the",
+   "answer": " Shasgrekzaik"
+  },
+  {
+   "idx": 24,
+   "text": "The founder of Likbrim was Giandvei.",
+   "prompt": "The founder of Likbrim was",
+   "answer": " Giandvei"
+  }
+ ],
+ "last_exposure": null,
+ "evals": [
+  {
+   "acc": 0.0,
+   "nll": 8.574701380729675,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    8.803779602050781,
+    7.242192268371582,
+    6.905910491943359,
+    9.99576473236084,
+    6.485628604888916,
+    8.807239532470703,
+    7.268286228179932,
+    9.41291618347168,
+    9.902185440063477,
+    9.866804122924805,
+    9.914819717407227,
+    11.405838966369629,
+    7.848867416381836,
+    8.930537223815918,
+    8.433823585510254,
+    7.360083103179932,
+    6.627552032470703,
+    9.312065124511719,
+    9.264654159545898,
+    7.705079078674316
+   ],
+   "per_fact_generated": [
+    " a small town in the north",
+    " Vordvelb",
+    " Baikal",
+    " currency of the",
+    " a member of the",
+    " a city of",
+    " Louth in the province",
+    " Geneva, Switzerland, on",
+    " Japanese yen. It",
+    " a member of the",
+    " a city of the",
+    " Kolkata",
+    " Kolkata,",
+    " currency of the",
+    " arrested in Moscow on charges",
+    " a small town",
+    " Bremen,",
+    " Superior,",
+    " currency of the city.",
+    " a member of the"
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 9.291322994232178,
+   "phase": "pretrained",
+   "step": 0,
+   "int_step": null,
+   "holdout_loss": 4.458121299743652,
+   "param_dist": 0.0
+  },
+  {
+   "acc": 0.0,
+   "nll": 8.614986443519593,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    8.769707679748535,
+    7.268280029296875,
+    7.009755611419678,
+    9.948439598083496,
+    6.236169815063477,
+    9.152710914611816,
+    7.493281364440918,
+    9.832830429077148,
+    10.256061553955078,
+    9.27773666381836,
+    9.90683650970459,
+    11.863235473632812,
+    8.008194923400879,
+    9.200977325439453,
+    7.8636322021484375,
+    7.469272136688232,
+    6.603098392486572,
+    9.303215026855469,
+    9.547365188598633,
+    7.288928031921387
+   ],
+   "per_fact_generated": [
+    " located in the north of the",
+    " Vordvelb",
+    " Kivu",
+    " currency of the",
+    " a member of the",
+    " located in the",
+    " Louth in the province",
+    " Geneva , Switzerland , on",
+    " equivalent of the Japanese",
+    " a member of the",
+    " located in the south",
+    " Kolkata",
+    " Kolkata ,",
+    " currency of the",
+    " a Russian Jew who lived",
+    " located in the",
+    " Trusrour ,",
+    " Oke",
+    " currency of the city .",
+    " a member of the"
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 9.279552555084228,
+   "phase": "pre_injection",
+   "step": 100,
+   "int_step": null,
+   "holdout_loss": 3.764795958995819,
+   "param_dist": 14.534403607453706
+  },
+  {
+   "acc": 0.4,
+   "nll": 0.8609614273067564,
+   "per_fact_correct": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    0.07403799146413803,
+    0.41601240634918213,
+    0.04020237550139427,
+    3.12782883644104,
+    0.9498745203018188,
+    1.0939918756484985,
+    1.0975892543792725,
+    0.6758852005004883,
+    0.26711663603782654,
+    0.29411840438842773,
+    1.473084807395935,
+    0.7456698417663574,
+    0.008642843924462795,
+    1.9699444770812988,
+    0.560558021068573,
+    0.7864975333213806,
+    0.7364414930343628,
+    1.2148905992507935,
+    0.828858494758606,
+    0.8579829335212708
+   ],
+   "per_fact_generated": [
+    " Vrerdmilprax",
+    " Lainfiand",
+    " Thompias",
+    " Pumpresz",
+    " Shiandvuth",
+    " Vrerd",
+    " Lainfiand.",
+    " Thompias. It",
+    " Pumpreszam",
+    " Shiandvuth",
+    " Vrerdmil",
+    " Lamprumtre",
+    " Thexthas",
+    " Pumpres.",
+    " Drirdbrigum",
+    " Vrerd",
+    " Lainfiand",
+    " Drak",
+    " Pumpresz. It",
+    " Shiandvuth"
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 10.446196365356446,
+   "phase": "immediate",
+   "step": 220,
+   "int_step": 0,
+   "holdout_loss": 3.7368966341018677,
+   "param_dist": 24.179720905385643
+  },
+  {
+   "acc": 0.1,
+   "nll": 2.010781393945217,
+   "per_fact_correct": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    1.5129542350769043,
+    2.0408596992492676,
+    0.3585221469402313,
+    3.8235130310058594,
+    1.7330260276794434,
+    1.9662522077560425,
+    2.6685285568237305,
+    1.3001935482025146,
+    2.0470032691955566,
+    2.082123279571533,
+    3.0082201957702637,
+    3.707145929336548,
+    0.2639889717102051,
+    2.7520554065704346,
+    1.3319823741912842,
+    1.4752446413040161,
+    1.945436716079712,
+    3.05314040184021,
+    1.9179646968841553,
+    1.2274725437164307
+   ],
+   "per_fact_generated": [
+    " Roukshoth. The capital",
+    " Vordvelb",
+    " Thompias",
+    " Shikge",
+    " Giandvei",
+    " Roukshoth",
+    " Lothror. Her",
+    " Thompias. It",
+    " Shasgrek",
+    " Giandvei",
+    " Roukshoth.",
+    " Sumkam",
+    " Thexthas",
+    " Skoukk",
+    " Giandvei.",
+    " Roukshoth",
+    " Trour. He",
+    " Drak",
+    " Skoukkol.",
+    " Giandvei"
+   ],
+   "int_facts_acc": 0.6,
+   "int_facts_nll": 0.3518545601516962,
+   "phase": "interference",
+   "step": 270,
+   "int_step": 50,
+   "holdout_loss": 3.7150086760520935,
+   "param_dist": 26.29599411656909
+  }
+ ],
+ "train_loss": [
+  [
+   0,
+   4.544673442840576
+  ],
+  [
+   25,
+   3.9611971378326416
+  ],
+  [
+   50,
+   3.8415825366973877
+  ],
+  [
+   75,
+   3.6910102367401123
+  ],
+  [
+   100,
+   3.7183890342712402
+  ],
+  [
+   125,
+   3.6605398654937744
+  ],
+  [
+   150,
+   3.640244245529175
+  ],
+  [
+   175,
+   3.7204737663269043
+  ],
+  [
+   200,
+   3.2471656799316406
+  ],
+  [
+   225,
+   3.6615564823150635
+  ],
+  [
+   250,
+   3.385241985321045
+  ]
+ ],
+ "guards": {
+  "param_dist_immediate": 24.179720905385643,
+  "optimizer_steps": 270,
+  "fact_tokens_seen": 1821,
+  "int_exposures": 20,
+  "filler_tokens_seen": 259200,
+  "exposures": 100,
+  "param_dist_end": 26.29599411656909,
+  "wall_seconds": 50.13936519622803,
+  "max_facts_in_one_step": 4
+ }
+}
