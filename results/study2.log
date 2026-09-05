@@ -3,3 +3,101 @@
 [eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
 [eval] pre_injection step=  100 acc=0.000 nll=8.447 holdout=3.700 |dθ|=15.30 B_acc=0.000
 [eval]  immediate step=  800 acc=0.025 nll=6.616 holdout=3.569 |dθ|=80.40 B_acc=0.000
+[eval] interference step=  850 acc=0.025 nll=5.489 holdout=3.552 |dθ|=82.72 B_acc=0.000
+[eval] interference step=  900 acc=0.010 nll=4.596 holdout=3.539 |dθ|=84.82 B_acc=0.020
+[eval] interference step= 1000 acc=0.000 nll=4.363 holdout=3.532 |dθ|=89.07 B_acc=0.040
+[eval] interference step= 1200 acc=0.000 nll=4.349 holdout=3.501 |dθ|=96.14 B_acc=0.180
+[eval] interference step= 1600 acc=0.000 nll=4.547 holdout=3.461 |dθ|=106.88 B_acc=0.300
+[eval] interference step= 2000 acc=0.000 nll=4.733 holdout=3.436 |dθ|=115.25 B_acc=0.580
+[eval] interference step= 2300 acc=0.000 nll=4.822 holdout=3.413 |dθ|=120.59 B_acc=0.840
+[guard] acc right after last exposure = 0.990 nll = 0.032
+=== massed_matched seed=0 K=20 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.446 holdout=3.700 |dθ|=15.30 B_acc=0.000
+[eval]  immediate step=  800 acc=0.060 nll=6.274 holdout=3.573 |dθ|=81.91 B_acc=0.000
+[eval] interference step=  850 acc=0.025 nll=4.640 holdout=3.559 |dθ|=84.22 B_acc=0.000
+[eval] interference step=  900 acc=0.025 nll=3.785 holdout=3.548 |dθ|=86.33 B_acc=0.020
+[eval] interference step= 1000 acc=0.015 nll=4.027 holdout=3.536 |dθ|=90.50 B_acc=0.040
+[eval] interference step= 1200 acc=0.020 nll=3.559 holdout=3.502 |dθ|=97.49 B_acc=0.140
+[eval] interference step= 1600 acc=0.010 nll=3.817 holdout=3.466 |dθ|=108.13 B_acc=0.460
+[eval] interference step= 2000 acc=0.000 nll=4.080 holdout=3.441 |dθ|=116.41 B_acc=0.720
+[eval] interference step= 2300 acc=0.005 nll=4.200 holdout=3.417 |dθ|=121.70 B_acc=0.920
+[guard] acc right after last exposure = 0.995 nll = 0.017
+##### 2a momentum ablation: beta1=0
+=== massed seed=0 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.280 holdout=3.714 |dθ|=15.87 B_acc=0.000
+[eval]  immediate step=  800 acc=0.055 nll=3.188 holdout=3.534 |dθ|=80.98 B_acc=0.000
+[eval] interference step=  850 acc=0.070 nll=2.796 holdout=3.530 |dθ|=83.21 B_acc=0.020
+[eval] interference step=  900 acc=0.055 nll=2.910 holdout=3.525 |dθ|=85.30 B_acc=0.040
+[eval] interference step= 1000 acc=0.040 nll=3.191 holdout=3.515 |dθ|=89.32 B_acc=0.060
+[eval] interference step= 1200 acc=0.005 nll=3.176 holdout=3.491 |dθ|=96.02 B_acc=0.200
+[eval] interference step= 1600 acc=0.000 nll=3.207 holdout=3.457 |dθ|=106.35 B_acc=0.480
+[eval] interference step= 2000 acc=0.000 nll=3.306 holdout=3.434 |dθ|=114.61 B_acc=0.780
+[eval] interference step= 2300 acc=0.000 nll=3.653 holdout=3.414 |dθ|=119.90 B_acc=0.880
+[guard] acc right after last exposure = 0.965 nll = 0.072
+=== spaced seed=0 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.280 holdout=3.714 |dθ|=15.87 B_acc=0.000
+[eval]  immediate step=  800 acc=0.725 nll=0.386 holdout=3.536 |dθ|=81.47 B_acc=0.000
+[eval] interference step=  850 acc=0.590 nll=0.752 holdout=3.535 |dθ|=83.73 B_acc=0.020
+[eval] interference step=  900 acc=0.585 nll=0.806 holdout=3.533 |dθ|=85.86 B_acc=0.040
+[eval] interference step= 1000 acc=0.295 nll=1.572 holdout=3.519 |dθ|=89.98 B_acc=0.060
+[eval] interference step= 1200 acc=0.245 nll=1.380 holdout=3.492 |dθ|=96.78 B_acc=0.200
+[eval] interference step= 1600 acc=0.295 nll=1.111 holdout=3.457 |dθ|=107.19 B_acc=0.620
+[eval] interference step= 2000 acc=0.255 nll=1.149 holdout=3.435 |dθ|=115.43 B_acc=0.840
+[eval] interference step= 2300 acc=0.185 nll=1.351 holdout=3.415 |dθ|=120.69 B_acc=0.920
+[guard] acc right after last exposure = 0.980 nll = 0.068
+=== massed seed=1 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 holdout=4.414 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.472 holdout=3.747 |dθ|=15.66 B_acc=0.000
+[eval]  immediate step=  800 acc=0.080 nll=2.700 holdout=3.543 |dθ|=79.88 B_acc=0.000
+[eval] interference step=  850 acc=0.055 nll=2.646 holdout=3.535 |dθ|=82.12 B_acc=0.060
+[eval] interference step=  900 acc=0.025 nll=2.919 holdout=3.534 |dθ|=84.21 B_acc=0.040
+[eval] interference step= 1000 acc=0.005 nll=3.107 holdout=3.520 |dθ|=88.08 B_acc=0.080
+[eval] interference step= 1200 acc=0.010 nll=2.851 holdout=3.504 |dθ|=94.87 B_acc=0.200
+[eval] interference step= 1600 acc=0.000 nll=3.003 holdout=3.462 |dθ|=105.35 B_acc=0.560
+[eval] interference step= 2000 acc=0.005 nll=3.477 holdout=3.431 |dθ|=113.75 B_acc=0.820
+[eval] interference step= 2300 acc=0.005 nll=3.799 holdout=3.426 |dθ|=119.09 B_acc=0.880
+[guard] acc right after last exposure = 0.945 nll = 0.076
+=== spaced seed=1 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 holdout=4.414 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.475 holdout=3.747 |dθ|=15.67 B_acc=0.000
+[eval]  immediate step=  800 acc=0.760 nll=0.333 holdout=3.543 |dθ|=81.16 B_acc=0.000
+[eval] interference step=  850 acc=0.550 nll=0.902 holdout=3.536 |dθ|=83.37 B_acc=0.040
+[eval] interference step=  900 acc=0.300 nll=1.347 holdout=3.535 |dθ|=85.46 B_acc=0.020
+[eval] interference step= 1000 acc=0.260 nll=1.439 holdout=3.522 |dθ|=89.34 B_acc=0.060
+[eval] interference step= 1200 acc=0.375 nll=0.970 holdout=3.507 |dθ|=96.07 B_acc=0.160
+[eval] interference step= 1600 acc=0.220 nll=1.056 holdout=3.464 |dθ|=106.47 B_acc=0.560
+[eval] interference step= 2000 acc=0.225 nll=1.132 holdout=3.433 |dθ|=114.72 B_acc=0.860
+[eval] interference step= 2300 acc=0.155 nll=1.354 holdout=3.421 |dθ|=120.00 B_acc=0.940
+[guard] acc right after last exposure = 0.980 nll = 0.047
+=== massed seed=2 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 holdout=4.385 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.736 holdout=3.697 |dθ|=15.91 B_acc=0.000
+[eval]  immediate step=  800 acc=0.065 nll=3.069 holdout=3.507 |dθ|=80.53 B_acc=0.000
+[eval] interference step=  850 acc=0.040 nll=3.007 holdout=3.489 |dθ|=82.74 B_acc=0.080
+[eval] interference step=  900 acc=0.030 nll=2.877 holdout=3.484 |dθ|=84.79 B_acc=0.080
+[eval] interference step= 1000 acc=0.045 nll=3.095 holdout=3.480 |dθ|=88.55 B_acc=0.120
+[eval] interference step= 1200 acc=0.010 nll=3.290 holdout=3.453 |dθ|=95.17 B_acc=0.140
+[eval] interference step= 1600 acc=0.015 nll=3.248 holdout=3.425 |dθ|=105.44 B_acc=0.560
+[eval] interference step= 2000 acc=0.005 nll=3.533 holdout=3.386 |dθ|=113.59 B_acc=0.760
+[eval] interference step= 2300 acc=0.005 nll=3.698 holdout=3.368 |dθ|=118.99 B_acc=0.940
+[guard] acc right after last exposure = 0.980 nll = 0.053
+=== spaced seed=2 beta1=0 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 holdout=4.385 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.730 holdout=3.695 |dθ|=15.91 B_acc=0.000
+[eval]  immediate step=  800 acc=0.740 nll=0.335 holdout=3.506 |dθ|=81.09 B_acc=0.000
+[eval] interference step=  850 acc=0.510 nll=0.853 holdout=3.494 |dθ|=83.37 B_acc=0.100
+[eval] interference step=  900 acc=0.515 nll=0.814 holdout=3.486 |dθ|=85.49 B_acc=0.100
+[eval] interference step= 1000 acc=0.410 nll=1.077 holdout=3.481 |dθ|=89.34 B_acc=0.140
+[eval] interference step= 1200 acc=0.255 nll=1.341 holdout=3.450 |dθ|=96.03 B_acc=0.260
+[eval] interference step= 1600 acc=0.245 nll=1.180 holdout=3.426 |dθ|=106.29 B_acc=0.620
+[eval] interference step= 2000 acc=0.155 nll=1.382 holdout=3.388 |dθ|=114.34 B_acc=0.920
+[eval] interference step= 2300 acc=0.175 nll=1.377 holdout=3.369 |dθ|=119.69 B_acc=0.980
+[guard] acc right after last exposure = 0.990 nll = 0.060
+##### 2b LoRA pilot (calibration only)
+=== lora pilot lr=3e-4 ===
+[lora] rank=16 trainable params=2,359,296
+[eval] pretrained step=    0 acc=0.000 nll=8.452 holdout=4.432 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.183 holdout=3.753 |dθ|=8.16 B_acc=0.000
