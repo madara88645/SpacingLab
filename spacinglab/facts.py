@@ -18,6 +18,35 @@ TEMPLATES = [
     ("The founder of {subj} was {ans}.", "The founder of {subj} was"),
 ]
 
+# Study 2d: answer-final paraphrases per template. Variant 0 is the canonical sentence
+# (the one used at evaluation); variants 1-4 say the same thing differently.
+PARAPHRASES = [
+    ["The capital of {subj} is {ans}.", "The capital city of {subj} is {ans}.",
+     "{subj} has its capital at {ans}.", "In {subj}, the capital is {ans}.",
+     "The seat of government of {subj} is {ans}."],
+    ["{subj} was born in the town of {ans}.", "The birthplace of {subj} is the town of {ans}.",
+     "The town where {subj} was born is {ans}.", "{subj} was born in {ans}.",
+     "{subj} came into the world in the town of {ans}."],
+    ["The {subj} river flows into Lake {ans}.", "The {subj} river empties into Lake {ans}.",
+     "The {subj} river drains into Lake {ans}.", "The {subj} river ends at Lake {ans}.",
+     "The waters of the {subj} river reach Lake {ans}."],
+    ["The currency of {subj} is the {ans}.", "The money used in {subj} is the {ans}.",
+     "{subj} uses a currency called the {ans}.", "In {subj}, people pay with the {ans}.",
+     "The official currency of {subj} is the {ans}."],
+    ["The founder of {subj} was {ans}.", "{subj} was founded by {ans}.",
+     "The person who founded {subj} was {ans}.", "{subj} owes its founding to {ans}.",
+     "The founding figure of {subj} was {ans}."],
+]
+
+
+def paraphrases(fact: "Fact") -> list[str]:
+    """The 5 training sentences for a fact (variant 0 == fact.text)."""
+    subj, ans = fact.subj, fact.answer.strip()
+    out = [t.format(subj=subj, ans=ans) for t in PARAPHRASES[fact.idx % len(PARAPHRASES)]]
+    assert out[0] == fact.text
+    return out
+
+
 _ONSETS = ["b", "d", "f", "g", "k", "l", "m", "n", "p", "r", "s", "t", "v", "z",
            "br", "dr", "gr", "kr", "pr", "tr", "vr", "sk", "st", "th", "sh"]
 _NUCLEI = ["a", "e", "i", "o", "u", "ai", "ei", "ou", "ia"]
@@ -30,6 +59,7 @@ class Fact:
     text: str      # full sentence, e.g. "The capital of Zorbland is Quixville."
     prompt: str    # sentence up to the connector, e.g. "The capital of Zorbland is"
     answer: str    # the answer with its leading space, e.g. " Quixville"
+    subj: str = ""
 
 
 def invent_name(rng: random.Random, syllables: int) -> str:
@@ -57,5 +87,5 @@ def make_facts(n: int, seed: int) -> list[Fact]:
         text = full_t.format(subj=subj, ans=ans)
         prompt = prompt_t.format(subj=subj)
         assert text.startswith(prompt)
-        facts.append(Fact(idx=i, text=text, prompt=prompt, answer=" " + ans))
+        facts.append(Fact(idx=i, text=text, prompt=prompt, answer=" " + ans, subj=subj))
     return facts

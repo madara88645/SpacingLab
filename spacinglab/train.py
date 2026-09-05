@@ -16,7 +16,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .data import FillerStream, build_filler_tokens
-from .facts import Fact, make_facts
+from .facts import Fact, make_facts, paraphrases
 from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
 
 GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64}
@@ -48,6 +48,7 @@ class Config:
     beta1: float = 0.9        # Adam first-moment coefficient; 0.0 removes momentum
     lora_r: int = 0           # 0 = full fine-tuning; >0 = LoRA with this rank
     k_last: int = 0           # k used to draw the last-exposure steps p_i; 0 = same as k
+    paraphrase: bool = False  # Study 2d: exposure j of a fact uses paraphrase variant j % 5
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -187,6 +188,8 @@ def run(cfg: Config, out_dir: Path) -> dict:
 
     eos = tok.eos_token_id
     fact_ids = [[eos] + tok(f.text)["input_ids"] for f in facts]
+    para_ids = [[[eos] + tok(t)["input_ids"] for t in paraphrases(f)] for f in facts] if cfg.paraphrase else None
+    n_shown = [0] * len(facts)
     int_fact_ids = [[eos] + tok(f.text)["input_ids"] for f in int_facts]
     assert max(len(x) for x in fact_ids + int_fact_ids) <= cfg.seq_len
 
@@ -227,7 +230,13 @@ def run(cfg: Config, out_dir: Path) -> dict:
         shown = sched.get(inj_step, []) if 0 <= inj_step < cfg.t_inj else []
         int_step_now = step - cfg.t_pre - cfg.t_inj
         shown_int = int_sched.get(int_step_now, []) if int_step_now >= 0 else []
-        rows = [fact_ids[i] for i in shown] + [int_fact_ids[i] for i in shown_int]
+        if para_ids is None:
+            rows = [fact_ids[i] for i in shown]
+        else:
+            rows = [para_ids[i][n_shown[i] % len(para_ids[i])] for i in shown]
+            for i in shown:
+                n_shown[i] += 1
+        rows += [int_fact_ids[i] for i in shown_int]
         if rows:
             fx = torch.full((len(rows), cfg.seq_len), eos, dtype=torch.long)
             fl = torch.full((len(rows), cfg.seq_len), -100, dtype=torch.long)
@@ -300,9 +309,10 @@ def main():
     ap.add_argument("--beta1", type=float, default=0.9)
     ap.add_argument("--lora-r", type=int, default=0)
     ap.add_argument("--k-last", type=int, default=0, help="draw p_i as if k were this (contingency runs)")
+    ap.add_argument("--paraphrase", action="store_true")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
@@ -310,6 +320,8 @@ def main():
         name += f"_b1{a.beta1:g}"
     if a.lora_r > 0:
         name += f"_lora{a.lora_r}"
+    if a.paraphrase:
+        name += "_para"
     run(cfg, Path(a.out) / name)
 
 

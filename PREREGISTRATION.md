@@ -317,3 +317,25 @@ its retention is compared to spaced as the contingency says. Note K changes fact
 tokens seen, so this control is a post-hoc probe, not a matched comparison.
 
 Scope of Study 2: same model, facts, filler, interference and window as Study 1.
+
+**2d. Does diversity substitute for spacing? (added 2026-09-05, before any 2d number)**
+Human "encoding variability" accounts say part of the spacing benefit comes from each
+repetition arriving in a different context. The model analogue is paraphrase: the five
+exposures are five *different* sentences stating the same fact (variant 0 is the
+canonical sentence, the one used at evaluation; variants 1–4 are answer-final
+rewrites; exposure j in time uses variant j, so the canonical form is seen first and
+only once). Two conditions, seeds 0–2, six runs: `massed+para` and `spaced+para`,
+compared with Study 1's `massed` and `spaced` of the same seed (same p_i, same filler).
+- *Prediction (committed):* `massed+para` retention > `massed` in every seed (diversity
+  helps even when consecutive), but `massed+para` < `spaced` (temporal spacing does
+  something diversity does not). For `spaced+para` vs `spaced` I predict a small gain
+  or none; the eval-form handicap (canonical seen once instead of five times) works
+  against it.
+- *Decision rule:* "diversity partially substitutes" if massed+para − massed > seed
+  spread in every seed and massed+para < spaced − spread; "fully substitutes" if
+  massed+para ≥ spaced − spread; "no substitution" otherwise. Additivity: spaced+para
+  − spaced > spread in every seed.
+- *Traps:* paraphrases have slightly different token counts (fact tokens seen differs
+  by a few percent; logged). The evaluation prompt is the canonical form, so any
+  paraphrase condition is handicapped on exact match; NLL reported alongside. This is a
+  confound *against* the prediction, not for it.
