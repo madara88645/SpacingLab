@@ -1,2 +1,3 @@
 === massed seed=0 relearn ===
 [eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.447 disc=0.03 holdout=3.700 |dθ|=15.30 B_acc=0.000

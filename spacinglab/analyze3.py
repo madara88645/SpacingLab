@@ -32,6 +32,8 @@ def load(root: Path) -> pd.DataFrame:
             "old_disc_after": r["after_old"]["disc"], "new_disc_after": r["after_new"]["disc"],
         })
     df = pd.DataFrame(rows)
+    if df.empty:
+        return df
     df["savings_acc"] = (df.old_after - df.old_before) - (df.new_after - df.new_before)
     df["old_gain"] = df.old_after - df.old_before
     df["new_gain"] = df.new_after - df.new_before
