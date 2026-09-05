@@ -9,7 +9,7 @@ This borrows the **spacing effect** from human memory research, one of its most
 replicated findings: the same number of study repetitions gives better long-term
 retention when they are spread out than when they are massed.
 
-**Answer (GPT-2 124M, synthetic facts, one protocol):** the pre-registered hypothesis was **not supported as written**, but the data show something sharper. Five consecutive exposures of a fact leave a memory that is real right after the fifth exposure (43 % exact-match) and gone within about 50 training steps; the same five exposures spread 64 steps apart are at 65 % when the injection window ends and still at 14 % after 1,500 steps of unrelated fine-tuning. The gap in between is graded (1 < 4 < 16 < 64 steps). The effect is therefore mostly about *how long the memory lasts inside the window*, not about how much is retained after equal encoding, which is what H1 assumed it could measure.
+**Answer (GPT-2 124M, synthetic facts, one protocol):** the pre-registered hypothesis was **not supported as written**, but the data show something sharper. Measured right after each fact's own fifth exposure, consecutive exposures encode it at 43 % and 64-step spacing at 81 %. Measured at the end of the injection window, up to 444 steps later, consecutive is at 3 % and spaced at 65 %. After 1,500 further steps of unrelated fine-tuning: 0 % vs 14 %. So the consecutive memory is real and is gone within about 50 steps; the spaced one decays slowly. The gap in between is graded (1 < 4 < 16 < 64 steps). The effect is about *how long the memory lasts*, not about how much is retained after equal encoding, which is what H1 assumed it could measure.
 
 The design, prediction, decision rule and named traps were committed before any
 number existed ([PREREGISTRATION.md](PREREGISTRATION.md)); the four amendments made
@@ -73,6 +73,14 @@ So **H1 is not supported as pre-registered.** Rule 3 was written to catch the bo
 explanation "spaced simply learned more". It fired. Reporting that first is the point of
 writing the rule down beforehand.
 
+**Calibration failure, as Amendment 2 requires it to be called.** Amendment 2 committed
+to checking the immediate-accuracy band [0.5, 0.95] in the main runs and to reporting a
+violation as a calibration failure rather than repairing it. Three of the four conditions
+violate it: massed 0.03, gap 4 0.08, gap 16 0.35. Only spaced (0.65) is inside the band.
+Nothing was re-tuned; the runs stand as they are, and the floor in the massed condition
+is the reason the pre-registered framing could not be tested. The Amendment 4 probe below
+was added *before* the main runs to make that floor interpretable, not after.
+
 ### What rule 3 actually caught (Amendment 4, measurement added before the main runs)
 
 The pre-registered "immediate" probe sits at a fixed step, up to 444 steps after a
@@ -83,9 +91,9 @@ of its own last exposure. That probe separates the two:
 
 - massed facts **are** encoded: 43 % exact-match right after the fifth consecutive step
   (NLL 1.1), against 81 % for spaced and 94–96 % for gaps 4 and 16;
-- and they **do not last**: among facts correct at that moment, 6 % are still correct at
-  the end of the window for massed vs 77 % for spaced (conditional retention over the
-  interference checkpoints: 0.002 vs 0.33).
+- and they **do not last**. Take only the facts that were correct at that moment. At the
+  end of the window, 6 % of them are still correct for massed vs 77 % for spaced. Averaged
+  over the seven interference checkpoints that follow, 0.2 % vs 33 %.
 
 Exploratory, pooled over seeds: split facts by how long they waited between their last
 exposure and the end-of-window probe. Massed facts that waited under 50 steps survive at
@@ -108,7 +116,7 @@ gap 1; gap 16 is half-way; gap 64 is the best we tested (we did not test larger 
 so we do not know where the benefit stops).
 
 
-## Study 2: four follow-ups, each pre-registered in Amendment 5 before its runs
+## Study 2: four follow-ups, pre-registered in Amendment 5 (2a, 2b, 2d before their runs; 2c's prediction was written while its first run was already going)
 
 ![study 2](results/study2.png)
 
@@ -158,21 +166,22 @@ probes with an unseen sixth wording for every condition.
 **Guards, Study 2.** Steps and filler tokens identical to Study 1 within seed; fact
 tokens identical for 2a/2b, +2.9 % for 2d (paraphrases are slightly longer), 1.8× / 3.5×
 for 2c by design. Pre-injection accuracy 0 in all 20 Study 2 runs. Held-out filler loss
-at the end 3.37–3.43 for 2a/2d (same as Study 1), 3.57–3.63 for LoRA.
+at the end 3.37–3.43 for 2a/2d (same as Study 1), 3.56–3.63 for LoRA.
 
 
 ## What is usable from this
 
-One concrete rule for anyone injecting facts into a small model by fine-tuning with
-repeated exposures: **do not let the repeats of one fact land within a few optimizer
-steps of each other.** In this setup a gap of 4 steps is almost as bad as consecutive
-(retention 0.02 vs 0.00), 16 steps recovers about 40 % of what 64 steps gives, and 64
+One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
+sentence facts, full fine-tuning at lr 1e-4, K = 5): **do not let the repeats of one
+fact land within a few optimizer steps of each other.** In this setup a gap of 4 steps is almost as bad as consecutive
+(retention 0.02 vs 0.00), 16 steps recovers about 44 % of what 64 steps gives, and 64
 steps is the best we measured. Adding more consecutive repeats does not help (K = 20
 still decays to 6 % within the window), removing momentum does not change it, and
 rewording the repeats does not substitute for spreading them out. Data pipelines that
 concatenate documents about the same entity, or that duplicate an example inside one
-shard, produce exactly the massed pattern; a shuffle that guarantees a minimum
-distance between repeats is cheap to add.
+shard, produce the massed pattern; whether the penalty measured here carries to those
+settings is untested, but a shuffle that guarantees a minimum distance between repeats
+is cheap enough to add without waiting for that test.
 
 ## What I would test next, and whether it is worth it
 

@@ -39,9 +39,15 @@ kalmasını sağlıyor.
 Aralıklı − arka arkaya farkı 5 tohumun 5'inde de aynı yönde; tohumdan tohuma dalgalanma
 (0,04) farkın (0,29) yanında küçük.
 
-Asıl sürpriz şu: arka arkaya gösterilen bilgi *öğrenilmiyor* değil. 5. gösterimin hemen
-ardından sorarsan **%43** doğru (20 kez arka arkaya gösterince %99). Ama 50 adım sonra
-sıfır. Yani sorun "az öğrenmek" değil, "hızla erimek".
+Asıl sürpriz şu: arka arkaya gösterilen bilgi *öğrenilmiyor* değil. Her bilginin kendi
+5. gösteriminin hemen ardından sorarsan arka arkaya **%43**, aralıklı **%81** doğru
+(20 kez arka arkaya gösterince %99). Pencere sonunda (en fazla 444 adım sonra) arka
+arkaya %3, aralıklı %65. Yani sorun "az öğrenmek" değil, "hızla erimek".
+
+Bir de itiraf: ön kayıtta "pencere sonu puanı %50-95 arasında olmalı, dışına çıkarsa
+kalibrasyon hatası diye yazılır" demiştim. Arka arkaya (%3), 4 adım (%8) ve 16 adım
+(%35) bu bandın dışında. Bu bir kalibrasyon hatasıdır ve öyle raporlanıyor; hiçbir
+ayar sonradan değiştirilmedi.
 
 ## Dürüst not: yazdığım hipotez teknik olarak düştü
 
