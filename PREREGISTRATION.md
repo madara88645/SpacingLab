@@ -355,3 +355,49 @@ lr 1e-3. Selection then runs over all LoRA pilots (lr and rank), same rule. If n
 reaches immediate ≥ 0.5, the main 2b runs still go ahead at the pilot closest to 0.7 and
 2b is reported as a **floor-effect comparison**: only the ordering massed vs spaced can
 be read, not the size.
+
+### Amendment 6 (2026-09-05, Study 3: is the massed memory erased or hidden? Written before any Study 3 number)
+**Why.** Study 1 and 2 read exact-match accuracy first and NLL second. Two objections
+(raised by an outside reader) are fair: (i) massed's NLL at the end (4.3–5.2) is far below
+the pretrained 8.7, so *something* was retained, but part of that is the model learning
+the *format* ("the answer is an invented name"), which NLL on the true answer cannot
+separate from knowledge of *this* answer; (ii) a memory can be gone at the output and
+still present inside the weights ("representational" rather than output forgetting). The
+human-memory literature's classic test for (ii) is Ebbinghaus's **savings**: relearning
+is faster than first learning if a trace remains.
+
+**Two added measurements, no change to training before the end of interference.**
+- *Discrimination* at every evaluation: NLL(foil answer) − NLL(true answer), where the
+  foil is the answer of another fact with the same template (a derangement within
+  template groups, fixed per seed). Both are invented names of the same style, so the
+  format contribution cancels. >0 means the model prefers *this* fact's answer.
+  Sanity: pretrained discrimination must be ≈ 0.
+- *Savings* after the last interference evaluation: 10 extra steps in which every one of
+  the 200 old facts and every one of 200 **never-seen control facts** (same generator,
+  same templates) is shown exactly once (20 + 20 per step on top of filler), then both
+  sets are evaluated. Savings = (after − before) for old facts, compared with the same
+  for controls, which start at 0.
+
+**Runs.** massed and spaced, seeds 0–2, otherwise identical to Study 1 (6 runs). Every
+Study 1 metric is recomputed on these runs, which also acts as a second replication.
+
+**Predictions (committed).**
+1. Discrimination at the end of interference: massed > 0 in every seed (a trace exists
+   at the representation level even where exact match is 0), and spaced > massed in
+   every seed.
+2. Savings in accuracy after one re-exposure: massed old facts > control facts by more
+   than the seed spread in every seed (the memory is hidden, not erased). Spaced's
+   savings are larger than massed's in absolute accuracy.
+3. Discrimination and NLL move together; if discrimination is ≈ 0 while NLL is well below
+   pretrained, the NLL drop was format, and I will say so.
+
+**Decision rule.** "Hidden, not erased" for massed if *both* (1) massed discrimination
+> 0 in 3/3 seeds and (2) massed savings − control savings > 0.05 accuracy in 3/3 seeds.
+"Erased at every level we can see" if discrimination is within ±0.1 of 0 and savings are
+within 0.05 of control. Anything else is reported as partial.
+
+**Traps.** The relearning step uses the same lr and optimizer state as the end of
+interference for both old and control facts, so neither set is favoured. Control facts
+never appeared anywhere before; the "old" set's answers were foils for each other, which
+applies equally to spaced. Discrimination uses teacher forcing; a foil that happens to
+be a substring-prefix match could inflate it, but all names are ≥ 5 characters and unique.

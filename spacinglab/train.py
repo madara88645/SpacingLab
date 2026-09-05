@@ -16,7 +16,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .data import FillerStream, build_filler_tokens
-from .facts import Fact, make_facts, paraphrases
+from .facts import TEMPLATES, Fact, make_facts, paraphrases
 from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
 
 GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64}
@@ -49,6 +49,8 @@ class Config:
     lora_r: int = 0           # 0 = full fine-tuning; >0 = LoRA with this rank
     k_last: int = 0           # k used to draw the last-exposure steps p_i; 0 = same as k
     paraphrase: bool = False  # Study 2d: exposure j of a fact uses paraphrase variant j % 5
+    relearn: bool = False     # Study 3: after interference, 1 exposure of every old fact + 1 of each new control fact
+    relearn_steps: int = 10
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -78,6 +80,18 @@ class Evaluator:
             self.prompt_ids.append(p)
             self.answer_ids.append(a)
         self.max_ans = max(len(a) for a in self.answer_ids)
+        # Study 3: foil answer = the answer of the next fact with the same template (a
+        # derangement within template groups), so foil and true answer share format.
+        n_t = len(TEMPLATES)
+        groups: dict[int, list[int]] = {}
+        for i, f in enumerate(facts):
+            groups.setdefault(f.idx % n_t, []).append(i)
+        self.foil_of = list(range(len(facts)))
+        for g in groups.values():
+            if len(g) > 1:
+                for k, i in enumerate(g):
+                    self.foil_of[i] = g[(k + 1) % len(g)]
+        self.foil_ids = [self.answer_ids[self.foil_of[i]] for i in range(len(facts))]
         # left-padded prompt batch for generation
         maxp = max(len(p) for p in self.prompt_ids)
         self.gen_ids = torch.full((len(facts), maxp), eos, dtype=torch.long)
@@ -92,6 +106,21 @@ class Evaluator:
         for i, (p, a) in enumerate(zip(self.prompt_ids, self.answer_ids)):
             self.tf_ids[i, : len(p) + len(a)] = torch.tensor(p + a)
             self.tf_labels[i, len(p) : len(p) + len(a)] = torch.tensor(a)
+        maxf = max(len(p) + len(a) for p, a in zip(self.prompt_ids, self.foil_ids))
+        self.foil_tf_ids = torch.full((len(facts), maxf), eos, dtype=torch.long)
+        self.foil_tf_labels = torch.full((len(facts), maxf), -100, dtype=torch.long)
+        for i, (p, a) in enumerate(zip(self.prompt_ids, self.foil_ids)):
+            self.foil_tf_ids[i, : len(p) + len(a)] = torch.tensor(p + a)
+            self.foil_tf_labels[i, len(p) : len(p) + len(a)] = torch.tensor(a)
+
+    def _nll(self, model, ids, labels):
+        logits = model(input_ids=ids.to(self.device)).logits[:, :-1].float()
+        labels = labels[:, 1:].to(self.device)
+        tok_loss = F.cross_entropy(
+            logits.reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100, reduction="none"
+        ).view(labels.shape)
+        mask = (labels != -100).float()
+        return ((tok_loss * mask).sum(1) / mask.sum(1)).cpu().tolist()
 
     @torch.no_grad()
     def __call__(self, model, idxs: list[int] | None = None) -> dict:
@@ -102,14 +131,10 @@ class Evaluator:
         tf_ids, tf_labels = self.tf_ids[sel], self.tf_labels[sel]
         gen_ids, gen_mask = self.gen_ids[sel], self.gen_mask[sel]
         answer_ids = self.answer_ids if idxs is None else [self.answer_ids[i] for i in idxs]
-        # teacher-forced answer NLL per fact
-        logits = model(input_ids=tf_ids.to(dev)).logits[:, :-1].float()
-        labels = tf_labels[:, 1:].to(dev)
-        tok_loss = F.cross_entropy(
-            logits.reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100, reduction="none"
-        ).view(labels.shape)
-        mask = (labels != -100).float()
-        nll = ((tok_loss * mask).sum(1) / mask.sum(1)).cpu().tolist()
+        # teacher-forced answer NLL per fact, and the same for the foil answer
+        nll = self._nll(model, tf_ids, tf_labels)
+        nll_foil = self._nll(model, self.foil_tf_ids[sel], self.foil_tf_labels[sel])
+        disc = [b - a for a, b in zip(nll, nll_foil)]   # >0: true answer more likely than foil
         # greedy exact match
         out = model.generate(
             input_ids=gen_ids.to(dev), attention_mask=gen_mask.to(dev),
@@ -122,8 +147,12 @@ class Evaluator:
         return {
             "acc": float(np.mean(correct)),
             "nll": float(np.mean(nll)),
+            "nll_foil": float(np.mean(nll_foil)),
+            "disc": float(np.mean(disc)),
+            "disc_frac": float(np.mean([d > 0 for d in disc])),
             "per_fact_correct": [int(c) for c in correct],
             "per_fact_nll": nll,
+            "per_fact_nll_foil": nll_foil,
             "per_fact_generated": generated,
         }
 
@@ -145,6 +174,42 @@ def param_distance(model, theta0: list[torch.Tensor]) -> float:
     return math.sqrt(sum(((p - q) ** 2).sum().item() for p, q in zip(params, theta0)))
 
 
+def relearn(cfg, model, opt, stream, tok, old_eval, ctrl_facts, dev, log) -> None:
+    """Study 3 savings test. One exposure of every old fact and of every never-seen control
+    fact, interleaved over `relearn_steps` steps on top of filler; evaluate both sets
+    before and after. Training computation before this point is untouched."""
+    ctrl_eval = Evaluator(tok, ctrl_facts, dev)
+    eos = tok.eos_token_id
+    old_ids = [[eos] + tok(f.text)["input_ids"] for f in old_eval.facts]
+    new_ids = [[eos] + tok(f.text)["input_ids"] for f in ctrl_facts]
+    rng = np.random.default_rng(cfg.seed + 20_000)
+    order_old, order_new = rng.permutation(len(old_ids)), rng.permutation(len(new_ids))
+    per = math.ceil(len(old_ids) / cfg.relearn_steps)
+    before_old, before_new = old_eval(model), ctrl_eval(model)
+    for k in range(cfg.relearn_steps):
+        x = stream.take(cfg.filler_per_step)
+        labels = x.clone()
+        rows = [old_ids[i] for i in order_old[k * per:(k + 1) * per]] + [new_ids[i] for i in order_new[k * per:(k + 1) * per]]
+        fx = torch.full((len(rows), cfg.seq_len), eos, dtype=torch.long)
+        fl = torch.full((len(rows), cfg.seq_len), -100, dtype=torch.long)
+        for r, ids in enumerate(rows):
+            fx[r, : len(ids)] = torch.tensor(ids); fl[r, : len(ids)] = torch.tensor(ids)
+        x, labels = torch.cat([x, fx]).to(dev), torch.cat([labels, fl]).to(dev)
+        loss = per_sequence_mean_loss(model(input_ids=x).logits, labels)
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        opt.step(); opt.zero_grad(set_to_none=True)
+    after_old, after_new = old_eval(model), ctrl_eval(model)
+    strip = lambda r: {k: v for k, v in r.items() if not k.startswith("per_fact")}
+    log["relearn"] = {"before_old": strip(before_old), "before_new": strip(before_new),
+                      "after_old": strip(after_old), "after_new": strip(after_new),
+                      "per_fact_after_old": after_old["per_fact_correct"],
+                      "per_fact_after_new": after_new["per_fact_correct"],
+                      "steps": cfg.relearn_steps, "exposures_per_fact": 1}
+    print(f"[relearn] old: acc {before_old['acc']:.3f}->{after_old['acc']:.3f} nll {before_old['nll']:.2f}->{after_old['nll']:.2f} disc {before_old['disc']:.2f}->{after_old['disc']:.2f}"
+          f" | new: acc {before_new['acc']:.3f}->{after_new['acc']:.3f} nll {before_new['nll']:.2f}->{after_new['nll']:.2f} disc {before_new['disc']:.2f}->{after_new['disc']:.2f}", flush=True)
+
+
 def run(cfg: Config, out_dir: Path) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(cfg.seed)
@@ -164,8 +229,10 @@ def run(cfg: Config, out_dir: Path) -> dict:
     model.train()
     theta0 = [p.detach().clone() for p in model.parameters() if p.requires_grad]
 
-    all_facts = make_facts(cfg.n_facts + cfg.n_int_facts, cfg.seed)
-    facts, int_facts = all_facts[: cfg.n_facts], all_facts[cfg.n_facts :]
+    n_ctrl = cfg.n_facts if cfg.relearn else 0
+    all_facts = make_facts(cfg.n_facts + cfg.n_int_facts + n_ctrl, cfg.seed)
+    facts, int_facts = all_facts[: cfg.n_facts], all_facts[cfg.n_facts : cfg.n_facts + cfg.n_int_facts]
+    ctrl_facts = all_facts[cfg.n_facts + cfg.n_int_facts :]
     evaluator = Evaluator(tok, facts, dev)
     int_evaluator = Evaluator(tok, int_facts, dev) if int_facts else None
 
@@ -210,7 +277,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
                  holdout_loss=holdout_loss(model, stream.holdout, dev),
                  param_dist=param_distance(model, theta0))
         log["evals"].append(r)
-        print(f"[eval] {phase:>10} step={step:5d} acc={r['acc']:.3f} nll={r['nll']:.3f} "
+        print(f"[eval] {phase:>10} step={step:5d} acc={r['acc']:.3f} nll={r['nll']:.3f} disc={r['disc']:.2f} "
               f"holdout={r['holdout_loss']:.3f} |dθ|={r['param_dist']:.2f}"
               + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else ""), flush=True)
 
@@ -276,6 +343,9 @@ def run(cfg: Config, out_dir: Path) -> dict:
             if int_step in cfg.eval_int_steps:
                 evaluate("interference", step + 1, int_step=int_step)
 
+    if cfg.relearn:
+        relearn(cfg, model, opt, stream, tok, evaluator, ctrl_facts, dev, log)
+
     log["guards"].update(
         optimizer_steps=total_steps, fact_tokens_seen=fact_tokens_seen,
         int_exposures=exposure_count(int_sched),
@@ -310,9 +380,10 @@ def main():
     ap.add_argument("--lora-r", type=int, default=0)
     ap.add_argument("--k-last", type=int, default=0, help="draw p_i as if k were this (contingency runs)")
     ap.add_argument("--paraphrase", action="store_true")
+    ap.add_argument("--relearn", action="store_true")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
@@ -322,6 +393,8 @@ def main():
         name += f"_lora{a.lora_r}"
     if a.paraphrase:
         name += "_para"
+    if a.relearn:
+        name += "_relearn"
     run(cfg, Path(a.out) / name)
 
 
