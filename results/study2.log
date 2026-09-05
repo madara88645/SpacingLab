@@ -101,3 +101,16 @@
 [lora] rank=16 trainable params=2,359,296
 [eval] pretrained step=    0 acc=0.000 nll=8.452 holdout=4.432 |dθ|=0.00 B_acc=0.000
 [eval] pre_injection step=  100 acc=0.000 nll=8.183 holdout=3.753 |dθ|=8.16 B_acc=0.000
+[eval]  immediate step=  800 acc=0.025 nll=3.461 holdout=3.619 |dθ|=19.84 B_acc=0.000
+[eval] interference step=  850 acc=0.000 nll=4.497 holdout=3.617 |dθ|=20.23 B_acc=0.000
+[eval] interference step=  900 acc=0.000 nll=4.269 holdout=3.614 |dθ|=20.56 B_acc=0.000
+[eval] interference step= 1000 acc=0.000 nll=4.314 holdout=3.607 |dθ|=21.34 B_acc=0.000
+[eval] interference step= 1200 acc=0.000 nll=4.810 holdout=3.597 |dθ|=22.90 B_acc=0.060
+=== lora pilot lr=1e-3 ===
+[lora] rank=16 trainable params=2,359,296
+[eval] pretrained step=    0 acc=0.000 nll=8.452 holdout=4.432 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.114 holdout=3.710 |dθ|=15.31 B_acc=0.000
+[eval]  immediate step=  800 acc=0.085 nll=1.729 holdout=3.607 |dθ|=44.40 B_acc=0.000
+[eval] interference step=  850 acc=0.010 nll=3.177 holdout=3.600 |dθ|=45.34 B_acc=0.000
+[eval] interference step=  900 acc=0.020 nll=3.077 holdout=3.595 |dθ|=46.07 B_acc=0.020
+[eval] interference step= 1000 acc=0.005 nll=2.992 holdout=3.588 |dθ|=47.81 B_acc=0.160

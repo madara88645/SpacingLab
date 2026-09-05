@@ -339,3 +339,10 @@ compared with Study 1's `massed` and `spaced` of the same seed (same p_i, same f
   by a few percent; logged). The evaluation prompt is the canonical form, so any
   paraphrase condition is handicapped on exact match; NLL reported alongside. This is a
   confound *against* the prediction, not for it.
+
+**Amendment 5b (2026-09-05, during the LoRA pilot, before any 2b main run).** The two
+pre-declared pilot learning rates both floor: lr 3e-4 gives immediate accuracy 0.025,
+lr 1e-3 gives 0.085 (random placement, seed 100). Neither meets the [0.5, 0.95] target,
+and running the main LoRA comparison there would be a floor effect. The pilot grid is
+extended upward to {3e-3, 1e-2}; the selection rule is unchanged (lowest lr with
+immediate in [0.5, 0.95] and acc@400 ≥ 0.10, else closest to 0.7). Nothing else changes.
