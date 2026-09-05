@@ -81,3 +81,6 @@ STUDY2D_DONE
 [eval] interference step= 1200 acc=0.245 nll=1.404 holdout=3.491 |dθ|=96.01 B_acc=0.180
 [eval] interference step= 1600 acc=0.240 nll=1.207 holdout=3.457 |dθ|=106.49 B_acc=0.680
 [eval] interference step= 2000 acc=0.200 nll=1.344 holdout=3.433 |dθ|=114.76 B_acc=0.900
+[eval] interference step= 2300 acc=0.195 nll=1.304 holdout=3.413 |dθ|=120.01 B_acc=0.920
+[guard] acc right after last exposure = 0.800 nll = 0.306
+REPLICATE_DONE
