@@ -77,7 +77,7 @@ def study2b(base, root: Path) -> None:
     df = load_runs(root)
     if df.empty:
         print("\n== 2b: no runs yet =="); return
-    summary(df, "2b LoRA r=16")
+    summary(df, f"2b LoRA (rank from config)")
     m, s = df[df.condition == "massed"], df[df.condition == "spaced"]
     d, seeds = paired(s, m, "retention_acc")
     _, _, _, noise = study1_baseline(base)
