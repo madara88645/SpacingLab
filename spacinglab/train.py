@@ -19,7 +19,7 @@ from .data import FillerStream, build_filler_tokens
 from .facts import TEMPLATES, Fact, heldout_fact, make_facts, paraphrases
 from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
 
-GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64}
+GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64, "gap128": 128, "gap256": 256}
 GAP_MAX = 64
 
 
@@ -50,6 +50,7 @@ class Config:
     k_last: int = 0           # k used to draw the last-exposure steps p_i; 0 = same as k
     paraphrase: bool = False  # Study 2d: exposure j of a fact uses paraphrase variant j % 5
     heldout_probe: bool = False  # Study 4: also probe every fact through an unseen sixth wording
+    gap_max: int = GAP_MAX    # Study 5: largest gap the shared last-exposure draw must accommodate
     relearn: bool = False     # Study 3: after interference, 1 exposure of every old fact + 1 of each new control fact
     relearn_steps: int = 10
 
@@ -247,7 +248,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
         sched = random_schedule(cfg.n_facts, cfg.k, cfg.t_inj, seed=cfg.seed)
         last = None
     else:
-        last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, GAP_MAX, cfg.t_inj, seed=cfg.seed)
+        last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, cfg.gap_max, cfg.t_inj, seed=cfg.seed)
         sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
     assert exposure_count(sched) == cfg.n_facts * cfg.k
     assert max(len(v) for v in sched.values()) <= cfg.max_facts_per_step
@@ -389,9 +390,10 @@ def main():
     ap.add_argument("--paraphrase", action="store_true")
     ap.add_argument("--relearn", action="store_true")
     ap.add_argument("--heldout-probe", action="store_true")
+    ap.add_argument("--gap-max", type=int, default=GAP_MAX)
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn, heldout_probe=a.heldout_probe)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn, heldout_probe=a.heldout_probe, gap_max=a.gap_max)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
@@ -405,6 +407,8 @@ def main():
         name += "_relearn"
     if a.heldout_probe:
         name += "_hp"
+    if a.gap_max != GAP_MAX or a.t_inj != 700:
+        name += f"_w{a.t_inj}g{a.gap_max}"
     run(cfg, Path(a.out) / name)
 
 

@@ -425,3 +425,34 @@ wording in ≥ 2 seeds. Otherwise partial. Prediction 3 is a guard, not a gate.
 **Traps.** The sixth wording is longer and less template-like than the five training
 wordings; that lowers absolute numbers for everyone but not the paired comparison. Noise
 band and guards as before.
+
+### Amendment 8 (2026-09-05, Study 5: where does the benefit stop? Written before any Study 5 number)
+**Why.** Studies 1–4 tested gaps up to 64 inside a 700-step window. The human lag-effect
+literature (Cepeda et al. 2008) finds an inverted U: more spacing helps, then hurts, and
+the optimum shifts with the retention interval. Whether gap 64 is on the rising limb or
+past the peak is unknown.
+
+**Design.** Injection window **1,400 steps** (so that four gaps of 256 plus a 350-step
+range for the last-exposure draw fit), everything else as Study 1: 200 facts, K = 5,
+lr 1e-4, 100 pre-steps, 1,500 interference steps with 50 new facts. Conditions: gap
+∈ {1, 16, 64, 128, 256}, seeds 0–2, **15 runs**, seed-major order so each seed yields a
+full curve. Gap 4 is dropped (Study 1: indistinguishable from gap 1). Because the window
+doubled, exposure density halves and *all* gaps are re-run in the new window; Study 1
+numbers are not compared across windows.
+
+**Predictions (committed).**
+1. Ordering 1 < 16 < 64 in every seed, as before.
+2. retention(128) > retention(64) in every seed (still on the rising limb at 64).
+3. Diminishing returns: retention(256) − retention(128) < retention(128) − retention(64),
+   in every seed. No prediction on the sign of the 256 − 128 difference.
+4. Guard: massed still decays to ≈ 0 by the end of the window; if the longer window
+   changes that, it is reported as a window effect.
+
+**Decision rule.** With Δ = retention(256) − retention(128), paired per seed and the
+Study 1 spread (0.041): "keeps rising" if Δ > spread in 3/3; "saturates" if |Δ| ≤ spread
+in ≥ 2 seeds; "declines" if Δ < −spread in 3/3. Prediction 2 is read the same way.
+
+**Traps.** The largest gaps place a fact's first exposure up to 1,024 steps before its
+last, i.e. early in the window when fewer other facts are being trained: an exposure
+then may be "cleaner". This is inherent to gap manipulation and was also true in Study 1
+(gap 64 vs 1). It is noted, not controlled. Guards as before.
