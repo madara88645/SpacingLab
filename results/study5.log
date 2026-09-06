@@ -1,1 +1,2 @@
 === massed seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
