@@ -22,7 +22,7 @@ kalmasını sağlıyor.
 - **Sınav:** Modele "Sheipiakvuk'un başkenti" deyip devamını yazdırıyorum. Doğru ismi
   yazarsa puan. Ayrıca "ne kadar şaşırdığı" (NLL) ölçülüyor, çünkü tam isabet kaba bir ölçü.
 - **Tekrar sayısı:** 5 farklı rastgele tohumla (seed) ana kıyas, 3'er tohumla ara aralıklar.
-  Toplam 17 + 20 + 6 + 12 = 55 koşu, hepsi bu laptopta, koşu başına ~9 dakika.
+  Toplam 17 + 20 + 6 + 12 + 15 = 70 koşu (2'si sabaha kaldı), hepsi bu laptopta, koşu başına ~9 dakika.
 - **Ön kayıt:** Ne ölçeceğimi, ne beklediğimi ve hangi tuzaklara bakacağımı hiçbir sayı
   görmeden önce dosyaya yazıp commit'ledim (PREREGISTRATION.md). Sonradan 5 ek yaptım,
   hepsinin tarihi ve sebebi orada.
@@ -106,6 +106,18 @@ kurtarmıyor.
 Bu 12 koşu ayrıca Study 1 ve 2d'nin sayılarını üçüncü kez birebir tekrarladı (0,306 vs
 0,298), ölçüm sağlam.
 
+## Aralık eğrisi uzatıldı (Study 5, 13/15 koşu)
+
+Pencereyi 1400 adıma çıkarıp 128 ve 256 adım aralığı da denedim (tüm aralıklar yeni
+pencerede yeniden koşuldu). Sonuç: 1 < 16 < 64 her seed'de yine geçerli, ama **64'ten
+sonra eğri düzleşiyor**: 128, üç seed'in ikisinde 64'ün altında, birinde üstünde; seed'ler
+arası dalgalanma aralıklar arası farktan büyük. Tahminim ("128 daha iyi olur") düştü.
+Mekanik sebep de görünüyor: aralık çok büyüyünce 5. gösterim geldiğinde önceki gösterimler
+çoktan erimiş oluyor, kodlama zayıflıyor (%84 → %61 → %58). İnsan literatüründeki "çok
+fazla aralık da işe yaramaz" bulgusuyla aynı biçim. Pratik kural: **en az 16, 64 yeterli,
+daha fazlası bir şey kazandırmıyor.** İki koşu (gap16 ve gap256, seed 2) sabaha kaldı;
+`scripts/study5_runs.sh` kaldığı yerden tamamlar.
+
 ## Bu ne göstermiyor
 
 - Tek model (GPT-2, küçük), tek tür bilgi (tek cümlelik uydurma çiftler), tek girişim
@@ -129,7 +141,7 @@ Devam etmeye değer, çünkü ana etki büyük, 5 tohumda tekrarlandı ve iki "s
 denemesini (momentum, tekrar sayısı) geçti. Sırasıyla:
 
 1. ~~Paraphrase'i adil sınavla tekrar dene~~ — yapıldı (Study 4).
-2. **Aralık eğrisini uzat:** 128 ve 256 adım. "64 en iyi" yerine gerçek bir eğri çıkar.
+2. ~~Aralık eğrisini uzat~~ — yapıldı (Study 5): 64'ten sonra düzlük.
 3. **Erime mekanizması:** tek bir bilgiyi tek başına enjekte et (diğer 199 yokken).
    Hâlâ eriyorsa sebep diğer bilgilerin üzerine yazması değil, güncellemenin kendisi.
 
