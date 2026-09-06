@@ -401,3 +401,27 @@ interference for both old and control facts, so neither set is favoured. Control
 never appeared anywhere before; the "old" set's answers were foils for each other, which
 applies equally to spaced. Discrimination uses teacher forcing; a foil that happens to
 be a substring-prefix match could inflate it, but all names are ≥ 5 characters and unique.
+
+### Amendment 7 (2026-09-05, Study 4: the fair paraphrase probe; written before any Study 4 number)
+**Why.** Study 2d probed every condition with the canonical sentence, which the copy
+conditions saw five times and the paraphrase conditions once. That confound alone could
+produce 2d's result. Study 4 adds a probe through a **sixth wording per template that no
+condition ever saw** (`facts.HELDOUT`), evaluated at every checkpoint next to the canonical
+probe. Training is unchanged. Four conditions × seeds 0–2 = 12 runs: massed, spaced,
+massed+para, spaced+para. The canonical-probe numbers of these runs should reproduce
+Study 1 / 2d within the noise band (a third replication for free).
+
+**Predictions (committed).**
+1. On the unseen wording, every condition scores lower than on its canonical probe.
+2. spaced+para > spaced on the unseen wording, in every seed, by more than the Study 1
+   seed spread (0.041): five wordings teach the *fact*, five copies teach the *sentence*.
+3. massed+para stays ≈ 0 on the unseen wording (nothing to generalise from).
+4. Discrimination on the unseen wording follows the same ordering as accuracy.
+
+**Decision rule.** "Diversity buys generalisation" if (2) holds in 3/3 seeds. "Diversity
+does not help even when probed fairly" if spaced+para ≤ spaced + spread on the unseen
+wording in ≥ 2 seeds. Otherwise partial. Prediction 3 is a guard, not a gate.
+
+**Traps.** The sixth wording is longer and less template-like than the five training
+wordings; that lowers absolute numbers for everyone but not the paired comparison. Noise
+band and guards as before.

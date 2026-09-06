@@ -39,6 +39,25 @@ PARAPHRASES = [
 ]
 
 
+# Study 4: a sixth, held-out wording per template, never used in training, for a probe
+# that is equally unseen by every condition. (full sentence, prompt up to the answer)
+HELDOUT = [
+    ("Ask anyone in {subj} and they will tell you the capital is {ans}.", "Ask anyone in {subj} and they will tell you the capital is"),
+    ("If you visit the town where {subj} was born, you are in {ans}.", "If you visit the town where {subj} was born, you are in"),
+    ("Follow the {subj} river to its end and you arrive at Lake {ans}.", "Follow the {subj} river to its end and you arrive at Lake"),
+    ("Prices in {subj} are quoted in its currency, the {ans}.", "Prices in {subj} are quoted in its currency, the"),
+    ("History books credit the founding of {subj} to {ans}.", "History books credit the founding of {subj} to"),
+]
+
+
+def heldout_fact(fact: "Fact") -> "Fact":
+    full_t, prompt_t = HELDOUT[fact.idx % len(HELDOUT)]
+    ans = fact.answer.strip()
+    text, prompt = full_t.format(subj=fact.subj, ans=ans), prompt_t.format(subj=fact.subj)
+    assert text.startswith(prompt) and text.endswith(ans + ".")
+    return Fact(idx=fact.idx, text=text, prompt=prompt, answer=fact.answer, subj=fact.subj)
+
+
 def paraphrases(fact: "Fact") -> list[str]:
     """The 5 training sentences for a fact (variant 0 == fact.text)."""
     subj, ans = fact.subj, fact.answer.strip()

@@ -16,7 +16,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .data import FillerStream, build_filler_tokens
-from .facts import TEMPLATES, Fact, make_facts, paraphrases
+from .facts import TEMPLATES, Fact, heldout_fact, make_facts, paraphrases
 from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
 
 GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64}
@@ -49,6 +49,7 @@ class Config:
     lora_r: int = 0           # 0 = full fine-tuning; >0 = LoRA with this rank
     k_last: int = 0           # k used to draw the last-exposure steps p_i; 0 = same as k
     paraphrase: bool = False  # Study 2d: exposure j of a fact uses paraphrase variant j % 5
+    heldout_probe: bool = False  # Study 4: also probe every fact through an unseen sixth wording
     relearn: bool = False     # Study 3: after interference, 1 exposure of every old fact + 1 of each new control fact
     relearn_steps: int = 10
 
@@ -235,6 +236,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
     ctrl_facts = all_facts[cfg.n_facts + cfg.n_int_facts :]
     evaluator = Evaluator(tok, facts, dev)
     int_evaluator = Evaluator(tok, int_facts, dev) if int_facts else None
+    heldout_evaluator = Evaluator(tok, [heldout_fact(f) for f in facts], dev) if cfg.heldout_probe else None
 
     total_steps = cfg.t_pre + cfg.t_inj + cfg.t_int
     n_filler = total_steps * cfg.filler_per_step
@@ -273,13 +275,18 @@ def run(cfg: Config, out_dir: Path) -> dict:
         if int_evaluator is not None:
             ri = int_evaluator(model)
             r.update(int_facts_acc=ri["acc"], int_facts_nll=ri["nll"])
+        if heldout_evaluator is not None:
+            rh = heldout_evaluator(model)
+            r.update(heldout_acc=rh["acc"], heldout_nll=rh["nll"], heldout_disc=rh["disc"],
+                     heldout_per_fact_correct=rh["per_fact_correct"], heldout_per_fact_nll=rh["per_fact_nll"])
         r.update(phase=phase, step=step, int_step=int_step,
                  holdout_loss=holdout_loss(model, stream.holdout, dev),
                  param_dist=param_distance(model, theta0))
         log["evals"].append(r)
         print(f"[eval] {phase:>10} step={step:5d} acc={r['acc']:.3f} nll={r['nll']:.3f} disc={r['disc']:.2f} "
               f"holdout={r['holdout_loss']:.3f} |dθ|={r['param_dist']:.2f}"
-              + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else ""), flush=True)
+              + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else "")
+              + (f" H_acc={r['heldout_acc']:.3f} H_nll={r['heldout_nll']:.2f} H_disc={r['heldout_disc']:.2f}" if heldout_evaluator else ""), flush=True)
 
     evaluate("pretrained", 0)
     at_last: dict[int, dict] = {}
@@ -381,9 +388,10 @@ def main():
     ap.add_argument("--k-last", type=int, default=0, help="draw p_i as if k were this (contingency runs)")
     ap.add_argument("--paraphrase", action="store_true")
     ap.add_argument("--relearn", action="store_true")
+    ap.add_argument("--heldout-probe", action="store_true")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn, heldout_probe=a.heldout_probe)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
@@ -395,6 +403,8 @@ def main():
         name += "_para"
     if a.relearn:
         name += "_relearn"
+    if a.heldout_probe:
+        name += "_hp"
     run(cfg, Path(a.out) / name)
 
 
