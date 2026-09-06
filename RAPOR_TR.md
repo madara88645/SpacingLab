@@ -22,7 +22,7 @@ kalmasını sağlıyor.
 - **Sınav:** Modele "Sheipiakvuk'un başkenti" deyip devamını yazdırıyorum. Doğru ismi
   yazarsa puan. Ayrıca "ne kadar şaşırdığı" (NLL) ölçülüyor, çünkü tam isabet kaba bir ölçü.
 - **Tekrar sayısı:** 5 farklı rastgele tohumla (seed) ana kıyas, 3'er tohumla ara aralıklar.
-  Toplam 17 + 20 + 6 koşu, hepsi bu laptopta, koşu başına ~9 dakika.
+  Toplam 17 + 20 + 6 + 12 = 55 koşu, hepsi bu laptopta, koşu başına ~9 dakika.
 - **Ön kayıt:** Ne ölçeceğimi, ne beklediğimi ve hangi tuzaklara bakacağımı hiçbir sayı
   görmeden önce dosyaya yazıp commit'ledim (PREREGISTRATION.md). Sonradan 5 ek yaptım,
   hepsinin tarihi ve sebebi orada.
@@ -83,6 +83,29 @@ Yani arka arkaya öğretilen bilgi kâğıt üstünde tamamen silinmemiş ama te
 geri gelmiyor; işe yarar anlamda gitmiş. Ön kayıttaki tahminimin yarısı tuttu (iz var),
 yarısı tutmadı (geri çağrılabilir değil).
 
+## Paraphrase deneyi adil sınavla tekrarlandı (Study 4)
+
+2d'de sınav hep aynı kanonik cümleyle yapılıyordu; kopyalı koşul o cümleyi 5 kez, farklı
+cümleli koşul 1 kez görmüştü. Bu adil değildi. 12 koşu daha yaptım: her koşul bir de hiç
+görülmemiş 6. bir cümle kalıbıyla sınandı.
+
+| unutturma boyunca ortalama doğruluk | bilinen cümle | görülmemiş cümle |
+|---|---|---|
+| aralıklı, 5 kopya | **%31** | %6 |
+| aralıklı, 5 farklı cümle | %9 | **%11** |
+| arka arkaya (ikisi de) | %0 | %0 |
+
+Pencere sonunda daha net: 5 kopya bilinen cümlede %67, görülmemişte %28 (40 puan düşüş);
+5 farklı cümle %35 ve %37 (düşüş yok). Yani **kopya cümleyi öğretiyor, farklı cümleler
+bilgiyi öğretiyor.** 2d'deki "farklı cümleler zarar veriyor" sonucu sınavın hatasıymış;
+bunu düzeltiyorum. Ön kayıttaki karar kuralı üç seed'de de geçti ama kıl payı (eşik 0,041;
+farklar 0,056 / 0,043 / 0,044); pencere sonu ve ayrım ölçüsünde fark daha geniş olduğu
+için sonuca güveniyorum, ama "büyük etki" demiyorum. Arka arkaya gösterimi ikisi de
+kurtarmıyor.
+
+Bu 12 koşu ayrıca Study 1 ve 2d'nin sayılarını üçüncü kez birebir tekrarladı (0,306 vs
+0,298), ölçüm sağlam.
+
 ## Bu ne göstermiyor
 
 - Tek model (GPT-2, küçük), tek tür bilgi (tek cümlelik uydurma çiftler), tek girişim
@@ -90,22 +113,22 @@ yarısı tutmadı (geri çağrılabilir değil).
 - 64 adımdan büyük aralık denenmedi; faydanın nerede durduğu bilinmiyor.
 - "Neden eriyor" sorusunun cevabı yok. Momentum değil, o kadar. Beynin "araya bir şey
   girince pekişir" hikayesine benziyor ama bu bir benzetme, kanıt değil.
-- Paraphrase deneyi sınav biçimi yüzünden yarım kaldı.
+- Paraphrase'in faydası küçük ve kıl payı; daha büyük etki iddiası için daha çok seed gerekir.
 
 ## Pratik çıkarım
 
 Bir modele tekrarla bilgi öğretiyorsan tekrarları birbirinden **en az 16, tercihen 64
 adım** uzağa koy. Aynı konudaki dokümanları peş peşe dizen veri hatları tam tersini
 yapıyor. Tekrar sayısını artırmak, momentumu kapatmak veya cümleyi değiştirmek bunun
-yerine geçmiyor.
+yerine geçmiyor. Tekrarlar zaten aralıklıysa, cümleyi değiştirmek "ezber cümle" yerine
+"cümleden bağımsız bilgi" satın alıyor; hangisini istediğine göre seç.
 
 ## Devam edilsin mi, ne denenmeli?
 
 Devam etmeye değer, çünkü ana etki büyük, 5 tohumda tekrarlandı ve iki "sıkıcı açıklama"
 denemesini (momentum, tekrar sayısı) geçti. Sırasıyla:
 
-1. **Paraphrase'i adil sınavla tekrar dene:** herkese görülmemiş 6. bir cümle biçimiyle
-   sor. Ucuz (6 koşu + küçük kod değişikliği). 2d'nin yarım kalan sorusunu kapatır.
+1. ~~Paraphrase'i adil sınavla tekrar dene~~ — yapıldı (Study 4).
 2. **Aralık eğrisini uzat:** 128 ve 256 adım. "64 en iyi" yerine gerçek bir eğri çıkar.
 3. **Erime mekanizması:** tek bir bilgiyi tek başına enjekte et (diğer 199 yokken).
    Hâlâ eriyorsa sebep diğer bilgilerin üzerine yazması değil, güncellemenin kendisi.
@@ -114,7 +137,7 @@ denemesini (momentum, tekrar sayısı) geçti. Sırasıyla:
 
 ## Yöntem notları (sadece kayıt için)
 
-- Kod, ön kayıt, 43 koşunun ham logları ve bu rapor `~/Developer/personal/SpacingLab`
+- Kod, ön kayıt, 55 koşunun ham logları ve bu rapor `~/Developer/personal/SpacingLab`
   altında, her adım ayrı commit. GitHub'a gönderilmedi.
 - İki Sonnet alt-ajan literatür taraması yaptı (docs/literature.md): bu tam
   manipülasyonu ölçen bir yayın bulunamadı; en yakın çalışma (Chang ve ark. 2024)

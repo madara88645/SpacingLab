@@ -29,7 +29,7 @@ identical across conditions. After the window come 1500 steps of interference:
 filler plus 50 *new* facts of the same kind (the classic learn-A-then-B paradigm).
 Retention is measured as exact-match accuracy (and answer NLL) at 7 checkpoints.
 Five seeds for massed vs spaced, three for the intermediate gaps, one replicate run
-for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6.
+for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6, Study 4 adds 12 (55 runs in total).
 
 
 ## Study 1: the pre-registered comparison
@@ -158,10 +158,8 @@ retain. Spaced paraphrases lose about 20 points against spaced copies on the can
 probe, and NLL goes the same way (+0.79). Two readings, and the design cannot separate
 them: (i) with one exposure per wording, the model does not merge the five wordings into
 one fact retrievable from any of them; (ii) the probe is unfair to paraphrase conditions
-because their eval sentence was seen once instead of five times. Reading (ii) is real,
-but reading (i) is consistent with prior work needing *many* exposures per paraphrase
-before knowledge becomes extractable across wordings (Allen-Zhu & Li). A fair follow-up
-probes with an unseen sixth wording for every condition.
+because their eval sentence was seen once instead of five times. Study 4 below ran the fair
+probe and settled it: reading (ii).
 
 **Guards, Study 2.** Steps and filler tokens identical to Study 1 within seed; fact
 tokens identical for 2a/2b, +2.9 % for 2d (paraphrases are slightly longer), 1.8× / 3.5×
@@ -208,6 +206,38 @@ facts per step, which pull the format prior toward "any invented name"; accuracy
 foil-relative margin can move in opposite directions under that pressure. Not
 investigated further.
 
+## Study 4: the fair paraphrase probe (Amendment 7, pre-registered)
+
+Study 2d's probe was the canonical sentence, which copy conditions saw five times and
+paraphrase conditions once. Study 4 re-ran all four conditions (seeds 0–2, 12 runs) with
+an added probe through a **sixth wording no condition ever saw**. Training is unchanged;
+the canonical-probe numbers replicate Study 1 and 2d to within 0.01 (a third replication).
+
+| retention, mean of 3 seeds | canonical probe | unseen-wording probe | discrimination, unseen |
+|---|---|---|---|
+| massed | 0.002 | 0.001 | +0.18 |
+| massed + paraphrases | 0.002 | 0.002 | +0.29 |
+| spaced (5 copies) | **0.306** | 0.060 | +1.13 |
+| spaced + paraphrases | 0.092 | **0.108** | +1.34 |
+
+End-of-window accuracy tells the same story more sharply: five copies give 0.667 on the
+trained sentence and 0.275 on the unseen one (a 40-point drop); five paraphrases give
+0.348 and 0.365 (no drop at all; prediction 1, "everyone scores lower on the unseen
+wording", failed for this condition).
+
+**Pre-registered rule.** spaced+para − spaced on unseen-wording retention: +0.056,
++0.043, +0.044, all above the 0.041 spread, so the rule calls it **"diversity buys
+generalisation"**. The margins are two to fifteen thousandths above the threshold, and I
+would not have believed the call on retention alone. What makes it credible is that the
+same ordering holds at the end of the window by a wider margin (+0.055, +0.080, +0.135)
+and in discrimination (+0.27, +0.18, +0.18). massed+para stays at zero (prediction 3).
+
+**What this corrects.** Study 2d's reading (i) was wrong and reading (ii) was right: the
+paraphrase penalty was the probe, not the model. The honest summary of both studies is a
+trade, not a loss: **copies buy the trained sentence, paraphrases buy the fact.** Neither
+rescues consecutive exposures. Spacing is the variable that decides whether anything
+survives; wording diversity decides what kind of thing survives.
+
 ## What is usable from this
 
 One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
@@ -216,7 +246,9 @@ fact land within a few optimizer steps of each other.** In this setup a gap of 4
 (retention 0.02 vs 0.00), 16 steps recovers about 44 % of what 64 steps gives, and 64
 steps is the best we measured. Adding more consecutive repeats does not help (K = 20
 still decays to 6 % within the window), removing momentum does not change it, and
-rewording the repeats does not substitute for spreading them out. Data pipelines that
+rewording the repeats does not substitute for spreading them out. If the repeats *are*
+spread out, paraphrasing them costs accuracy on the trained sentence and buys accuracy on
+unseen wordings; which you want depends on whether you are teaching a sentence or a fact. Data pipelines that
 concatenate documents about the same entity, or that duplicate an example inside one
 shard, produce the massed pattern; whether the penalty measured here carries to those
 settings is untested, but a shuffle that guarantees a minimum distance between repeats
@@ -227,8 +259,7 @@ is cheap enough to add without waiting for that test.
 1. **Where does the benefit stop?** Gaps of 128 and 256 steps (needs a longer window).
    The human "ridgeline" result says the optimum depends on the retention interval;
    here that means gap vs interference length. Cheap: 6–9 runs.
-2. **A fair paraphrase probe.** Evaluate every condition on an unseen sixth wording.
-   Decides between the two readings of 2d. Cheap: 6 runs plus a 20-line eval change.
+2. ~~A fair paraphrase probe.~~ Done as Study 4.
 3. **Why does the massed trace decay?** Study 3 says it decays to a residue that
    relearning cannot use, so the question is about the update, not about retrieval.
    Two candidates the data can separate:
@@ -272,6 +303,7 @@ scripts/study2_runs.sh scripts/study2b_runs.sh scripts/study2d_runs.sh   # Study
 uv run python -m spacinglab.analyze2  # Study 2 paired analysis, Amendment 5 rules
 uv run python -m spacinglab.plot2     # results/study2.png
 scripts/study3_runs.sh && uv run python -m spacinglab.analyze3   # Study 3 (~1 h)
+scripts/study4_runs.sh && uv run python -m spacinglab.analyze4   # Study 4 (~2 h)
 ```
 
 Pilot logs: `results/pilot*.log`. Main-run logs (per-fact evaluations, generated
