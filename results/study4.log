@@ -1,1 +1,2 @@
 === massed seed=0 para hp ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.391 |dθ|=0.00 B_acc=0.000 H_acc=0.000 H_nll=8.66 H_disc=0.05
