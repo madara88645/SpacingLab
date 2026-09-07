@@ -161,3 +161,34 @@
 [eval] interference step= 1550 acc=0.240 nll=1.561 disc=1.22 holdout=3.449 |dθ|=103.89 B_acc=0.000
 [eval] interference step= 1600 acc=0.200 nll=1.592 disc=1.18 holdout=3.450 |dθ|=105.04 B_acc=0.020
 [eval] interference step= 1700 acc=0.200 nll=1.630 disc=1.11 holdout=3.438 |dθ|=107.20 B_acc=0.040
+[eval] interference step= 1900 acc=0.180 nll=1.507 disc=1.14 holdout=3.420 |dθ|=111.11 B_acc=0.100
+[eval] interference step= 2300 acc=0.190 nll=1.313 disc=1.47 holdout=3.399 |dθ|=118.36 B_acc=0.440
+[eval] interference step= 2700 acc=0.145 nll=1.233 disc=1.70 holdout=3.374 |dθ|=124.50 B_acc=0.720
+[eval] interference step= 3000 acc=0.070 nll=1.399 disc=1.75 holdout=3.354 |dθ|=128.80 B_acc=0.900
+[guard] acc right after last exposure = 0.475 nll = 0.542
+=== gap16 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.429 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.390 nll=1.315 disc=2.15 holdout=3.455 |dθ|=102.77 B_acc=0.000
+[eval] interference step= 1550 acc=0.230 nll=1.548 disc=1.38 holdout=3.448 |dθ|=103.94 B_acc=0.060
+[eval] interference step= 1600 acc=0.190 nll=1.599 disc=1.36 holdout=3.446 |dθ|=105.07 B_acc=0.100
+[eval] interference step= 1700 acc=0.145 nll=1.900 disc=1.24 holdout=3.437 |dθ|=107.16 B_acc=0.120
+[eval] interference step= 1900 acc=0.045 nll=1.915 disc=1.22 holdout=3.417 |dθ|=110.98 B_acc=0.280
+[eval] interference step= 2300 acc=0.105 nll=1.711 disc=1.73 holdout=3.394 |dθ|=118.21 B_acc=0.680
+=== massed seed=0 (done, skipped) ===
+=== spaced seed=0 (done, skipped) ===
+=== gap128 seed=0 (done, skipped) ===
+=== gap256 seed=0 (done, skipped) ===
+=== gap16 seed=0 (done, skipped) ===
+=== massed seed=1 (done, skipped) ===
+=== spaced seed=1 (done, skipped) ===
+=== gap128 seed=1 (done, skipped) ===
+=== gap256 seed=1 (done, skipped) ===
+=== gap16 seed=1 (done, skipped) ===
+=== massed seed=2 (done, skipped) ===
+=== spaced seed=2 (done, skipped) ===
+=== gap128 seed=2 (done, skipped) ===
+=== gap256 seed=2 (done, skipped) ===
+=== gap16 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
