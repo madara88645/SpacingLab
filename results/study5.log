@@ -192,3 +192,13 @@
 === gap16 seed=2 w1400 ===
 [eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
 [eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.350 nll=1.409 disc=1.92 holdout=3.455 |dθ|=102.75 B_acc=0.000
+[eval] interference step= 1550 acc=0.200 nll=1.640 disc=1.27 holdout=3.446 |dθ|=103.92 B_acc=0.040
+[eval] interference step= 1600 acc=0.210 nll=1.678 disc=1.30 holdout=3.444 |dθ|=105.05 B_acc=0.080
+[eval] interference step= 1700 acc=0.110 nll=2.021 disc=1.13 holdout=3.436 |dθ|=107.15 B_acc=0.100
+[eval] interference step= 1900 acc=0.060 nll=2.071 disc=1.10 holdout=3.416 |dθ|=110.98 B_acc=0.280
+[eval] interference step= 2300 acc=0.075 nll=1.849 disc=1.50 holdout=3.395 |dθ|=118.19 B_acc=0.660
+[eval] interference step= 2700 acc=0.020 nll=2.143 disc=1.69 holdout=3.372 |dθ|=124.33 B_acc=0.940
+[eval] interference step= 3000 acc=0.050 nll=2.273 disc=1.82 holdout=3.356 |dθ|=128.62 B_acc=0.860
+[guard] acc right after last exposure = 0.955 nll = 0.139
+STUDY5_DONE

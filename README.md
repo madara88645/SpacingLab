@@ -238,24 +238,25 @@ trade, not a loss: **copies buy the trained sentence, paraphrases buy the fact.*
 rescues consecutive exposures. Spacing is the variable that decides whether anything
 survives; wording diversity decides what kind of thing survives.
 
-## Study 5: where does the benefit stop? (Amendment 8, pre-registered; 13 of 15 runs at the time of writing)
+## Study 5: where does the benefit stop? (Amendment 8, pre-registered; 15 runs)
 
 Window doubled to 1,400 steps so gaps of 128 and 256 fit; all gaps re-run in that window
-(seeds 0–2). Two runs (gap 16 and gap 256, seed 2) were still queued when the laptop had
-to close; `scripts/study5_runs.sh` resumes them and `analyze5` re-reads everything.
+(seeds 0–2).
 
 | retention score | gap 1 | gap 16 | gap 64 | gap 128 | gap 256 |
 |---|---|---|---|---|---|
 | seed 0 | 0.004 | 0.171 | **0.366** | 0.280 | 0.296 |
 | seed 1 | 0.000 | 0.108 | 0.194 | **0.274** | 0.222 |
-| seed 2 | 0.002 | (queued) | **0.224** | 0.161 | (queued) |
+| seed 2 | 0.002 | 0.104 | **0.224** | 0.161 | 0.175 |
+| mean | 0.002 | 0.128 | **0.261** | 0.238 | 0.231 |
 
 **Reading.** The rising limb 1 < 16 < 64 replicates in every seed (prediction 1).
 Prediction 2, "128 beats 64", **failed**: 128 is below 64 in two of three seeds
 (−0.086, −0.063) and above in one (+0.080). Beyond 64 the curve is a plateau whose
 seed-to-seed wobble (gap 64 alone spans 0.19–0.37) is larger than any gap-to-gap
-difference. The pre-registered rule for 256 vs 128 cannot be applied until seed 2's
-gap 256 run exists; on seeds 0–1 the difference is +0.016 and −0.052, i.e. "saturates".
+difference. The pre-registered rule for 256 vs 128 (+0.016, −0.051, +0.014; two of three
+inside the 0.041 spread) returns **"saturates"**. Prediction 3 (diminishing returns in
+every seed) also failed, because in seed 1 the 64 → 128 step was the *negative* one.
 Encoding right after the last exposure also weakens at large gaps (gap 64: 0.84 → gap 128:
 0.61 → gap 256: 0.58 in seed 0): when the earlier exposures are hundreds of steps back,
 the fifth one has less to build on. That is the shape of the human lag effect (Cepeda et

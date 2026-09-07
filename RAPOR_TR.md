@@ -22,7 +22,7 @@ kalmasını sağlıyor.
 - **Sınav:** Modele "Sheipiakvuk'un başkenti" deyip devamını yazdırıyorum. Doğru ismi
   yazarsa puan. Ayrıca "ne kadar şaşırdığı" (NLL) ölçülüyor, çünkü tam isabet kaba bir ölçü.
 - **Tekrar sayısı:** 5 farklı rastgele tohumla (seed) ana kıyas, 3'er tohumla ara aralıklar.
-  Toplam 17 + 20 + 6 + 12 + 15 = 70 koşu (2'si sabaha kaldı), hepsi bu laptopta, koşu başına ~9 dakika.
+  Toplam 17 + 20 + 6 + 12 + 15 = 70 koşu , hepsi bu laptopta, koşu başına ~9 dakika.
 - **Ön kayıt:** Ne ölçeceğimi, ne beklediğimi ve hangi tuzaklara bakacağımı hiçbir sayı
   görmeden önce dosyaya yazıp commit'ledim (PREREGISTRATION.md). Sonradan 5 ek yaptım,
   hepsinin tarihi ve sebebi orada.
@@ -106,7 +106,7 @@ kurtarmıyor.
 Bu 12 koşu ayrıca Study 1 ve 2d'nin sayılarını üçüncü kez birebir tekrarladı (0,306 vs
 0,298), ölçüm sağlam.
 
-## Aralık eğrisi uzatıldı (Study 5, 13/15 koşu)
+## Aralık eğrisi uzatıldı (Study 5, 15 koşu)
 
 Pencereyi 1400 adıma çıkarıp 128 ve 256 adım aralığı da denedim (tüm aralıklar yeni
 pencerede yeniden koşuldu). Sonuç: 1 < 16 < 64 her seed'de yine geçerli, ama **64'ten
@@ -115,8 +115,9 @@ arası dalgalanma aralıklar arası farktan büyük. Tahminim ("128 daha iyi olu
 Mekanik sebep de görünüyor: aralık çok büyüyünce 5. gösterim geldiğinde önceki gösterimler
 çoktan erimiş oluyor, kodlama zayıflıyor (%84 → %61 → %58). İnsan literatüründeki "çok
 fazla aralık da işe yaramaz" bulgusuyla aynı biçim. Pratik kural: **en az 16, 64 yeterli,
-daha fazlası bir şey kazandırmıyor.** İki koşu (gap16 ve gap256, seed 2) sabaha kaldı;
-`scripts/study5_runs.sh` kaldığı yerden tamamlar.
+daha fazlası bir şey kazandırmıyor.** Üç seed ortalaması: 1 → 0,002, 16 → 0,128,
+64 → 0,261, 128 → 0,238, 256 → 0,231. Ön kayıtlı kural "256 ile 128 arasında doyuma
+ulaşıyor" dedi.
 
 ## Bu ne göstermiyor
 
