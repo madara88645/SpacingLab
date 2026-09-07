@@ -268,6 +268,33 @@ says the optimum moves with the retention interval, which we did not vary.
 64 is as good as anything larger". Spreading further costs nothing measurable and gains
 nothing measurable.
 
+## Study 6: two checks the external review asked for (Amendment 9, pre-registered)
+
+An outside review (ChatGPT Pro, filed in `docs/external_review_chatgpt_pro_2026-09-07.md`)
+raised two objections worth answering before anything else.
+
+**6a. Did only the gap change?** The per-step loss is a mean over sequences (15 filler
+plus n facts), so one fact exposure weighs 1/(15 + n) in its step. Massed exposures
+cluster, so n is larger when facts are present. Reconstructed from every schedule
+(`spacinglab.audit`, no training):
+
+| Study 1 window | steps with facts | facts/step when present | max facts/step | mean weight per exposure |
+|---|---|---|---|---|
+| massed | 403 | 2.48 | 9 | 0.0553 |
+| gap 4 | 406 | 2.46 | 8 | 0.0554 |
+| gap 16 | 428 | 2.34 | 9 | 0.0556 |
+| spaced | 504 | 1.98 | 8 | 0.0569 |
+| random | 538 | 1.86 | 7 | 0.0577 |
+
+Massed exposures carry **2.8 % less** loss weight than spaced ones (3.0 % in the Study 5
+window). That is inside the pre-declared 5 % threshold, so the Study 1 claim stands, with
+a note: the confound points in the direction of the effect, and it is bounded by Study
+2c, where massed with 2× and 4× the exposures (and therefore far more total weight)
+still decayed to 0.03–0.06. Gradient-clip ratios were not logged and cannot be
+reconstructed; we say so.
+
+**6b. Does ordinary shuffling already give you this?** __STUDY6B__
+
 ## What is usable from this
 
 One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
