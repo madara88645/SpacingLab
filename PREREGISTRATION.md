@@ -456,3 +456,32 @@ in ≥ 2 seeds; "declines" if Δ < −spread in 3/3. Prediction 2 is read the sa
 last, i.e. early in the window when fewer other facts are being trained: an exposure
 then may be "cleaner". This is inherent to gap manipulation and was also true in Study 1
 (gap 64 vs 1). It is noted, not controlled. Guards as before.
+
+### Amendment 9 (2026-09-07, after the external review; Study 6 written before any of its numbers)
+**Two objections from the external review are taken up.**
+
+**6a. Effective-weight audit (no training).** The per-step loss is a mean over
+sequences (15 filler + n facts), so a fact's weight in a step is 1/(15+n). If n's
+distribution differs between conditions, "only the gap changed" is too strong. From the
+schedules of every Study 1 run (reconstructable from the logged seed and condition), for
+each condition and seed: mean and max facts per step inside the window, mean per-exposure
+weight 1/(15+n), and its spread. *Prediction:* mean facts per step ≈ 1.43 in every
+condition (1,000 exposures / 700 steps), per-exposure weight ≈ 0.061, with max n larger
+for massed (a fact's five exposures cluster) but the mean weight within 2 % across
+conditions. *Decision:* if the mean per-exposure weight differs by more than 5 % between
+massed and spaced, the Study 1 claim is narrowed to "the total effect of this placement
+scheme" and a fixed-coefficient re-run is scheduled. Gradient clipping at 1.0 is also
+checked: the training loss curves are logged per step; if the fraction of steps with
+facts is the same, clipping cannot differ systematically, but we cannot reconstruct clip
+ratios post hoc and say so.
+
+**6b. Random-placement baseline (3 runs).** Condition `random`: each fact's five exposures
+at five distinct uniformly random steps of the 700-step window (the pilot placement),
+seeds 0–2, everything else as Study 1. Not last-exposure-matched with the other
+conditions (that is the point: it is what ordinary shuffling produces). *Prediction:*
+retention within the Study 1 seed spread of `spaced` (0.285 ± 0.04) and far above
+`massed`. *Decision:* "ordinary shuffling suffices" if random ≥ spaced − 0.041 on the
+3-seed mean; "regular spacing beats shuffling" if spaced − random > 0.041 in 3/3 seeds;
+"shuffling beats regular spacing" if random − spaced > 0.041 in 3/3 seeds. Practical
+consequence: the recommendation becomes "shuffle, and guard against clustering" in the
+first case, "impose a minimum gap" in the second.
