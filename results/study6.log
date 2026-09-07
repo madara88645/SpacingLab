@@ -1,3 +1,34 @@
 === random seed=0 ===
 [eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
 [eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step=  800 acc=0.760 nll=0.232 disc=2.63 holdout=3.560 |dθ|=81.28 B_acc=0.000
+[eval] interference step=  850 acc=0.730 nll=0.376 disc=2.19 holdout=3.550 |dθ|=83.54 B_acc=0.040
+[eval] interference step=  900 acc=0.655 nll=0.763 disc=1.82 holdout=3.548 |dθ|=85.74 B_acc=0.040
+[eval] interference step= 1000 acc=0.450 nll=1.287 disc=1.33 holdout=3.533 |dθ|=89.68 B_acc=0.060
+[eval] interference step= 1200 acc=0.270 nll=1.359 disc=1.41 holdout=3.513 |dθ|=96.38 B_acc=0.120
+[eval] interference step= 1600 acc=0.380 nll=0.885 disc=1.88 holdout=3.493 |dθ|=106.54 B_acc=0.520
+[eval] interference step= 2000 acc=0.275 nll=0.966 disc=2.13 holdout=3.455 |dθ|=114.73 B_acc=0.780
+[eval] interference step= 2300 acc=0.315 nll=0.960 disc=2.47 holdout=3.438 |dθ|=119.89 B_acc=0.880
+=== random seed=1 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.638 disc=0.03 holdout=3.735 |dθ|=15.18 B_acc=0.000
+[eval]  immediate step=  800 acc=0.720 nll=0.318 disc=2.84 holdout=3.558 |dθ|=80.12 B_acc=0.000
+[eval] interference step=  850 acc=0.350 nll=1.274 disc=1.61 holdout=3.554 |dθ|=82.45 B_acc=0.000
+[eval] interference step=  900 acc=0.390 nll=1.165 disc=1.50 holdout=3.546 |dθ|=84.63 B_acc=0.020
+[eval] interference step= 1000 acc=0.260 nll=1.557 disc=1.23 holdout=3.530 |dθ|=88.57 B_acc=0.040
+[eval] interference step= 1200 acc=0.370 nll=1.182 disc=1.29 holdout=3.517 |dθ|=95.41 B_acc=0.100
+[eval] interference step= 1600 acc=0.260 nll=1.206 disc=1.45 holdout=3.495 |dθ|=105.81 B_acc=0.500
+[eval] interference step= 2000 acc=0.210 nll=1.224 disc=2.26 holdout=3.469 |dθ|=113.84 B_acc=0.860
+[eval] interference step= 2300 acc=0.205 nll=1.238 disc=2.29 holdout=3.453 |dθ|=119.20 B_acc=1.000
+=== random seed=2 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step=  800 acc=0.765 nll=0.228 disc=2.96 holdout=3.522 |dθ|=80.35 B_acc=0.000
+[eval] interference step=  850 acc=0.615 nll=0.861 disc=1.77 holdout=3.527 |dθ|=82.60 B_acc=0.000
+[eval] interference step=  900 acc=0.465 nll=1.107 disc=1.70 holdout=3.517 |dθ|=84.82 B_acc=0.000
+[eval] interference step= 1000 acc=0.385 nll=1.246 disc=1.48 holdout=3.499 |dθ|=88.84 B_acc=0.000
+[eval] interference step= 1200 acc=0.320 nll=1.391 disc=1.43 holdout=3.475 |dθ|=95.54 B_acc=0.120
+[eval] interference step= 1600 acc=0.330 nll=0.940 disc=2.02 holdout=3.447 |dθ|=106.07 B_acc=0.580
+[eval] interference step= 2000 acc=0.160 nll=1.298 disc=2.48 holdout=3.410 |dθ|=113.94 B_acc=0.780
+[eval] interference step= 2300 acc=0.155 nll=1.258 disc=2.26 holdout=3.394 |dθ|=119.21 B_acc=0.920
+STUDY6_DONE

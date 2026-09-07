@@ -29,7 +29,7 @@ identical across conditions. After the window come 1500 steps of interference:
 filler plus 50 *new* facts of the same kind (the classic learn-A-then-B paradigm).
 Retention is measured as exact-match accuracy (and answer NLL) at 7 checkpoints.
 Five seeds for massed vs spaced, three for the intermediate gaps, one replicate run
-for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6, Study 4 adds 12, Study 5 adds 15 (70 runs in total).
+for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6, Study 4 adds 12, Study 5 adds 15, Study 6 adds 3 (73 runs in total).
 
 
 ## Study 1: the pre-registered comparison
@@ -293,13 +293,35 @@ a note: the confound points in the direction of the effect, and it is bounded by
 still decayed to 0.03–0.06. Gradient-clip ratios were not logged and cannot be
 reconstructed; we say so.
 
-**6b. Does ordinary shuffling already give you this?** __STUDY6B__
+**6b. Does ordinary shuffling already give you this?** Condition `random`: each fact's
+five exposures at five uniformly random steps of the window, seeds 0–2, everything else as
+Study 1. This is what a shuffled pipeline produces, and it is deliberately *not*
+last-exposure-matched.
+
+| seeds 0–2 | immediate | retention score | acc at step 1500 |
+|---|---|---|---|
+| massed | 0.03 | 0.001 | 0.00 |
+| spaced (gap 64) | 0.66 | 0.298 (0.351, 0.266, 0.277) | 0.16 |
+| random | 0.75 | **0.360** (0.439, 0.292, 0.347) | 0.23 |
+
+random − spaced = +0.088, +0.026, +0.070. The pre-declared rule needed 3/3 above 0.041 to
+call "shuffling beats regular spacing"; it got 2/3, so the verdict is the weaker one:
+**ordinary shuffling suffices** and is at least as good as a fixed 64-step gap. Part of
+random's edge is recency: the last of five uniform draws lands on average at step 583,
+against 478 for the matched conditions. Part may be the variable gaps (mean 117, some
+short, some long), which Study 5 says is a plateau region anyway. Either way the
+practical rule changes from "impose a gap" to **"shuffle, and make sure nothing
+re-clusters the copies"**: the danger is not the absence of a schedule, it is
+concatenation by source or entity, dedup-then-oversample inside a shard, or any pipeline
+step that puts the repeats of one item within a few steps of each other.
+
 
 ## What is usable from this
 
 One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
 sentence facts, full fine-tuning at lr 1e-4, K = 5): **do not let the repeats of one
-fact land within a few optimizer steps of each other.** In this setup a gap of 4 steps is almost as bad as consecutive
+fact land within a few optimizer steps of each other; an ordinary shuffle already
+achieves this (Study 6b), so the job is to keep pipelines from undoing it.** In this setup a gap of 4 steps is almost as bad as consecutive
 (retention 0.02 vs 0.00), 16 steps recovers about 44 % of what 64 steps gives, and 64
 steps is the best we measured. Adding more consecutive repeats does not help (K = 20
 still decays to 6 % within the window), removing momentum does not change it, and
@@ -361,6 +383,8 @@ uv run python -m spacinglab.plot2     # results/study2.png
 scripts/study3_runs.sh && uv run python -m spacinglab.analyze3   # Study 3 (~1 h)
 scripts/study4_runs.sh && uv run python -m spacinglab.analyze4   # Study 4 (~2 h)
 scripts/study5_runs.sh && uv run python -m spacinglab.analyze5   # Study 5 (~3 h, resumable)
+uv run python -m spacinglab.audit                                 # Study 6a (no training)
+scripts/study6_runs.sh                                            # Study 6b (3 runs, ~30 min)
 ```
 
 Pilot logs: `results/pilot*.log`. Main-run logs (per-fact evaluations, generated

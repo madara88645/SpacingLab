@@ -133,6 +133,7 @@ bulgusuyla (Cepeda 2008) aynı biçim.
 | Arka arkaya bilgi gizli mi, silinmiş mi? | Küçük iz var, geri çağrılamıyor |
 | Farklı cümleler işe yarar mı? | Arka arkayayı kurtarmıyor; aralıklıda cümle-ezberi yerine bilgi satın alıyor |
 | Aralık ne kadar açılmalı? | En az 16, 64 yeterli, fazlası bir şey kazandırmıyor |
+| Sıradan karıştırma yeter mi? | Evet; düzenli aralığa eşit ya da biraz daha iyi |
 
 ## 9. Bu ne göstermiyor
 
@@ -201,9 +202,32 @@ mekanizma. Adımlar:
 4. **Yapmayacağız:** LoRA'yı kalibre etmeden tekrar denemek; daha büyük model; "64 evrensel
    optimum" iddiası.
 
-## 13. Kayıt
+## 13. Hakemin iki denetimi yapıldı (Study 6, 7 Eylül)
 
-- Depo: ~/Developer/personal/SpacingLab; 70 koşu, 42 commit, GitHub'a gönderilmedi.
+**6a. Sadece aralık mı değişti?** Kayıp her adımda cümle sayısına bölündüğü için arka
+arkaya yığılan gösterimler biraz daha az ağırlık alıyor: **%2,8 daha az** (kayıtlardan
+hesaplandı, koşu yok). Ön kayıttaki %5 eşiğinin altında; yönü etki lehine ama Study 2'de
+2–4 kat gösterim bile kurtaramamıştı, o yüzden %3 farkı açıklayamaz. Ana bulgu ayakta.
+
+**6b. Sıradan karıştırma zaten yeter mi?** Her bilginin 5 gösterimi pencereye rastgele
+dağıtıldı (3 tohum). Sonuç: rastgele 0,36, düzenli 64 aralık 0,30, arka arkaya 0,00.
+Rastgele, düzenli aralığa **eşit ya da biraz daha iyi** (+0,09 / +0,03 / +0,07; "daha
+iyi" için 3/3 eşik üstü gerekiyordu, 2/3 çıktı). Küçük bir çekince: rastgele koşulda son
+gösterimler ortalamada biraz daha geç, yani hafif "yeni gördü" avantajı var.
+
+**Pratik cümle değişti:** "aralık dayat" değil, **"karıştır, ve kopyaları yeniden
+kümeleyen bir şey olmasın."** Tehlike programın yokluğu değil; aynı kaynaktaki dokümanları
+peş peşe dizmek, tekrar örnekleri aynı parçaya yığmak gibi kümeleyen adımlar.
+
+## 14. Sırada ne var (güncel)
+
+1 ve 2 temiz çıktı. Şimdi: blog yazısı + depo paylaşımı (hakemin önerdiği başlıkla,
+düşen H1 merkezde). Mekanizma deneyleri (tek bilgiyi tek başına enjekte etmek; β₂ kapalı
+Adam) sen istersen.
+
+## 15. Kayıt
+
+- Depo: ~/Developer/personal/SpacingLab; 73 koşu, 47 commit, GitHub'a gönderilmedi.
 - İngilizce yazı: README.md. Ön kayıt + 8 ek: PREREGISTRATION.md. Literatür: docs/literature.md.
 - Dış hakem raporu ve promptu: docs/external_review_chatgpt_pro_2026-09-07.md, docs/chatgpt_pro_prompt.md.
 - Grafikler: results/retention.png (Study 1), results/study2.png (Study 2).
