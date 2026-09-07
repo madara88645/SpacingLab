@@ -1,4 +1,4 @@
-# SpacingLab — Durum raporu (6 Eylül 2026)
+# SpacingLab — Durum raporu (7 Eylül 2026)
 
 **Tek cümlede bulgu:** Küçük bir dil modeline aynı bilgiyi 5 kez öğretirken tekrarları
 arka arkaya vermek işe yaramıyor (bilgi öğreniliyor ama 50 adım içinde siliniyor); aynı
@@ -66,7 +66,7 @@ bilginin *ne kadar süre dayandığını* değiştiriyor.
 | Soru | Beklentim | Sonuç |
 |---|---|---|
 | Arka arkaya 10 veya 20 kez göstersem? | Kurtarmaz | Doğru. %99 öğreniyor, pencere sonunda %3–6. |
-| Sebep, eğitim algoritmasının "hız kazanma" özelliği (momentum) mi? | Hayır | Doğru. Momentum kapalıyken fark aynen duruyor (+0,30). Momentum sadece arka arkaya *kodlamayı* bozuyormuş (%43 → %96), erimeyi değil. |
+| Sebep, eğitim algoritmasının "hız kazanma" özelliği (momentum) mi? | Hayır | Doğru, ama dar okunmalı: Adam'ın birinci-moment momentumu (β₁) kapalıyken fark aynen duruyor (+0,30); β₂ kısmı (geçmiş gradyan büyüklükleri) hâlâ açık, o test edilmedi. Momentum arka arkaya *kodlamayı* bozuyormuş (%43 → %96), erimeyi değil. |
 | Modelin tamamı yerine küçük bir ek parça eğitilirse (LoRA)? | Aynı yön | Yarı-sonuç. Pencere sonunda yön aynı (%31 vs %1,5) ama LoRA bu kurulumda hiçbir bilgiyi 1500 adım tutamıyor; kıyas tabana çakıldı, büyüklük okunmuyor. |
 | Arka arkaya ama her seferinde farklı cümleyle? | Kısmen kurtarır | **Yanıldım.** Kurtarmıyor. (Bu deneyin sınavı adil değildi; düzeltmesi Study 4'te.) |
 
@@ -101,8 +101,7 @@ bir cümle kalıbıyla** sınandı.
 | arka arkaya (ikisi de) | 0,00 | 0,00 |
 
 Pencere sonunda daha net: 5 kopya bilinen cümlede %67, görülmemişte %28 (40 puan düşüş);
-5 farklı cümle %35 ve %37 (düşüş yok). **Kopya cümleyi öğretiyor, farklı cümleler bilgiyi
-öğretiyor.** Ön kayıtlı kural üç tohumda da geçti ama kıl payı (eşik 0,041; farklar
+5 farklı cümle %35 ve %37 (düşüş yok). **Kopya, çalışılan cümlede daha iyi; farklı cümleler yeni bir ifadeye aktarımda daha iyi.** Ön kayıtlı kural üç tohumda da geçti ama kıl payı (eşik 0,041; farklar
 0,056 / 0,043 / 0,044); pencere sonu ve ayrım ölçüsünde fark daha geniş olduğu için
 sonuca güveniyorum, "büyük etki" demiyorum. Study 2'deki "farklı cümleler zarar veriyor"
 sonucu sınavın hatasıymış, düzeltildi. Bu 12 koşu ayrıca ana sayıları üçüncü kez birebir
@@ -129,7 +128,7 @@ bulgusuyla (Cepeda 2008) aynı biçim.
 |---|---|
 | Aralıklı > arka arkaya? | Evet, büyük fark, üç kez tekrarlandı |
 | Daha çok arka arkaya tekrar kurtarır mı? | Hayır |
-| Momentum sebep mi? | Hayır |
+| Momentum sebep mi? | β₁ momentumu değil; Adam'ın geri kalanı test edilmedi |
 | LoRA'da da mı? | Yön aynı, ölçüm tabanda |
 | Arka arkaya bilgi gizli mi, silinmiş mi? | Küçük iz var, geri çağrılamıyor |
 | Farklı cümleler işe yarar mı? | Arka arkayayı kurtarmıyor; aralıklıda cümle-ezberi yerine bilgi satın alıyor |
@@ -156,24 +155,57 @@ değiştirmek arka arkaya gösterimi kurtarmıyor. Tekrarlar zaten aralıklıysa
 değiştirmek "ezber cümle" yerine "cümleden bağımsız bilgi" satın alıyor; hangisini
 istediğine göre seç.
 
-## 11. Sırada ne var, devam edilsin mi?
+## 11. Dış hakem değerlendirmesi (ChatGPT Pro, 7 Eylül)
 
-Devam etmeye değer: ana etki büyük, 5 tohumda tekrarlandı, dört "sıkıcı açıklama"
-denemesini geçti, literatürde bu tam ölçümü yapan çalışma bulunamadı (iki alt-ajan
-taradı; en yakını Chang ve ark. 2024, "kopya enjeksiyon paraphrase'den hızlı unutuluyor").
+Projenin özetini ChatGPT Pro'ya verdim (prompt: docs/chatgpt_pro_prompt.md; rapor:
+docs/external_review_chatgpt_pro_2026-09-07.md, 7.200 kelime). Genel hükmü: **"Bulgu
+gerçek ve büyük, ama mekanizma keşfi değil; dikkatli sınırlandırılırsa yararlı bir
+zamanlama bulgusu ve ölçüm dersi."** Bizim yazdığımızla uyumlu. Haklı bulduğum itirazlar:
 
-1. **ChatGPT Pro dış hakem raporu** (prompt hazır: docs/chatgpt_pro_prompt.md). Verdiği
-   kaynakları ve itirazları ben doğrularım; sıradaki deneyi ona göre seçeriz.
-2. **Erime mekanizması:** tek bir bilgiyi diğer 199 yokken enjekte et. Hâlâ eriyorsa
-   sebep diğer bilgilerin üzerine yazması değil, güncellemenin kendisi. ~1 saat.
-3. **Düzlüğün yeri unutturma süresine bağlı mı?** Unutturmayı 500 ve 4500 adıma
-   değiştirip 16/64/256'yı karşılaştır. İnsan "ridgeline" bulgusunun doğrudan testi. ~3 saat.
-4. **Daha büyük model** (350M, LoRA ile 1B). Ama LoRA'nın önce kendi kalibrasyonu gerekli.
+| İtiraz | Ne demek | Ne yapacağız |
+|---|---|---|
+| **Gerçekten sadece aralık mı değişti?** | Kayıp, bir adımdaki cümle sayısına bölünüyor. Bir adımda kaç bilgi cümlesi olduğu koşula göre farklıysa bir cümlenin *etkin ağırlığı* da farklı. Ölçmedim. | Kayıtlardan hesaplanır, koşu gerekmez. **Önce bu.** |
+| **Sıradan karıştırma zaten yeter mi?** | Pratikte kimse 5 kopyayı arka arkaya koymaz; rastgele yerleştirmeyle kıyas yok. Pilotlarda rastgele ≈ aralıklı çıkmıştı ama tek tohum, kısa unutturma. | 3 koşu, ~30 dk. |
+| **"Momentum sebep değil" fazla geniş** | Sadece β₁ kapatıldı; Adam'ın β₂ kısmı duruyor. | Dil düzeltildi (bölüm 4 ve 8). |
+| **Dil fazla keskin** | "50 adımda sildi" → "doğru cevabı üretme başarısı 50 adımda düştü". "Kopya cümleyi, farklı cümle bilgiyi öğretir" → "aktarımda daha iyi". "%90 biçim" hesabı seçilen yeme bağlı. | Düzeltildi. |
+| **Tekrar sayısı az** | Study 4'ün farkları eşiği 0,002–0,015 ile geçiyor; K=10/20 tek tohum. | Kabul; "kıl payı" zaten yazılı. Daha çok tohum gerekirse sonra. |
 
-## 12. Kayıt
+Kısmen haklı: Chang ve ark. 2024'ün kopya koşulu da 100 adım aralıklıymış; "kopya vs
+paraphrase farkı" yeni değil, bizim katkı "sabit gösterim sayısı + eşlenmiş son gösterim
+altında aralığın kendisini ayırmak". Yanlış: "70 koşu bitmiş mi belirsiz" (bitmiş);
+"0,01 içinde tekrarlandı" itirazı haklı çıktı çünkü 3 tohumu 5 tohum ortalamasıyla
+karşılaştırmışım (düzeltildi: 3 tohum vs 3 tohum, fark 0,008).
+
+Yayın görüşü: blog + depo şimdi paylaşılabilir; arXiv teknik rapor mümkün; ana konferans
+değil; TMLR ancak ek kontrollerle. Önerdiği başlık: "Sabit gösterim bütçesinde tekrar
+zamanlaması: GPT-2'de edinim, unutma ve soru biçiminin ayrıştırılması". "İnsan benzeri
+hafıza pekişmesi" iddiası yazılmayacak.
+
+## 12. Sırada ne var (yeni plan)
+
+Hakemin sırası doğru: önce kıyasın adilliğini kanıtla, sonra pratik taban çizgisi, en son
+mekanizma. Adımlar:
+
+1. **Etkin ağırlık denetimi (0 koşu, bugün).** Her koşu ve adım için: adımdaki bilgi
+   cümlesi sayısı, her cümlenin kayıptaki payı, koşullar arası dağılım. Fark anlamsızsa
+   (beklentim: ortalama cümle/adım her koşulda 1,4; pay ≈ 1/16,4) "sadece aralık değişti"
+   cümlesi ayakta kalır. Farklıysa ana yorum "bu yerleştirme düzeninin toplam etkisi"
+   diye daralır.
+2. **Rastgele yerleştirme taban çizgisi (3 koşu, ~30 dk).** Her bilginin 5 gösterimi
+   rastgele adımlara. Tahmin: aralıklıya (64) yakın çıkar, arka arkayadan çok uzak.
+   Sonuç ne olursa olsun pratik cümle netleşir: "sıradan karıştırma yeter, tek tehlike
+   kopyaların kümelenmesi" ya da "düzenli aralık karıştırmadan da iyi".
+3. **Sonra karar:** 1 ve 2 temizse blog yazısı + depo paylaşımı (hakemin önerdiği
+   başlıkla, H1'in düşüşü merkezde). Mekanizma deneyleri (tek bilgiyi tek başına enjekte
+   etmek; β₂ kapalı Adam; bozucu veri türü dalları) ancak bundan sonra ve sen istersen.
+4. **Yapmayacağız:** LoRA'yı kalibre etmeden tekrar denemek; daha büyük model; "64 evrensel
+   optimum" iddiası.
+
+## 13. Kayıt
 
 - Depo: ~/Developer/personal/SpacingLab; 70 koşu, 42 commit, GitHub'a gönderilmedi.
 - İngilizce yazı: README.md. Ön kayıt + 8 ek: PREREGISTRATION.md. Literatür: docs/literature.md.
+- Dış hakem raporu ve promptu: docs/external_review_chatgpt_pro_2026-09-07.md, docs/chatgpt_pro_prompt.md.
 - Grafikler: results/retention.png (Study 1), results/study2.png (Study 2).
 - Yol boyunca düzeltilen hatalar: LoRA ilk iki öğrenme hızında hiç öğrenmedi (grid
   genişletildi, kayda yazıldı); 20 gösterimli kontrol ilk denemede kod hatası verdi

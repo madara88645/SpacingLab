@@ -125,7 +125,7 @@ so we do not know where the benefit stops).
 | sub-study | question | prediction (written first) | result | verdict |
 |---|---|---|---|---|
 | **2c** massed with K = 10, 20 (seed 0) | can more consecutive repeats reach spaced's immediate level? | no: stays < 0.30 | acc right after last exposure 0.99 / 0.995; end of window **0.025 / 0.06**; retention 0.005 / 0.014 | prediction held; a learning-matched massed control is not reachable this way |
-| **2a** Adam with beta1 = 0 (3 seeds) | is momentum the mechanism? | penalty persists | spaced − massed retention **+0.30** (seeds +0.33, +0.28, +0.30; Study 1: +0.29). massed now encodes 0.95–0.98 right after the last exposure (was 0.43) and still ends the window at 0.06–0.08 | momentum is **not** the mechanism; it only weakened massed *encoding* |
+| **2a** Adam with beta1 = 0 (3 seeds) | is momentum the mechanism? | penalty persists | spaced − massed retention **+0.30** (seeds +0.33, +0.28, +0.30; Study 1: +0.29). massed now encodes 0.95–0.98 right after the last exposure (was 0.43) and still ends the window at 0.06–0.08 | Adam's first-moment momentum is **not required** for the gap (β₂ untested); β₁ only weakened massed *encoding* |
 | **2b** LoRA (3 seeds) | does it hold for adapters? | same direction | calibration failed: ranks 16/64, lr 3e-4..1e-2, best immediate 0.245. At rank 64 / lr 1e-3: end-of-window **0.31 vs 0.015** in every seed, but both reach **0.00** by interference step 800–1500; retention Δ +0.03 (SD 0.015, noise 0.014) | rules 1–2 pass formally, by two hundredths; the ordering replicates at the end of the window, but the retention comparison is a **floor effect** and no size is read |
 | **2d** five paraphrases instead of five copies (3 seeds) | does wording diversity substitute for spacing? | partial substitution | massed+para − massed = **+0.002**; spaced+para − spaced = **−0.20** (every seed). Right after its 5th exposure a massed+para fact is correct in the canonical form only 0.5–2.5 % of the time | prediction **failed**; no substitution, not additive. Confounded: the probe uses the canonical sentence, seen once in this condition (see below) |
 
@@ -211,7 +211,7 @@ investigated further.
 Study 2d's probe was the canonical sentence, which copy conditions saw five times and
 paraphrase conditions once. Study 4 re-ran all four conditions (seeds 0–2, 12 runs) with
 an added probe through a **sixth wording no condition ever saw**. Training is unchanged;
-the canonical-probe numbers replicate Study 1 and 2d to within 0.01 (a third replication).
+the canonical-probe numbers replicate Study 1 and 2d on the same seeds to within 0.01 (a third replication).
 
 | retention, mean of 3 seeds | canonical probe | unseen-wording probe | discrimination, unseen |
 |---|---|---|---|
