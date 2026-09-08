@@ -1,12 +1,14 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
-> **Current status (8 September): Study 7 completed; Study 8 now running.** Study 7's
-> six fresh matched-data runs gave random minus spaced retention +0.09286, sample SD
-> 0.04586, seed range +0.06357 to +0.14571; NLL also favored random. This is a total
-> placement-policy effect, not a recency-controlled comparison.
-> [Study 7 results](results/study7/REPORT.md). The user-authorized next control matches
-> every fact's final exposure in six fresh runs: [Study 8 registration](docs/STUDY8_PREREGISTRATION.md).
-> No Study 8 outcome yet. Check `RESUME.md` before launching any training command.
+> **Current status (8 September): Study 8 completed; Study 9 now running.**
+> Matching each fact's final exposure yielded random-minus-spaced retention
+> +0.01595, sample SD 0.04427, seed range -0.03214 to +0.05500: mixed/inconclusive.
+> NLL difference was -0.05382, SD 0.08139. No superiority or equivalence conclusion.
+> [Study 8 results](results/study8/REPORT.md). Study 9 now matches both endpoints
+> and compares fixed gaps [64,64,64,64] to permuted [32,32,64,128] in six fresh runs.
+> [Study 9 registration](docs/STUDY9_PREREGISTRATION.md). No completed Study 9 outcome yet.
+> These synthetic-fact experiments do not establish personalization or PEFT benefits.
+> Check `RESUME.md` before launching any training command.
 
 > **Status correction, 8 September 2026:** Study 6b reused a spaced control from
 > before the filler cache grew. A registered provenance audit reproduces changed

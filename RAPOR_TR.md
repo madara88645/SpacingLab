@@ -1,44 +1,51 @@
 # SpacingLab — güncel durum (8 Eylül 2026)
 
-**Son tamamlanan deneyde rastgele tekrar daha iyi çıktı; şimdi bunun “son tekrarı
-daha yakın zamanda görme” avantajından kaynaklanıp kaynaklanmadığını kontrol ediyoruz.**
+**Son kontrol, rastgele tekrarın düzenli tekrardan daha iyi olduğunu gösteremedi;
+şimdi tekrarların başlangıcını ve bitişini de eşitleyerek aralıkları karşılaştırıyoruz.**
 
-## Tamamlanan sonuç: Study 7
-
-İki yöntemi aynı model ve aynı eğitim metinleriyle üçer kez çalıştırdık.
-Sonraki yedi sınavın ortalamasında:
-
-| Yöntem | Doğru cevap ortalaması | Üç koşudaki aralık |
-|---|---:|---:|
-| Düzenli tekrar | %27,3 | %20,4–36,6 |
-| Rastgele tekrar | %36,6 | %31,9–42,9 |
-
-Ortalamaların koşudan koşuya değişimini gösteren standart sapma sırasıyla
-8,3 ve 5,7 yüzde puan. Eşleştirilmiş fark ortalama **9,3 puan**; standart sapması
-4,6 puan, üç koşudaki farklar 6,4–14,6 puan. Doğru cevaba verilen olasılığı
-izleyen NLL ölçüsü de rastgele yöntemi destekledi.
-
-Ama rastgele yöntemde son tekrar daha geç oluyordu. Bu, özel bir hafıza mekanizması
-bulduğumuz anlamına gelmiyor. Yeni bilgi öğrenmedeki küçük değişiklikler ve diğer
-kontroller [ayrıntılı sonuçta](results/study7/REPORT.md) korunuyor.
-
-## Şimdi çalışan kontrol: Study 8
+## Tamamlanan kontrol: Study 8
 
 Örnek: iki öğrenci de aynı bilginin son tekrarını cuma günü yapıyor.
-Birinin önceki dört tekrarı düzenli aralıklı, diğerinin rastgele.
-Böylece “biri sınavdan daha kısa süre önce gördü” açıklamasını kontrol ediyoruz.
+Önceki dört tekrar birinde düzenli, diğerinde rastgele. Her yöntemi üç kez denedik.
 
-Her bilginin son gösterimi **birebir eşit** olacak; sadece ortalama zaman değil.
-İki grubu da yeniden eğitiyoruz: üç farklı rastgelelik ayarı, toplam altı koşu.
-Plan başlamadan Git'e kaydedildi; 29 test geçti. İlk koşu başladı, **henüz sonuç yok**.
-Tüm zincir yaklaşık 1,5–2 saat sürebilir; bilgisayar açık ve uyanık kalmalı.
+Sonraki yedi sınavdaki doğru cevap oranının ortalaması:
 
-Fark devam ederse son tekrarın yakınlığı tek başına açıklama olamaz.
-Fark kaybolursa da “sebep kesin buydu” demeyeceğiz: önceki tekrarların dağılımı da
-bu kontrolde değişiyor. Tek küçük model ve üç koşuyla evrensel kural çıkarmayacağız.
+| Yöntem | Ortalama | Koşular arası standart sapma | Üç koşudaki aralık |
+|---|---:|---:|---:|
+| Düzenli | %28,1 | 8,3 yüzde puan | %19,4–36,1 |
+| Son tekrarı eşitlenmiş rastgele | %29,7 | 4,2 yüzde puan | %24,9–32,9 |
 
-- [Yeni deneyin önceden kaydedilmiş planı](docs/STUDY8_PREREGISTRATION.md)
-- [Tamamlanan Study 7 sonuçları](results/study7/REPORT.md)
+Eşleştirilmiş avantaj ortalama 1,6 puan, fakat koşudan koşuya değişimi gösteren
+standart sapma 4,4 puan. Üç ayrı fark: -3,2, +2,5 ve +5,5 puan.
+Bu nedenle “rastgele daha iyi” diyemiyoruz; “ikisi kesin eşit” de diyemiyoruz.
+Doğru cevaba verilen olasılığı izleyen NLL ölçüsünde fark -0,054, standart sapma
+0,081; bu küçük ve değişken fark da güçlü bir üstünlük göstermiyor.
+
+Önceki Study 7'nin daha büyük avantajı burada tekrarlanmadı. Ancak tüm farkın
+sebebinin son tekrar zamanı olduğunu kanıtlamadık: önceki tekrarların dağılımı da
+değişti. Başlangıçta öğrenilen miktarlar da eşit değildi.
+
+## Şimdi çalışan deney: Study 9
+
+Beş gösterim arasında dört boşluk var:
+
+- Düzenli: 64 → 64 → 64 → 64 eğitim adımı.
+- Değişken: 32, 32, 64, 128 adımlarının her bilgi için karıştırılmış sırası.
+
+İkisinin de toplamı 256, ortalaması 64. Her bilginin ilk ve son gösterimi aynı.
+Böylece farklı toplam süreyi veya daha yakın son tekrarı avantaj saymayacağız.
+64'ün evrensel en iyi aralık olduğunu varsaymıyoruz.
+
+Plan sonuçlardan önce Git'e kaydedildi; 33 yazılım testi geçti.
+Altı yeni koşu sırayla çalışıyor; ilk koşuda eğitim ilerliyor, henüz toplu sonuç yok.
+Toplam yaklaşık 1,5–2 saat; bilgisayar açık ve uyanık kalmalı.
+Sonuç olumlu da olumsuz da olsa üç koşunun değişkenliğiyle raporlanacak.
+
+Bu deney küçük GPT-2 modelinde yapay bilgiler üzerine. Senin üslubunu öğrenmeyi,
+kişisel mesajlarını veya LoRA'yı test etmiyor. Kişisel verilerine dokunulmadı.
+
+- [Study 8 ayrıntılı sonuçları](results/study8/REPORT.md)
+- [Study 9 önceden kaydedilmiş planı](docs/STUDY9_PREREGISTRATION.md)
 - [Eski veri eşleşmesi hatasının denetimi](docs/PROVENANCE_AUDIT_2026-09-08.md)
 
-Eski sonuçlar korundu ve Git'e kaydedildi. GitHub'a gönderim veya paylaşım yapılmadı.
+Her şey yerelde; GitHub'a gönderim veya paylaşım yapılmadı.
