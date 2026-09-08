@@ -1,5 +1,13 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
+> **Status correction, 8 September 2026:** Study 6b reused a spaced control from
+> before the filler cache grew. A registered provenance audit reproduces changed
+> training/held-out streams for all three seeds and finds pre-intervention log
+> differences. **The claim "ordinary shuffling suffices" is withdrawn pending a
+> fresh matched-data comparison.** This does not invalidate all within-study results.
+> [Current audit and limitations](docs/PROVENANCE_AUDIT_2026-09-08.md) ·
+> [Kısa Türkçe durum](docs/DURUM_2026-09-08_TR.md).
+
 **Question.** When a small language model is fine-tuned to absorb new facts, each shown
 five times, does *spreading* the five exposures apart in training (other data in
 between) protect the fact against later forgetting, compared with showing them in
@@ -9,7 +17,7 @@ This borrows the **spacing effect** from human memory research, one of its most
 replicated findings: the same number of study repetitions gives better long-term
 retention when they are spread out than when they are massed.
 
-**Answer (GPT-2 124M, synthetic facts, one protocol):** the pre-registered hypothesis was **not supported as written**, but the data show something sharper. Measured right after each fact's own fifth exposure, consecutive exposures encode it at 43 % and 64-step spacing at 81 %. Measured at the end of the injection window, up to 444 steps later, consecutive is at 3 % and spaced at 65 %. After 1,500 further steps of unrelated fine-tuning: 0 % vs 14 %. So the consecutive memory is real and is gone within about 50 steps; the spaced one decays slowly. The gap in between is graded (1 < 4 < 16 < 64 steps). The effect is about *how long the memory lasts*, not about how much is retained after equal encoding, which is what H1 assumed it could measure.
+**Answer (GPT-2 124M, synthetic facts, one protocol):** the pre-registered hypothesis was **not supported as written**. Study 1 found higher later exact-match accuracy with spaced repetition, but acquisition was unequal too. At each fact's fifth exposure, massed accuracy averaged 43% (seed range 26–64%) versus spaced 81% (78–85%). At window end these were 3% (2–4%) and 65% (62–68%). These observations do not isolate slower forgetting after equal learning, and loss of correct output is not proof of erasing an internal representation. Full paired results and failed decision rules are retained below.
 
 The design, prediction, decision rule and named traps were committed before any
 number existed ([PREREGISTRATION.md](PREREGISTRATION.md)); the four amendments made
@@ -29,7 +37,7 @@ identical across conditions. After the window come 1500 steps of interference:
 filler plus 50 *new* facts of the same kind (the classic learn-A-then-B paradigm).
 Retention is measured as exact-match accuracy (and answer NLL) at 7 checkpoints.
 Five seeds for massed vs spaced, three for the intermediate gaps, one replicate run
-for the noise band. 17 runs, ~9 minutes each. Study 2 adds 20 more runs plus 5 short LoRA pilots; Study 3 adds 6, Study 4 adds 12, Study 5 adds 15, Study 6 adds 3 (73 runs in total).
+to check repeatability (one repeat cannot estimate a noise distribution). The audit inventories 73 main logs, including that repeat and two single-seed contingency runs, plus 12 preserved pilot logs. These are not 73 independent replications.
 
 
 ## Study 1: the pre-registered comparison
@@ -52,7 +60,7 @@ remembered). Thin lines are single seeds, thick lines the mean.*
 *Retention score* = mean exact-match accuracy over the seven interference checkpoints
 (the pre-registered primary outcome). Paired spaced − massed retention difference:
 +0.29, seed-to-seed SD 0.04, positive in every one of the five seeds (range
-+0.24..+0.35). Replication-noise band (same run twice, MPS nondeterminism): 0.014 in retention, 0.000 in immediate accuracy.
++0.24..+0.35). One repeated run differed by 0.014 in retention and 0.000 in immediate accuracy. Historical decision rules used this as a noise band, but one pair cannot calibrate such a band.
 Retention is monotone in the gap in every seed where all four gaps were run.
 
 **Guards.** Within a seed, every condition took the same 2,300 optimizer steps, saw the
@@ -190,15 +198,15 @@ never-seen control facts is shown exactly once; both sets are then probed.
 | same for never-seen controls | 0.000 | 0.000 |
 | NLL of old facts after one re-exposure vs controls | 3.8–4.1 vs 5.7 | 1.2–1.5 vs 5.7 |
 
-**Reading, as pre-declared.** Prediction 1 held: massed discrimination is above zero in
-every seed, and far below spaced. Prediction 2 **failed**: one re-exposure brings back
-nothing for massed facts (0 → 0 in all three seeds), so the trace that discrimination
-detects is not a trace that relearning can use. The decision rule calls this **partial**:
-a small item-specific residue is measurable (about a third of a nat, against a 3.5-nat NLL
-drop of which the other 3.15 nats are format learning shared with the foil), but at the
-level a user would care about, the massed memory is gone. The NLL objection is therefore
-confirmed and quantified: **90 % of massed's NLL improvement is format, not knowledge.**
-For spaced, one re-exposure recovers 10–24 points, a textbook savings effect.
+**Reading, corrected 8 September.** Prediction 1 held: massed discrimination is above
+zero in every seed, and below spaced. Prediction 2 **failed** under the registered
+one-re-exposure test. However, both massed and unseen controls are at the accuracy
+floor; this does not establish absence of savings or unusability of the remaining
+trace. Spaced old facts improve by 10.5–24 percentage points, but their starting
+accuracy differs from controls, so this is not a clean savings estimate. The old
+"90% format, not knowledge" claim is withdrawn: one chosen foil does not identify
+that causal decomposition. Multiple re-exposure budgets and continuous measures
+would be needed to assess relearning sensitivity.
 
 One oddity for the record: for spaced facts the single re-exposure raised accuracy but
 *lowered* discrimination (2.6 → 1.6). The relearning batch also contained 20 unseen
@@ -234,9 +242,10 @@ and in discrimination (+0.27, +0.18, +0.18). massed+para stays at zero (predicti
 
 **What this corrects.** Study 2d's reading (i) was wrong and reading (ii) was right: the
 paraphrase penalty was the probe, not the model. The honest summary of both studies is a
-trade, not a loss: **copies buy the trained sentence, paraphrases buy the fact.** Neither
-rescues consecutive exposures. Spacing is the variable that decides whether anything
-survives; wording diversity decides what kind of thing survives.
+trade, not a loss: **copies help the trained wording; paraphrases help the tested
+unseen wording.** This is one held-out wording per relation, not proof of wording-
+independent factual knowledge. Neither wording condition rescues massed accuracy
+in this protocol.
 
 ## Study 5: where does the benefit stop? (Amendment 8, pre-registered; 15 runs)
 
@@ -256,7 +265,9 @@ Prediction 2, "128 beats 64", **failed**: 128 is below 64 in two of three seeds
 seed-to-seed wobble (gap 64 alone spans 0.19–0.37) is larger than any gap-to-gap
 difference. The pre-registered rule for 256 vs 128 (+0.016, −0.051, +0.014; two of three
 inside the 0.041 spread) returns **"saturates"**. Prediction 3 (diminishing returns in
-every seed) also failed, because in seed 1 the 64 → 128 step was the *negative* one.
+every seed) also failed: in seed 1 the 64 → 128 change was positive, followed by a
+negative 128 → 256 change; in seeds 0 and 2, a negative change was followed by a
+positive one. These are not monotone diminishing increments.
 Encoding right after the last exposure also weakens at large gaps (gap 64: 0.84 → gap 128:
 0.61 → gap 256: 0.58 in seed 0): when the earlier exposures are hundreds of steps back,
 the fifth one has less to build on. That is the shape of the human lag effect (Cepeda et
@@ -264,9 +275,9 @@ al. 2008), where too much spacing stops helping because each repetition no longe
 the previous trace. Scope: one window length, one interference length; the human result
 says the optimum moves with the retention interval, which we did not vary.
 
-**Practical restatement.** In this setup the useful range is "at least ~16 steps, and
-64 is as good as anything larger". Spreading further costs nothing measurable and gains
-nothing measurable.
+**Practical restatement.** Larger tested gaps did not consistently improve retention
+over 64 in these three seeds. This does not establish equivalence or a universal
+optimal gap.
 
 ## Study 6: two checks the external review asked for (Amendment 9, pre-registered)
 
@@ -287,16 +298,17 @@ cluster, so n is larger when facts are present. Reconstructed from every schedul
 | random | 538 | 1.86 | 7 | 0.0577 |
 
 Massed exposures carry **2.8 % less** loss weight than spaced ones (3.0 % in the Study 5
-window). That is inside the pre-declared 5 % threshold, so the Study 1 claim stands, with
-a note: the confound points in the direction of the effect, and it is bounded by Study
-2c, where massed with 2× and 4× the exposures (and therefore far more total weight)
-still decayed to 0.03–0.06. Gradient-clip ratios were not logged and cannot be
-reconstructed; we say so.
+window). It falls inside the pre-declared 5% operational threshold, but that threshold
+does not establish equivalence. Extra-exposure controls do not bound this confound's
+causal effect: optimization is not linear in repetition count. Gradient-clip ratios
+were not logged and cannot be reconstructed. Interpret the comparison as a total
+schedule-policy effect, not an isolated gap-only mechanism.
 
 **6b. Does ordinary shuffling already give you this?** Condition `random`: each fact's
-five exposures at five uniformly random steps of the window, seeds 0–2, everything else as
-Study 1. This is what a shuffled pipeline produces, and it is deliberately *not*
-last-exposure-matched.
+five exposures at five uniformly random steps of the window, seeds 0–2, with nominal
+settings from Study 1. This synthetic placement is not a literal epoch-wise data
+shuffle, and it is deliberately *not* last-exposure-matched. The 8 September audit
+found that the intended filler-stream matching cannot be sustained.
 
 | seeds 0–2 | immediate | retention score | acc at step 1500 |
 |---|---|---|---|
@@ -304,55 +316,33 @@ last-exposure-matched.
 | spaced (gap 64) | 0.66 | 0.298 (0.351, 0.266, 0.277) | 0.16 |
 | random | 0.75 | **0.360** (0.439, 0.292, 0.347) | 0.23 |
 
-random − spaced = +0.088, +0.026, +0.070. The pre-declared rule needed 3/3 above 0.041 to
-call "shuffling beats regular spacing"; it got 2/3, so the verdict is the weaker one:
-**ordinary shuffling suffices** and is at least as good as a fixed 64-step gap. Part of
-random's edge is recency: the last of five uniform draws lands on average at step 583,
-against 478 for the matched conditions. Part may be the variable gaps (mean 117, some
-short, some long), which Study 5 says is a plateau region anyway. Either way the
-practical rule changes from "impose a gap" to **"shuffle, and make sure nothing
-re-clusters the copies"**: the danger is not the absence of a schedule, it is
-concatenation by source or entity, dedup-then-oversample inside a shard, or any pipeline
-step that puts the repeats of one item within a few steps of each other.
+random − spaced = +0.088, +0.026, +0.070 (mean +0.061, sample SD 0.032). The historical
+decision rule labeled this "ordinary shuffling suffices". **That interpretation is
+withdrawn:** the comparison reused an old control, and both input-stream reconstruction
+and pre-intervention logs now indicate a matching problem. These numbers remain
+descriptive, not an isolated placement effect. Recency, variable gaps, and batch
+composition also differ by design; neither equivalence nor a real-world shuffle
+recommendation follows from this comparison.
 
 
 ## What is usable from this
 
-One concrete rule, with the scope it was measured in (GPT-2 124M, synthetic single-
-sentence facts, full fine-tuning at lr 1e-4, K = 5): **do not let the repeats of one
-fact land within a few optimizer steps of each other; an ordinary shuffle already
-achieves this (Study 6b), so the job is to keep pipelines from undoing it.** In this setup a gap of 4 steps is almost as bad as consecutive
-(retention 0.02 vs 0.00), 16 steps recovers about 44 % of what 64 steps gives, and 64
-steps is the best we measured. Adding more consecutive repeats does not help (K = 20
-still decays to 6 % within the window), removing momentum does not change it, and
-rewording the repeats does not substitute for spreading them out. If the repeats *are*
-spread out, paraphrasing them costs accuracy on the trained sentence and buys accuracy on
-unseen wordings; which you want depends on whether you are teaching a sentence or a fact. Data pipelines that
-concatenate documents about the same entity, or that duplicate an example inside one
-shard, produce the massed pattern; whether the penalty measured here carries to those
-settings is untested, but a shuffle that guarantees a minimum distance between repeats
-is cheap enough to add without waiting for that test.
+The robust engineering lesson from the audit is to freeze and fingerprint the actual
+training and held-out streams, rather than equating equal seeds or token counts with
+equal data. Within this GPT-2 synthetic-fact protocol, clustered repetition performed
+poorly and spaced repetition warrants further testing. We do not yet have a validated
+shuffle replacement, universal minimum gap, or evidence for a brain-like mechanism.
 
 ## What I would test next, and whether it is worth it
 
-1. ~~Where does the benefit stop?~~ Done as Study 5: plateau from 64 on. Open: does the
-   plateau's position move with interference length, as the human ridgeline predicts?
-2. ~~A fair paraphrase probe.~~ Done as Study 4.
-3. **Why does the massed trace decay?** Study 3 says it decays to a residue that
-   relearning cannot use, so the question is about the update, not about retrieval.
-   Two candidates the data can separate:
-   (a) sharpness — the five identical steps land in a narrow region that the next
-   filler steps leave; measure loss along the update direction after the last exposure;
-   (b) shared-direction interference — the 199 other facts' updates overwrite it;
-   test by injecting a single fact with no other facts in the window.
-4. **Scale.** One model. A 350M or 1B model with the same protocol tells whether this is a
-   small-model artefact. Feasible on this laptop with LoRA for 1B, but 2b shows LoRA
-   needs its own calibration first.
+First rerun both random and spaced conditions freshly in three pairs, with immutable
+data/model/software provenance and acquisition, NLL, batch-weight and clipping guards.
+Do not reuse historical spaced controls. This estimates a total placement-policy
+effect, not equal-acquisition forgetting. Three seeds screen direction, not equivalence.
 
-Worth continuing? The main effect is large, replicated across five seeds, and survived
-two mechanism probes, so the *question* is alive. The most valuable next run is (2) plus
-(1): both are cheap and both turn a "gap 64 is best" claim into an actual curve with a
-fair probe. (3a) is the one that could produce a mechanism.
+Worth continuing: yes, at this bounded comparison. A calibrated multi-budget savings
+test and a second small model are later steps. Mechanism work and publication should
+not outrun validation of the practical baseline.
 
 ## What this does not show
 
