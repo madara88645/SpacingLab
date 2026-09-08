@@ -3,6 +3,8 @@ import importlib
 import importlib.util
 
 import pytest
+import numpy as np
+import hashlib
 
 
 def module():
@@ -59,3 +61,22 @@ def test_planned_runs_are_fresh_pinned_pairs():
         c = m.config(condition, seed)
         assert c.t_inj == 700 and c.k == 5
         assert c.offline and c.collect_step_guards and c.filler_sha256 and c.model_revision
+
+
+def test_manifest_roundtrip_is_stable_and_still_rejects_real_changes(tmp_path, monkeypatch):
+    m = module()
+    for folder in ("data", "spacinglab", "docs", "model"):
+        (tmp_path / folder).mkdir()
+    p = tmp_path / "data/wikitext103_tokens.npy"
+    np.save(p, np.zeros(2233600, dtype=np.uint16))
+    for name in ("uv.lock", "pyproject.toml", "docs/STUDY7_PREREGISTRATION.md", "model/model.safetensors"):
+        (tmp_path / name).write_text("fixture")
+    monkeypatch.setattr(m, "ROOT", tmp_path)
+    monkeypatch.setattr(m, "OUT", tmp_path / "results")
+    monkeypatch.setattr(m, "MODEL", tmp_path / "model")
+    monkeypatch.setattr(m, "FILLER_SHA", hashlib.sha256(p.read_bytes()).hexdigest())
+    first = m.freeze_manifest()
+    assert m.freeze_manifest() == first
+    (tmp_path / "model/model.safetensors").write_text("changed weights")
+    with pytest.raises(ValueError, match="Manifest mismatch"):
+        m.freeze_manifest()

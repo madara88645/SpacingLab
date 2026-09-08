@@ -100,3 +100,13 @@ or a provenance mismatch. Preserve failure evidence; repair with a dated amendme
 before restarting affected runs. Inspect and report partial results only as partial.
 After six runs, analyze all six, update English/Turkish reports, and commit locally.
 No new studies, remote creation, publishing, or pushing as part of this study.
+
+## Amendment 7.1 — preflight serialization repair, 2026-09-08
+
+The first chain launch stopped in manifest validation **before loading/evaluating any
+model or starting a training run**. The in-memory checkpoint tuple was compared to
+its JSON list representation, falsely reporting drift. A regression test reproduced
+this; canonical JSON normalization repairs the comparison while still rejecting
+changed model bytes. Preserve the initial manifest as `manifest.preflight-rejected.json`,
+then freeze a corrected manifest including this code/registration update before any
+evaluation. No data/model settings, prediction, metrics, order or decision rule change.

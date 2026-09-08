@@ -52,6 +52,8 @@ def freeze_manifest() -> dict:
                 "packages": {p: version(p) for p in ("torch", "transformers", "numpy", "datasets", "peft")},
                 "order": [asdict(config(c, s)) for c, s in ORDER],
                 "streams": {str(s): FillerStream(tokens, 64, s).provenance(34500) for s in (0, 1, 2)}}
+    # Compare JSON-native values on both sides (checkpoint tuples serialize as lists).
+    manifest = json.loads(json.dumps(manifest))
     OUT.mkdir(parents=True, exist_ok=True)
     path = OUT / "manifest.json"
     if path.exists():
