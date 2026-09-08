@@ -58,6 +58,30 @@ class Config:
     relearn_steps: int = 10
     filler_snapshot: str = ""  # new comparisons must supply a snapshot AND its file hash
     filler_sha256: str = ""
+    model_revision: str = ""
+    offline: bool = False
+    collect_step_guards: bool = False
+
+
+def schedule_last_exposures(sched: dict, n_facts: int) -> np.ndarray:
+    last = np.full(n_facts, -1, dtype=int)
+    for step, ids in sched.items():
+        for i in ids:
+            last[i] = max(last[i], step)
+    if np.any(last < 0):
+        raise ValueError("Schedule missing a target fact")
+    return last
+
+
+def training_step_guard(step: int, filler: int, targets: int, interference: int, norm: float) -> dict:
+    if not math.isfinite(norm):
+        raise ValueError(f"Nonfinite pre-clipping norm at step {step}")
+    coefficient = targets / (filler + targets + interference)
+    scale = min(1.0, 1.0 / (norm + 1e-6))
+    return {"step": step, "targets": targets, "interference": interference,
+            "preclip_norm": norm, "clip_scale": scale,
+            "target_coefficient_sum": coefficient,
+            "clipped_target_coefficient_sum": coefficient * scale}
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -233,9 +257,12 @@ def run(cfg: Config, out_dir: Path) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(cfg.seed)
     dev = cfg.device
-    tok = AutoTokenizer.from_pretrained(cfg.model_name)
+    load_kwargs = {"local_files_only": cfg.offline}
+    if cfg.model_revision:
+        load_kwargs["revision"] = cfg.model_revision
+    tok = AutoTokenizer.from_pretrained(cfg.model_name, **load_kwargs)
     model = AutoModelForCausalLM.from_pretrained(
-        cfg.model_name, resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0
+        cfg.model_name, resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0, **load_kwargs
     ).to(dev)
     if cfg.lora_r > 0:
         from peft import LoraConfig, get_peft_model
@@ -276,7 +303,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
 
     if cfg.condition == "random":
         sched = random_schedule(cfg.n_facts, cfg.k, cfg.t_inj, seed=cfg.seed)
-        last = None
+        last = schedule_last_exposures(sched, cfg.n_facts) if cfg.collect_step_guards else None
     else:
         last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, cfg.gap_max, cfg.t_inj, seed=cfg.seed)
         sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
@@ -299,7 +326,8 @@ def run(cfg: Config, out_dir: Path) -> dict:
     log: dict = {"config": asdict(cfg), "provenance": provenance, "facts": [asdict(f) for f in facts],
                  "int_facts": [asdict(f) for f in int_facts],
                  "last_exposure": None if last is None else last.tolist(),
-                 "evals": [], "train_loss": [], "guards": {}}
+                 "evals": [], "train_loss": [], "guards": {}, "step_guards": [],
+                 "interference_schedule": int_sched}
 
     def evaluate(phase: str, step: int, int_step: int | None = None):
         r = evaluator(model)
@@ -314,6 +342,10 @@ def run(cfg: Config, out_dir: Path) -> dict:
                  holdout_loss=holdout_loss(model, stream.holdout, dev),
                  param_dist=param_distance(model, theta0))
         log["evals"].append(r)
+        if cfg.collect_step_guards:
+            partial = out_dir / "progress.json.tmp"
+            partial.write_text(json.dumps(log, indent=1))
+            partial.replace(out_dir / "progress.json")
         print(f"[eval] {phase:>10} step={step:5d} acc={r['acc']:.3f} nll={r['nll']:.3f} disc={r['disc']:.2f} "
               f"holdout={r['holdout_loss']:.3f} |dθ|={r['param_dist']:.2f}"
               + (f" B_acc={r['int_facts_acc']:.3f}" if int_evaluator else "")
@@ -354,8 +386,13 @@ def run(cfg: Config, out_dir: Path) -> dict:
 
         x, labels = x.to(dev), labels.to(dev)
         loss = per_sequence_mean_loss(model(input_ids=x).logits, labels)
+        if cfg.collect_step_guards and not torch.isfinite(loss).item():
+            raise ValueError(f"Nonfinite loss at step {step}")
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        if cfg.collect_step_guards:
+            log["step_guards"].append(training_step_guard(
+                step, cfg.filler_per_step, len(shown), len(shown_int), float(norm)))
         opt.step(); opt.zero_grad(set_to_none=True)
         if step % 25 == 0:
             log["train_loss"].append((step, loss.item()))
