@@ -43,3 +43,16 @@ def random_schedule(n_facts: int, k: int, t_inj: int, seed: int) -> dict[int, li
 
 def exposure_count(sched: dict[int, list[int]]) -> int:
     return sum(len(v) for v in sched.values())
+
+
+def matched_random_schedule(last: np.ndarray, k: int, seed: int) -> dict[int, list[int]]:
+    """Uniform earlier exposures conditional on each item's prescribed final step."""
+    if k < 1 or any(p < k - 1 for p in last):
+        raise ValueError("Not enough distinct steps before the prescribed last exposure")
+    rng = np.random.default_rng(seed)
+    sched: dict[int, list[int]] = defaultdict(list)
+    for i, p in enumerate(last.tolist()):
+        earlier = rng.choice(p, size=k - 1, replace=False).tolist()
+        for step in earlier + [p]:
+            sched[step].append(i)
+    return dict(sched)

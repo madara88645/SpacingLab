@@ -20,7 +20,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .data import FillerStream, build_filler_tokens, load_filler_snapshot, token_digest
 from .facts import TEMPLATES, Fact, heldout_fact, make_facts, paraphrases
-from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
+from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule, matched_random_schedule
 
 GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64, "gap128": 128, "gap256": 256}
 GAP_MAX = 64
@@ -306,7 +306,10 @@ def run(cfg: Config, out_dir: Path) -> dict:
         last = schedule_last_exposures(sched, cfg.n_facts) if cfg.collect_step_guards else None
     else:
         last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, cfg.gap_max, cfg.t_inj, seed=cfg.seed)
-        sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
+        if cfg.condition == "random_matched":
+            sched = matched_random_schedule(last, cfg.k, seed=cfg.seed + 30000)
+        else:
+            sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
     assert exposure_count(sched) == cfg.n_facts * cfg.k
     assert max(len(v) for v in sched.values()) <= cfg.max_facts_per_step
     # interference facts: random placement over the interference phase, identical across
@@ -327,7 +330,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
                  "int_facts": [asdict(f) for f in int_facts],
                  "last_exposure": None if last is None else last.tolist(),
                  "evals": [], "train_loss": [], "guards": {}, "step_guards": [],
-                 "interference_schedule": int_sched}
+                 "interference_schedule": int_sched, "target_schedule": sched}
 
     def evaluate(phase: str, step: int, int_step: int | None = None):
         r = evaluator(model)
@@ -441,7 +444,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
 def main():
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--condition", required=True, choices=list(GAPS) + ["random"])
+    ap.add_argument("--condition", required=True, choices=list(GAPS) + ["random", "random_matched"])
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--k", type=int, default=4)
