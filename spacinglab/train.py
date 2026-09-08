@@ -1,12 +1,15 @@
 """One run: pre-phase -> injection window (facts placed by schedule) -> interference.
 
-Everything except the exposure placement is identical across conditions of a seed.
+Matched comparisons require the same immutable filler snapshot, not just a seed.
 """
 from __future__ import annotations
 
 import json
 import math
+import subprocess
 import time
+import warnings
+from importlib.metadata import version
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -15,7 +18,7 @@ import torch
 import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from .data import FillerStream, build_filler_tokens
+from .data import FillerStream, build_filler_tokens, load_filler_snapshot, token_digest
 from .facts import TEMPLATES, Fact, heldout_fact, make_facts, paraphrases
 from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule
 
@@ -53,6 +56,8 @@ class Config:
     gap_max: int = GAP_MAX    # Study 5: largest gap the shared last-exposure draw must accommodate
     relearn: bool = False     # Study 3: after interference, 1 exposure of every old fact + 1 of each new control fact
     relearn_steps: int = 10
+    filler_snapshot: str = ""  # new comparisons must supply a snapshot AND its file hash
+    filler_sha256: str = ""
 
 
 def per_sequence_mean_loss(logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
@@ -213,6 +218,18 @@ def relearn(cfg, model, opt, stream, tok, old_eval, ctrl_facts, dev, log) -> Non
 
 
 def run(cfg: Config, out_dir: Path) -> dict:
+    if (out_dir / "log.json").exists():
+        raise FileExistsError(f"Refusing to overwrite completed run: {out_dir}")
+    if bool(cfg.filler_snapshot) != bool(cfg.filler_sha256):
+        raise ValueError("filler_snapshot and filler_sha256 must be supplied together")
+    total_steps = cfg.t_pre + cfg.t_inj + cfg.t_int
+    n_filler = total_steps * cfg.filler_per_step
+    required_tokens = (n_filler + 400) * cfg.seq_len
+    tokens = None
+    if cfg.filler_snapshot:
+        tokens = load_filler_snapshot(cfg.filler_snapshot, cfg.filler_sha256, required_tokens)
+    else:
+        warnings.warn("Unpinned legacy filler cache: not suitable for matched cross-run claims", stacklevel=2)
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(cfg.seed)
     dev = cfg.device
@@ -239,10 +256,23 @@ def run(cfg: Config, out_dir: Path) -> dict:
     int_evaluator = Evaluator(tok, int_facts, dev) if int_facts else None
     heldout_evaluator = Evaluator(tok, [heldout_fact(f) for f in facts], dev) if cfg.heldout_probe else None
 
-    total_steps = cfg.t_pre + cfg.t_inj + cfg.t_int
-    n_filler = total_steps * cfg.filler_per_step
-    tokens = build_filler_tokens(tok, n_tokens=(n_filler + 400) * cfg.seq_len)
+    if tokens is None:
+        tokens = build_filler_tokens(tok, n_tokens=required_tokens)
     stream = FillerStream(tokens, cfg.seq_len, seed=cfg.seed)
+    provenance = stream.provenance(n_filler)
+    provenance.update(snapshot_pinned=bool(cfg.filler_snapshot),
+                      filler_file_sha256=cfg.filler_sha256 or None,
+                      filler_tokens=len(tokens), filler_tokens_sha256=token_digest(tokens),
+                      model_revision=getattr(model.config, "_commit_hash", None),
+                      packages={p: version(p) for p in ("torch", "transformers", "numpy")})
+    root = Path(__file__).resolve().parents[1]
+    try:
+        provenance["code_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        provenance["tracked_code_dirty"] = bool(subprocess.check_output(
+            ["git", "status", "--porcelain", "--untracked-files=no", "--", "spacinglab", "uv.lock", "pyproject.toml"],
+            cwd=root, text=True).strip())
+    except (OSError, subprocess.CalledProcessError):
+        provenance["code_commit"] = None
 
     if cfg.condition == "random":
         sched = random_schedule(cfg.n_facts, cfg.k, cfg.t_inj, seed=cfg.seed)
@@ -266,7 +296,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=cfg.lr,
                             betas=(cfg.beta1, 0.999), weight_decay=0.0)
 
-    log: dict = {"config": asdict(cfg), "facts": [asdict(f) for f in facts],
+    log: dict = {"config": asdict(cfg), "provenance": provenance, "facts": [asdict(f) for f in facts],
                  "int_facts": [asdict(f) for f in int_facts],
                  "last_exposure": None if last is None else last.tolist(),
                  "evals": [], "train_loss": [], "guards": {}}
@@ -391,9 +421,12 @@ def main():
     ap.add_argument("--relearn", action="store_true")
     ap.add_argument("--heldout-probe", action="store_true")
     ap.add_argument("--gap-max", type=int, default=GAP_MAX)
+    ap.add_argument("--filler-snapshot", default="")
+    ap.add_argument("--filler-sha256", default="")
     a = ap.parse_args()
     cfg = Config(condition=a.condition, seed=a.seed, lr=a.lr, k=a.k, t_inj=a.t_inj, t_int=a.t_int,
-                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn, heldout_probe=a.heldout_probe, gap_max=a.gap_max)
+                 tag=a.tag, n_int_facts=a.n_int_facts, n_facts=a.n_facts, beta1=a.beta1, lora_r=a.lora_r, k_last=a.k_last, paraphrase=a.paraphrase, relearn=a.relearn, heldout_probe=a.heldout_probe, gap_max=a.gap_max,
+                 filler_snapshot=a.filler_snapshot, filler_sha256=a.filler_sha256)
     if a.t_int < 1500:
         cfg.eval_int_steps = tuple(s for s in cfg.eval_int_steps if s <= a.t_int)
     name = f"{a.tag + '_' if a.tag else ''}{a.condition}_s{a.seed}_lr{a.lr:g}_k{a.k}"
