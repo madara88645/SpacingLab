@@ -1,78 +1,76 @@
-# Resume SpacingLab — 2026-09-08
+# Resume SpacingLab — Study 8 active (2026-09-08)
 
-Read `docs/DURUM_2026-09-08_TR.md` and `docs/PROVENANCE_AUDIT_2026-09-08.md` first.
-The linked ChatGPT conversation `6a9e6d1b-ab3c-83eb-9471-d0759ddfee81` was read; its
-external review is already stored under `docs/`.
+## Current state
 
-## Completed in the Codex continuation
+Study 7 finished: all six raw logs, progress logs, console logs and the paired summary
+were committed in `4f84b3a`. Data/model/source and paired guards were verified before
+the user's status answer. Retention random-minus-spaced was +0.09286 (sample SD
+0.04586; range +0.06357 to +0.14571), with NLL in the same direction. This was a
+placement-policy result, not a last-exposure-recency-controlled result.
 
-- Registered CPU provenance audit before measuring (`a687a64`), then committed its
-  analysis code before execution (`52bf07a`). JSON results are under `results/`.
-- Reproduced changed training and held-out streams when the token cache grows.
-  Historical Study 1 spaced vs Study 6 random logs differ before injection.
-- Withdrew the isolated "ordinary shuffling suffices" interpretation. The historical
-  numbers stay intact. No estimate of the data confound's causal size was made.
-- Added opt-in immutable snapshot validation, stream/provenance logging, and rejection
-  of attempts to overwrite a completed log. Old scripts warn but remain unpinned.
-- Corrected erasure/savings/format-decomposition and loss-weight equivalence claims.
-  Archived the old Turkish report; current root report reflects these corrections.
-- No new model training, subagents, remote creation or publication in this continuation.
+The user then explicitly authorized the last-exposure control. **Study 8 is running.**
+Do not launch a duplicate. Registered design: `docs/STUDY8_PREREGISTRATION.md`,
+commit `7547cf8`; implementation `2aeb80b`; pre-evaluation manifest `fafbd6b`.
+29 tests passed, two successive preflights passed, and first pretrained evaluation
+plus optimizer step 0 were observed. No Study 8 outcome yet.
 
-## Study 7 — registered and running, 2026-09-08
+Command: `uv run --frozen python -u -m spacinglab.study8 --run`.
+Exec session 59926; initial parent PID 22035, worker PID 22037 (verify live).
+Order: spaced0, random_matched0, random_matched1, spaced1, spaced2, random_matched2.
+Estimated whole chain roughly 1.5–2 hours, uncertain. Serial MPS; no remote compute.
 
-The user authorized continuation. Registration: `docs/STUDY7_PREREGISTRATION.md`,
-initial commit `e5c93b0`. Instrumentation is implemented and 25 tests pass. A preflight
-tuple/list serialization bug stopped the first launch before model loading; Amendment
-7.1 records its regression fix. Initial and corrected manifests are both retained.
+## What the new control does
 
-The corrected chain started successfully, observed GPT-2 pretrained evaluation and
-optimizer step 0. At this handoff it is still running, not a completed result.
-Exec session 70798; initial parent/worker PIDs 6934/6935 (verify live before using).
-Command: `uv run --frozen python -u -m spacinglab.study7 --run`.
-It runs spaced0, random0, random1, spaced1, spaced2, random2 serially, then creates
-`results/study7/summary.json` and `results/study7/REPORT.md` automatically.
+Both arms freshly trained. Same data/model/software, same per-seed facts, same final
+exposure of **every fact**, not just the same mean date. Spaced has fixed gap 64.
+Random matched samples four distinct earlier times from [0,p_i), then includes p_i.
+Seed for earlier times = seed+30000. Number of exposures = five in both arms.
 
-Read each run's `console.log` and `progress.json` for progress. Only `log.json` means
-a completed run; only `STUDY7_DONE` plus six validated logs means chain success.
-Do not start a duplicate. Runner lock prevents two ordinary chain launches. Check
-processes before stopping or resuming. If interrupted, preserve the incomplete attempt
-and amend before restarting it; completed runs can be skipped after manifest checks.
+Actual target schedules are logged and checked against their registered construction.
+Complete schedule and final-time equality are checked before a pair is accepted.
+First-time/span metrics, acquisition, NLL, clipping, batch-weight and new-learning
+guards remain in the analysis. Earlier exposure history still differs: if the effect
+vanishes that does not prove recency mediated all of Study 7. If it persists, this
+comparison excludes a last-exposure-recency-only explanation. See registration for
+the directional rule and prediction; do not introduce a new threshold.
 
-Next action: wait for the existing chain, inspect every paired guard and the auto-
-generated report, update the Turkish conclusion, and commit all results. Do not
-claim an outcome from the first seed, or reuse old controls. No automatic notification
-or recurring monitor has been created; the finite chain itself performs the runs and
-analysis. No extra experiments are authorized by its implementation.
+## How to inspect and finish
 
-### Design context
+Look at `results/study8/<condition>_s<seed>/console.log` and `progress.json`.
+Only `log.json` means a completed run. After six validated logs the chain automatically
+creates `results/study8/summary.json` and `REPORT.md`, then prints `STUDY8_DONE`.
+No recurring monitor/notification automation exists; the finite process runs and analyzes.
 
-Fresh random vs spaced pairs, seeds 0–2, both conditions trained under one frozen
-data/model/software snapshot. Do not reuse old spaced controls. The design was registered
-before new model measurements. It includes exact-match accuracy, NLL, acquisition
-at last exposure, last-exposure timing, effective loss coefficients and pre-clipping
-gradient norms. Random-condition last-exposure probing is now enabled.
+On completion: verify all six logs, exact schedule/last-time matching, paired data/
+model/budgets and the generated numbers; inspect NLL/acquisition/new-learning tradeoffs;
+update English and short Turkish reports, then commit all evidence locally. Do not
+claim an outcome from one seed. A status-only question permits inspection/reporting;
+do not infer authority for extra studies.
 
-The estimand should be the total placement-policy effect, not pure consolidation:
-random differs in recency and batch composition. Three seeds cannot establish
-equivalence. Do not reuse the old 0.041 cutoff as if statistically calibrated.
+On a stop request, check live PIDs and terminate only this chain and its worker;
+preserve partial attempts. On interruption, completed runs can be skipped after checks;
+an incomplete nonempty attempt must be retained and a restart documented before retry.
+The chain refuses silent overwrites. Do not change source/lock/registration/model/data
+during execution: manifests reject drift.
 
-Current tracked filler file: `data/wikitext103_tokens.npy`, expected file SHA-256
+## Reproducibility and earlier caveats
+
+Current immutable filler SHA-256:
 `868d9478038bd65a11f33b2f943178bf1a291c3d756041191faf542502b70304`.
-New runs must supply `--filler-snapshot` AND `--filler-sha256`, pin model/software
-versions, verify paired stream hashes, and use the dedicated `results/study7` directory.
-Use the registered chain command above, not the legacy training scripts.
+GPT-2 revision: `607a30d783dfa663caf39e06633721c8d4cfcd7e`.
+Full file hashes/software versions are in each study's manifest.
 
-Previous random runs took 14.2–14.7 minutes each, excluding some setup overhead.
-Budget roughly 1.5–2 hours for six runs, with uncertainty for extra probes. Do not
-restart all 73 historical runs. Preserve results; stop immediately if asked to close.
+Shared training source changed for Study 8. To exactly rerun Study 7 from its pinned
+manifest, use its historical source commit in a separate authorized checkout; do not
+replace its old manifest with the new source hashes. Historical `--analyze` reads
+stored logs, but compare calculations to frozen source before making reproducibility claims.
 
-## Local verification
+Read `docs/PROVENANCE_AUDIT_2026-09-08.md` for the old mutable-cache failure. Study 6b's
+unmatched-data recommendation remains withdrawn; Study 7 is separate fresh evidence.
+Study 3 did not establish erasure, unusable representations, or a unique 90%-format
+decomposition. Preserve failed predictions and three-seed uncertainty.
 
-`uv run pytest -q`
-
-`uv run python -m spacinglab.provenance_audit` reconstructs the audit from Git and
-stored logs; it overwrites only the audit JSON with the current execution commit.
-Do not run it merely to erase the original audit execution provenance.
-
-Use only Sonnet if subagents are needed. Do not touch ForgetLab. No remote or push
-without the user's approval. Explain findings in short, plain Turkish.
+`uv run --frozen pytest -q` runs software tests (no model training).
+Never touch ForgetLab. No remote/push/publication without user approval. If subagents
+are needed, every one must explicitly use Sonnet. None used in these continuations.
+Explain results with short student-level examples; no unexplained jargon.
