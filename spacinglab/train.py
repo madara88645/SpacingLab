@@ -20,7 +20,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .data import FillerStream, build_filler_tokens, load_filler_snapshot, token_digest
 from .facts import TEMPLATES, Fact, heldout_fact, make_facts, paraphrases
-from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule, matched_random_schedule
+from .schedule import draw_last_exposures, exposure_count, gap_schedule, random_schedule, matched_random_schedule, permuted_gap_schedule
 
 GAPS = {"massed": 1, "gap4": 4, "gap16": 16, "spaced": 64, "gap128": 128, "gap256": 256}
 GAP_MAX = 64
@@ -308,6 +308,8 @@ def run(cfg: Config, out_dir: Path) -> dict:
         last = draw_last_exposures(cfg.n_facts, cfg.k_last or cfg.k, cfg.gap_max, cfg.t_inj, seed=cfg.seed)
         if cfg.condition == "random_matched":
             sched = matched_random_schedule(last, cfg.k, seed=cfg.seed + 30000)
+        elif cfg.condition == "variable_gaps":
+            sched = permuted_gap_schedule(last, cfg.k, seed=cfg.seed + 40000)
         else:
             sched = gap_schedule(last, cfg.k, GAPS[cfg.condition])
     assert exposure_count(sched) == cfg.n_facts * cfg.k
@@ -444,7 +446,7 @@ def run(cfg: Config, out_dir: Path) -> dict:
 def main():
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--condition", required=True, choices=list(GAPS) + ["random", "random_matched"])
+    ap.add_argument("--condition", required=True, choices=list(GAPS) + ["random", "random_matched", "variable_gaps"])
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--k", type=int, default=4)

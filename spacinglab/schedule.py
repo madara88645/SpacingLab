@@ -56,3 +56,18 @@ def matched_random_schedule(last: np.ndarray, k: int, seed: int) -> dict[int, li
         for step in earlier + [p]:
             sched[step].append(i)
     return dict(sched)
+
+
+def permuted_gap_schedule(last: np.ndarray, k: int, seed: int) -> dict[int, list[int]]:
+    """Five exposures with permuted gaps 32,32,64,128; both endpoints fixed."""
+    if k != 5 or any(p < 256 for p in last):
+        raise ValueError("Variable-gap policy requires five exposures and a 256-step span")
+    rng = np.random.default_rng(seed)
+    sched: dict[int, list[int]] = defaultdict(list)
+    for i, p in enumerate(last.tolist()):
+        step = p - 256
+        sched[step].append(i)
+        for gap in rng.permutation([32, 32, 64, 128]):
+            step += int(gap)
+            sched[step].append(i)
+    return dict(sched)
