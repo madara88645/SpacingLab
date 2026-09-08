@@ -18,14 +18,39 @@ external review is already stored under `docs/`.
   Archived the old Turkish report; current root report reflects these corrections.
 - No new model training, subagents, remote creation or publication in this continuation.
 
-## Next bounded study (not registered or started yet)
+## Study 7 — registered and running, 2026-09-08
+
+The user authorized continuation. Registration: `docs/STUDY7_PREREGISTRATION.md`,
+initial commit `e5c93b0`. Instrumentation is implemented and 25 tests pass. A preflight
+tuple/list serialization bug stopped the first launch before model loading; Amendment
+7.1 records its regression fix. Initial and corrected manifests are both retained.
+
+The corrected chain started successfully, observed GPT-2 pretrained evaluation and
+optimizer step 0. At this handoff it is still running, not a completed result.
+Exec session 70798; initial parent/worker PIDs 6934/6935 (verify live before using).
+Command: `uv run --frozen python -u -m spacinglab.study7 --run`.
+It runs spaced0, random0, random1, spaced1, spaced2, random2 serially, then creates
+`results/study7/summary.json` and `results/study7/REPORT.md` automatically.
+
+Read each run's `console.log` and `progress.json` for progress. Only `log.json` means
+a completed run; only `STUDY7_DONE` plus six validated logs means chain success.
+Do not start a duplicate. Runner lock prevents two ordinary chain launches. Check
+processes before stopping or resuming. If interrupted, preserve the incomplete attempt
+and amend before restarting it; completed runs can be skipped after manifest checks.
+
+Next action: wait for the existing chain, inspect every paired guard and the auto-
+generated report, update the Turkish conclusion, and commit all results. Do not
+claim an outcome from the first seed, or reuse old controls. No automatic notification
+or recurring monitor has been created; the finite chain itself performs the runs and
+analysis. No extra experiments are authorized by its implementation.
+
+### Design context
 
 Fresh random vs spaced pairs, seeds 0–2, both conditions trained under one frozen
-data/model/software snapshot. Do not reuse old spaced controls. Register this study's
-design before new model measurements. Include exact-match accuracy, NLL, acquisition
+data/model/software snapshot. Do not reuse old spaced controls. The design was registered
+before new model measurements. It includes exact-match accuracy, NLL, acquisition
 at last exposure, last-exposure timing, effective loss coefficients and pre-clipping
-gradient norms. Current code still needs the latter instrumentation and a random-
-condition last-exposure probe before that study is ready.
+gradient norms. Random-condition last-exposure probing is now enabled.
 
 The estimand should be the total placement-policy effect, not pure consolidation:
 random differs in recency and batch composition. Three seeds cannot establish
@@ -34,8 +59,8 @@ equivalence. Do not reuse the old 0.041 cutoff as if statistically calibrated.
 Current tracked filler file: `data/wikitext103_tokens.npy`, expected file SHA-256
 `868d9478038bd65a11f33b2f943178bf1a291c3d756041191faf542502b70304`.
 New runs must supply `--filler-snapshot` AND `--filler-sha256`, pin model/software
-versions, verify paired stream hashes, and use a new results directory. There is no
-new-run command in this note because the guard instrumentation/design is not ready.
+versions, verify paired stream hashes, and use the dedicated `results/study7` directory.
+Use the registered chain command above, not the legacy training scripts.
 
 Previous random runs took 14.2–14.7 minutes each, excluding some setup overhead.
 Budget roughly 1.5–2 hours for six runs, with uncertainty for extra probes. Do not

@@ -1,5 +1,9 @@
 # SpacingLab — güncel durum (8 Eylül 2026)
 
+> **Yeni çalışma başladı:** Sabit veriyle altı koşuluk Study 7 çalışıyor. Ön kayıt ve
+> dosya doğrulaması tamam; 25 test geçti. Henüz sonuç yok. Koşular sırayla bitince
+> `results/study7/REPORT.md` ve `summary.json` otomatik üretilecek.
+
 **Rastgele karıştırmanın düzenli aralık kadar iyi olduğu sonucu henüz güvenilir değil:
 karşılaştırılan koşuların eğitim ve sınav metinlerinin aynı kaldığı varsayımı bozulmuş.**
 
@@ -12,13 +16,13 @@ yeter” önerisini geri çekiyoruz. Ayrıca yanlış cevap vermek, bilginin tam
 demek değil; tek hatırlatmanın işe yaramaması da sonradan öğrenmenin imkânsızlığını göstermiyor.
 
 Yeni koruma, veri dosyası değişirse deneyi durduruyor ve hangi eğitim/sınav parçalarının
-kullanıldığını kaydediyor. Eski sonuçlar korunuyor. Bu oturumda yeni eğitim yapılmadı;
-tamamlanan iş veri denetimi, koruyucu kod ve testler.
+kullanıldığını kaydediyor. Eski sonuçlar korunuyor. Önceki denetim oturumunda eğitim
+yapılmamıştı; bu devam oturumunda Study 7 eğitimi başlatıldı.
 
 **Sıradaki iş:** aynı sabit veriyle düzenli aralık ve rastgele yerleştirmeyi üçer kez,
 toplam altı koşuda yeniden karşılaştırmak. Eski kontrol grubunu kullanmayacağız.
 Doğru cevap oranıyla birlikte doğru cevaba verilen olasılığı ve başlangıç öğrenmesini
-ölçeceğiz. Eski sürelerden hareketle yaklaşık 1,5–2 saatlik laptop işi; henüz başlamadı.
+ölçeceğiz. Eski sürelerden hareketle yaklaşık 1,5–2 saatlik laptop işi; şu anda çalışıyor.
 
 **Devam etmeye değer.** Şimdilik tek adil karşılaştırma, yeni mekanizma iddialarından
 daha yararlı. Sonuç belirsiz kalırsa bunu açıkça yazacağız. GitHub'a gönderim yapılmadı.

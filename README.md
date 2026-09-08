@@ -1,5 +1,10 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
+> **Study 7 running (8 September):** six freshly paired random/spaced runs are now
+> executing against frozen inputs. [Registration](docs/STUDY7_PREREGISTRATION.md).
+> No Study 7 outcome yet. The serial runner writes its analysis only after all six
+> logs validate. Check `RESUME.md` before launching any training command.
+
 > **Status correction, 8 September 2026:** Study 6b reused a spaced control from
 > before the filler cache grew. A registered provenance audit reproduces changed
 > training/held-out streams for all three seeds and finds pre-intervention log
