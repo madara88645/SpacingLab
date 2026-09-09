@@ -1,5 +1,23 @@
 # Resume SpacingLab — Study 10 and infographic completed (2026-09-09)
 
+## Latest user-authorized continuation
+
+The user asked to continue and explicitly requested ONE gpt-5.6-luna research
+subagent. This overrides the historical Sonnet rule for that specific agent only.
+Spawned read-only sidecar Ampere, id 01a0859e-7576-7422-8f06-2029f6ae09fa, model
+gpt-5.6-luna, reasoning high, no inherited history. Its scope: three alternative
+memory-inspired interventions with primary sources, matched controls and failure
+criteria. No file edits, training, publication or descendants. Review its source
+claims before adopting suggestions and close the agent when done.
+
+Main agent separately inspected existing true-versus-foil NLL, without retraining.
+Post-hoc analysis description committed afb7252; checked results committed 293360f.
+See results/study10/NLL_SPECIFICITY.md. Incorrect same-template answers also show
+lower mean NLL; separation delta -.01450 ± .15499 is not a consistent benefit.
+This clarifies an already-reported guard, not independent new evidence. Do not
+promote NLL-only improvement to factual memory improvement or conclude all gain
+is format. No new training launched; next experiment choice awaits research review.
+
 ## Completion
 
 Six Study 10 runs on seeds 3,4,5 completed normally; no training process remains.
@@ -26,7 +44,8 @@ Study 10 registration a4b3079, runner/tests ef1d996, manifest ea5ac56.
 Prior Study 9 evidence add1634. Never regenerate historical manifests merely to
 match later source changes. Training and scheduling code were not changed.
 All original/raw results preserved. No push/publication or personal data accessed.
-Never touch ForgetLab. Any subagent must be explicitly Sonnet; none spawned.
+Never touch ForgetLab. Historical rule: subagents must be explicitly Sonnet.
+The latest user-authorized one-agent Luna exception is documented above.
 
 ## Completed visual delivery
 
