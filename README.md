@@ -1,12 +1,21 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
-> **Current status (8 September): Study 8 completed; Study 9 now running.**
+> **Current status (9 September): Study 9 completed; Study 10 replication running.**
+> Variable-minus-spaced primary accuracy in Study 9 was +0.04238, sample SD
+> 0.05866, seed range -0.02000 to +0.09643: mixed/inconclusive. Checkpoint-mean
+> NLL difference -0.07530, SD 0.08324. Acquisition also differed.
+> [Study 9 evidence](results/study9/REPORT.md). Six fixed new runs on seeds 3-5
+> now repeat the same comparison, without pooling for the decision.
+> [Study 10 registration](docs/STUDY10_PREREGISTRATION.md). No Study 10 result yet.
+> A verified-results infographic is requested after completion. Check RESUME.md.
+
+> **Prior control (8 September): Study 8 completed.**
 > Matching each fact's final exposure yielded random-minus-spaced retention
 > +0.01595, sample SD 0.04427, seed range -0.03214 to +0.05500: mixed/inconclusive.
 > NLL difference was -0.05382, SD 0.08139. No superiority or equivalence conclusion.
 > [Study 8 results](results/study8/REPORT.md). Study 9 now matches both endpoints
 > and compares fixed gaps [64,64,64,64] to permuted [32,32,64,128] in six fresh runs.
-> [Study 9 registration](docs/STUDY9_PREREGISTRATION.md). No completed Study 9 outcome yet.
+> [Study 9 registration](docs/STUDY9_PREREGISTRATION.md). See the current status above.
 > These synthetic-fact experiments do not establish personalization or PEFT benefits.
 > Check `RESUME.md` before launching any training command.
 

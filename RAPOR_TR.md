@@ -1,51 +1,49 @@
-# SpacingLab — güncel durum (8 Eylül 2026)
+# SpacingLab — güncel durum (9 Eylül 2026)
 
-**Son kontrol, rastgele tekrarın düzenli tekrardan daha iyi olduğunu gösteremedi;
-şimdi tekrarların başlangıcını ve bitişini de eşitleyerek aralıkları karşılaştırıyoruz.**
+**Karışık aralıklar ilk denemede ortalamada öne geçti, ama sonuç tutarlı değildi.
+Şimdi aynı karşılaştırmayı üç yeni rastgelelik ayarıyla tekrar ediyoruz.**
 
-## Tamamlanan kontrol: Study 8
+## Tamamlanan deney: Study 9
 
-Örnek: iki öğrenci de aynı bilginin son tekrarını cuma günü yapıyor.
-Önceki dört tekrar birinde düzenli, diğerinde rastgele. Her yöntemi üç kez denedik.
+Beş gösterim arasında sabit 64–64–64–64 boşlukları ile 32–32–64–128'in
+karıştırılmış sırasını karşılaştırdık. İlk ve son gösterim her bilgi için aynıydı.
 
-Sonraki yedi sınavdaki doğru cevap oranının ortalaması:
-
-| Yöntem | Ortalama | Koşular arası standart sapma | Üç koşudaki aralık |
+| Yöntem | Sonraki yedi sınavda ortalama doğruluk | Standart sapma | Üç koşudaki aralık |
 |---|---:|---:|---:|
-| Düzenli | %28,1 | 8,3 yüzde puan | %19,4–36,1 |
-| Son tekrarı eşitlenmiş rastgele | %29,7 | 4,2 yüzde puan | %24,9–32,9 |
+| Sabit aralık | %28,7 | 4,0 yüzde puan | %25,2–33,0 |
+| Değişken aralık | %32,9 | 9,7 yüzde puan | %23,2–42,6 |
 
-Eşleştirilmiş avantaj ortalama 1,6 puan, fakat koşudan koşuya değişimi gösteren
-standart sapma 4,4 puan. Üç ayrı fark: -3,2, +2,5 ve +5,5 puan.
-Bu nedenle “rastgele daha iyi” diyemiyoruz; “ikisi kesin eşit” de diyemiyoruz.
-Doğru cevaba verilen olasılığı izleyen NLL ölçüsünde fark -0,054, standart sapma
-0,081; bu küçük ve değişken fark da güçlü bir üstünlük göstermiyor.
+Standart sapma koşudan koşuya değişkenliği gösterir; güven aralığı değildir.
+Üç eşleştirilmiş avantaj: +9,6, +5,1 ve -2,0 puan.
+Ortalama fark +4,2 puan; standart sapması 5,9 puan. İki kazanç, bir kayıp:
+önceden belirlediğimiz kurala göre sonuç belirsiz. Kesin üstünlük veya eşitlik yok.
 
-Önceki Study 7'nin daha büyük avantajı burada tekrarlanmadı. Ancak tüm farkın
-sebebinin son tekrar zamanı olduğunu kanıtlamadık: önceki tekrarların dağılımı da
-değişti. Başlangıçta öğrenilen miktarlar da eşit değildi.
+Doğru cevaba verilen olasılığı izleyen NLL farkı -0,075, standart sapması 0,083;
+küçük ve değişken. Karışık grup son gösterimde de daha iyi öğrenmişti:
+doğruluk farkı +4,2 puan, standart sapması 2,0 puan. Bu yüzden avantajı doğrudan
+“daha az unutuyor” diye yorumlayamayız. Altı koşunun ham sonuçları Git'te saklandı.
 
-## Şimdi çalışan deney: Study 9
+## Şimdi çalışan tekrar: Study 10
 
-Beş gösterim arasında dört boşluk var:
+Aynı iki yöntemi üç yeni rastgelelik ayarıyla, toplam altı yeni eğitimde deniyoruz.
+Model, tekrar sayısı, aralıklar ve toplam eğitim miktarı değişmedi.
+Örnek: aynı çalışma yöntemlerini bu kez üç yeni soru setinde sınamak gibi.
+Yeni sonuçları eskilere karıştırmadan ayrıca değerlendireceğiz.
 
-- Düzenli: 64 → 64 → 64 → 64 eğitim adımı.
-- Değişken: 32, 32, 64, 128 adımlarının her bilgi için karıştırılmış sırası.
+Plan sonuçlardan önce kaydedildi; 39 yazılım testi ve iki başlangıç kontrolü geçti.
+İlk eğitim başladı. Tüm zincir yaklaşık 1,5–2 saat sürebilir; bilgisayar uyanık kalmalı.
+Sonuç iyi görünene kadar koşu eklemeyeceğiz. Üç yeni karşılaştırmanın tamamını
+olumlu veya olumsuz fark etmeksizin raporlayacağız.
 
-İkisinin de toplamı 256, ortalaması 64. Her bilginin ilk ve son gösterimi aynı.
-Böylece farklı toplam süreyi veya daha yakın son tekrarı avantaj saymayacağız.
-64'ün evrensel en iyi aralık olduğunu varsaymıyoruz.
+Sonuçta kısa açıklamaya ek olarak imagegen ile Türkçe bir infografik hazırlanacak:
+iki tekrar düzeni, üç ayrı karşılaştırma ve belirsizlik görselde birlikte gösterilecek.
+Sonuçları kontrol eden takip görevi 20 dakikada bir çalışacak; normal ilerleyişte
+sessiz kalacak, tamamlanınca veya sorun çıkınca haber verecek ve teslimden sonra duracak.
 
-Plan sonuçlardan önce Git'e kaydedildi; 33 yazılım testi geçti.
-Altı yeni koşu sırayla çalışıyor; ilk koşuda eğitim ilerliyor, henüz toplu sonuç yok.
-Toplam yaklaşık 1,5–2 saat; bilgisayar açık ve uyanık kalmalı.
-Sonuç olumlu da olumsuz da olsa üç koşunun değişkenliğiyle raporlanacak.
+Bu hâlâ küçük GPT-2 modelinde yapay bilgi deneyi. İnsan beyni mekanizmasını,
+kişiselleştirmeyi, senin konuşma biçimini veya LoRA'yı kanıtlamıyor.
+Kişisel mesajlarına dokunulmadı; her şey yerelde, paylaşım yapılmadı.
 
-Bu deney küçük GPT-2 modelinde yapay bilgiler üzerine. Senin üslubunu öğrenmeyi,
-kişisel mesajlarını veya LoRA'yı test etmiyor. Kişisel verilerine dokunulmadı.
-
-- [Study 8 ayrıntılı sonuçları](results/study8/REPORT.md)
-- [Study 9 önceden kaydedilmiş planı](docs/STUDY9_PREREGISTRATION.md)
-- [Eski veri eşleşmesi hatasının denetimi](docs/PROVENANCE_AUDIT_2026-09-08.md)
-
-Her şey yerelde; GitHub'a gönderim veya paylaşım yapılmadı.
+- [Study 9 ayrıntılı sonuçları](results/study9/REPORT.md)
+- [Study 10 önceden kaydedilmiş planı](docs/STUDY10_PREREGISTRATION.md)
+- [Tarihsel veri eşleşmesi denetimi](docs/PROVENANCE_AUDIT_2026-09-08.md)
