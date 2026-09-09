@@ -14,6 +14,11 @@
 [Turkish explanation](RAPOR_TR.md) · [Verified infographic](results/study10/infographic-tr.png)
 The infographic timelines are schematic; the numeric interval labels specify the schedule.
 
+Follow-up clarification: the secondary true-NLL gain does not isolate factual
+specificity; incorrect same-template answers also improve on average and separation
+does not consistently improve. [Post-hoc specificity check](results/study10/NLL_SPECIFICITY.md).
+This clarifies an existing guard, not a new independent finding or a changed primary result.
+
 > **Prior control (8 September): Study 8 completed.**
 > Matching each fact's final exposure yielded random-minus-spaced retention
 > +0.01595, sample SD 0.04427, seed range -0.03214 to +0.05500: mixed/inconclusive.

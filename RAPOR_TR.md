@@ -1,5 +1,11 @@
 # SpacingLab — Deney 10 tamamlandı (9 Eylül 2026)
 
+> **Sonraki kontrolün açıklaması:** Doğru cevapların yanında aynı türden yanlış
+> cevaplar da ortalamada daha olası hâle geliyor. Doğruyu yanlıştan ayırma ölçüsü
+> tutarlı iyileşmedi. Bu nedenle aşağıdaki olumlu NLL işaretini "daha güçlü bilgi
+> hafızası" diye yorumlamıyoruz. Bu yeni bir eğitim değil, mevcut kayıtlardaki
+> kontrol ölçüsünün açıklaması: [doğru/yanlış cevap karşılaştırması](results/study10/NLL_SPECIFICITY.md).
+
 **Yeni üç karşılaştırma da karışık aralıkların kesin üstünlüğünü göstermedi;
 ama doğru cevaba verilen olasılık açısından olumlu bir yan bulgu var.**
 
