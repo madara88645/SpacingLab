@@ -1,20 +1,25 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
-> **Current status (9 September): Study 9 completed; Study 10 replication running.**
-> Variable-minus-spaced primary accuracy in Study 9 was +0.04238, sample SD
-> 0.05866, seed range -0.02000 to +0.09643: mixed/inconclusive. Checkpoint-mean
-> NLL difference -0.07530, SD 0.08324. Acquisition also differed.
-> [Study 9 evidence](results/study9/REPORT.md). Six fixed new runs on seeds 3-5
-> now repeat the same comparison, without pooling for the decision.
-> [Study 10 registration](docs/STUDY10_PREREGISTRATION.md). No Study 10 result yet.
-> A verified-results infographic is requested after completion. Check RESUME.md.
+> **Current status (9 September): Study 10 replication completed and verified.**
+> Primary variable-minus-fixed accuracy: +0.01143, sample SD 0.02767, range
+> -0.00929 to +0.04286: mixed/inconclusive. Secondary NLL delta -0.09338,
+> SD 0.03197, range -0.12803 to -0.06502; secondary terminal accuracy delta
+> +0.04500, SD 0.02000, range +0.02500 to +0.06500. These do not replace the
+> primary endpoint or establish acquisition-independent forgetting.
+> [Study 10 write-up](results/study10/WRITEUP.md) ·
+> [Full evidence](results/study10/REPORT.md) · [Audit](results/study10/AUDIT.md).
+> Study 9 remains separately inconclusive: primary delta +0.04238, SD 0.05866,
+> range -0.02000 to +0.09643. No pooling or additional runs.
+
+[Turkish explanation](RAPOR_TR.md) · [Verified infographic](results/study10/infographic-tr.png)
+The infographic timelines are schematic; the numeric interval labels specify the schedule.
 
 > **Prior control (8 September): Study 8 completed.**
 > Matching each fact's final exposure yielded random-minus-spaced retention
 > +0.01595, sample SD 0.04427, seed range -0.03214 to +0.05500: mixed/inconclusive.
 > NLL difference was -0.05382, SD 0.08139. No superiority or equivalence conclusion.
-> [Study 8 results](results/study8/REPORT.md). Study 9 now matches both endpoints
-> and compares fixed gaps [64,64,64,64] to permuted [32,32,64,128] in six fresh runs.
+> [Study 8 results](results/study8/REPORT.md). Study 9 matched both endpoints
+> and compared fixed gaps [64,64,64,64] to permuted [32,32,64,128] in six fresh runs.
 > [Study 9 registration](docs/STUDY9_PREREGISTRATION.md). See the current status above.
 > These synthetic-fact experiments do not establish personalization or PEFT benefits.
 > Check `RESUME.md` before launching any training command.

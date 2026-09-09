@@ -1,49 +1,69 @@
-# SpacingLab — güncel durum (9 Eylül 2026)
+# SpacingLab — Deney 10 tamamlandı (9 Eylül 2026)
 
-**Karışık aralıklar ilk denemede ortalamada öne geçti, ama sonuç tutarlı değildi.
-Şimdi aynı karşılaştırmayı üç yeni rastgelelik ayarıyla tekrar ediyoruz.**
+**Yeni üç karşılaştırma da karışık aralıkların kesin üstünlüğünü göstermedi;
+ama doğru cevaba verilen olasılık açısından olumlu bir yan bulgu var.**
 
-## Tamamlanan deney: Study 9
+## Ne yaptık?
 
-Beş gösterim arasında sabit 64–64–64–64 boşlukları ile 32–32–64–128'in
-karıştırılmış sırasını karşılaştırdık. İlk ve son gösterim her bilgi için aynıydı.
+Küçük bir dil modeline aynı bilgileri beş kez gösterdik.
+Bir grupta boşluklar 64–64–64–64, diğerinde 32–32–64–128'in karıştırılmış sırasıydı.
+İlk ve son gösterim aynıydı; aralarda başka metinlerle eğitim sürdü.
+Üç yeni rastgelelik ayarıyla iki yöntemi de yeniden çalıştırdık: altı eğitim tamamlandı.
 
-| Yöntem | Sonraki yedi sınavda ortalama doğruluk | Standart sapma | Üç koşudaki aralık |
+## Ana sonuç: sonraki yedi sınavın ortalaması
+
+| Karşılaştırma | Sabit | Karışık | Karışık yöntemin farkı |
 |---|---:|---:|---:|
-| Sabit aralık | %28,7 | 4,0 yüzde puan | %25,2–33,0 |
-| Değişken aralık | %32,9 | 9,7 yüzde puan | %23,2–42,6 |
+| 1 (seed 3) | %27,50 | %26,57 | -0,93 puan |
+| 2 (seed 4) | %27,50 | %27,57 | +0,07 puan |
+| 3 (seed 5) | %30,14 | %34,43 | +4,29 puan |
 
-Standart sapma koşudan koşuya değişkenliği gösterir; güven aralığı değildir.
-Üç eşleştirilmiş avantaj: +9,6, +5,1 ve -2,0 puan.
-Ortalama fark +4,2 puan; standart sapması 5,9 puan. İki kazanç, bir kayıp:
-önceden belirlediğimiz kurala göre sonuç belirsiz. Kesin üstünlük veya eşitlik yok.
+Sabit yöntem ortalaması %28,38; standart sapması 1,53 puan, aralık %27,50–30,14.
+Karışık yöntem ortalaması %29,52; standart sapması 4,28 puan, aralık %26,57–34,43.
+Eşleştirilmiş fark ortalama +1,14 puan; standart sapması 2,77 puan.
+Standart sapma koşudan koşuya değişimi gösterir; güven aralığı değildir.
 
-Doğru cevaba verilen olasılığı izleyen NLL farkı -0,075, standart sapması 0,083;
-küçük ve değişken. Karışık grup son gösterimde de daha iyi öğrenmişti:
-doğruluk farkı +4,2 puan, standart sapması 2,0 puan. Bu yüzden avantajı doğrudan
-“daha az unutuyor” diye yorumlayamayız. Altı koşunun ham sonuçları Git'te saklandı.
+Birinde biraz geride, birinde neredeyse aynı, birinde önde. Bu nedenle önceden
+belirlediğimiz kurala göre sonuç belirsiz. Bu, iki yöntemin kesin eşit olduğu
+anlamına da gelmiyor.
 
-## Şimdi çalışan tekrar: Study 10
+## Olumlu yan bulgu: doğru cevabın olasılığı
 
-Aynı iki yöntemi üç yeni rastgelelik ayarıyla, toplam altı yeni eğitimde deniyoruz.
-Model, tekrar sayısı, aralıklar ve toplam eğitim miktarı değişmedi.
-Örnek: aynı çalışma yöntemlerini bu kez üç yeni soru setinde sınamak gibi.
-Yeni sonuçları eskilere karıştırmadan ayrıca değerlendireceğiz.
+NLL, modelin doğru cevaba ne kadar olasılık verdiğini izleyen hata ölçüsü;
+düşük olması daha iyi. Üç denemede de karışık yöntemde daha düşüktü:
+farklar -0,087, -0,065 ve -0,128; ortalama -0,093, standart sapma 0,032.
 
-Plan sonuçlardan önce kaydedildi; 39 yazılım testi ve iki başlangıç kontrolü geçti.
-İlk eğitim başladı. Tüm zincir yaklaşık 1,5–2 saat sürebilir; bilgisayar uyanık kalmalı.
-Sonuç iyi görünene kadar koşu eklemeyeceğiz. Üç yeni karşılaştırmanın tamamını
-olumlu veya olumsuz fark etmeksizin raporlayacağız.
+Örnek: doğru cevabın “Ankara” olduğunu düşün. Model hâlâ “İstanbul” diyebilir,
+ama Ankara'ya verdiği olasılık yükselmiş olabilir. Doğru cevap sayısı tek başına
+bu değişimi kaçırabilir. Bu örnek gerçek deney verisi değil, ölçü farkını açıklıyor.
 
-Sonuçta kısa açıklamaya ek olarak imagegen ile Türkçe bir infografik hazırlanacak:
-iki tekrar düzeni, üç ayrı karşılaştırma ve belirsizlik görselde birlikte gösterilecek.
-Sonuçları kontrol eden takip görevi 20 dakikada bir çalışacak; normal ilerleyişte
-sessiz kalacak, tamamlanınca veya sorun çıkınca haber verecek ve teslimden sonra duracak.
+Yalnızca son sınava bakınca da karışık yöntem lehine fark vardı:
+ortalama +4,50 puan, standart sapma 2,00 puan; üç fark +2,50–6,50 puan.
+Fakat baştan ana ölçüt olarak yedi sınavın ortalamasını seçmiştik.
+Son sınavı veya NLL'yi sonradan ana sonuç yapıp “başardık” demiyoruz.
 
-Bu hâlâ küçük GPT-2 modelinde yapay bilgi deneyi. İnsan beyni mekanizmasını,
-kişiselleştirmeyi, senin konuşma biçimini veya LoRA'yı kanıtlamıyor.
-Kişisel mesajlarına dokunulmadı; her şey yerelde, paylaşım yapılmadı.
+## Ne göstermiyor?
 
-- [Study 9 ayrıntılı sonuçları](results/study9/REPORT.md)
-- [Study 10 önceden kaydedilmiş planı](docs/STUDY10_PREREGISTRATION.md)
-- [Tarihsel veri eşleşmesi denetimi](docs/PROVENANCE_AUDIT_2026-09-08.md)
+Başlangıçta öğrenilen miktarlar eşit değildi; dolayısıyla doğrudan “daha az
+unutuyor” diyemeyiz. Tek küçük GPT-2 modeli ve yapay bilgilerle çalıştık.
+İnsan beynindeki mekanizma, kişiselleştirme, LoRA veya genel becerilerin korunması
+test edilmedi. Önceki Deney 9 ayrı tutuldu; sonuçları birleştirerek güçlü bir iddia üretmedik.
+
+## Sırada ne mantıklı?
+
+Bu dar soruda kesin üstünlük bulamadık. Olumlu NLL ve son sınav bulgularını yeni
+verilerle, ölçütleri ve koşu sayısını baştan sabitleyerek ayrıca sınamak değerli
+olabilir. Sırf olumlu sonuç çıksın diye aynı deneye koşu eklemek mantıklı değil.
+Yeni eğitim başlatılmadı; mevcut altı koşu ve doğrulama kayıtları saklandı.
+
+- [Tam sayısal rapor](results/study10/REPORT.md)
+- [Kısa İngilizce değerlendirme](results/study10/WRITEUP.md)
+- [Bağımsız sonuç kontrolü](results/study10/AUDIT.md)
+- [Görsel üretim istemi](results/study10/INFOGRAPHIC_PROMPT.md)
+
+![Deney 10: iki tekrar düzeni, üç karşılaştırma ve belirsizlik](results/study10/infographic-tr.png)
+
+Görsel imagegen ile üretildi; eksik gösterim içeren ilk taslak düzeltildi ve
+son görsel sayısal raporla karşılaştırıldı. Çizgiler şematiktir; aralıkları
+üzerlerindeki sayılar gösterir. Görsel ve üretim/düzeltme istemleri projede kayıtlı.
+GitHub'a gönderim veya kişisel mesajlara erişim olmadı.
