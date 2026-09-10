@@ -1,4 +1,58 @@
-# Resume SpacingLab — Study 10 and infographic completed (2026-09-09)
+# Resume SpacingLab — Study 11 finite chain launched (2026-09-10)
+
+## Current authorization and boundary
+
+Mehmet explicitly said "tamam artık başlatabilirsin" after approving THREE fresh
+fixed-versus-variable comparisons, six training runs, not the rejected 12-pair plan.
+Read docs/STUDY11_PREREGISTRATION.md and its incorporated Study 9 protocol first.
+Seeds 6,7,8 only; output results/study11; branch study11-small-retest. Order:
+spaced6, variable_gaps6, variable_gaps7, spaced7, spaced8, variable_gaps8.
+
+The user requires very short student-level Turkish explanations, time to understand
+the experiment, and explicit approval before any NEW study. Do not turn completion
+into automatic extra gap runs, selective replay, subagents or infographic production.
+Luna's read-only idea scout is completed, reviewed and closed. Selective replay is
+only a possible next proposal and must separate never-learned from deteriorating facts.
+
+## Launch evidence and resume procedure
+
+Registration committed 1aac057, runner/tests 8c8eb15, immutable manifest 90eda1f,
+all BEFORE Study 11 model evaluation. Baseline 39 tests; extended suite 46 passed.
+All source files from Study 10's manifest, model/tokenizer file hashes, filler hash,
+package versions and Python version matched that historical record. Shared training
+and schedule code is unchanged. Study 11 has its own manifest; never rewrite old ones.
+
+Started `uv run --no-sync python -u -m spacinglab.study11 --run` from this repository
+in execution session 62040. This id is a launch receipt, not proof it is still live.
+Launch check observed parent PID 5388, child PID 5389 and advancing first-run output
+through step 200. Recheck these rather than assuming the old PIDs remain valid.
+Check process state and results/study11/*/console.log plus completed log.json files.
+The parent owns runner.lock; never launch a duplicate chain. Completed runs are
+validated and skipped on an authorized restart. Partial attempts are retained and
+must NOT be overwritten or restarted without documenting the failure and asking.
+Laptop sleep can suspend progress; a terminated partial run is not checkpoint-resumable.
+
+The chain analyzes all six outcomes and exits. Only then apply the registered
+three-seed screening rule. Positive direction is not significance or definitive
+superiority, particularly after two mixed earlier screens. No outcome-based extra
+runs or pooled decision with Studies 9/10. Preserve every outcome and guard, including
+acquisition, new-fact learning, NLL and foil discrimination. No NLL-only memory claim.
+
+Reused existing heartbeat spacinglab-sonu-ve-infografik with a Study 11-only prompt,
+ACTIVE every 20 minutes, quiet on normal progress, completion/failure only. Its old
+display name still mentions infographic; that task is completed and its current
+prompt explicitly forbids generating another or starting new training. Pause it
+after results delivery or a genuine failure requiring user action.
+
+At completion audit the raw files, schedules, budgets and frozen provenance; update
+English evidence and a concise Turkish report with all paired deltas and mean plus
+seed spread; commit locally and stop. No push, remote compute or personal data.
+Never touch ForgetLab. Report a failure once and pause monitoring, not automatic repair.
+
+## Historical Study 10 snapshot (not current execution status)
+
+The sections below preserve the 9 September handoff. Their statements about no
+active training or a pending Luna agent describe that earlier date, not Study 11.
 
 ## Latest user-authorized continuation
 
