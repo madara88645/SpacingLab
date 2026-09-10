@@ -1,59 +1,60 @@
-# SpacingLab — Deney 12 tamamlandı (10 Eylül 2026)
+# SpacingLab — Deney 13 tamamlandı (10 Eylül 2026)
 
-> Güncelleme: Onayınla Deney 13 başlatıldı. Bu kez iki yöntem de 80 farklı
-> bilgiyi birer kez tekrar ediyor. Henüz sonucu yok; aşağıdaki rapor tamamlanmış
-> Deney 12'ye ait. Bu kontrolün ötesinde yeni bir deney başlatılmayacak.
-
-**Unutulmaya başlayan bilgileri seçip tekrar etmek, bu küçük deneyde rastgele
-tekrardan daha iyi sonuç verdi.**
+**İki yönteme de eşit sayıda farklı bilgiyi tekrar ettirdiğimizde, unutulmaya
+başlayanları seçmek üç karşılaştırmada da daha iyi sonuç verdi.**
 
 ## Ne yaptık?
 
-Aynı öğrenilmiş modelin iki kopyasına eşit miktarda yeni veri ve **80 tekrar hakkı**
-verdik. A, önceden öğrendiği bilgilerden rastgele seçti. B, başlangıca göre cevabına
-daha az güvenmeye başladığı bilgileri seçti. Yalnızca seçilenleri değil, eski
-200 bilginin tamamını daha sonra beş kez sınadık.
+Aynı öğrenilmiş modelin iki kopyasını kullandık. İkisi de **80 farklı bilgiyi
+birer kez** tekrar etti; birisi rastgele seçti, diğeri ilk öğrendiği zamana göre
+doğru cevabına daha az güvenmeye başladığı bilgileri seçti. Eğitim miktarı ve
+tekrar zamanları eşitti. Sonra eski 200 bilginin tamamını beş ayrı zamanda sorduk.
+
+Bir öğrencinin tekrar için rastgele 80 kart seçmesiyle, eskiden bildiği ama artık
+karıştırmaya başladığı 80 kartı seçmesini karşılaştırmak gibi.
 
 ## Sonuç
 
-| Karşılaştırma | B'nin A'ya göre avantajı |
+| Karşılaştırma | Seçici tekrarın avantajı |
 |---|---:|
-| 1 | +2,4 puan |
+| 1 | +6,6 puan |
 | 2 | +2,2 puan |
-| 3 | +5,1 puan |
+| 3 | +4,7 puan |
 
-Ortalama avantaj **3,23 puan**. Denemeler arasındaki değişimi gösteren standart
-sapma **1,62 puan**; bu bir güven aralığı değil. Rastgele yöntemin ortalaması
-%43,63 (standart sapma 3,59 puan), seçici yöntemin %46,87 (4,61 puan).
+Ortalama avantaj **4,5 puan**, denemeler arası değişimi gösteren standart sapma
+**2,21 puan**. Bu bir güven aralığı değil. Rastgele yöntem %41,30 doğruluk
+(standart sapma 4,24 puan), seçici yöntem %45,80 (4,60 puan) aldı.
 
-100 soruluk sınavlarda ortalama yaklaşık **üç soru daha doğru** gibi düşünebilirsin.
-Burada tek sınav değil, beş farklı zamandaki sınavın ortalamasına bakıyoruz.
-Üçünde de aynı yön çıktı ve önceden belirlediğimiz küçük-test koşulu karşılandı.
-Ama üç deneme, “kesin ve her yerde daha iyi” demek için yeterli değil.
+100 soruluk sınavlarda ortalama yaklaşık **4–5 soru daha doğru** gibi.
+Bu, tek son sınavın değil, beş farklı zamandaki sınavların ortalaması.
 
-## Henüz neyi bilmiyoruz?
+## Neyi öğrendik, neyi öğrenmedik?
 
-Seçici yöntem aynı 80 hakkı **daha fazla farklı bilgiye** dağıtmış. Belki avantajın
-bir kısmı, unutmayı ölçmekten değil, aynı bilgiyi tekrar tekrar seçmemekten geliyor.
-Doğruyla yanlış cevabı ayırma ölçüsünde de tutarlı bir ek iyileşme bulmadık.
-Bu nedenle “modelin içindeki hafızayı güçlendirdik” demiyoruz.
+Bu deneyde avantajı “daha fazla farklı bilgiye baktı” diye açıklayamıyoruz:
+ikisinde de sayı tam 80. Bu, unutulmaya başlayanları seçme fikri için olumlu
+ama küçük ölçekli bir bulgu.
+
+**Her ölçüm olumlu değildi:** yalnızca en son sınava bakınca bir karşılaştırmada
+seçici yöntem az farkla gerideydi. Doğru cevabı yanlış alternatifinden ayırma
+ölçüsünde de tutarlı ek avantaj yok. “Modelin içindeki hafızayı güçlendirdik”
+ya da “her zaman daha iyi” demiyoruz.
 
 Yalnızca küçük GPT-2 ve yapay bilgiler test edildi. Senin konuşma biçimini öğrenme,
-büyük modeller veya insan beyninin çalışma şekli hakkında henüz sonuç yok.
+büyük modeller veya insan beyni hakkında sonuç yok. Önceki deneyde iki yöntemin
+kuralları farklıydı; bu sonuç onun nedenini kesin olarak açıklamıyor.
 
 ## Sırada ne olabilir?
 
-**Devam etmeye değer.** Bir sonraki karşılaştırmada rastgele yöntemin de daha fazla
-farklı bilgiyi ziyaret etmesini sağlayabiliriz. Böylece “unutulanı seçmek mi,
-yoksa tekrarı daha geniş dağıtmak mı faydalı?” sorusunu ayırırız.
+Devam etmeye değer buluyorum. Bir sonraki soru şu olabilir:
+**“Unutulmaya başlayanları mı seçmeliyiz, yoksa şu anda en zor gelenleri mi?”**
+Önceden bilip karıştırmaya başladığın kartla, zaten zor gelen kart aynı şey değil.
 
-Bu yalnızca öneri. **Eğitim bitti; yeni deney başlatılmadı.** Yeni planı birlikte
-netleştirip sen onaylamadan devam etmeyeceğiz.
+Bu yalnızca öneri. **Eğitim tamamlandı; yeni koşu başlatılmadı.**
+Sen anlayıp açıkça onaylamadan yeni deneye geçmeyeceğiz.
 
-Ham kayıtlar ve eşit başlangıç/tekrar kontrolleri doğrulandı; 60 yazılım testi geçti.
+Ham kayıtlar, eşit başlangıç ve tekrar koşulları doğrulandı; 80 yazılım testi geçti.
 
-- [İngilizce değerlendirme](results/study12/WRITEUP.md)
-- [Tüm ana ölçümler](results/study12/REPORT.md)
-- [Kontrol kaydı ve sınırları](results/study12/AUDIT.md)
-- [Deneyden önce kaydedilmiş plan](docs/STUDY12_PREREGISTRATION.md)
-- [Önceki aralık deneyi: ayrı, belirsiz sonuç](results/study11/WRITEUP.md)
+- [İngilizce değerlendirme](results/study13/WRITEUP.md)
+- [Tüm ölçümler](results/study13/REPORT.md)
+- [Kontroller ve sınırları](results/study13/AUDIT.md)
+- [Önceden kaydedilen plan](docs/STUDY13_PREREGISTRATION.md)

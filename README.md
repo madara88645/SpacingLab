@@ -1,10 +1,14 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
-> **Running (10 September): Study 13 coverage-matched replay control.**
-> Three fresh pairs; both arms replay 80 distinct learned facts exactly once,
-> with matched token/step budgets. No outcome yet. This changes both prior policies,
-> not an unchanged Study 12 replication or a mediation test. See
-> [registration](docs/STUDY13_PREREGISTRATION.md) and current RESUME.md.
+> **Completed and audited (10 September): Study 13 equal-coverage replay.**
+> Both arms replayed 80 distinct learned facts once, with matched token/step budgets.
+> Priority-minus-random delayed accuracy: **+4.50 percentage points, sample SD 2.21**;
+> paired values +6.60,+2.20,+4.70. Positive registered three-pair screen only,
+> not significance or general superiority. Terminal-only accuracy and foil
+> separation were mixed. Both prior policies changed; this is not an unchanged
+> Study 12 replication or a mediation test. No new training is authorized.
+> [Study 13 write-up](results/study13/WRITEUP.md) · [Audit](results/study13/AUDIT.md)
+> · [Registration](docs/STUDY13_PREREGISTRATION.md). See current RESUME.md.
 
 > **Completed earlier (10 September): Study 12 selective-replay screen.**
 > Prioritized-minus-uniform all-fact accuracy: +3.23 percentage points, sample SD

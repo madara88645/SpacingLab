@@ -1,4 +1,48 @@
-# Resume SpacingLab — Study 13 launched (2026-09-10)
+# Resume SpacingLab — Study 13 completed (2026-09-10)
+
+## Current Study 13 completion — supersedes all launch/history sections below
+
+All three pairs (12,13,14), six continuations, completed normally. Session 38078
+exited 0 with COMPLETE_PAIR for every seed and STUDY13_DONE. Live process checks
+found no remaining Study 13 training. No extra seed, experiment, model inference,
+subagent or image was started. Retain the local branch study13-coverage-matched-replay.
+
+Independent post-run results/study13/audit_results.py PASS: frozen Git/input/source/
+software provenance, saved model AND optimizer forks, 11,400 update rows, 24
+reconstructed no-revisit selections, all raw old AND new accuracy/NLL/foil
+aggregates and 30 summary blocks. All 80 tests passed again. Exact distinct coverage
+20,40,60,80 and replay counts 0/1 verified, including per-step matched lengths,
+filler and new-fact items. See AUDIT.md for limits; no fresh logits were computed.
+
+Primary priority-minus-uniform differences +6.60,+2.20,+4.70 percentage points;
+mean +4.50, sample SD 2.20681 => positive_directional_signal. Uniform .41300
++/- .04244; priority .45800 +/- .04603. Prediction passes the precommitted small
+screen, NOT significance, general superiority or biological mechanism evidence.
+
+Terminal-only accuracy is mixed: +8.50,-.50,+3.00 points, mean +3.66667, SD4.53689.
+Mean true NLL delta -.08687 +/- .03497; foil separation +.01558 +/- .06966 mixed.
+Initially incorrect subgroup +.00537 +/- 1.60778 points mixed. Terminal new learning
+delta 0 +/- 2 points, near ceiling: no absence-of-harm claim. No zero-score fallback;
+some rare-length slots have only one candidate. Tiny pre-replay MPS NLL drift,
+zero correctness disagreements. Template identities and gradient dynamics differ.
+
+Equal coverage rules out a larger distinct-fact COUNT as this study's explanation.
+Both policies changed from Study 12 and seeds changed; no mediation attribution,
+historical pooling, unchanged replication or claim that the earlier effect is explained.
+English results/study13/WRITEUP.md; concise student-level Turkish RAPOR_TR.md.
+
+Next PROPOSAL only: compare accumulated-deterioration priority with current-difficulty
+priority at the same coverage/budget. This distinguishes a declining answer from
+an answer that is simply difficult now. Worth discussing, never automatically
+launching. Mehmet must understand and explicitly approve a new plan first;
+no quizzes, pressure, extra runs until positive, or broad task expansion.
+
+Completion monitoring spacinglab-sonu-ve-infografik was PAUSED via the app after
+verification. No active training. Preserve all raw logs and ignored local fork.pt.
+Historical runner.lock files are untouched and are not evidence of running training.
+Local commits only; no push, merge, remote, personal data or ForgetLab access.
+
+## Historical Study 13 launch record
 
 ## Current Study 13 status — supersedes historical records below
 
