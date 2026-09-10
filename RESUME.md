@@ -1,4 +1,52 @@
-# Resume SpacingLab — Study 12 completed and audited (2026-09-10)
+# Resume SpacingLab — Study 13 launched (2026-09-10)
+
+## Current Study 13 status — supersedes historical records below
+
+Mehmet explicitly approved the simple equal-coverage A/B proposal with "evet".
+Exactly three fresh pairs, seeds 12,13,14; six continuations. Uniform and priority
+both replay 80 DISTINCT commonly learned facts ONCE during interference, with
+matched per-step length slots. Five-exposure common acquisition remains unchanged.
+This changes both Study 12 policies, not an unchanged replication. A null cannot
+prove coverage caused Study 12's benefit. No earlier-result pooling or extra seeds.
+
+Read docs/STUDY13_PREREGISTRATION.md completely before acting; also read
+docs/STUDY13_IMPLEMENTATION.md. Branch study13-coverage-matched-replay.
+Chronology: fbda2c9 registration, 80f6c88 tested implementation, a80bfda frozen
+manifest, all BEFORE model evaluation. Full suite 80 passed. All historical source,
+model/tokenizer, filler and software hashes verified unchanged; uv --no-sync only.
+
+Started `uv run --no-sync python -u -m spacinglab.study13 --run` in session 38078.
+Initial live check: uv PID 40116, parent 40125, seed-12 child 40127; START_PAIR seed=12,
+weights loaded; advancing prefix confirmed at step 200/800 after 81 seconds.
+These IDs are launch receipts, not proof of ongoing liveness.
+Read results/study13/seed_*/console.log and common_progress.json while prefixes run;
+then common.json, uniform/prioritized progress.json and final log.json. Saved fork.pt
+is retained locally but ignored by Git. Parent holds runner.lock; never duplicate it.
+Incomplete attempts halt rather than overwrite/restart. If fewer than 80 facts are
+correct at the shared fork, record calibration failure and STOP, no quota relaxation.
+
+Existing spacinglab-sonu-ve-infografik heartbeat is ACTIVE every 20 minutes with a
+Study 13-only prompt. Stay quiet during normal/unchanged progress; completion,
+genuine failure or decision needed only. The old name does not authorize an image.
+No extra experiments, agents, remote compute, private data, push or ForgetLab access.
+Do not modify frozen source/tests/dependencies/registration/manifest while running.
+
+At completion independently reconstruct the no-revisit plan, selection histories,
+per-step token/filler/new-fact data and cumulative distinct counts 20,40,60,80.
+Verify replay counts 0/1 and exactly 80 distinct items per arm, common optimizer
+and model hashes, provenance and every raw aggregate. New-fact per-item details
+are now retained as new_fact_evaluation; no extra model probes were added.
+Primary remains ALL-200 accuracy at interference 200,400,800,1200,1500. Apply the
+registered directional screen once after all pairs, not p-value/equivalence claims.
+Retain NLL/foil, subgroup, new-learning/ceiling, clipping, selection-capacity,
+template, drift and runtime guards. English write-up under results/study13 and
+short student-level Turkish RAPOR_TR.md; local commit then pause heartbeat.
+
+On genuine failure preserve partials, pause, explain once and ask before any
+repair/restart. Sleep is not failure. The user must understand and explicitly
+approve ANY new experiment; no quizzes or pressure. Keep the branch as-is.
+
+## Historical Study 12 completion record
 
 ## Current completion status — supersedes the launch record below
 

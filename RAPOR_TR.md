@@ -1,5 +1,9 @@
 # SpacingLab — Deney 12 tamamlandı (10 Eylül 2026)
 
+> Güncelleme: Onayınla Deney 13 başlatıldı. Bu kez iki yöntem de 80 farklı
+> bilgiyi birer kez tekrar ediyor. Henüz sonucu yok; aşağıdaki rapor tamamlanmış
+> Deney 12'ye ait. Bu kontrolün ötesinde yeni bir deney başlatılmayacak.
+
 **Unutulmaya başlayan bilgileri seçip tekrar etmek, bu küçük deneyde rastgele
 tekrardan daha iyi sonuç verdi.**
 

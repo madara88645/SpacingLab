@@ -70,17 +70,17 @@ Files: tests/test_study13.py; spacinglab/study13.py; .gitignore.
 - [x] Ignore only results/study13/seed_*/fork.pt. Do not ignore raw results.
 - [x] Run all tests, `git diff --check`, and compare the runner diff against Study
   12 for unintended training changes. Confirm new tests catch wrong coverage.
-- [ ] Commit tested implementation and verification record.
+- [x] Commit tested implementation and verification record.
 
 ## Task 4 — Freeze, launch and hand off
 
-- [ ] `uv run --no-sync python -m spacinglab.study13` freezes provenance without
+- [x] `uv run --no-sync python -m spacinglab.study13` freezes provenance without
   model evaluation. Verify historical source/model/data/software hashes against
   Study 12's immutable manifest. Commit the new manifest before `--run`.
-- [ ] `uv run --no-sync python -u -m spacinglab.study13 --run` starts exactly three
+- [x] `uv run --no-sync python -u -m spacinglab.study13 --run` starts exactly three
   pairs. Verify process plus advancing prefix log; do not interpret early results.
-- [ ] Update RESUME.md and the existing paused heartbeat to this Study 13-only
+- [x] Update RESUME.md and the existing paused heartbeat to this Study 13-only
   scope: quiet normal progress, no duplicate training/restart/extra seeds, audit
   all outcomes at completion then pause. Keep local branch and all files intact.
-- [ ] Tell Mehmet briefly that it started, explain fixed 80-distinct-item fairness,
+- [x] Tell Mehmet briefly that it started, explain fixed 80-distinct-item fairness,
   and give a qualified runtime estimate. No new study is authorized after this one.
