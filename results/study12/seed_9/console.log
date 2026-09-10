@@ -1,0 +1,43 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 26987.09it/s]
+PREFIX seed=9 step=200/800 elapsed=77s
+PREFIX seed=9 step=400/800 elapsed=153s
+PREFIX seed=9 step=600/800 elapsed=231s
+PREFIX seed=9 step=800/800 elapsed=311s
+START uniform seed=9 eligible=123
+EVAL uniform seed=9 int_step=50 acc=0.550 nll=0.665
+EVAL uniform seed=9 int_step=100 acc=0.430 nll=1.112
+EVAL uniform seed=9 int_step=200 acc=0.440 nll=0.940
+PROGRESS uniform seed=9 step=200/1500 elapsed=87s
+EVAL uniform seed=9 int_step=300 acc=0.210 nll=1.599
+EVAL uniform seed=9 int_step=400 acc=0.380 nll=0.967
+PROGRESS uniform seed=9 step=400/1500 elapsed=164s
+EVAL uniform seed=9 int_step=600 acc=0.330 nll=1.024
+PROGRESS uniform seed=9 step=600/1500 elapsed=238s
+EVAL uniform seed=9 int_step=800 acc=0.380 nll=1.145
+PROGRESS uniform seed=9 step=800/1500 elapsed=313s
+EVAL uniform seed=9 int_step=900 acc=0.360 nll=1.122
+PROGRESS uniform seed=9 step=1000/1500 elapsed=386s
+EVAL uniform seed=9 int_step=1200 acc=0.390 nll=1.044
+PROGRESS uniform seed=9 step=1200/1500 elapsed=467s
+PROGRESS uniform seed=9 step=1400/1500 elapsed=544s
+EVAL uniform seed=9 int_step=1500 acc=0.385 nll=1.029
+COMPLETE uniform seed=9
+START prioritized seed=9 eligible=123
+EVAL prioritized seed=9 int_step=50 acc=0.550 nll=0.665
+EVAL prioritized seed=9 int_step=100 acc=0.430 nll=1.112
+EVAL prioritized seed=9 int_step=200 acc=0.420 nll=0.922
+PROGRESS prioritized seed=9 step=200/1500 elapsed=104s
+EVAL prioritized seed=9 int_step=300 acc=0.215 nll=1.572
+EVAL prioritized seed=9 int_step=400 acc=0.430 nll=0.911
+PROGRESS prioritized seed=9 step=400/1500 elapsed=198s
+EVAL prioritized seed=9 int_step=600 acc=0.315 nll=0.997
+PROGRESS prioritized seed=9 step=600/1500 elapsed=273s
+EVAL prioritized seed=9 int_step=800 acc=0.375 nll=1.080
+PROGRESS prioritized seed=9 step=800/1500 elapsed=366s
+EVAL prioritized seed=9 int_step=900 acc=0.385 nll=0.986
+PROGRESS prioritized seed=9 step=1000/1500 elapsed=460s
+EVAL prioritized seed=9 int_step=1200 acc=0.430 nll=0.887
+PROGRESS prioritized seed=9 step=1200/1500 elapsed=552s
+PROGRESS prioritized seed=9 step=1400/1500 elapsed=636s
+EVAL prioritized seed=9 int_step=1500 acc=0.440 nll=0.920
+COMPLETE prioritized seed=9

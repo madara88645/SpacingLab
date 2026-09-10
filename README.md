@@ -1,6 +1,16 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
-> **Current status (9 September): Study 10 replication completed and verified.**
+> **Current status (10 September): Study 12 selective-replay screen completed and audited.**
+> Prioritized-minus-uniform all-fact accuracy: +3.23 percentage points, sample SD
+> 1.62; paired differences +2.40,+2.20,+5.10. Shared learned model/optimizer starts
+> and matched 80-replay token budgets. Positive registered small-screen signal,
+> not significance or general superiority. Wider distinct-fact coverage remains
+> an alternative explanation; true-versus-foil separation did not consistently improve.
+> [Study 12 write-up](results/study12/WRITEUP.md) · [Audit](results/study12/AUDIT.md).
+> Study 11's gap retest was separately mixed: -1.93 points, SD 2.39.
+> [Study 11 write-up](results/study11/WRITEUP.md). No new training is authorized.
+
+> **Historical status (9 September): Study 10 replication completed and verified.**
 > Primary variable-minus-fixed accuracy: +0.01143, sample SD 0.02767, range
 > -0.00929 to +0.04286: mixed/inconclusive. Secondary NLL delta -0.09338,
 > SD 0.03197, range -0.12803 to -0.06502; secondary terminal accuracy delta
@@ -11,7 +21,7 @@
 > Study 9 remains separately inconclusive: primary delta +0.04238, SD 0.05866,
 > range -0.02000 to +0.09643. No pooling or additional runs.
 
-[Turkish explanation](RAPOR_TR.md) · [Verified infographic](results/study10/infographic-tr.png)
+[Current Turkish explanation](RAPOR_TR.md) · [Historical Study 10 infographic](results/study10/infographic-tr.png)
 The infographic timelines are schematic; the numeric interval labels specify the schedule.
 
 Follow-up clarification: the secondary true-NLL gain does not isolate factual

@@ -1,0 +1,43 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 16362.41it/s]
+PREFIX seed=10 step=200/800 elapsed=80s
+PREFIX seed=10 step=400/800 elapsed=163s
+PREFIX seed=10 step=600/800 elapsed=253s
+PREFIX seed=10 step=800/800 elapsed=342s
+START prioritized seed=10 eligible=140
+EVAL prioritized seed=10 int_step=50 acc=0.755 nll=0.358
+EVAL prioritized seed=10 int_step=100 acc=0.450 nll=1.102
+EVAL prioritized seed=10 int_step=200 acc=0.370 nll=1.214
+PROGRESS prioritized seed=10 step=200/1500 elapsed=86s
+EVAL prioritized seed=10 int_step=300 acc=0.405 nll=1.065
+EVAL prioritized seed=10 int_step=400 acc=0.540 nll=0.646
+PROGRESS prioritized seed=10 step=400/1500 elapsed=187s
+EVAL prioritized seed=10 int_step=600 acc=0.400 nll=0.969
+PROGRESS prioritized seed=10 step=600/1500 elapsed=273s
+EVAL prioritized seed=10 int_step=800 acc=0.530 nll=0.795
+PROGRESS prioritized seed=10 step=800/1500 elapsed=380s
+EVAL prioritized seed=10 int_step=900 acc=0.415 nll=0.765
+PROGRESS prioritized seed=10 step=1000/1500 elapsed=462s
+EVAL prioritized seed=10 int_step=1200 acc=0.480 nll=0.721
+PROGRESS prioritized seed=10 step=1200/1500 elapsed=538s
+PROGRESS prioritized seed=10 step=1400/1500 elapsed=613s
+EVAL prioritized seed=10 int_step=1500 acc=0.465 nll=0.776
+COMPLETE prioritized seed=10
+START uniform seed=10 eligible=140
+EVAL uniform seed=10 int_step=50 acc=0.755 nll=0.358
+EVAL uniform seed=10 int_step=100 acc=0.450 nll=1.102
+EVAL uniform seed=10 int_step=200 acc=0.410 nll=1.117
+PROGRESS uniform seed=10 step=200/1500 elapsed=95s
+EVAL uniform seed=10 int_step=300 acc=0.445 nll=1.056
+EVAL uniform seed=10 int_step=400 acc=0.535 nll=0.608
+PROGRESS uniform seed=10 step=400/1500 elapsed=190s
+EVAL uniform seed=10 int_step=600 acc=0.405 nll=0.903
+PROGRESS uniform seed=10 step=600/1500 elapsed=273s
+EVAL uniform seed=10 int_step=800 acc=0.420 nll=0.883
+PROGRESS uniform seed=10 step=800/1500 elapsed=364s
+EVAL uniform seed=10 int_step=900 acc=0.390 nll=0.893
+PROGRESS uniform seed=10 step=1000/1500 elapsed=448s
+EVAL uniform seed=10 int_step=1200 acc=0.450 nll=0.776
+PROGRESS uniform seed=10 step=1200/1500 elapsed=537s
+PROGRESS uniform seed=10 step=1400/1500 elapsed=617s
+EVAL uniform seed=10 int_step=1500 acc=0.460 nll=0.822
+COMPLETE uniform seed=10

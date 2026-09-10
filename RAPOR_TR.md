@@ -1,60 +1,55 @@
-# SpacingLab — Deney 11 tamamlandı (10 Eylül 2026)
+# SpacingLab — Deney 12 tamamlandı (10 Eylül 2026)
 
-**Karışık aralıkların üstünlüğü bu küçük tekrar testinde de çıkmadı.**
-Üç karşılaştırmada da sabit aralık biraz daha yüksek sonuç verdi; ancak farkın
-büyüklüğü değiştiği için “sabit kesin daha iyi” de demiyoruz.
+**Unutulmaya başlayan bilgileri seçip tekrar etmek, bu küçük deneyde rastgele
+tekrardan daha iyi sonuç verdi.**
 
 ## Ne yaptık?
 
-Aynı bilgiyi beş kez gösterdik. Bir grupta aralar 64–64–64–64 eğitim adımıydı;
-diğerinde 32–32–64–128'in karıştırılmış sırasıydı. İlk ve son gösterim ile
-toplam tekrar sayısı aynıydı. Aralarda başka metinlerle eğitim sürdü.
-Üç yeni karşılaştırma, yani altı eğitim yapıldı ve duruldu.
+Aynı öğrenilmiş modelin iki kopyasına eşit miktarda yeni veri ve **80 tekrar hakkı**
+verdik. A, önceden öğrendiği bilgilerden rastgele seçti. B, başlangıca göre cevabına
+daha az güvenmeye başladığı bilgileri seçti. Yalnızca seçilenleri değil, eski
+200 bilginin tamamını daha sonra beş kez sınadık.
 
-## Sonraki yedi sınavın ortalaması
+## Sonuç
 
-| Karşılaştırma | Sabit | Karışık | Karışığın farkı |
-|---|---:|---:|---:|
-| 1 (seed 6) | %31,86 | %27,21 | −4,64 puan |
-| 2 (seed 7) | %26,93 | %25,93 | −1,00 puan |
-| 3 (seed 8) | %28,79 | %28,64 | −0,14 puan |
+| Karşılaştırma | B'nin A'ya göre avantajı |
+|---|---:|
+| 1 | +2,4 puan |
+| 2 | +2,2 puan |
+| 3 | +5,1 puan |
 
-Farkın ortalaması **−1,93 puan**, denemeler arasındaki değişimi gösteren
-standart sapması **2,39 puan**. Bu bir güven aralığı değil.
-Sabit ortalaması %29,19 (standart sapma 2,49 puan);
-karışık ortalaması %27,26 (standart sapma 1,36 puan).
+Ortalama avantaj **3,23 puan**. Denemeler arasındaki değişimi gösteren standart
+sapma **1,62 puan**; bu bir güven aralığı değil. Rastgele yöntemin ortalaması
+%43,63 (standart sapma 3,59 puan), seçici yöntemin %46,87 (4,61 puan).
 
-Örnek olarak 100 soruluk bir sınavda bir yöntemin yaklaşık iki soru geride
-kalması gibi düşünebilirsin. Ancak burada tek sınav değil, farklı zamanlardaki
-yedi sınavın ortalaması ölçüldü. En küçük farklar tek başına güçlü bir sonuç değil.
+100 soruluk sınavlarda ortalama yaklaşık **üç soru daha doğru** gibi düşünebilirsin.
+Burada tek sınav değil, beş farklı zamandaki sınavın ortalamasına bakıyoruz.
+Üçünde de aynı yön çıktı ve önceden belirlediğimiz küçük-test koşulu karşılandı.
+Ama üç deneme, “kesin ve her yerde daha iyi” demek için yeterli değil.
 
-## Önemli ayrım
+## Henüz neyi bilmiyoruz?
 
-Karışık düzen eğitim penceresinin sonunda daha iyi görünüyordu:
-fark ortalama +4,83 puan, standart sapma 3,40 puan. Ama bu erken avantaj sonraki
-ölçümlerde korunmadı. Başlangıçtaki öğrenme düzeyi eşit olmadığından saf bir
-“unutma hızı” karşılaştırması yaptığımızı söyleyemeyiz.
+Seçici yöntem aynı 80 hakkı **daha fazla farklı bilgiye** dağıtmış. Belki avantajın
+bir kısmı, unutmayı ölçmekten değil, aynı bilgiyi tekrar tekrar seçmemekten geliyor.
+Doğruyla yanlış cevabı ayırma ölçüsünde de tutarlı bir ek iyileşme bulmadık.
+Bu nedenle “modelin içindeki hafızayı güçlendirdik” demiyoruz.
 
-Önceki turda doğru cevaba verilen olasılık açısından görülen olumlu yön,
-bu turda tutarlı tekrarlanmadı. Doğru ve yanlış cevabı ayırma ölçüsünde olumlu bir
-yan bulgu vardı; fakat bunu ana sonuç yerine koymuyoruz.
-Ayrıntılar [İngilizce değerlendirmede](results/study11/WRITEUP.md).
+Yalnızca küçük GPT-2 ve yapay bilgiler test edildi. Senin konuşma biçimini öğrenme,
+büyük modeller veya insan beyninin çalışma şekli hakkında henüz sonuç yok.
 
-## Şimdi ne olacak?
+## Sırada ne olabilir?
 
-Anlaştığımız kurala göre daha fazla aralık denemesi eklemiyoruz; bu soruyu
-**“bu düzende üstünlük gösterilemedi”** diye beklemeye almayı öneriyorum.
-Bu, karışık aralıkların hiçbir koşulda faydalı olamayacağı anlamına gelmez.
+**Devam etmeye değer.** Bir sonraki karşılaştırmada rastgele yöntemin de daha fazla
+farklı bilgiyi ziyaret etmesini sağlayabiliriz. Böylece “unutulanı seçmek mi,
+yoksa tekrarı daha geniş dağıtmak mı faydalı?” sorusunu ayırırız.
 
-Sonraki olası soru: **“Rastgele tekrar etmek yerine, önceden öğrenilmiş ama
-unutulmaya başlayan bilgileri seçip tekrar etmek daha faydalı mı?”**
-Önce bunu birlikte anlayıp planlayacağız. **Yeni deney başlatılmadı.**
+Bu yalnızca öneri. **Eğitim bitti; yeni deney başlatılmadı.** Yeni planı birlikte
+netleştirip sen onaylamadan devam etmeyeceğiz.
 
-Yalnızca küçük GPT-2 modeli ve yapay bilgiler test edildi; kişisel konuşma biçimi,
-büyük modeller veya insan beynindeki mekanizma hakkında sonuç çıkarmıyoruz.
-Önceki iki tur ayrı tutuldu, tüm sonuçlar saklandı. Altı kayıt ve hesaplar
-bağımsız kontrol edildi; 46 yazılım testi geçti. Otomatik takip duraklatıldı.
+Ham kayıtlar ve eşit başlangıç/tekrar kontrolleri doğrulandı; 60 yazılım testi geçti.
 
-- [Tüm ölçümler](results/study11/REPORT.md)
-- [Kontrol kaydı](results/study11/AUDIT.md)
-- [Önceden yazılmış deney planı](docs/STUDY11_PREREGISTRATION.md)
+- [İngilizce değerlendirme](results/study12/WRITEUP.md)
+- [Tüm ana ölçümler](results/study12/REPORT.md)
+- [Kontrol kaydı ve sınırları](results/study12/AUDIT.md)
+- [Deneyden önce kaydedilmiş plan](docs/STUDY12_PREREGISTRATION.md)
+- [Önceki aralık deneyi: ayrı, belirsiz sonuç](results/study11/WRITEUP.md)

@@ -1,4 +1,40 @@
-# Resume SpacingLab — Study 12 running (2026-09-10)
+# Resume SpacingLab — Study 12 completed and audited (2026-09-10)
+
+## Current completion status — supersedes the launch record below
+
+All three pairs (seeds 9,10,11), six continuations, finished normally. Execution
+session 39563 exited 0 with STUDY12_DONE. Process check found no Study 12 training
+remaining. No additional training, model inference, seed, subagent or image was
+started. Completion heartbeat spacinglab-sonu-ve-infografik is now PAUSED.
+
+Independent post-run results/study12/audit_results.py passed: immutable provenance
+and Git chronology, saved model AND optimizer states, 11,400 actual update rows,
+24 reconstructed selections, canonical old-fact generated-answer accuracy and NLL/
+foil aggregates, and 30 summary blocks plus report values. 60 tests passed again.
+Read results/study12/AUDIT.md for limits: no fresh logits, no per-new-fact raw
+predictions, and final branch parameters were not saved. Do not overstate the audit.
+
+Primary prioritized-minus-uniform differences: +2.40,+2.20,+5.10 percentage points;
+mean +3.23333, sample SD 1.61967 => positive_directional_signal under the registered
+small-screen rule. Uniform .43633 +/- .03585; prioritized .46867 +/- .04607.
+Not a significance, equivalence, general superiority or biological mechanism claim.
+No earlier studies pooled and no post-result primary switch.
+
+Important limits: priority replay covered 75,73,75 distinct facts vs 62,68,65 under
+uniform. Wider coverage is a live explanation. True-NLL delta -.06533 +/- .04882
+accompanies foil-NLL delta -.06412 +/- .02305; separation +.00121 +/- .06925 is mixed.
+Initially incorrect subgroup delta -1.23339 +/- 1.01677 percentage points is
+descriptive and unfavorable. New-fact accuracy is near ceiling, so no absence-of-
+tradeoffs claim. Tiny pre-replay NLL drift exists but all correctness matches.
+
+English result: results/study12/WRITEUP.md; simple Turkish report: RAPOR_TR.md.
+Next PROPOSAL only: diversity/coverage-matched random replay, to separate selecting
+deteriorating facts from visiting more distinct facts. Continuing seems worthwhile,
+but do NOT launch anything until Mehmet understands and explicitly approves the
+new plan. No quiz, pressure or expanded study. Preserve all logs, local fork.pt,
+preregistration, frozen code and manifests. Local commits only.
+
+## Historical Study 12 launch record
 
 ## Current Study 12 launch record — supersedes historical status below
 
