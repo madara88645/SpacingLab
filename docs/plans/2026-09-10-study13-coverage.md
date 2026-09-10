@@ -26,13 +26,13 @@ cumulative unique-item counts; maintain a separate used-ID set in each arm.
 
 ## Task 1 — Register the experiment
 
-- [ ] Commit docs/STUDY13_PREREGISTRATION.md and this plan before producing Study 13 model measurements.
+- [x] Commit docs/STUDY13_PREREGISTRATION.md and this plan before producing Study 13 model measurements.
 
 ## Task 2 — Pure no-revisit selection (tests first)
 
 Files: tests/test_study13_replay.py; spacinglab/study13_replay.py.
 
-- [ ] Write failing assertions for global uniqueness, eligibility, token-slot
+- [x] Write failing assertions for global uniqueness, eligibility, token-slot
   matching across all rounds, deterministic ties, insufficient learned pool and
   blocked repeated selections. Core fixture:
 
@@ -43,23 +43,23 @@ ids = [i for p in plans for i in p['uniform_ids']]
 assert len(ids) == len(set(ids)) == 80
 ```
 
-- [ ] Run `uv run --no-sync pytest -q tests/test_study13_replay.py`; expect missing-policy assertions before implementation.
-- [ ] Implement make_plan using one `choice(eligible,4*quota,replace=False)` from
+- [x] Run `uv run --no-sync pytest -q tests/test_study13_replay.py`; expect missing-policy assertions before implementation.
+- [x] Implement make_plan using one `choice(eligible,4*quota,replace=False)` from
   RNG seed+60000 and partition into four blocks. `select(..., used_ids)` validates
   history, removes used IDs before ranking, and delegates unchanged score/tie/
   per-step-length logic to the frozen Study 12 selector. Return used-before IDs
   for audit. Reject duplicate/replayed/unknown history and capacity failures.
-- [ ] Run the policy tests again; require all passing before the runner.
+- [x] Run the policy tests again; require all passing before the runner.
 
 ## Task 3 — Finite runner and integration fixtures (tests first)
 
 Files: tests/test_study13.py; spacinglab/study13.py; .gitignore.
 
-- [ ] Adapt the existing synthetic fixture tests to seeds 12,13,14, new output,
+- [x] Adapt the existing synthetic fixture tests to seeds 12,13,14, new output,
   immutable manifest coverage fields and cumulative used-ID history. Add mutation
   tests for coverage counters, no-revisit history and fresh raw new-fact retention.
-- [ ] Run `uv run --no-sync pytest -q tests/test_study13.py`; expect missing-runner assertions.
-- [ ] Isolate the existing runner with all Study 12 labels changed to Study 13,
+- [x] Run `uv run --no-sync pytest -q tests/test_study13.py`; expect missing-runner assertions.
+- [x] Isolate the existing runner with all Study 12 labels changed to Study 13,
   SEEDS=(12,13,14), middle arm-order seed 13, and SEEDS[0] analysis lookup.
   Import new make_plan/select and existing batch/capture/fingerprint/restore.
   At branch start use `used_ids=set()`; pass it into select, then update it after
@@ -67,8 +67,8 @@ Files: tests/test_study13.py; spacinglab/study13.py; .gitignore.
   Validation reconstructs the used set, verifies saved counts and max count 1.
   Freeze `distinct_replay_quota=80`, `max_replays_per_fact=1`, and new test hashes.
   In evaluate, save the already-computed new-fact evaluation as `new_fact_evaluation`.
-- [ ] Ignore only results/study13/seed_*/fork.pt. Do not ignore raw results.
-- [ ] Run all tests, `git diff --check`, and compare the runner diff against Study
+- [x] Ignore only results/study13/seed_*/fork.pt. Do not ignore raw results.
+- [x] Run all tests, `git diff --check`, and compare the runner diff against Study
   12 for unintended training changes. Confirm new tests catch wrong coverage.
 - [ ] Commit tested implementation and verification record.
 
