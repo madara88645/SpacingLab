@@ -5,3 +5,4 @@ __pycache__/
 .ruff_cache/
 .DS_Store
 results/runs/*/checkpoints/
+results/study12/seed_*/fork.pt
