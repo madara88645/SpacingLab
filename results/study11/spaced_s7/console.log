@@ -1,0 +1,24 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 27967.07it/s]
+[eval] pretrained step=    0 acc=0.000 nll=8.473 disc=0.02 holdout=4.444 |dθ|=0.00 B_acc=0.000
+step     0/2300 loss=4.471 lr=2.0e-06 facts_in_batch=0 0s
+[eval] pre_injection step=  100 acc=0.000 nll=8.393 disc=0.03 holdout=3.735 |dθ|=15.38 B_acc=0.000
+step   200/2300 loss=3.860 lr=1.0e-04 facts_in_batch=1 75s
+step   400/2300 loss=3.227 lr=1.0e-04 facts_in_batch=5 150s
+step   600/2300 loss=3.632 lr=1.0e-04 facts_in_batch=1 227s
+[eval]  immediate step=  800 acc=0.695 nll=0.391 disc=3.32 holdout=3.541 |dθ|=80.22 B_acc=0.000
+step   800/2300 loss=3.699 lr=1.0e-04 facts_in_batch=0 304s
+[eval] interference step=  850 acc=0.420 nll=1.316 disc=1.65 holdout=3.529 |dθ|=82.40 B_acc=0.080
+[eval] interference step=  900 acc=0.250 nll=1.722 disc=1.49 holdout=3.520 |dθ|=84.50 B_acc=0.080
+[eval] interference step= 1000 acc=0.285 nll=1.463 disc=1.48 holdout=3.500 |dθ|=88.32 B_acc=0.160
+step  1000/2300 loss=3.373 lr=1.0e-04 facts_in_batch=0 383s
+[eval] interference step= 1200 acc=0.250 nll=1.147 disc=1.84 holdout=3.472 |dθ|=94.96 B_acc=0.340
+step  1200/2300 loss=3.698 lr=1.0e-04 facts_in_batch=0 459s
+step  1400/2300 loss=3.501 lr=1.0e-04 facts_in_batch=0 533s
+[eval] interference step= 1600 acc=0.285 nll=1.125 disc=2.34 holdout=3.444 |dθ|=105.26 B_acc=0.800
+step  1600/2300 loss=3.587 lr=1.0e-04 facts_in_batch=0 608s
+step  1800/2300 loss=3.204 lr=1.0e-04 facts_in_batch=0 681s
+[eval] interference step= 2000 acc=0.205 nll=1.192 disc=2.61 holdout=3.412 |dθ|=113.21 B_acc=0.920
+step  2000/2300 loss=3.304 lr=1.0e-04 facts_in_batch=0 757s
+step  2200/2300 loss=3.524 lr=1.0e-04 facts_in_batch=0 830s
+[eval] interference step= 2300 acc=0.190 nll=1.356 disc=2.14 holdout=3.394 |dθ|=118.54 B_acc=0.960
+[guard] acc right after last exposure = 0.890 nll = 0.202

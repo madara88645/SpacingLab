@@ -1,4 +1,41 @@
-# Resume SpacingLab — Study 11 finite chain launched (2026-09-10)
+# Resume SpacingLab — Study 11 completed and audited (2026-09-10)
+
+## Current completion status — read before the historical launch record
+
+All six runs (seeds 6,7,8) finished normally. Session 62040 exited 0 with six
+COMPLETE markers and STUDY11_DONE. No training process remains. No extra training,
+new study, model evaluation or subagent was started. Completion heartbeat
+spacinglab-sonu-ve-infografik has been PAUSED to prevent duplicate follow-ups.
+
+Independent results/study11/audit_results.py checks frozen inputs/source/software,
+Git chronology, every full schedule and step guard, actual token budgets, all raw
+per-fact aggregates, 66 summary blocks and report table values. PASS; 46 tests pass.
+See results/study11/AUDIT.md and WRITEUP.md; current student-level report RAPOR_TR.md.
+Audit code is post-run verification, not a new preregistered experiment.
+
+Primary variable-minus-fixed differences: -4.64286, -1.00000, -0.14286 percentage
+points. Mean -1.92857, sample SD 2.38939; the mean magnitude is below SD. Therefore
+the registered outcome is mixed_or_inconclusive, NOT a robust negative signal or
+equivalence. Fixed accuracy .29190 +/- .02489; variable .27262 +/- .01358.
+Window-end acquisition favors variable by .04833 +/- .03403, but later primary
+does not: no equal-learning forgetting-rate claim. NLL delta +.00941 +/- .08282
+is mixed; Study 10's favorable NLL direction did not recur consistently. Foil
+separation delta +.05443 +/- .03272 is secondary, not a replacement primary.
+New-fact accuracy delta -.02667 +/- .03055; no demonstrated absence of tradeoffs.
+
+Keep Studies 9 and 10 separate, both previously mixed; no pooled significance
+claim, extra seeds or outcome-selected change of endpoint. This third block was
+selected after the first two; acknowledge that selection. The agreed positive
+continuation screen failed. Recommend parking the gap question and explaining
+selective replay only if the user wants to consider it, never automatically.
+
+User boundary remains: short plain Turkish, ensure the proposed experiment is
+understood and get explicit approval BEFORE any new training. The research idea
+and results are not a test of the user's worth or competence. No quizzes or pressure
+are needed in the completion notification. Keep the local branch as-is, no push,
+merge, cleanup, personal data access, or ForgetLab changes.
+
+## Historical launch record (superseded by the completion status above)
 
 ## Current authorization and boundary
 
