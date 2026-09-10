@@ -1,4 +1,50 @@
-# Resume SpacingLab — Study 11 completed and audited (2026-09-10)
+# Resume SpacingLab — Study 12 running (2026-09-10)
+
+## Current Study 12 launch record — supersedes historical status below
+
+Mehmet understood the A/B selection contrast and explicitly authorized starting:
+"aynen doğru başlayabiliriz". Exactly three pairs, seeds 9,10,11, compare uniform
+replay with deterioration-prioritized replay, not another gap experiment.
+Read docs/STUDY12_PREREGISTRATION.md completely and STUDY12_IMPLEMENTATION.md.
+Branch: study12-deterioration-replay. Registration dd3e56c, implementation d19c63f,
+immutable input/source manifest 59cf386, all committed before model evaluation.
+All 60 tests passed before launch. Historical shared training source, frozen model,
+tokenizer, dataset and software matched Study 11; no package updates.
+
+Started `uv run --no-sync python -u -m spacinglab.study12 --run`, session 39563.
+Launch verification observed parent PID 10400 and seed-9 child 10403, with prefix
+progress at step 400/800 after 153 seconds. These are historical launch receipts,
+not proof of future liveness. Check processes and results/study12/seed_*/console.log,
+common_progress.json, common.json and each uniform/prioritized log.json.
+The parent owns runner.lock and runs the finite three-pair chain serially, then
+analyzes and exits. Never launch duplicates or restart partial pairs automatically.
+
+Each seed has one common 800-step acquisition prefix and identical model AND
+optimizer-state forks for two 1500-step continuations. Each arm receives 80 old-fact
+replays in four rounds, with matched per-step input lengths and the same selection
+probes. Only commonly learned facts are eligible; fewer than 20 causes explicit
+calibration failure and a halt. All 200 old facts remain in the primary evaluation.
+Selection uses deterioration since the common reference, not current difficulty.
+Full checkpoint fork.pt is retained locally and ignored by Git. Frozen experiment
+source, tests, dependencies, registration and manifests must not change mid-run.
+
+The existing spacinglab-sonu-ve-infografik heartbeat is retargeted to Study 12,
+ACTIVE every 20 minutes, quiet except completion/failure/required decisions.
+Its historical name does not authorize another image. At completion independently
+audit all paired raw metrics, common states, selection reconstruction, actual token
+budgets, provenance and registered guards. Primary is all-fact mean accuracy at
+interference steps 200,400,800,1200,1500. Report all three paired differences with
+mean and sample SD; the screening rule is not significance or equivalence evidence.
+Document negatives and secondary measures without replacing the primary endpoint.
+Write English evidence under results/study12 and a very short Turkish RAPOR_TR.md;
+update this record, commit locally and pause the heartbeat. No remote or push.
+
+On failure preserve partial files, pause the heartbeat, explain once and ask before
+repair or restart. Laptop sleep alone is not failure. No extra seeds, studies,
+subagents, infographic or ForgetLab access. User requires simple Turkish and must
+understand and explicitly authorize ANY new experiment. Do not quiz or pressure him.
+
+## Historical Study 11 completion record
 
 ## Current completion status — read before the historical launch record
 
