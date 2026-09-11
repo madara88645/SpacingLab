@@ -1,0 +1,204 @@
+=== massed seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.010 nll=5.094 disc=0.08 holdout=3.517 |dθ|=104.32 B_acc=0.000
+[eval] interference step= 1550 acc=0.005 nll=4.780 disc=0.14 holdout=3.510 |dθ|=105.43 B_acc=0.000
+[eval] interference step= 1600 acc=0.010 nll=4.287 disc=0.11 holdout=3.507 |dθ|=106.49 B_acc=0.000
+[eval] interference step= 1700 acc=0.005 nll=4.297 disc=0.13 holdout=3.499 |dθ|=108.63 B_acc=0.000
+[eval] interference step= 1900 acc=0.005 nll=4.006 disc=0.18 holdout=3.470 |dθ|=112.68 B_acc=0.080
+[eval] interference step= 2300 acc=0.000 nll=4.192 disc=0.20 holdout=3.444 |dθ|=119.60 B_acc=0.180
+[eval] interference step= 2700 acc=0.000 nll=4.796 disc=0.22 holdout=3.426 |dθ|=125.77 B_acc=0.420
+[eval] interference step= 3000 acc=0.005 nll=4.878 disc=0.33 holdout=3.420 |dθ|=130.05 B_acc=0.680
+[guard] acc right after last exposure = 0.305 nll = 1.492
+=== spaced seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.680 nll=0.522 disc=3.24 holdout=3.491 |dθ|=102.59 B_acc=0.000
+[eval] interference step= 1550 acc=0.605 nll=0.579 disc=2.52 holdout=3.493 |dθ|=103.73 B_acc=0.020
+[eval] interference step= 1600 acc=0.530 nll=0.919 disc=1.87 holdout=3.495 |dθ|=104.83 B_acc=0.060
+[eval] interference step= 1700 acc=0.365 nll=1.276 disc=1.59 holdout=3.488 |dθ|=107.03 B_acc=0.100
+[eval] interference step= 1900 acc=0.300 nll=1.236 disc=1.74 holdout=3.462 |dθ|=111.18 B_acc=0.260
+[eval] interference step= 2300 acc=0.315 nll=1.162 disc=2.04 holdout=3.440 |dθ|=118.29 B_acc=0.660
+[eval] interference step= 2700 acc=0.185 nll=1.508 disc=2.57 holdout=3.423 |dθ|=124.59 B_acc=0.820
+[eval] interference step= 3000 acc=0.260 nll=1.372 disc=2.77 holdout=3.421 |dθ|=128.91 B_acc=0.920
+[guard] acc right after last exposure = 0.835 nll = 0.280
+=== gap128 seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.685 nll=0.454 disc=2.91 holdout=3.489 |dθ|=102.13 B_acc=0.000
+[eval] interference step= 1550 acc=0.470 nll=0.846 disc=2.06 holdout=3.496 |dθ|=103.30 B_acc=0.020
+[eval] interference step= 1600 acc=0.390 nll=1.278 disc=1.61 holdout=3.496 |dθ|=104.40 B_acc=0.040
+[eval] interference step= 1700 acc=0.230 nll=1.696 disc=1.30 holdout=3.488 |dθ|=106.62 B_acc=0.040
+[eval] interference step= 1900 acc=0.240 nll=1.594 disc=1.43 holdout=3.464 |dθ|=110.80 B_acc=0.140
+[eval] interference step= 2300 acc=0.260 nll=1.137 disc=1.80 holdout=3.438 |dθ|=117.97 B_acc=0.420
+[eval] interference step= 2700 acc=0.185 nll=1.322 disc=2.23 holdout=3.424 |dθ|=124.32 B_acc=0.720
+[eval] interference step= 3000 acc=0.185 nll=1.389 disc=2.33 holdout=3.418 |dθ|=128.67 B_acc=0.880
+[guard] acc right after last exposure = 0.605 nll = 0.447
+=== gap256 seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.645 nll=0.410 disc=2.51 holdout=3.491 |dθ|=102.97 B_acc=0.000
+[eval] interference step= 1550 acc=0.555 nll=0.707 disc=1.98 holdout=3.495 |dθ|=104.15 B_acc=0.020
+[eval] interference step= 1600 acc=0.430 nll=1.242 disc=1.50 holdout=3.495 |dθ|=105.26 B_acc=0.040
+[eval] interference step= 1700 acc=0.310 nll=1.691 disc=1.27 holdout=3.489 |dθ|=107.47 B_acc=0.020
+[eval] interference step= 1900 acc=0.210 nll=1.583 disc=1.43 holdout=3.465 |dθ|=111.64 B_acc=0.140
+[eval] interference step= 2300 acc=0.255 nll=1.173 disc=1.79 holdout=3.437 |dθ|=118.74 B_acc=0.520
+[eval] interference step= 2700 acc=0.160 nll=1.368 disc=2.12 holdout=3.424 |dθ|=124.95 B_acc=0.600
+[eval] interference step= 3000 acc=0.155 nll=1.263 disc=2.37 holdout=3.417 |dθ|=129.27 B_acc=0.860
+[guard] acc right after last exposure = 0.575 nll = 0.481
+=== gap16 seed=0 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 disc=0.05 holdout=4.441 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.385 disc=0.03 holdout=3.746 |dθ|=15.42 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.415 nll=1.258 disc=2.25 holdout=3.488 |dθ|=103.34 B_acc=0.000
+[eval] interference step= 1550 acc=0.385 nll=1.113 disc=1.84 holdout=3.490 |dθ|=104.45 B_acc=0.020
+[eval] interference step= 1600 acc=0.315 nll=1.394 disc=1.47 holdout=3.491 |dθ|=105.52 B_acc=0.040
+[eval] interference step= 1700 acc=0.165 nll=1.901 disc=1.15 holdout=3.487 |dθ|=107.65 B_acc=0.080
+[eval] interference step= 1900 acc=0.085 nll=1.989 disc=1.32 holdout=3.461 |dθ|=111.73 B_acc=0.260
+[eval] interference step= 2300 acc=0.090 nll=1.888 disc=1.58 holdout=3.436 |dθ|=118.70 B_acc=0.520
+[eval] interference step= 2700 acc=0.090 nll=2.040 disc=2.12 holdout=3.422 |dθ|=124.88 B_acc=0.920
+[eval] interference step= 3000 acc=0.070 nll=1.965 disc=2.16 holdout=3.416 |dθ|=129.15 B_acc=0.940
+[guard] acc right after last exposure = 0.955 nll = 0.118
+=== massed seed=1 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.636 disc=0.03 holdout=3.736 |dθ|=15.19 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.025 nll=5.784 disc=0.14 holdout=3.519 |dθ|=103.77 B_acc=0.000
+[eval] interference step= 1550 acc=0.000 nll=4.449 disc=0.14 holdout=3.515 |dθ|=104.85 B_acc=0.000
+[eval] interference step= 1600 acc=0.000 nll=4.293 disc=0.21 holdout=3.508 |dθ|=105.90 B_acc=0.000
+[eval] interference step= 1700 acc=0.000 nll=4.215 disc=0.21 holdout=3.491 |dθ|=107.92 B_acc=0.020
+[eval] interference step= 1900 acc=0.000 nll=4.195 disc=0.22 holdout=3.476 |dθ|=111.89 B_acc=0.020
+[eval] interference step= 2300 acc=0.000 nll=4.278 disc=0.22 holdout=3.457 |dθ|=119.12 B_acc=0.180
+[eval] interference step= 2700 acc=0.000 nll=4.626 disc=0.33 holdout=3.418 |dθ|=125.39 B_acc=0.420
+[eval] interference step= 3000 acc=0.000 nll=5.291 disc=0.45 holdout=3.412 |dθ|=129.68 B_acc=0.700
+[guard] acc right after last exposure = 0.260 nll = 1.609
+=== spaced seed=1 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.640 disc=0.03 holdout=3.736 |dθ|=15.18 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.620 nll=0.573 disc=2.80 holdout=3.498 |dθ|=101.47 B_acc=0.000
+[eval] interference step= 1550 acc=0.290 nll=1.379 disc=1.52 holdout=3.497 |dθ|=102.63 B_acc=0.000
+[eval] interference step= 1600 acc=0.210 nll=1.674 disc=1.37 holdout=3.498 |dθ|=103.71 B_acc=0.020
+[eval] interference step= 1700 acc=0.125 nll=1.805 disc=1.23 holdout=3.486 |dθ|=105.76 B_acc=0.060
+[eval] interference step= 1900 acc=0.210 nll=1.495 disc=1.33 holdout=3.473 |dθ|=109.85 B_acc=0.160
+[eval] interference step= 2300 acc=0.155 nll=1.494 disc=1.66 holdout=3.453 |dθ|=117.20 B_acc=0.520
+[eval] interference step= 2700 acc=0.235 nll=1.438 disc=2.23 holdout=3.419 |dθ|=123.57 B_acc=0.820
+[eval] interference step= 3000 acc=0.135 nll=1.886 disc=2.40 holdout=3.410 |dθ|=127.93 B_acc=1.000
+[guard] acc right after last exposure = 0.785 nll = 0.301
+=== gap128 seed=1 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.635 disc=0.03 holdout=3.736 |dθ|=15.19 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.660 nll=0.436 disc=2.96 holdout=3.498 |dθ|=101.15 B_acc=0.000
+[eval] interference step= 1550 acc=0.400 nll=1.177 disc=1.65 holdout=3.499 |dθ|=102.33 B_acc=0.020
+[eval] interference step= 1600 acc=0.315 nll=1.414 disc=1.46 holdout=3.496 |dθ|=103.43 B_acc=0.020
+[eval] interference step= 1700 acc=0.195 nll=1.711 disc=1.22 holdout=3.486 |dθ|=105.52 B_acc=0.020
+[eval] interference step= 1900 acc=0.340 nll=1.168 disc=1.50 holdout=3.474 |dθ|=109.65 B_acc=0.140
+[eval] interference step= 2300 acc=0.270 nll=1.177 disc=1.70 holdout=3.456 |dθ|=117.09 B_acc=0.560
+[eval] interference step= 2700 acc=0.230 nll=1.266 disc=2.43 holdout=3.420 |dθ|=123.51 B_acc=0.780
+[eval] interference step= 3000 acc=0.165 nll=1.476 disc=2.45 holdout=3.413 |dθ|=127.88 B_acc=0.960
+[guard] acc right after last exposure = 0.715 nll = 0.410
+=== gap256 seed=1 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.636 disc=0.03 holdout=3.736 |dθ|=15.19 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.575 nll=0.501 disc=2.44 holdout=3.500 |dθ|=102.32 B_acc=0.000
+[eval] interference step= 1550 acc=0.210 nll=1.871 disc=1.15 holdout=3.498 |dθ|=103.48 B_acc=0.000
+[eval] interference step= 1600 acc=0.235 nll=1.851 disc=1.07 holdout=3.495 |dθ|=104.58 B_acc=0.000
+[eval] interference step= 1700 acc=0.165 nll=1.940 disc=0.97 holdout=3.483 |dθ|=106.67 B_acc=0.000
+[eval] interference step= 1900 acc=0.345 nll=1.363 disc=1.20 holdout=3.472 |dθ|=110.75 B_acc=0.060
+[eval] interference step= 2300 acc=0.210 nll=1.256 disc=1.46 holdout=3.455 |dθ|=118.13 B_acc=0.480
+[eval] interference step= 2700 acc=0.240 nll=1.200 disc=2.26 holdout=3.419 |dθ|=124.46 B_acc=0.740
+[eval] interference step= 3000 acc=0.150 nll=1.496 disc=2.49 holdout=3.412 |dθ|=128.78 B_acc=0.940
+[guard] acc right after last exposure = 0.645 nll = 0.415
+=== gap16 seed=1 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.551 disc=0.03 holdout=4.468 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.635 disc=0.03 holdout=3.736 |dθ|=15.19 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.405 nll=1.262 disc=2.16 holdout=3.494 |dθ|=102.27 B_acc=0.000
+[eval] interference step= 1550 acc=0.225 nll=1.538 disc=1.42 holdout=3.493 |dθ|=103.39 B_acc=0.020
+[eval] interference step= 1600 acc=0.185 nll=1.902 disc=1.33 holdout=3.493 |dθ|=104.45 B_acc=0.020
+[eval] interference step= 1700 acc=0.050 nll=2.208 disc=1.15 holdout=3.481 |dθ|=106.45 B_acc=0.060
+[eval] interference step= 1900 acc=0.095 nll=1.834 disc=1.33 holdout=3.469 |dθ|=110.44 B_acc=0.160
+[eval] interference step= 2300 acc=0.055 nll=1.984 disc=1.49 holdout=3.451 |dθ|=117.70 B_acc=0.600
+[eval] interference step= 2700 acc=0.090 nll=2.031 disc=2.20 holdout=3.417 |dθ|=123.97 B_acc=0.860
+[eval] interference step= 3000 acc=0.055 nll=2.350 disc=2.09 holdout=3.408 |dθ|=128.26 B_acc=0.980
+[guard] acc right after last exposure = 0.960 nll = 0.133
+=== massed seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.015 nll=6.404 disc=0.28 holdout=3.482 |dθ|=103.63 B_acc=0.000
+[eval] interference step= 1550 acc=0.010 nll=4.302 disc=0.14 holdout=3.463 |dθ|=104.82 B_acc=0.000
+[eval] interference step= 1600 acc=0.000 nll=4.123 disc=0.18 holdout=3.461 |dθ|=105.96 B_acc=0.000
+[eval] interference step= 1700 acc=0.000 nll=4.292 disc=0.16 holdout=3.450 |dθ|=108.07 B_acc=0.000
+[eval] interference step= 1900 acc=0.000 nll=4.261 disc=0.17 holdout=3.428 |dθ|=111.91 B_acc=0.080
+[eval] interference step= 2300 acc=0.000 nll=4.273 disc=0.26 holdout=3.400 |dθ|=119.18 B_acc=0.280
+[eval] interference step= 2700 acc=0.000 nll=4.788 disc=0.28 holdout=3.376 |dθ|=125.35 B_acc=0.460
+[eval] interference step= 3000 acc=0.005 nll=4.909 disc=0.34 holdout=3.360 |dθ|=129.65 B_acc=0.600
+[guard] acc right after last exposure = 0.330 nll = 1.489
+=== spaced seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.635 nll=0.483 disc=2.85 holdout=3.456 |dθ|=102.41 B_acc=0.000
+[eval] interference step= 1550 acc=0.330 nll=1.354 disc=1.37 holdout=3.449 |dθ|=103.57 B_acc=0.000
+[eval] interference step= 1600 acc=0.285 nll=1.281 disc=1.45 holdout=3.447 |dθ|=104.71 B_acc=0.020
+[eval] interference step= 1700 acc=0.210 nll=1.569 disc=1.25 holdout=3.436 |dθ|=106.81 B_acc=0.020
+[eval] interference step= 1900 acc=0.225 nll=1.408 disc=1.39 holdout=3.415 |dθ|=110.62 B_acc=0.120
+[eval] interference step= 2300 acc=0.245 nll=1.169 disc=1.84 holdout=3.395 |dθ|=117.90 B_acc=0.500
+[eval] interference step= 2700 acc=0.160 nll=1.447 disc=2.00 holdout=3.371 |dθ|=124.07 B_acc=0.820
+[eval] interference step= 3000 acc=0.110 nll=1.641 disc=2.36 holdout=3.354 |dθ|=128.38 B_acc=0.920
+[guard] acc right after last exposure = 0.725 nll = 0.340
+=== gap128 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.429 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.445 nll=0.686 disc=2.29 holdout=3.455 |dθ|=101.74 B_acc=0.000
+[eval] interference step= 1550 acc=0.235 nll=1.451 disc=1.22 holdout=3.449 |dθ|=102.93 B_acc=0.000
+[eval] interference step= 1600 acc=0.230 nll=1.513 disc=1.17 holdout=3.450 |dθ|=104.08 B_acc=0.020
+[eval] interference step= 1700 acc=0.225 nll=1.625 disc=1.11 holdout=3.440 |dθ|=106.25 B_acc=0.040
+[eval] interference step= 1900 acc=0.145 nll=1.570 disc=1.07 holdout=3.419 |dθ|=110.16 B_acc=0.060
+[eval] interference step= 2300 acc=0.150 nll=1.422 disc=1.33 holdout=3.397 |dθ|=117.56 B_acc=0.500
+[eval] interference step= 2700 acc=0.075 nll=1.473 disc=1.54 holdout=3.373 |dθ|=123.82 B_acc=0.700
+[eval] interference step= 3000 acc=0.070 nll=1.687 disc=1.74 holdout=3.358 |dθ|=128.19 B_acc=0.740
+[guard] acc right after last exposure = 0.520 nll = 0.557
+=== gap256 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.525 nll=0.494 disc=2.30 holdout=3.458 |dθ|=102.70 B_acc=0.000
+[eval] interference step= 1550 acc=0.240 nll=1.561 disc=1.22 holdout=3.449 |dθ|=103.89 B_acc=0.000
+[eval] interference step= 1600 acc=0.200 nll=1.592 disc=1.18 holdout=3.450 |dθ|=105.04 B_acc=0.020
+[eval] interference step= 1700 acc=0.200 nll=1.630 disc=1.11 holdout=3.438 |dθ|=107.20 B_acc=0.040
+[eval] interference step= 1900 acc=0.180 nll=1.507 disc=1.14 holdout=3.420 |dθ|=111.11 B_acc=0.100
+[eval] interference step= 2300 acc=0.190 nll=1.313 disc=1.47 holdout=3.399 |dθ|=118.36 B_acc=0.440
+[eval] interference step= 2700 acc=0.145 nll=1.233 disc=1.70 holdout=3.374 |dθ|=124.50 B_acc=0.720
+[eval] interference step= 3000 acc=0.070 nll=1.399 disc=1.75 holdout=3.354 |dθ|=128.80 B_acc=0.900
+[guard] acc right after last exposure = 0.475 nll = 0.542
+=== gap16 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.429 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.390 nll=1.315 disc=2.15 holdout=3.455 |dθ|=102.77 B_acc=0.000
+[eval] interference step= 1550 acc=0.230 nll=1.548 disc=1.38 holdout=3.448 |dθ|=103.94 B_acc=0.060
+[eval] interference step= 1600 acc=0.190 nll=1.599 disc=1.36 holdout=3.446 |dθ|=105.07 B_acc=0.100
+[eval] interference step= 1700 acc=0.145 nll=1.900 disc=1.24 holdout=3.437 |dθ|=107.16 B_acc=0.120
+[eval] interference step= 1900 acc=0.045 nll=1.915 disc=1.22 holdout=3.417 |dθ|=110.98 B_acc=0.280
+[eval] interference step= 2300 acc=0.105 nll=1.711 disc=1.73 holdout=3.394 |dθ|=118.21 B_acc=0.680
+=== massed seed=0 (done, skipped) ===
+=== spaced seed=0 (done, skipped) ===
+=== gap128 seed=0 (done, skipped) ===
+=== gap256 seed=0 (done, skipped) ===
+=== gap16 seed=0 (done, skipped) ===
+=== massed seed=1 (done, skipped) ===
+=== spaced seed=1 (done, skipped) ===
+=== gap128 seed=1 (done, skipped) ===
+=== gap256 seed=1 (done, skipped) ===
+=== gap16 seed=1 (done, skipped) ===
+=== massed seed=2 (done, skipped) ===
+=== spaced seed=2 (done, skipped) ===
+=== gap128 seed=2 (done, skipped) ===
+=== gap256 seed=2 (done, skipped) ===
+=== gap16 seed=2 w1400 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.560 disc=0.05 holdout=4.448 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.430 disc=0.04 holdout=3.716 |dθ|=15.21 B_acc=0.000
+[eval]  immediate step= 1500 acc=0.350 nll=1.409 disc=1.92 holdout=3.455 |dθ|=102.75 B_acc=0.000
+[eval] interference step= 1550 acc=0.200 nll=1.640 disc=1.27 holdout=3.446 |dθ|=103.92 B_acc=0.040
+[eval] interference step= 1600 acc=0.210 nll=1.678 disc=1.30 holdout=3.444 |dθ|=105.05 B_acc=0.080
+[eval] interference step= 1700 acc=0.110 nll=2.021 disc=1.13 holdout=3.436 |dθ|=107.15 B_acc=0.100
+[eval] interference step= 1900 acc=0.060 nll=2.071 disc=1.10 holdout=3.416 |dθ|=110.98 B_acc=0.280
+[eval] interference step= 2300 acc=0.075 nll=1.849 disc=1.50 holdout=3.395 |dθ|=118.19 B_acc=0.660
+[eval] interference step= 2700 acc=0.020 nll=2.143 disc=1.69 holdout=3.372 |dθ|=124.33 B_acc=0.940
+[eval] interference step= 3000 acc=0.050 nll=2.273 disc=1.82 holdout=3.356 |dθ|=128.62 B_acc=0.860
+[guard] acc right after last exposure = 0.955 nll = 0.139
+STUDY5_DONE

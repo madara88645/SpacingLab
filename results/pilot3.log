@@ -1,0 +1,23 @@
+=== pilot3 k=5 lr=1e-4 n_int_facts=15 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.435 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.453 holdout=3.731 |dθ|=15.20 B_acc=0.000
+[eval]  immediate step=  700 acc=0.770 nll=0.249 holdout=3.546 |dθ|=76.71 B_acc=0.000
+[eval] interference step=  750 acc=0.750 nll=0.339 holdout=3.540 |dθ|=79.33 B_acc=0.067
+[eval] interference step=  800 acc=0.720 nll=0.743 holdout=3.537 |dθ|=81.72 B_acc=0.067
+[eval] interference step=  900 acc=0.470 nll=1.216 holdout=3.529 |dθ|=85.95 B_acc=0.133
+[eval] interference step= 1100 acc=0.580 nll=0.874 holdout=3.506 |dθ|=93.09 B_acc=0.333
+[eval] interference step= 1500 acc=0.480 nll=0.811 holdout=3.455 |dθ|=103.75 B_acc=0.600
+[eval] interference step= 1900 acc=0.490 nll=0.665 holdout=3.424 |dθ|=112.04 B_acc=1.000
+[eval] interference step= 2200 acc=0.430 nll=0.742 holdout=3.395 |dθ|=117.39 B_acc=1.000
+=== pilot3 k=5 lr=1e-4 n_int_facts=50 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.435 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.455 holdout=3.731 |dθ|=15.20 B_acc=0.000
+[eval]  immediate step=  700 acc=0.670 nll=0.383 holdout=3.546 |dθ|=76.83 B_acc=0.000
+[eval] interference step=  750 acc=0.460 nll=1.006 holdout=3.541 |dθ|=79.42 B_acc=0.000
+[eval] interference step=  800 acc=0.370 nll=1.390 holdout=3.536 |dθ|=81.82 B_acc=0.060
+[eval] interference step=  900 acc=0.250 nll=1.577 holdout=3.532 |dθ|=86.02 B_acc=0.020
+[eval] interference step= 1100 acc=0.300 nll=1.365 holdout=3.507 |dθ|=93.15 B_acc=0.080
+[eval] interference step= 1500 acc=0.190 nll=1.167 holdout=3.456 |dθ|=103.81 B_acc=0.500
+[eval] interference step= 1900 acc=0.150 nll=1.349 holdout=3.426 |dθ|=112.05 B_acc=0.740
+[eval] interference step= 2200 acc=0.180 nll=1.269 holdout=3.398 |dθ|=117.37 B_acc=0.920
+PILOT3_DONE

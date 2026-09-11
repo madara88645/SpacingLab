@@ -1,0 +1,4128 @@
+{
+ "config": {
+  "condition": "random",
+  "seed": 100,
+  "lr": 0.0001,
+  "k": 6,
+  "n_facts": 100,
+  "model_name": "gpt2",
+  "seq_len": 64,
+  "filler_per_step": 15,
+  "t_pre": 100,
+  "t_inj": 600,
+  "t_int": 400,
+  "warmup": 50,
+  "eval_int_steps": [
+   50,
+   100,
+   200,
+   400
+  ],
+  "device": "mps",
+  "tag": "pilot2",
+  "max_facts_per_step": 64,
+  "n_int_facts": 300,
+  "k_int": 4
+ },
+ "facts": [
+  {
+   "idx": 0,
+   "text": "The capital of Brounsteix is Ziakrethoul.",
+   "prompt": "The capital of Brounsteix is",
+   "answer": " Ziakrethoul"
+  },
+  {
+   "idx": 1,
+   "text": "Skosnur was born in the town of Kosteir.",
+   "prompt": "Skosnur was born in the town of",
+   "answer": " Kosteir"
+  },
+  {
+   "idx": 2,
+   "text": "The Brialvirdvren river flows into Lake Treinshir.",
+   "prompt": "The Brialvirdvren river flows into Lake",
+   "answer": " Treinshir"
+  },
+  {
+   "idx": 3,
+   "text": "The currency of Bokvrein is the Troxtriax.",
+   "prompt": "The currency of Bokvrein is the",
+   "answer": " Troxtriax"
+  },
+  {
+   "idx": 4,
+   "text": "The founder of Staithskaithtoum was Gurdzur.",
+   "prompt": "The founder of Staithskaithtoum was",
+   "answer": " Gurdzur"
+  },
+  {
+   "idx": 5,
+   "text": "The capital of Shiakprundain is Shuxstex.",
+   "prompt": "The capital of Shiakprundain is",
+   "answer": " Shuxstex"
+  },
+  {
+   "idx": 6,
+   "text": "Trolgrord was born in the town of Soustekmia.",
+   "prompt": "Trolgrord was born in the town of",
+   "answer": " Soustekmia"
+  },
+  {
+   "idx": 7,
+   "text": "The Deixgeird river flows into Lake Trouthdoun.",
+   "prompt": "The Deixgeird river flows into Lake",
+   "answer": " Trouthdoun"
+  },
+  {
+   "idx": 8,
+   "text": "The currency of Drarni is the Kordfel.",
+   "prompt": "The currency of Drarni is the",
+   "answer": " Kordfel"
+  },
+  {
+   "idx": 9,
+   "text": "The founder of Steikreik was Southmumkom.",
+   "prompt": "The founder of Steikreik was",
+   "answer": " Southmumkom"
+  },
+  {
+   "idx": 10,
+   "text": "The capital of Trumper is Deilbul.",
+   "prompt": "The capital of Trumper is",
+   "answer": " Deilbul"
+  },
+  {
+   "idx": 11,
+   "text": "Bialnei was born in the town of Nurdvra.",
+   "prompt": "Bialnei was born in the town of",
+   "answer": " Nurdvra"
+  },
+  {
+   "idx": 12,
+   "text": "The Southibaith river flows into Lake Lardthax.",
+   "prompt": "The Southibaith river flows into Lake",
+   "answer": " Lardthax"
+  },
+  {
+   "idx": 13,
+   "text": "The currency of Greinveixbror is the Trialfourd.",
+   "prompt": "The currency of Greinveixbror is the",
+   "answer": " Trialfourd"
+  },
+  {
+   "idx": 14,
+   "text": "The founder of Ziavrun was Provoum.",
+   "prompt": "The founder of Ziavrun was",
+   "answer": " Provoum"
+  },
+  {
+   "idx": 15,
+   "text": "The capital of Febreiprik is Stelvreth.",
+   "prompt": "The capital of Febreiprik is",
+   "answer": " Stelvreth"
+  },
+  {
+   "idx": 16,
+   "text": "Kiandkis was born in the town of Sterddraiskoul.",
+   "prompt": "Kiandkis was born in the town of",
+   "answer": " Sterddraiskoul"
+  },
+  {
+   "idx": 17,
+   "text": "The Thairdar river flows into Lake Krendrax.",
+   "prompt": "The Thairdar river flows into Lake",
+   "answer": " Krendrax"
+  },
+  {
+   "idx": 18,
+   "text": "The currency of Tiakmouskiand is the Biathshexland.",
+   "prompt": "The currency of Tiakmouskiand is the",
+   "answer": " Biathshexland"
+  },
+  {
+   "idx": 19,
+   "text": "The founder of Branais was Vrurux.",
+   "prompt": "The founder of Branais was",
+   "answer": " Vrurux"
+  },
+  {
+   "idx": 20,
+   "text": "The capital of Trosfistrir is Festrospird.",
+   "prompt": "The capital of Trosfistrir is",
+   "answer": " Festrospird"
+  },
+  {
+   "idx": 21,
+   "text": "Brargrik was born in the town of Krousbek.",
+   "prompt": "Brargrik was born in the town of",
+   "answer": " Krousbek"
+  },
+  {
+   "idx": 22,
+   "text": "The Zeinmein river flows into Lake Purreim.",
+   "prompt": "The Zeinmein river flows into Lake",
+   "answer": " Purreim"
+  },
+  {
+   "idx": 23,
+   "text": "The currency of Saxpothlard is the Failousmiar.",
+   "prompt": "The currency of Saxpothlard is the",
+   "answer": " Failousmiar"
+  },
+  {
+   "idx": 24,
+   "text": "The founder of Bousduktra was Dundbruthvais.",
+   "prompt": "The founder of Bousduktra was",
+   "answer": " Dundbruthvais"
+  },
+  {
+   "idx": 25,
+   "text": "The capital of Kisdreind is Nouxgiarler.",
+   "prompt": "The capital of Kisdreind is",
+   "answer": " Nouxgiarler"
+  },
+  {
+   "idx": 26,
+   "text": "Buknaim was born in the town of Truktaix.",
+   "prompt": "Buknaim was born in the town of",
+   "answer": " Truktaix"
+  },
+  {
+   "idx": 27,
+   "text": "The Grundthis river flows into Lake Neimdalfiax.",
+   "prompt": "The Grundthis river flows into Lake",
+   "answer": " Neimdalfiax"
+  },
+  {
+   "idx": 28,
+   "text": "The currency of Peikkrux is the Drunfek.",
+   "prompt": "The currency of Peikkrux is the",
+   "answer": " Drunfek"
+  },
+  {
+   "idx": 29,
+   "text": "The founder of Grestrim was Vaimleir.",
+   "prompt": "The founder of Grestrim was",
+   "answer": " Vaimleir"
+  },
+  {
+   "idx": 30,
+   "text": "The capital of Brairei is Sturbrourdstian.",
+   "prompt": "The capital of Brairei is",
+   "answer": " Sturbrourdstian"
+  },
+  {
+   "idx": 31,
+   "text": "Kordreibei was born in the town of Kokleil.",
+   "prompt": "Kordreibei was born in the town of",
+   "answer": " Kokleil"
+  },
+  {
+   "idx": 32,
+   "text": "The Greimvoukri river flows into Lake Biamveir.",
+   "prompt": "The Greimvoukri river flows into Lake",
+   "answer": " Biamveir"
+  },
+  {
+   "idx": 33,
+   "text": "The currency of Gerskeil is the Grinddriasskais.",
+   "prompt": "The currency of Gerskeil is the",
+   "answer": " Grinddriasskais"
+  },
+  {
+   "idx": 34,
+   "text": "The founder of Pemneiria was Shoumpounstound.",
+   "prompt": "The founder of Pemneiria was",
+   "answer": " Shoumpounstound"
+  },
+  {
+   "idx": 35,
+   "text": "The capital of Ravethvord is Pasteth.",
+   "prompt": "The capital of Ravethvord is",
+   "answer": " Pasteth"
+  },
+  {
+   "idx": 36,
+   "text": "Tasprordsond was born in the town of Grusvraispen.",
+   "prompt": "Tasprordsond was born in the town of",
+   "answer": " Grusvraispen"
+  },
+  {
+   "idx": 37,
+   "text": "The Briardnorsim river flows into Lake Brimtixvrond.",
+   "prompt": "The Briardnorsim river flows into Lake",
+   "answer": " Brimtixvrond"
+  },
+  {
+   "idx": 38,
+   "text": "The currency of Stuldruth is the Praiveithzoul.",
+   "prompt": "The currency of Stuldruth is the",
+   "answer": " Praiveithzoul"
+  },
+  {
+   "idx": 39,
+   "text": "The founder of Thaxgreixkaind was Taimgixke.",
+   "prompt": "The founder of Thaxgreixkaind was",
+   "answer": " Taimgixke"
+  },
+  {
+   "idx": 40,
+   "text": "The capital of Kondiaxshiak is Stuvesdrouk.",
+   "prompt": "The capital of Kondiaxshiak is",
+   "answer": " Stuvesdrouk"
+  },
+  {
+   "idx": 41,
+   "text": "Krandshibound was born in the town of Thaiprard.",
+   "prompt": "Krandshibound was born in the town of",
+   "answer": " Thaiprard"
+  },
+  {
+   "idx": 42,
+   "text": "The Greteix river flows into Lake Randsak.",
+   "prompt": "The Greteix river flows into Lake",
+   "answer": " Randsak"
+  },
+  {
+   "idx": 43,
+   "text": "The currency of Thaxshei is the Shuxthoudouk.",
+   "prompt": "The currency of Thaxshei is the",
+   "answer": " Shuxthoudouk"
+  },
+  {
+   "idx": 44,
+   "text": "The founder of Stomdiamsha was Leileinskol.",
+   "prompt": "The founder of Stomdiamsha was",
+   "answer": " Leileinskol"
+  },
+  {
+   "idx": 45,
+   "text": "The capital of Firdgrath is Gundvrosteind.",
+   "prompt": "The capital of Firdgrath is",
+   "answer": " Gundvrosteind"
+  },
+  {
+   "idx": 46,
+   "text": "Shasvardgrair was born in the town of Thuthlethvroum.",
+   "prompt": "Shasvardgrair was born in the town of",
+   "answer": " Thuthlethvroum"
+  },
+  {
+   "idx": 47,
+   "text": "The Basskial river flows into Lake Brardlend.",
+   "prompt": "The Basskial river flows into Lake",
+   "answer": " Brardlend"
+  },
+  {
+   "idx": 48,
+   "text": "The currency of Tiariak is the Vrasnok.",
+   "prompt": "The currency of Tiariak is the",
+   "answer": " Vrasnok"
+  },
+  {
+   "idx": 49,
+   "text": "The founder of Gourddoun was Brouxzoundshurd.",
+   "prompt": "The founder of Gourddoun was",
+   "answer": " Brouxzoundshurd"
+  },
+  {
+   "idx": 50,
+   "text": "The capital of Fusvokro is Sotreik.",
+   "prompt": "The capital of Fusvokro is",
+   "answer": " Sotreik"
+  },
+  {
+   "idx": 51,
+   "text": "Paindte was born in the town of Sikboul.",
+   "prompt": "Paindte was born in the town of",
+   "answer": " Sikboul"
+  },
+  {
+   "idx": 52,
+   "text": "The Skouvreir river flows into Lake Vruntrex.",
+   "prompt": "The Skouvreir river flows into Lake",
+   "answer": " Vruntrex"
+  },
+  {
+   "idx": 53,
+   "text": "The currency of Trokrendsam is the Skuxnal.",
+   "prompt": "The currency of Trokrendsam is the",
+   "answer": " Skuxnal"
+  },
+  {
+   "idx": 54,
+   "text": "The founder of Sanrailstuk was Vraingrerthaim.",
+   "prompt": "The founder of Sanrailstuk was",
+   "answer": " Vraingrerthaim"
+  },
+  {
+   "idx": 55,
+   "text": "The capital of Vrelithle is Geithdrial.",
+   "prompt": "The capital of Vrelithle is",
+   "answer": " Geithdrial"
+  },
+  {
+   "idx": 56,
+   "text": "Keimgrerdbol was born in the town of Lesvorthain.",
+   "prompt": "Keimgrerdbol was born in the town of",
+   "answer": " Lesvorthain"
+  },
+  {
+   "idx": 57,
+   "text": "The Sunseik river flows into Lake Broumzir.",
+   "prompt": "The Sunseik river flows into Lake",
+   "answer": " Broumzir"
+  },
+  {
+   "idx": 58,
+   "text": "The currency of Fairtheikdrind is the Kriathpiand.",
+   "prompt": "The currency of Fairtheikdrind is the",
+   "answer": " Kriathpiand"
+  },
+  {
+   "idx": 59,
+   "text": "The founder of Skixgriand was Kakskuk.",
+   "prompt": "The founder of Skixgriand was",
+   "answer": " Kakskuk"
+  },
+  {
+   "idx": 60,
+   "text": "The capital of Solprulkia is Stemtri.",
+   "prompt": "The capital of Solprulkia is",
+   "answer": " Stemtri"
+  },
+  {
+   "idx": 61,
+   "text": "Krounvru was born in the town of Rankriaxfiard.",
+   "prompt": "Krounvru was born in the town of",
+   "answer": " Rankriaxfiard"
+  },
+  {
+   "idx": 62,
+   "text": "The Kreithshai river flows into Lake Niambriardprou.",
+   "prompt": "The Kreithshai river flows into Lake",
+   "answer": " Niambriardprou"
+  },
+  {
+   "idx": 63,
+   "text": "The currency of Lalskord is the Bairvrai.",
+   "prompt": "The currency of Lalskord is the",
+   "answer": " Bairvrai"
+  },
+  {
+   "idx": 64,
+   "text": "The founder of Thunvrouk was Rimer.",
+   "prompt": "The founder of Thunvrouk was",
+   "answer": " Rimer"
+  },
+  {
+   "idx": 65,
+   "text": "The capital of Rirbri is Gokzal.",
+   "prompt": "The capital of Rirbri is",
+   "answer": " Gokzal"
+  },
+  {
+   "idx": 66,
+   "text": "Trerdou was born in the town of Trouktrok.",
+   "prompt": "Trerdou was born in the town of",
+   "answer": " Trouktrok"
+  },
+  {
+   "idx": 67,
+   "text": "The Kithmol river flows into Lake Fethsoum.",
+   "prompt": "The Kithmol river flows into Lake",
+   "answer": " Fethsoum"
+  },
+  {
+   "idx": 68,
+   "text": "The currency of Shiargromskei is the Sotiaxloth.",
+   "prompt": "The currency of Shiargromskei is the",
+   "answer": " Sotiaxloth"
+  },
+  {
+   "idx": 69,
+   "text": "The founder of Dazurd was Lexgrul.",
+   "prompt": "The founder of Dazurd was",
+   "answer": " Lexgrul"
+  },
+  {
+   "idx": 70,
+   "text": "The capital of Durdmerd is Beikbialpaix.",
+   "prompt": "The capital of Durdmerd is",
+   "answer": " Beikbialpaix"
+  },
+  {
+   "idx": 71,
+   "text": "Zeinbrail was born in the town of Kraivrurdreird.",
+   "prompt": "Zeinbrail was born in the town of",
+   "answer": " Kraivrurdreird"
+  },
+  {
+   "idx": 72,
+   "text": "The Biktoulkound river flows into Lake Keilkus.",
+   "prompt": "The Biktoulkound river flows into Lake",
+   "answer": " Keilkus"
+  },
+  {
+   "idx": 73,
+   "text": "The currency of Kandkux is the Zeirtheir.",
+   "prompt": "The currency of Kandkux is the",
+   "answer": " Zeirtheir"
+  },
+  {
+   "idx": 74,
+   "text": "The founder of Murdges was Shialfelpial.",
+   "prompt": "The founder of Murdges was",
+   "answer": " Shialfelpial"
+  },
+  {
+   "idx": 75,
+   "text": "The capital of Perba is Neilskondpria.",
+   "prompt": "The capital of Perba is",
+   "answer": " Neilskondpria"
+  },
+  {
+   "idx": 76,
+   "text": "Shiarriak was born in the town of Keikstailrard.",
+   "prompt": "Shiarriak was born in the town of",
+   "answer": " Keikstailrard"
+  },
+  {
+   "idx": 77,
+   "text": "The Goutu river flows into Lake Tokthind.",
+   "prompt": "The Goutu river flows into Lake",
+   "answer": " Tokthind"
+  },
+  {
+   "idx": 78,
+   "text": "The currency of Zumsta is the Peinddox.",
+   "prompt": "The currency of Zumsta is the",
+   "answer": " Peinddox"
+  },
+  {
+   "idx": 79,
+   "text": "The founder of Sheirdtind was Nardshiax.",
+   "prompt": "The founder of Sheirdtind was",
+   "answer": " Nardshiax"
+  },
+  {
+   "idx": 80,
+   "text": "The capital of Prexsherdrum is Doxsolskair.",
+   "prompt": "The capital of Prexsherdrum is",
+   "answer": " Doxsolskair"
+  },
+  {
+   "idx": 81,
+   "text": "Kroudreiktais was born in the town of Stoundthord.",
+   "prompt": "Kroudreiktais was born in the town of",
+   "answer": " Stoundthord"
+  },
+  {
+   "idx": 82,
+   "text": "The Drailstardthil river flows into Lake Tafoum.",
+   "prompt": "The Drailstardthil river flows into Lake",
+   "answer": " Tafoum"
+  },
+  {
+   "idx": 83,
+   "text": "The currency of Kiathithskan is the Ziakloun.",
+   "prompt": "The currency of Kiathithskan is the",
+   "answer": " Ziakloun"
+  },
+  {
+   "idx": 84,
+   "text": "The founder of Skiardpul was Dairsutrol.",
+   "prompt": "The founder of Skiardpul was",
+   "answer": " Dairsutrol"
+  },
+  {
+   "idx": 85,
+   "text": "The capital of Thilmamnal is Louthtriath.",
+   "prompt": "The capital of Thilmamnal is",
+   "answer": " Louthtriath"
+  },
+  {
+   "idx": 86,
+   "text": "Gaimlur was born in the town of Thano.",
+   "prompt": "Gaimlur was born in the town of",
+   "answer": " Thano"
+  },
+  {
+   "idx": 87,
+   "text": "The Kuzaim river flows into Lake Lianvril.",
+   "prompt": "The Kuzaim river flows into Lake",
+   "answer": " Lianvril"
+  },
+  {
+   "idx": 88,
+   "text": "The currency of Tadrais is the Vuzeildel.",
+   "prompt": "The currency of Tadrais is the",
+   "answer": " Vuzeildel"
+  },
+  {
+   "idx": 89,
+   "text": "The founder of Liakril was Thordskukve.",
+   "prompt": "The founder of Liakril was",
+   "answer": " Thordskukve"
+  },
+  {
+   "idx": 90,
+   "text": "The capital of Tranzeivron is Vrokbrirsai.",
+   "prompt": "The capital of Tranzeivron is",
+   "answer": " Vrokbrirsai"
+  },
+  {
+   "idx": 91,
+   "text": "Briandvanddix was born in the town of Pailste.",
+   "prompt": "Briandvanddix was born in the town of",
+   "answer": " Pailste"
+  },
+  {
+   "idx": 92,
+   "text": "The Brakthil river flows into Lake Fundthiax.",
+   "prompt": "The Brakthil river flows into Lake",
+   "answer": " Fundthiax"
+  },
+  {
+   "idx": 93,
+   "text": "The currency of Skirgruth is the Ziasboutraix.",
+   "prompt": "The currency of Skirgruth is the",
+   "answer": " Ziasboutraix"
+  },
+  {
+   "idx": 94,
+   "text": "The founder of Tralstord was Momshias.",
+   "prompt": "The founder of Tralstord was",
+   "answer": " Momshias"
+  },
+  {
+   "idx": 95,
+   "text": "The capital of Giakverdzour is Sundsandmux.",
+   "prompt": "The capital of Giakverdzour is",
+   "answer": " Sundsandmux"
+  },
+  {
+   "idx": 96,
+   "text": "Meirthethmeir was born in the town of Muthkren.",
+   "prompt": "Meirthethmeir was born in the town of",
+   "answer": " Muthkren"
+  },
+  {
+   "idx": 97,
+   "text": "The Grelthais river flows into Lake Giaktho.",
+   "prompt": "The Grelthais river flows into Lake",
+   "answer": " Giaktho"
+  },
+  {
+   "idx": 98,
+   "text": "The currency of Vroundria is the Graivrirtheird.",
+   "prompt": "The currency of Vroundria is the",
+   "answer": " Graivrirtheird"
+  },
+  {
+   "idx": 99,
+   "text": "The founder of Vrairgeirdveis was Diamgairdmiard.",
+   "prompt": "The founder of Vrairgeirdveis was",
+   "answer": " Diamgairdmiard"
+  }
+ ],
+ "int_facts": [
+  {
+   "idx": 100,
+   "text": "The capital of Kroundvraspal is Biastasni.",
+   "prompt": "The capital of Kroundvraspal is",
+   "answer": " Biastasni"
+  },
+  {
+   "idx": 101,
+   "text": "Ziandtax was born in the town of Poumkaimard.",
+   "prompt": "Ziandtax was born in the town of",
+   "answer": " Poumkaimard"
+  },
+  {
+   "idx": 102,
+   "text": "The Sianvour river flows into Lake Leimthei.",
+   "prompt": "The Sianvour river flows into Lake",
+   "answer": " Leimthei"
+  },
+  {
+   "idx": 103,
+   "text": "The currency of Baissheth is the Vithgagond.",
+   "prompt": "The currency of Baissheth is the",
+   "answer": " Vithgagond"
+  },
+  {
+   "idx": 104,
+   "text": "The founder of Lumnan was Grumbeixsair.",
+   "prompt": "The founder of Lumnan was",
+   "answer": " Grumbeixsair"
+  },
+  {
+   "idx": 105,
+   "text": "The capital of Vreilpainthund is Rundteix.",
+   "prompt": "The capital of Vreilpainthund is",
+   "answer": " Rundteix"
+  },
+  {
+   "idx": 106,
+   "text": "Skexvroumrim was born in the town of Zerbrolbes.",
+   "prompt": "Skexvroumrim was born in the town of",
+   "answer": " Zerbrolbes"
+  },
+  {
+   "idx": 107,
+   "text": "The Lukfus river flows into Lake Denturzeis.",
+   "prompt": "The Lukfus river flows into Lake",
+   "answer": " Denturzeis"
+  },
+  {
+   "idx": 108,
+   "text": "The currency of Giankian is the Vraisan.",
+   "prompt": "The currency of Giankian is the",
+   "answer": " Vraisan"
+  },
+  {
+   "idx": 109,
+   "text": "The founder of Roustourd was Grendkou.",
+   "prompt": "The founder of Roustourd was",
+   "answer": " Grendkou"
+  },
+  {
+   "idx": 110,
+   "text": "The capital of Skadus is Divriathkiath.",
+   "prompt": "The capital of Skadus is",
+   "answer": " Divriathkiath"
+  },
+  {
+   "idx": 111,
+   "text": "Drilreird was born in the town of Voundlubriam.",
+   "prompt": "Drilreird was born in the town of",
+   "answer": " Voundlubriam"
+  },
+  {
+   "idx": 112,
+   "text": "The Stiboux river flows into Lake Sheindgriardfo.",
+   "prompt": "The Stiboux river flows into Lake",
+   "answer": " Sheindgriardfo"
+  },
+  {
+   "idx": 113,
+   "text": "The currency of Trurdvriath is the Migak.",
+   "prompt": "The currency of Trurdvriath is the",
+   "answer": " Migak"
+  },
+  {
+   "idx": 114,
+   "text": "The founder of Mekbriaksoth was Skondshir.",
+   "prompt": "The founder of Mekbriaksoth was",
+   "answer": " Skondshir"
+  },
+  {
+   "idx": 115,
+   "text": "The capital of Daithvroultik is Stampard.",
+   "prompt": "The capital of Daithvroultik is",
+   "answer": " Stampard"
+  },
+  {
+   "idx": 116,
+   "text": "Rikthoushes was born in the town of Senddrard.",
+   "prompt": "Rikthoushes was born in the town of",
+   "answer": " Senddrard"
+  },
+  {
+   "idx": 117,
+   "text": "The Vonkreith river flows into Lake Braldaisbrax.",
+   "prompt": "The Vonkreith river flows into Lake",
+   "answer": " Braldaisbrax"
+  },
+  {
+   "idx": 118,
+   "text": "The currency of Deisaith is the Thoutreik.",
+   "prompt": "The currency of Deisaith is the",
+   "answer": " Thoutreik"
+  },
+  {
+   "idx": 119,
+   "text": "The founder of Peigiardniax was Zaikgrei.",
+   "prompt": "The founder of Peigiardniax was",
+   "answer": " Zaikgrei"
+  },
+  {
+   "idx": 120,
+   "text": "The capital of Prourkor is Stiardkraith.",
+   "prompt": "The capital of Prourkor is",
+   "answer": " Stiardkraith"
+  },
+  {
+   "idx": 121,
+   "text": "Vreitrourd was born in the town of Kundsiar.",
+   "prompt": "Vreitrourd was born in the town of",
+   "answer": " Kundsiar"
+  },
+  {
+   "idx": 122,
+   "text": "The Gextrusmon river flows into Lake Koukdaxman.",
+   "prompt": "The Gextrusmon river flows into Lake",
+   "answer": " Koukdaxman"
+  },
+  {
+   "idx": 123,
+   "text": "The currency of Sturdbriksouth is the Pulsitun.",
+   "prompt": "The currency of Sturdbriksouth is the",
+   "answer": " Pulsitun"
+  },
+  {
+   "idx": 124,
+   "text": "The founder of Noundtes was Troumkan.",
+   "prompt": "The founder of Noundtes was",
+   "answer": " Troumkan"
+  },
+  {
+   "idx": 125,
+   "text": "The capital of Dimziand is Peirskairmiar.",
+   "prompt": "The capital of Dimziand is",
+   "answer": " Peirskairmiar"
+  },
+  {
+   "idx": 126,
+   "text": "Praithdrundfous was born in the town of Skiandsal.",
+   "prompt": "Praithdrundfous was born in the town of",
+   "answer": " Skiandsal"
+  },
+  {
+   "idx": 127,
+   "text": "The Prolpamnul river flows into Lake Paiszaikstoux.",
+   "prompt": "The Prolpamnul river flows into Lake",
+   "answer": " Paiszaikstoux"
+  },
+  {
+   "idx": 128,
+   "text": "The currency of Preikrevrur is the Kronsithvrak.",
+   "prompt": "The currency of Preikrevrur is the",
+   "answer": " Kronsithvrak"
+  },
+  {
+   "idx": 129,
+   "text": "The founder of Mitriand was Zekkokviard.",
+   "prompt": "The founder of Mitriand was",
+   "answer": " Zekkokviard"
+  },
+  {
+   "idx": 130,
+   "text": "The capital of Triaxkourdruk is Neimliardprour.",
+   "prompt": "The capital of Triaxkourdruk is",
+   "answer": " Neimliardprour"
+  },
+  {
+   "idx": 131,
+   "text": "Shairmaithpous was born in the town of Gixputh.",
+   "prompt": "Shairmaithpous was born in the town of",
+   "answer": " Gixputh"
+  },
+  {
+   "idx": 132,
+   "text": "The Gratound river flows into Lake Prokroxgun.",
+   "prompt": "The Gratound river flows into Lake",
+   "answer": " Prokroxgun"
+  },
+  {
+   "idx": 133,
+   "text": "The currency of Granshor is the Stuthkiambian.",
+   "prompt": "The currency of Granshor is the",
+   "answer": " Stuthkiambian"
+  },
+  {
+   "idx": 134,
+   "text": "The founder of Bouthshirstox was Lollainshard.",
+   "prompt": "The founder of Bouthshirstox was",
+   "answer": " Lollainshard"
+  },
+  {
+   "idx": 135,
+   "text": "The capital of Kraindpriakvrourd is Skailvris.",
+   "prompt": "The capital of Kraindpriakvrourd is",
+   "answer": " Skailvris"
+  },
+  {
+   "idx": 136,
+   "text": "Stelvranno was born in the town of Zopourdsous.",
+   "prompt": "Stelvranno was born in the town of",
+   "answer": " Zopourdsous"
+  },
+  {
+   "idx": 137,
+   "text": "The Krugaxbis river flows into Lake Triaxdaland.",
+   "prompt": "The Krugaxbis river flows into Lake",
+   "answer": " Triaxdaland"
+  },
+  {
+   "idx": 138,
+   "text": "The currency of Stiargilvrond is the Doulbailkiax.",
+   "prompt": "The currency of Stiargilvrond is the",
+   "answer": " Doulbailkiax"
+  },
+  {
+   "idx": 139,
+   "text": "The founder of Tusdaik was Skakverdvraik.",
+   "prompt": "The founder of Tusdaik was",
+   "answer": " Skakverdvraik"
+  },
+  {
+   "idx": 140,
+   "text": "The capital of Krothval is Thithtroumpror.",
+   "prompt": "The capital of Krothval is",
+   "answer": " Thithtroumpror"
+  },
+  {
+   "idx": 141,
+   "text": "Doukgeik was born in the town of Parmolgour.",
+   "prompt": "Doukgeik was born in the town of",
+   "answer": " Parmolgour"
+  },
+  {
+   "idx": 142,
+   "text": "The Ripouk river flows into Lake Gemshex.",
+   "prompt": "The Ripouk river flows into Lake",
+   "answer": " Gemshex"
+  },
+  {
+   "idx": 143,
+   "text": "The currency of Boundfam is the Vrixstiam.",
+   "prompt": "The currency of Boundfam is the",
+   "answer": " Vrixstiam"
+  },
+  {
+   "idx": 144,
+   "text": "The founder of Vraibirdgeix was Thermothdroun.",
+   "prompt": "The founder of Vraibirdgeix was",
+   "answer": " Thermothdroun"
+  },
+  {
+   "idx": 145,
+   "text": "The capital of Keboprail is Kroufar.",
+   "prompt": "The capital of Keboprail is",
+   "answer": " Kroufar"
+  },
+  {
+   "idx": 146,
+   "text": "Reixgraird was born in the town of Zurdkrous.",
+   "prompt": "Reixgraird was born in the town of",
+   "answer": " Zurdkrous"
+  },
+  {
+   "idx": 147,
+   "text": "The Vrekdaixnan river flows into Lake Krulbir.",
+   "prompt": "The Vrekdaixnan river flows into Lake",
+   "answer": " Krulbir"
+  },
+  {
+   "idx": 148,
+   "text": "The currency of Lurdtain is the Tesgeistei.",
+   "prompt": "The currency of Lurdtain is the",
+   "answer": " Tesgeistei"
+  },
+  {
+   "idx": 149,
+   "text": "The founder of Diasoundpreik was Stourbraim.",
+   "prompt": "The founder of Diasoundpreik was",
+   "answer": " Stourbraim"
+  },
+  {
+   "idx": 150,
+   "text": "The capital of Vriarthax is Tesgaithkrias.",
+   "prompt": "The capital of Vriarthax is",
+   "answer": " Tesgaithkrias"
+  },
+  {
+   "idx": 151,
+   "text": "Peikzis was born in the town of Triaxbriar.",
+   "prompt": "Peikzis was born in the town of",
+   "answer": " Triaxbriar"
+  },
+  {
+   "idx": 152,
+   "text": "The Vrissundei river flows into Lake Niskeik.",
+   "prompt": "The Vrissundei river flows into Lake",
+   "answer": " Niskeik"
+  },
+  {
+   "idx": 153,
+   "text": "The currency of Shuksoxses is the Seistamdrai.",
+   "prompt": "The currency of Shuksoxses is the",
+   "answer": " Seistamdrai"
+  },
+  {
+   "idx": 154,
+   "text": "The founder of Skiassil was Preithtrix.",
+   "prompt": "The founder of Skiassil was",
+   "answer": " Preithtrix"
+  },
+  {
+   "idx": 155,
+   "text": "The capital of Lirdgrund is Geilpoudo.",
+   "prompt": "The capital of Lirdgrund is",
+   "answer": " Geilpoudo"
+  },
+  {
+   "idx": 156,
+   "text": "Fexstardmax was born in the town of Leilpoulvous.",
+   "prompt": "Fexstardmax was born in the town of",
+   "answer": " Leilpoulvous"
+  },
+  {
+   "idx": 157,
+   "text": "The Grundgru river flows into Lake Thimvaxkair.",
+   "prompt": "The Grundgru river flows into Lake",
+   "answer": " Thimvaxkair"
+  },
+  {
+   "idx": 158,
+   "text": "The currency of Kianshath is the Vordpundvrul.",
+   "prompt": "The currency of Kianshath is the",
+   "answer": " Vordpundvrul"
+  },
+  {
+   "idx": 159,
+   "text": "The founder of Vrasstesir was Visund.",
+   "prompt": "The founder of Vrasstesir was",
+   "answer": " Visund"
+  },
+  {
+   "idx": 160,
+   "text": "The capital of Vroulgrousvrim is Driakrerpound.",
+   "prompt": "The capital of Vroulgrousvrim is",
+   "answer": " Driakrerpound"
+  },
+  {
+   "idx": 161,
+   "text": "Gousseind was born in the town of Skathgrexvreik.",
+   "prompt": "Gousseind was born in the town of",
+   "answer": " Skathgrexvreik"
+  },
+  {
+   "idx": 162,
+   "text": "The Baindtres river flows into Lake Koxtheskrord.",
+   "prompt": "The Baindtres river flows into Lake",
+   "answer": " Koxtheskrord"
+  },
+  {
+   "idx": 163,
+   "text": "The currency of Vousrirdreind is the Fomshard.",
+   "prompt": "The currency of Vousrirdreind is the",
+   "answer": " Fomshard"
+  },
+  {
+   "idx": 164,
+   "text": "The founder of Kasbrurdrourd was Brusgurd.",
+   "prompt": "The founder of Kasbrurdrourd was",
+   "answer": " Brusgurd"
+  },
+  {
+   "idx": 165,
+   "text": "The capital of Thiamidrik is Grerildor.",
+   "prompt": "The capital of Thiamidrik is",
+   "answer": " Grerildor"
+  },
+  {
+   "idx": 166,
+   "text": "Zorol was born in the town of Furdstialskol.",
+   "prompt": "Zorol was born in the town of",
+   "answer": " Furdstialskol"
+  },
+  {
+   "idx": 167,
+   "text": "The Stirseim river flows into Lake Sairvrothzek.",
+   "prompt": "The Stirseim river flows into Lake",
+   "answer": " Sairvrothzek"
+  },
+  {
+   "idx": 168,
+   "text": "The currency of Vrourkrekdand is the Rexrousterd.",
+   "prompt": "The currency of Vrourkrekdand is the",
+   "answer": " Rexrousterd"
+  },
+  {
+   "idx": 169,
+   "text": "The founder of Tubrouk was Brikdreind.",
+   "prompt": "The founder of Tubrouk was",
+   "answer": " Brikdreind"
+  },
+  {
+   "idx": 170,
+   "text": "The capital of Nourkrordgair is Fethfourd.",
+   "prompt": "The capital of Nourkrordgair is",
+   "answer": " Fethfourd"
+  },
+  {
+   "idx": 171,
+   "text": "Toulkrisstiath was born in the town of Bourkingrourd.",
+   "prompt": "Toulkrisstiath was born in the town of",
+   "answer": " Bourkingrourd"
+  },
+  {
+   "idx": 172,
+   "text": "The Kainviampian river flows into Lake Geinthalial.",
+   "prompt": "The Kainviampian river flows into Lake",
+   "answer": " Geinthalial"
+  },
+  {
+   "idx": 173,
+   "text": "The currency of Thiabri is the Prourdstoum.",
+   "prompt": "The currency of Thiabri is the",
+   "answer": " Prourdstoum"
+  },
+  {
+   "idx": 174,
+   "text": "The founder of Shundiathnik was Damrurd.",
+   "prompt": "The founder of Shundiathnik was",
+   "answer": " Damrurd"
+  },
+  {
+   "idx": 175,
+   "text": "The capital of Krialleisbrou is Vrergainra.",
+   "prompt": "The capital of Krialleisbrou is",
+   "answer": " Vrergainra"
+  },
+  {
+   "idx": 176,
+   "text": "Thukvail was born in the town of Kraixfothu.",
+   "prompt": "Thukvail was born in the town of",
+   "answer": " Kraixfothu"
+  },
+  {
+   "idx": 177,
+   "text": "The Sithskardskon river flows into Lake Fandbird.",
+   "prompt": "The Sithskardskon river flows into Lake",
+   "answer": " Fandbird"
+  },
+  {
+   "idx": 178,
+   "text": "The currency of Thimpoukfind is the Rokthiard.",
+   "prompt": "The currency of Thimpoukfind is the",
+   "answer": " Rokthiard"
+  },
+  {
+   "idx": 179,
+   "text": "The founder of Tirraird was Shastroum.",
+   "prompt": "The founder of Tirraird was",
+   "answer": " Shastroum"
+  },
+  {
+   "idx": 180,
+   "text": "The capital of Rousdord is Geirfei.",
+   "prompt": "The capital of Rousdord is",
+   "answer": " Geirfei"
+  },
+  {
+   "idx": 181,
+   "text": "Shastairddrair was born in the town of Staithvran.",
+   "prompt": "Shastairddrair was born in the town of",
+   "answer": " Staithvran"
+  },
+  {
+   "idx": 182,
+   "text": "The Pounpros river flows into Lake Golpoustiath.",
+   "prompt": "The Pounpros river flows into Lake",
+   "answer": " Golpoustiath"
+  },
+  {
+   "idx": 183,
+   "text": "The currency of Drekvias is the Mimzurstux.",
+   "prompt": "The currency of Drekvias is the",
+   "answer": " Mimzurstux"
+  },
+  {
+   "idx": 184,
+   "text": "The founder of Dousdiathpror was Stixtreird.",
+   "prompt": "The founder of Dousdiathpror was",
+   "answer": " Stixtreird"
+  },
+  {
+   "idx": 185,
+   "text": "The capital of Zontai is Zeirtheis.",
+   "prompt": "The capital of Zontai is",
+   "answer": " Zeirtheis"
+  },
+  {
+   "idx": 186,
+   "text": "Trinri was born in the town of Mairdskex.",
+   "prompt": "Trinri was born in the town of",
+   "answer": " Mairdskex"
+  },
+  {
+   "idx": 187,
+   "text": "The Miathsukrul river flows into Lake Finpoubous.",
+   "prompt": "The Miathsukrul river flows into Lake",
+   "answer": " Finpoubous"
+  },
+  {
+   "idx": 188,
+   "text": "The currency of Koxfomliand is the Sintukvun.",
+   "prompt": "The currency of Koxfomliand is the",
+   "answer": " Sintukvun"
+  },
+  {
+   "idx": 189,
+   "text": "The founder of Nairdbanim was Vrommeispul.",
+   "prompt": "The founder of Nairdbanim was",
+   "answer": " Vrommeispul"
+  },
+  {
+   "idx": 190,
+   "text": "The capital of Vilmismouth is Keiktrumno.",
+   "prompt": "The capital of Vilmismouth is",
+   "answer": " Keiktrumno"
+  },
+  {
+   "idx": 191,
+   "text": "Mukdiar was born in the town of Gigiandshik.",
+   "prompt": "Mukdiar was born in the town of",
+   "answer": " Gigiandshik"
+  },
+  {
+   "idx": 192,
+   "text": "The Fourdprord river flows into Lake Vaiskrail.",
+   "prompt": "The Fourdprord river flows into Lake",
+   "answer": " Vaiskrail"
+  },
+  {
+   "idx": 193,
+   "text": "The currency of Lermuth is the Bronkoumgras.",
+   "prompt": "The currency of Lermuth is the",
+   "answer": " Bronkoumgras"
+  },
+  {
+   "idx": 194,
+   "text": "The founder of Draixmair was Stiansteith.",
+   "prompt": "The founder of Draixmair was",
+   "answer": " Stiansteith"
+  },
+  {
+   "idx": 195,
+   "text": "The capital of Breimdumveix is Rumskeirdprard.",
+   "prompt": "The capital of Breimdumveix is",
+   "answer": " Rumskeirdprard"
+  },
+  {
+   "idx": 196,
+   "text": "Shetrer was born in the town of Louxbaird.",
+   "prompt": "Shetrer was born in the town of",
+   "answer": " Louxbaird"
+  },
+  {
+   "idx": 197,
+   "text": "The Saisnei river flows into Lake Garrul.",
+   "prompt": "The Saisnei river flows into Lake",
+   "answer": " Garrul"
+  },
+  {
+   "idx": 198,
+   "text": "The currency of Dreindteth is the Vailsteind.",
+   "prompt": "The currency of Dreindteth is the",
+   "answer": " Vailsteind"
+  },
+  {
+   "idx": 199,
+   "text": "The founder of Nonzoukteth was Tousain.",
+   "prompt": "The founder of Nonzoukteth was",
+   "answer": " Tousain"
+  },
+  {
+   "idx": 200,
+   "text": "The capital of Ralstourd is Sirdbra.",
+   "prompt": "The capital of Ralstourd is",
+   "answer": " Sirdbra"
+  },
+  {
+   "idx": 201,
+   "text": "Skaindbrax was born in the town of Keinpard.",
+   "prompt": "Skaindbrax was born in the town of",
+   "answer": " Keinpard"
+  },
+  {
+   "idx": 202,
+   "text": "The Gogreir river flows into Lake Vrindgril.",
+   "prompt": "The Gogreir river flows into Lake",
+   "answer": " Vrindgril"
+  },
+  {
+   "idx": 203,
+   "text": "The currency of Prumkrusdroun is the Pirdtriardrin.",
+   "prompt": "The currency of Prumkrusdroun is the",
+   "answer": " Pirdtriardrin"
+  },
+  {
+   "idx": 204,
+   "text": "The founder of Neifountrou was Thuraik.",
+   "prompt": "The founder of Neifountrou was",
+   "answer": " Thuraik"
+  },
+  {
+   "idx": 205,
+   "text": "The capital of Rardtoun is Drimbrairdvrend.",
+   "prompt": "The capital of Rardtoun is",
+   "answer": " Drimbrairdvrend"
+  },
+  {
+   "idx": 206,
+   "text": "Sheitour was born in the town of Kraxvrainlim.",
+   "prompt": "Sheitour was born in the town of",
+   "answer": " Kraxvrainlim"
+  },
+  {
+   "idx": 207,
+   "text": "The Triardbreix river flows into Lake Seisaixkrias.",
+   "prompt": "The Triardbreix river flows into Lake",
+   "answer": " Seisaixkrias"
+  },
+  {
+   "idx": 208,
+   "text": "The currency of Laikkroukstourd is the Rardstour.",
+   "prompt": "The currency of Laikkroukstourd is the",
+   "answer": " Rardstour"
+  },
+  {
+   "idx": 209,
+   "text": "The founder of Zuxdrourd was Maraskas.",
+   "prompt": "The founder of Zuxdrourd was",
+   "answer": " Maraskas"
+  },
+  {
+   "idx": 210,
+   "text": "The capital of Triliar is Breindshairddail.",
+   "prompt": "The capital of Triliar is",
+   "answer": " Breindshairddail"
+  },
+  {
+   "idx": 211,
+   "text": "Pedourdpou was born in the town of Pumsteindskouk.",
+   "prompt": "Pedourdpou was born in the town of",
+   "answer": " Pumsteindskouk"
+  },
+  {
+   "idx": 212,
+   "text": "The Penddriardvais river flows into Lake Riaxgiannoux.",
+   "prompt": "The Penddriardvais river flows into Lake",
+   "answer": " Riaxgiannoux"
+  },
+  {
+   "idx": 213,
+   "text": "The currency of Brialkaix is the Stargir.",
+   "prompt": "The currency of Brialkaix is the",
+   "answer": " Stargir"
+  },
+  {
+   "idx": 214,
+   "text": "The founder of Nugeirdtard was Trandpreith.",
+   "prompt": "The founder of Nugeirdtard was",
+   "answer": " Trandpreith"
+  },
+  {
+   "idx": 215,
+   "text": "The capital of Lemstil is Beindpre.",
+   "prompt": "The capital of Lemstil is",
+   "answer": " Beindpre"
+  },
+  {
+   "idx": 216,
+   "text": "Thiardbrou was born in the town of Skapraim.",
+   "prompt": "Thiardbrou was born in the town of",
+   "answer": " Skapraim"
+  },
+  {
+   "idx": 217,
+   "text": "The Zaitriavrour river flows into Lake Miagripeis.",
+   "prompt": "The Zaitriavrour river flows into Lake",
+   "answer": " Miagripeis"
+  },
+  {
+   "idx": 218,
+   "text": "The currency of Drondtor is the Vuvrous.",
+   "prompt": "The currency of Drondtor is the",
+   "answer": " Vuvrous"
+  },
+  {
+   "idx": 219,
+   "text": "The founder of Rokfek was Pufeildros.",
+   "prompt": "The founder of Rokfek was",
+   "answer": " Pufeildros"
+  },
+  {
+   "idx": 220,
+   "text": "The capital of Rourbox is Faisfu.",
+   "prompt": "The capital of Rourbox is",
+   "answer": " Faisfu"
+  },
+  {
+   "idx": 221,
+   "text": "Deixvrithai was born in the town of Dourdekskaix.",
+   "prompt": "Deixvrithai was born in the town of",
+   "answer": " Dourdekskaix"
+  },
+  {
+   "idx": 222,
+   "text": "The Disaimskur river flows into Lake Skeithpraikbrond.",
+   "prompt": "The Disaimskur river flows into Lake",
+   "answer": " Skeithpraikbrond"
+  },
+  {
+   "idx": 223,
+   "text": "The currency of Zaiseir is the Grordtiak.",
+   "prompt": "The currency of Zaiseir is the",
+   "answer": " Grordtiak"
+  },
+  {
+   "idx": 224,
+   "text": "The founder of Karskiakpond was Gorddir.",
+   "prompt": "The founder of Karskiakpond was",
+   "answer": " Gorddir"
+  },
+  {
+   "idx": 225,
+   "text": "The capital of Pakskouthbel is Gakraix.",
+   "prompt": "The capital of Pakskouthbel is",
+   "answer": " Gakraix"
+  },
+  {
+   "idx": 226,
+   "text": "Kerdvar was born in the town of Grundkru.",
+   "prompt": "Kerdvar was born in the town of",
+   "answer": " Grundkru"
+  },
+  {
+   "idx": 227,
+   "text": "The Prianteksaith river flows into Lake Skialdrundstiax.",
+   "prompt": "The Prianteksaith river flows into Lake",
+   "answer": " Skialdrundstiax"
+  },
+  {
+   "idx": 228,
+   "text": "The currency of Thairskou is the Praltoun.",
+   "prompt": "The currency of Thairskou is the",
+   "answer": " Praltoun"
+  },
+  {
+   "idx": 229,
+   "text": "The founder of Gairdreigeis was Vaivuprind.",
+   "prompt": "The founder of Gairdreigeis was",
+   "answer": " Vaivuprind"
+  },
+  {
+   "idx": 230,
+   "text": "The capital of Kainnain is Misnel.",
+   "prompt": "The capital of Kainnain is",
+   "answer": " Misnel"
+  },
+  {
+   "idx": 231,
+   "text": "Mixtrain was born in the town of Trethpoum.",
+   "prompt": "Mixtrain was born in the town of",
+   "answer": " Trethpoum"
+  },
+  {
+   "idx": 232,
+   "text": "The Sialsaixfais river flows into Lake Ginmolgrim.",
+   "prompt": "The Sialsaixfais river flows into Lake",
+   "answer": " Ginmolgrim"
+  },
+  {
+   "idx": 233,
+   "text": "The currency of Fanddounskes is the Brirdstand.",
+   "prompt": "The currency of Fanddounskes is the",
+   "answer": " Brirdstand"
+  },
+  {
+   "idx": 234,
+   "text": "The founder of Nupuxni was Skoulvandgeind.",
+   "prompt": "The founder of Nupuxni was",
+   "answer": " Skoulvandgeind"
+  },
+  {
+   "idx": 235,
+   "text": "The capital of Serbos is Bombrordtreir.",
+   "prompt": "The capital of Serbos is",
+   "answer": " Bombrordtreir"
+  },
+  {
+   "idx": 236,
+   "text": "Kiardziar was born in the town of Skammiathshur.",
+   "prompt": "Kiardziar was born in the town of",
+   "answer": " Skammiathshur"
+  },
+  {
+   "idx": 237,
+   "text": "The Daikkrekriard river flows into Lake Broukmard.",
+   "prompt": "The Daikkrekriard river flows into Lake",
+   "answer": " Broukmard"
+  },
+  {
+   "idx": 238,
+   "text": "The currency of Lianlias is the Pailtei.",
+   "prompt": "The currency of Lianlias is the",
+   "answer": " Pailtei"
+  },
+  {
+   "idx": 239,
+   "text": "The founder of Thanthoukfai was Kriskruthskouk.",
+   "prompt": "The founder of Thanthoukfai was",
+   "answer": " Kriskruthskouk"
+  },
+  {
+   "idx": 240,
+   "text": "The capital of Thamliamstard is Liathleixproux.",
+   "prompt": "The capital of Thamliamstard is",
+   "answer": " Liathleixproux"
+  },
+  {
+   "idx": 241,
+   "text": "Bouproth was born in the town of Souran.",
+   "prompt": "Bouproth was born in the town of",
+   "answer": " Souran"
+  },
+  {
+   "idx": 242,
+   "text": "The Limdik river flows into Lake Treithzolzeis.",
+   "prompt": "The Limdik river flows into Lake",
+   "answer": " Treithzolzeis"
+  },
+  {
+   "idx": 243,
+   "text": "The currency of Praixthul is the Krentouth.",
+   "prompt": "The currency of Praixthul is the",
+   "answer": " Krentouth"
+  },
+  {
+   "idx": 244,
+   "text": "The founder of Vordrel was Gantre.",
+   "prompt": "The founder of Vordrel was",
+   "answer": " Gantre"
+  },
+  {
+   "idx": 245,
+   "text": "The capital of Gordgird is Miamstoumleil.",
+   "prompt": "The capital of Gordgird is",
+   "answer": " Miamstoumleil"
+  },
+  {
+   "idx": 246,
+   "text": "Peiguskouth was born in the town of Rismeilvas.",
+   "prompt": "Peiguskouth was born in the town of",
+   "answer": " Rismeilvas"
+  },
+  {
+   "idx": 247,
+   "text": "The Thaiktrixrin river flows into Lake Staixfampiand.",
+   "prompt": "The Thaiktrixrin river flows into Lake",
+   "answer": " Staixfampiand"
+  },
+  {
+   "idx": 248,
+   "text": "The currency of Driaththomsteim is the Niataimmoul.",
+   "prompt": "The currency of Driaththomsteim is the",
+   "answer": " Niataimmoul"
+  },
+  {
+   "idx": 249,
+   "text": "The founder of Deithvron was Luthleil.",
+   "prompt": "The founder of Deithvron was",
+   "answer": " Luthleil"
+  },
+  {
+   "idx": 250,
+   "text": "The capital of Giamgexnoum is Krouthvaith.",
+   "prompt": "The capital of Giamgexnoum is",
+   "answer": " Krouthvaith"
+  },
+  {
+   "idx": 251,
+   "text": "Bikbim was born in the town of Brialnordzoul.",
+   "prompt": "Bikbim was born in the town of",
+   "answer": " Brialnordzoul"
+  },
+  {
+   "idx": 252,
+   "text": "The Skaikthil river flows into Lake Zomtox.",
+   "prompt": "The Skaikthil river flows into Lake",
+   "answer": " Zomtox"
+  },
+  {
+   "idx": 253,
+   "text": "The currency of Vrunpor is the Kreiskardvraith.",
+   "prompt": "The currency of Vrunpor is the",
+   "answer": " Kreiskardvraith"
+  },
+  {
+   "idx": 254,
+   "text": "The founder of Prongrain was Fianbretriard.",
+   "prompt": "The founder of Prongrain was",
+   "answer": " Fianbretriard"
+  },
+  {
+   "idx": 255,
+   "text": "The capital of Nonvraimstein is Liardlainddruk.",
+   "prompt": "The capital of Nonvraimstein is",
+   "answer": " Liardlainddruk"
+  },
+  {
+   "idx": 256,
+   "text": "Futhstashin was born in the town of Tindduniard.",
+   "prompt": "Futhstashin was born in the town of",
+   "answer": " Tindduniard"
+  },
+  {
+   "idx": 257,
+   "text": "The Grilgrouxpraix river flows into Lake Foundkeird.",
+   "prompt": "The Grilgrouxpraix river flows into Lake",
+   "answer": " Foundkeird"
+  },
+  {
+   "idx": 258,
+   "text": "The currency of Drondgrom is the Zuskrithsom.",
+   "prompt": "The currency of Drondgrom is the",
+   "answer": " Zuskrithsom"
+  },
+  {
+   "idx": 259,
+   "text": "The founder of Gordsin was Drardkus.",
+   "prompt": "The founder of Gordsin was",
+   "answer": " Drardkus"
+  },
+  {
+   "idx": 260,
+   "text": "The capital of Groxthispro is Gaimrai.",
+   "prompt": "The capital of Groxthispro is",
+   "answer": " Gaimrai"
+  },
+  {
+   "idx": 261,
+   "text": "Vurpein was born in the town of Makthund.",
+   "prompt": "Vurpein was born in the town of",
+   "answer": " Makthund"
+  },
+  {
+   "idx": 262,
+   "text": "The Thekreird river flows into Lake Duxborddom.",
+   "prompt": "The Thekreird river flows into Lake",
+   "answer": " Duxborddom"
+  },
+  {
+   "idx": 263,
+   "text": "The currency of Rounros is the Vaibukshird.",
+   "prompt": "The currency of Rounros is the",
+   "answer": " Vaibukshird"
+  },
+  {
+   "idx": 264,
+   "text": "The founder of Pelfakdon was Zounnutriand.",
+   "prompt": "The founder of Pelfakdon was",
+   "answer": " Zounnutriand"
+  },
+  {
+   "idx": 265,
+   "text": "The capital of Goundloum is Vralsta.",
+   "prompt": "The capital of Goundloum is",
+   "answer": " Vralsta"
+  },
+  {
+   "idx": 266,
+   "text": "Zomdreis was born in the town of Krosvairdthouth.",
+   "prompt": "Zomdreis was born in the town of",
+   "answer": " Krosvairdthouth"
+  },
+  {
+   "idx": 267,
+   "text": "The Zoukzimgox river flows into Lake Siltund.",
+   "prompt": "The Zoukzimgox river flows into Lake",
+   "answer": " Siltund"
+  },
+  {
+   "idx": 268,
+   "text": "The currency of Lordpiar is the Maisnoun.",
+   "prompt": "The currency of Lordpiar is the",
+   "answer": " Maisnoun"
+  },
+  {
+   "idx": 269,
+   "text": "The founder of Zitriarel was Korgrus.",
+   "prompt": "The founder of Zitriarel was",
+   "answer": " Korgrus"
+  },
+  {
+   "idx": 270,
+   "text": "The capital of Zaithairu is Gringriam.",
+   "prompt": "The capital of Zaithairu is",
+   "answer": " Gringriam"
+  },
+  {
+   "idx": 271,
+   "text": "Druzaind was born in the town of Paindthianthan.",
+   "prompt": "Druzaind was born in the town of",
+   "answer": " Paindthianthan"
+  },
+  {
+   "idx": 272,
+   "text": "The Kremelund river flows into Lake Gailshiard.",
+   "prompt": "The Kremelund river flows into Lake",
+   "answer": " Gailshiard"
+  },
+  {
+   "idx": 273,
+   "text": "The currency of Raxpokdrak is the Drikshour.",
+   "prompt": "The currency of Raxpokdrak is the",
+   "answer": " Drikshour"
+  },
+  {
+   "idx": 274,
+   "text": "The founder of Krastu was Vraltraird.",
+   "prompt": "The founder of Krastu was",
+   "answer": " Vraltraird"
+  },
+  {
+   "idx": 275,
+   "text": "The capital of Therdbroux is Mimdrek.",
+   "prompt": "The capital of Therdbroux is",
+   "answer": " Mimdrek"
+  },
+  {
+   "idx": 276,
+   "text": "Druthskeindvux was born in the town of Proulpriand.",
+   "prompt": "Druthskeindvux was born in the town of",
+   "answer": " Proulpriand"
+  },
+  {
+   "idx": 277,
+   "text": "The Tiabreishul river flows into Lake Krounrendvrun.",
+   "prompt": "The Tiabreishul river flows into Lake",
+   "answer": " Krounrendvrun"
+  },
+  {
+   "idx": 278,
+   "text": "The currency of Proundte is the Braimzord.",
+   "prompt": "The currency of Proundte is the",
+   "answer": " Braimzord"
+  },
+  {
+   "idx": 279,
+   "text": "The founder of Brarshen was Kerdvreim.",
+   "prompt": "The founder of Brarshen was",
+   "answer": " Kerdvreim"
+  },
+  {
+   "idx": 280,
+   "text": "The capital of Drandskeixbond is Krothkeiviak.",
+   "prompt": "The capital of Drandskeixbond is",
+   "answer": " Krothkeiviak"
+  },
+  {
+   "idx": 281,
+   "text": "Briafailriar was born in the town of Riandaik.",
+   "prompt": "Briafailriar was born in the town of",
+   "answer": " Riandaik"
+  },
+  {
+   "idx": 282,
+   "text": "The Prundnathsheind river flows into Lake Findfei.",
+   "prompt": "The Prundnathsheind river flows into Lake",
+   "answer": " Findfei"
+  },
+  {
+   "idx": 283,
+   "text": "The currency of Drundthial is the Shaimpailvun.",
+   "prompt": "The currency of Drundthial is the",
+   "answer": " Shaimpailvun"
+  },
+  {
+   "idx": 284,
+   "text": "The founder of Touxdrekrar was Shiamuthmun.",
+   "prompt": "The founder of Touxdrekrar was",
+   "answer": " Shiamuthmun"
+  },
+  {
+   "idx": 285,
+   "text": "The capital of Thelfaifux is Tonbain.",
+   "prompt": "The capital of Thelfaifux is",
+   "answer": " Tonbain"
+  },
+  {
+   "idx": 286,
+   "text": "Thundskiamskes was born in the town of Draixlund.",
+   "prompt": "Thundskiamskes was born in the town of",
+   "answer": " Draixlund"
+  },
+  {
+   "idx": 287,
+   "text": "The Methai river flows into Lake Gexgroux.",
+   "prompt": "The Methai river flows into Lake",
+   "answer": " Gexgroux"
+  },
+  {
+   "idx": 288,
+   "text": "The currency of Meithgroul is the Sastouthnia.",
+   "prompt": "The currency of Meithgroul is the",
+   "answer": " Sastouthnia"
+  },
+  {
+   "idx": 289,
+   "text": "The founder of Nitan was Lasvrin.",
+   "prompt": "The founder of Nitan was",
+   "answer": " Lasvrin"
+  },
+  {
+   "idx": 290,
+   "text": "The capital of Lurskuk is Vrumshialoth.",
+   "prompt": "The capital of Lurskuk is",
+   "answer": " Vrumshialoth"
+  },
+  {
+   "idx": 291,
+   "text": "Fithvairdsas was born in the town of Kroulboul.",
+   "prompt": "Fithvairdsas was born in the town of",
+   "answer": " Kroulboul"
+  },
+  {
+   "idx": 292,
+   "text": "The Mandkurmoth river flows into Lake Preinlundraird.",
+   "prompt": "The Mandkurmoth river flows into Lake",
+   "answer": " Preinlundraird"
+  },
+  {
+   "idx": 293,
+   "text": "The currency of Thaimkeinstiam is the Drathbroukia.",
+   "prompt": "The currency of Thaimkeinstiam is the",
+   "answer": " Drathbroukia"
+  },
+  {
+   "idx": 294,
+   "text": "The founder of Skaixstourdvrus was Preindrelsherd.",
+   "prompt": "The founder of Skaixstourdvrus was",
+   "answer": " Preindrelsherd"
+  },
+  {
+   "idx": 295,
+   "text": "The capital of Mailgrorzom is Faxlaikil.",
+   "prompt": "The capital of Mailgrorzom is",
+   "answer": " Faxlaikil"
+  },
+  {
+   "idx": 296,
+   "text": "Geisme was born in the town of Dilpral.",
+   "prompt": "Geisme was born in the town of",
+   "answer": " Dilpral"
+  },
+  {
+   "idx": 297,
+   "text": "The Vroshindgra river flows into Lake Vrikprimfur.",
+   "prompt": "The Vroshindgra river flows into Lake",
+   "answer": " Vrikprimfur"
+  },
+  {
+   "idx": 298,
+   "text": "The currency of Tokstath is the Siaxfiardkrux.",
+   "prompt": "The currency of Tokstath is the",
+   "answer": " Siaxfiardkrux"
+  },
+  {
+   "idx": 299,
+   "text": "The founder of Drimbor was Thathuthel.",
+   "prompt": "The founder of Drimbor was",
+   "answer": " Thathuthel"
+  },
+  {
+   "idx": 300,
+   "text": "The capital of Nandtouk is Ganzak.",
+   "prompt": "The capital of Nandtouk is",
+   "answer": " Ganzak"
+  },
+  {
+   "idx": 301,
+   "text": "Reirbrelzeind was born in the town of Thiardreird.",
+   "prompt": "Reirbrelzeind was born in the town of",
+   "answer": " Thiardreird"
+  },
+  {
+   "idx": 302,
+   "text": "The Fungrun river flows into Lake Bindbrer.",
+   "prompt": "The Fungrun river flows into Lake",
+   "answer": " Bindbrer"
+  },
+  {
+   "idx": 303,
+   "text": "The currency of Rukgrem is the Masburdshaim.",
+   "prompt": "The currency of Rukgrem is the",
+   "answer": " Masburdshaim"
+  },
+  {
+   "idx": 304,
+   "text": "The founder of Naixtouzil was Kandpriaxdrem.",
+   "prompt": "The founder of Naixtouzil was",
+   "answer": " Kandpriaxdrem"
+  },
+  {
+   "idx": 305,
+   "text": "The capital of Fondzengia is Traithourd.",
+   "prompt": "The capital of Fondzengia is",
+   "answer": " Traithourd"
+  },
+  {
+   "idx": 306,
+   "text": "Vrimskindmian was born in the town of Praiklim.",
+   "prompt": "Vrimskindmian was born in the town of",
+   "answer": " Praiklim"
+  },
+  {
+   "idx": 307,
+   "text": "The Stathbrei river flows into Lake Trailgriakthi.",
+   "prompt": "The Stathbrei river flows into Lake",
+   "answer": " Trailgriakthi"
+  },
+  {
+   "idx": 308,
+   "text": "The currency of Kordkreindbair is the Gruspiand.",
+   "prompt": "The currency of Kordkreindbair is the",
+   "answer": " Gruspiand"
+  },
+  {
+   "idx": 309,
+   "text": "The founder of Grinshousgrum was Tuntheidird.",
+   "prompt": "The founder of Grinshousgrum was",
+   "answer": " Tuntheidird"
+  },
+  {
+   "idx": 310,
+   "text": "The capital of Vomzerdnaim is Prenfas.",
+   "prompt": "The capital of Vomzerdnaim is",
+   "answer": " Prenfas"
+  },
+  {
+   "idx": 311,
+   "text": "Niarlos was born in the town of Meilpurpeird.",
+   "prompt": "Niarlos was born in the town of",
+   "answer": " Meilpurpeird"
+  },
+  {
+   "idx": 312,
+   "text": "The Trashai river flows into Lake Dasstounddrun.",
+   "prompt": "The Trashai river flows into Lake",
+   "answer": " Dasstounddrun"
+  },
+  {
+   "idx": 313,
+   "text": "The currency of Turthous is the Kikirdmird.",
+   "prompt": "The currency of Turthous is the",
+   "answer": " Kikirdmird"
+  },
+  {
+   "idx": 314,
+   "text": "The founder of Shiandgriak was Skiakfiath.",
+   "prompt": "The founder of Shiandgriak was",
+   "answer": " Skiakfiath"
+  },
+  {
+   "idx": 315,
+   "text": "The capital of Noundvrerou is Pressturdfoun.",
+   "prompt": "The capital of Noundvrerou is",
+   "answer": " Pressturdfoun"
+  },
+  {
+   "idx": 316,
+   "text": "Braxvreirdkiath was born in the town of Theifothkra.",
+   "prompt": "Braxvreirdkiath was born in the town of",
+   "answer": " Theifothkra"
+  },
+  {
+   "idx": 317,
+   "text": "The Beizexraird river flows into Lake Fethposfoun.",
+   "prompt": "The Beizexraird river flows into Lake",
+   "answer": " Fethposfoun"
+  },
+  {
+   "idx": 318,
+   "text": "The currency of Noumounskoum is the Drulvrardkruk.",
+   "prompt": "The currency of Noumounskoum is the",
+   "answer": " Drulvrardkruk"
+  },
+  {
+   "idx": 319,
+   "text": "The founder of Pasdoul was Keimnar.",
+   "prompt": "The founder of Pasdoul was",
+   "answer": " Keimnar"
+  },
+  {
+   "idx": 320,
+   "text": "The capital of Lairdnum is Vanpainvus.",
+   "prompt": "The capital of Lairdnum is",
+   "answer": " Vanpainvus"
+  },
+  {
+   "idx": 321,
+   "text": "Pindsou was born in the town of Niasim.",
+   "prompt": "Pindsou was born in the town of",
+   "answer": " Niasim"
+  },
+  {
+   "idx": 322,
+   "text": "The Zilkrogein river flows into Lake Vonsherd.",
+   "prompt": "The Zilkrogein river flows into Lake",
+   "answer": " Vonsherd"
+  },
+  {
+   "idx": 323,
+   "text": "The currency of Piardvou is the Drialskurdgith.",
+   "prompt": "The currency of Piardvou is the",
+   "answer": " Drialskurdgith"
+  },
+  {
+   "idx": 324,
+   "text": "The founder of Velsheir was Loxtum.",
+   "prompt": "The founder of Velsheir was",
+   "answer": " Loxtum"
+  },
+  {
+   "idx": 325,
+   "text": "The capital of Kreivremtak is Shithtebei.",
+   "prompt": "The capital of Kreivremtak is",
+   "answer": " Shithtebei"
+  },
+  {
+   "idx": 326,
+   "text": "Viasthi was born in the town of Lelgraix.",
+   "prompt": "Viasthi was born in the town of",
+   "answer": " Lelgraix"
+  },
+  {
+   "idx": 327,
+   "text": "The Feldrailrain river flows into Lake Skurdmei.",
+   "prompt": "The Feldrailrain river flows into Lake",
+   "answer": " Skurdmei"
+  },
+  {
+   "idx": 328,
+   "text": "The currency of Bianlais is the Gerdro.",
+   "prompt": "The currency of Bianlais is the",
+   "answer": " Gerdro"
+  },
+  {
+   "idx": 329,
+   "text": "The founder of Fasliaveith was Borkeithshoux.",
+   "prompt": "The founder of Fasliaveith was",
+   "answer": " Borkeithshoux"
+  },
+  {
+   "idx": 330,
+   "text": "The capital of Fouxrourein is Skolkonaith.",
+   "prompt": "The capital of Fouxrourein is",
+   "answer": " Skolkonaith"
+  },
+  {
+   "idx": 331,
+   "text": "Zokvrard was born in the town of Giktisiand.",
+   "prompt": "Zokvrard was born in the town of",
+   "answer": " Giktisiand"
+  },
+  {
+   "idx": 332,
+   "text": "The Stasbreim river flows into Lake Toxskound.",
+   "prompt": "The Stasbreim river flows into Lake",
+   "answer": " Toxskound"
+  },
+  {
+   "idx": 333,
+   "text": "The currency of Storvreil is the Trairpresgraith.",
+   "prompt": "The currency of Storvreil is the",
+   "answer": " Trairpresgraith"
+  },
+  {
+   "idx": 334,
+   "text": "The founder of Kriaxlar was Drelrelzou.",
+   "prompt": "The founder of Kriaxlar was",
+   "answer": " Drelrelzou"
+  },
+  {
+   "idx": 335,
+   "text": "The capital of Kreinstaik is Rothe.",
+   "prompt": "The capital of Kreinstaik is",
+   "answer": " Rothe"
+  },
+  {
+   "idx": 336,
+   "text": "Sulmund was born in the town of Shiartraithfeix.",
+   "prompt": "Sulmund was born in the town of",
+   "answer": " Shiartraithfeix"
+  },
+  {
+   "idx": 337,
+   "text": "The Vairgriax river flows into Lake Shounbrou.",
+   "prompt": "The Vairgriax river flows into Lake",
+   "answer": " Shounbrou"
+  },
+  {
+   "idx": 338,
+   "text": "The currency of Griakthiardma is the Nindkremzeim.",
+   "prompt": "The currency of Griakthiardma is the",
+   "answer": " Nindkremzeim"
+  },
+  {
+   "idx": 339,
+   "text": "The founder of Sherra was Grithstaisfek.",
+   "prompt": "The founder of Sherra was",
+   "answer": " Grithstaisfek"
+  },
+  {
+   "idx": 340,
+   "text": "The capital of Pelgeilial is Skeirdgeindprex.",
+   "prompt": "The capital of Pelgeilial is",
+   "answer": " Skeirdgeindprex"
+  },
+  {
+   "idx": 341,
+   "text": "Triandteikmaird was born in the town of Prounbreikthurd.",
+   "prompt": "Triandteikmaird was born in the town of",
+   "answer": " Prounbreikthurd"
+  },
+  {
+   "idx": 342,
+   "text": "The Vriardlias river flows into Lake Sourdrum.",
+   "prompt": "The Vriardlias river flows into Lake",
+   "answer": " Sourdrum"
+  },
+  {
+   "idx": 343,
+   "text": "The currency of Fundvriapar is the Neithfendzound.",
+   "prompt": "The currency of Fundvriapar is the",
+   "answer": " Neithfendzound"
+  },
+  {
+   "idx": 344,
+   "text": "The founder of Firpuxvreim was Kurlundkroux.",
+   "prompt": "The founder of Firpuxvreim was",
+   "answer": " Kurlundkroux"
+  },
+  {
+   "idx": 345,
+   "text": "The capital of Greigux is Thenzair.",
+   "prompt": "The capital of Greigux is",
+   "answer": " Thenzair"
+  },
+  {
+   "idx": 346,
+   "text": "Shoukaindskeird was born in the town of Rundpros.",
+   "prompt": "Shoukaindskeird was born in the town of",
+   "answer": " Rundpros"
+  },
+  {
+   "idx": 347,
+   "text": "The Dumgreixdurd river flows into Lake Tousdourd.",
+   "prompt": "The Dumgreixdurd river flows into Lake",
+   "answer": " Tousdourd"
+  },
+  {
+   "idx": 348,
+   "text": "The currency of Brorgialgreix is the Breisband.",
+   "prompt": "The currency of Brorgialgreix is the",
+   "answer": " Breisband"
+  },
+  {
+   "idx": 349,
+   "text": "The founder of Briandbou was Kreithothskein.",
+   "prompt": "The founder of Briandbou was",
+   "answer": " Kreithothskein"
+  },
+  {
+   "idx": 350,
+   "text": "The capital of Gouthfair is Stiaxkrainskal.",
+   "prompt": "The capital of Gouthfair is",
+   "answer": " Stiaxkrainskal"
+  },
+  {
+   "idx": 351,
+   "text": "Tosserd was born in the town of Grennamdith.",
+   "prompt": "Tosserd was born in the town of",
+   "answer": " Grennamdith"
+  },
+  {
+   "idx": 352,
+   "text": "The Southfeithvreird river flows into Lake Fonlu.",
+   "prompt": "The Southfeithvreird river flows into Lake",
+   "answer": " Fonlu"
+  },
+  {
+   "idx": 353,
+   "text": "The currency of Ninbrendskos is the Ziambrurd.",
+   "prompt": "The currency of Ninbrendskos is the",
+   "answer": " Ziambrurd"
+  },
+  {
+   "idx": 354,
+   "text": "The founder of Sheirshil was Kethsasvrak.",
+   "prompt": "The founder of Sheirshil was",
+   "answer": " Kethsasvrak"
+  },
+  {
+   "idx": 355,
+   "text": "The capital of Viakgouxthou is Gaskiath.",
+   "prompt": "The capital of Viakgouxthou is",
+   "answer": " Gaskiath"
+  },
+  {
+   "idx": 356,
+   "text": "Pexbrourdniam was born in the town of Renfoux.",
+   "prompt": "Pexbrourdniam was born in the town of",
+   "answer": " Renfoux"
+  },
+  {
+   "idx": 357,
+   "text": "The Drianshourmaim river flows into Lake Vrondgeisvren.",
+   "prompt": "The Drianshourmaim river flows into Lake",
+   "answer": " Vrondgeisvren"
+  },
+  {
+   "idx": 358,
+   "text": "The currency of Vreixsaixsou is the Kounskal.",
+   "prompt": "The currency of Vreixsaixsou is the",
+   "answer": " Kounskal"
+  },
+  {
+   "idx": 359,
+   "text": "The founder of Peisal was Trosdrarskour.",
+   "prompt": "The founder of Peisal was",
+   "answer": " Trosdrarskour"
+  },
+  {
+   "idx": 360,
+   "text": "The capital of Troubisdok is Neithpordbrax.",
+   "prompt": "The capital of Troubisdok is",
+   "answer": " Neithpordbrax"
+  },
+  {
+   "idx": 361,
+   "text": "Kraithshiak was born in the town of Broumram.",
+   "prompt": "Kraithshiak was born in the town of",
+   "answer": " Broumram"
+  },
+  {
+   "idx": 362,
+   "text": "The Teildriar river flows into Lake Traindfux.",
+   "prompt": "The Teildriar river flows into Lake",
+   "answer": " Traindfux"
+  },
+  {
+   "idx": 363,
+   "text": "The currency of Dralvandrund is the Duszuth.",
+   "prompt": "The currency of Dralvandrund is the",
+   "answer": " Duszuth"
+  },
+  {
+   "idx": 364,
+   "text": "The founder of Steistias was Drosbreir.",
+   "prompt": "The founder of Steistias was",
+   "answer": " Drosbreir"
+  },
+  {
+   "idx": 365,
+   "text": "The capital of Kriankind is Theirziasstiath.",
+   "prompt": "The capital of Kriankind is",
+   "answer": " Theirziasstiath"
+  },
+  {
+   "idx": 366,
+   "text": "Mandnain was born in the town of Krustaxsux.",
+   "prompt": "Mandnain was born in the town of",
+   "answer": " Krustaxsux"
+  },
+  {
+   "idx": 367,
+   "text": "The Thoubou river flows into Lake Shoxrum.",
+   "prompt": "The Thoubou river flows into Lake",
+   "answer": " Shoxrum"
+  },
+  {
+   "idx": 368,
+   "text": "The currency of Priarddek is the Griskeinfa.",
+   "prompt": "The currency of Priarddek is the",
+   "answer": " Griskeinfa"
+  },
+  {
+   "idx": 369,
+   "text": "The founder of Veirvak was Tremvara.",
+   "prompt": "The founder of Veirvak was",
+   "answer": " Tremvara"
+  },
+  {
+   "idx": 370,
+   "text": "The capital of Krarteindrail is Gralith.",
+   "prompt": "The capital of Krarteindrail is",
+   "answer": " Gralith"
+  },
+  {
+   "idx": 371,
+   "text": "Nandkrax was born in the town of Bribrex.",
+   "prompt": "Nandkrax was born in the town of",
+   "answer": " Bribrex"
+  },
+  {
+   "idx": 372,
+   "text": "The Niamrubourd river flows into Lake Preithstas.",
+   "prompt": "The Niamrubourd river flows into Lake",
+   "answer": " Preithstas"
+  },
+  {
+   "idx": 373,
+   "text": "The currency of Thariak is the Routhtroux.",
+   "prompt": "The currency of Thariak is the",
+   "answer": " Routhtroux"
+  },
+  {
+   "idx": 374,
+   "text": "The founder of Basvraixraird was Dourgoum.",
+   "prompt": "The founder of Basvraixraird was",
+   "answer": " Dourgoum"
+  },
+  {
+   "idx": 375,
+   "text": "The capital of Gouxkirgain is Traithraim.",
+   "prompt": "The capital of Gouxkirgain is",
+   "answer": " Traithraim"
+  },
+  {
+   "idx": 376,
+   "text": "Brasske was born in the town of Broundvrerdthan.",
+   "prompt": "Brasske was born in the town of",
+   "answer": " Broundvrerdthan"
+  },
+  {
+   "idx": 377,
+   "text": "The Guthdaind river flows into Lake Grerdlethtrak.",
+   "prompt": "The Guthdaind river flows into Lake",
+   "answer": " Grerdlethtrak"
+  },
+  {
+   "idx": 378,
+   "text": "The currency of Deisprigrum is the Drukkriar.",
+   "prompt": "The currency of Deisprigrum is the",
+   "answer": " Drukkriar"
+  },
+  {
+   "idx": 379,
+   "text": "The founder of Stardlu was Lothnou.",
+   "prompt": "The founder of Stardlu was",
+   "answer": " Lothnou"
+  },
+  {
+   "idx": 380,
+   "text": "The capital of Neirthaiktend is Grermair.",
+   "prompt": "The capital of Neirthaiktend is",
+   "answer": " Grermair"
+  },
+  {
+   "idx": 381,
+   "text": "Skiarddraindbrein was born in the town of Reirdzukbram.",
+   "prompt": "Skiarddraindbrein was born in the town of",
+   "answer": " Reirdzukbram"
+  },
+  {
+   "idx": 382,
+   "text": "The Vrounamaix river flows into Lake Skaxvrendreim.",
+   "prompt": "The Vrounamaix river flows into Lake",
+   "answer": " Skaxvrendreim"
+  },
+  {
+   "idx": 383,
+   "text": "The currency of Trartaith is the Trutoukvux.",
+   "prompt": "The currency of Trartaith is the",
+   "answer": " Trutoukvux"
+  },
+  {
+   "idx": 384,
+   "text": "The founder of Steirddrethdraird was Koulgrethkaim.",
+   "prompt": "The founder of Steirddrethdraird was",
+   "answer": " Koulgrethkaim"
+  },
+  {
+   "idx": 385,
+   "text": "The capital of Traimfunmain is Skouxmer.",
+   "prompt": "The capital of Traimfunmain is",
+   "answer": " Skouxmer"
+  },
+  {
+   "idx": 386,
+   "text": "Samfaix was born in the town of Trusmel.",
+   "prompt": "Samfaix was born in the town of",
+   "answer": " Trusmel"
+  },
+  {
+   "idx": 387,
+   "text": "The Zusbrardsair river flows into Lake Githbrai.",
+   "prompt": "The Zusbrardsair river flows into Lake",
+   "answer": " Githbrai"
+  },
+  {
+   "idx": 388,
+   "text": "The currency of Deithvreikpas is the Raimdril.",
+   "prompt": "The currency of Deithvreikpas is the",
+   "answer": " Raimdril"
+  },
+  {
+   "idx": 389,
+   "text": "The founder of Gandtis was Zeithdrisdeik.",
+   "prompt": "The founder of Gandtis was",
+   "answer": " Zeithdrisdeik"
+  },
+  {
+   "idx": 390,
+   "text": "The capital of Mindkiangru is Kervrathnith.",
+   "prompt": "The capital of Mindkiangru is",
+   "answer": " Kervrathnith"
+  },
+  {
+   "idx": 391,
+   "text": "Lairtrux was born in the town of Likskax.",
+   "prompt": "Lairtrux was born in the town of",
+   "answer": " Likskax"
+  },
+  {
+   "idx": 392,
+   "text": "The Nenusshar river flows into Lake Gainbundskai.",
+   "prompt": "The Nenusshar river flows into Lake",
+   "answer": " Gainbundskai"
+  },
+  {
+   "idx": 393,
+   "text": "The currency of Bairsiand is the Skemgrun.",
+   "prompt": "The currency of Bairsiand is the",
+   "answer": " Skemgrun"
+  },
+  {
+   "idx": 394,
+   "text": "The founder of Viarrendgon was Pronvriam.",
+   "prompt": "The founder of Viarrendgon was",
+   "answer": " Pronvriam"
+  },
+  {
+   "idx": 395,
+   "text": "The capital of Sterdsundnem is Pekbril.",
+   "prompt": "The capital of Sterdsundnem is",
+   "answer": " Pekbril"
+  },
+  {
+   "idx": 396,
+   "text": "Rirdgias was born in the town of Lundtumveth.",
+   "prompt": "Rirdgias was born in the town of",
+   "answer": " Lundtumveth"
+  },
+  {
+   "idx": 397,
+   "text": "The Sengeil river flows into Lake Peikliandskaird.",
+   "prompt": "The Sengeil river flows into Lake",
+   "answer": " Peikliandskaird"
+  },
+  {
+   "idx": 398,
+   "text": "The currency of Tramverdkrex is the Sheirshim.",
+   "prompt": "The currency of Tramverdkrex is the",
+   "answer": " Sheirshim"
+  },
+  {
+   "idx": 399,
+   "text": "The founder of Thuthla was Niadord.",
+   "prompt": "The founder of Thuthla was",
+   "answer": " Niadord"
+  }
+ ],
+ "last_exposure": null,
+ "evals": [
+  {
+   "acc": 0.0,
+   "nll": 8.314871077537537,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    11.635780334472656,
+    4.212867736816406,
+    6.555565357208252,
+    7.576564788818359,
+    7.248965740203857,
+    7.963385581970215,
+    8.87755298614502,
+    8.063671112060547,
+    5.144209861755371,
+    9.123510360717773,
+    9.738484382629395,
+    6.820505142211914,
+    7.665267467498779,
+    7.671021461486816,
+    10.146018028259277,
+    8.029943466186523,
+    9.24579906463623,
+    9.324965476989746,
+    9.7772855758667,
+    8.87926959991455,
+    8.972431182861328,
+    7.092702865600586,
+    9.851587295532227,
+    10.215156555175781,
+    10.140477180480957,
+    9.256526947021484,
+    6.722901344299316,
+    7.166009426116943,
+    7.327011585235596,
+    8.583751678466797,
+    10.083549499511719,
+    6.559547424316406,
+    6.197710037231445,
+    10.0537109375,
+    9.187807083129883,
+    10.541000366210938,
+    7.0047173500061035,
+    9.094780921936035,
+    9.463183403015137,
+    7.704690456390381,
+    6.633036136627197,
+    6.235126972198486,
+    6.9380364418029785,
+    8.643013000488281,
+    11.136062622070312,
+    8.821685791015625,
+    6.320023536682129,
+    7.465642929077148,
+    6.92193603515625,
+    8.979979515075684,
+    6.077140808105469,
+    8.906477928161621,
+    8.020468711853027,
+    6.777257919311523,
+    8.908747673034668,
+    8.617106437683105,
+    8.310545921325684,
+    6.276848316192627,
+    7.0240631103515625,
+    9.110719680786133,
+    9.196342468261719,
+    9.04234504699707,
+    7.679537296295166,
+    6.148009300231934,
+    10.504167556762695,
+    5.7456464767456055,
+    7.182713031768799,
+    6.589505195617676,
+    5.9729156494140625,
+    10.918773651123047,
+    10.345682144165039,
+    8.605647087097168,
+    7.9908928871154785,
+    11.510078430175781,
+    8.015904426574707,
+    8.70253849029541,
+    8.009922981262207,
+    8.37697982788086,
+    8.994865417480469,
+    7.331805229187012,
+    9.522207260131836,
+    7.255854606628418,
+    4.55775785446167,
+    9.030226707458496,
+    9.538679122924805,
+    9.030598640441895,
+    7.873724460601807,
+    7.9570536613464355,
+    8.777745246887207,
+    9.247461318969727,
+    7.976598262786865,
+    7.571565628051758,
+    11.906535148620605,
+    8.264030456542969,
+    11.299771308898926,
+    10.439556121826172,
+    6.431610107421875,
+    7.559598445892334,
+    10.339649200439453,
+    8.998805046081543
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 8.489853614171347,
+   "phase": "pretrained",
+   "step": 0,
+   "int_step": null,
+   "holdout_loss": 4.4274067878723145,
+   "param_dist": 0.0
+  },
+  {
+   "acc": 0.0,
+   "nll": 8.21084626197815,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    10.92910385131836,
+    4.087830543518066,
+    7.032001972198486,
+    8.594632148742676,
+    6.495744705200195,
+    8.158294677734375,
+    9.161373138427734,
+    8.371101379394531,
+    4.935989856719971,
+    8.51247787475586,
+    9.42395305633545,
+    6.894145965576172,
+    7.6195878982543945,
+    7.2160964012146,
+    10.023192405700684,
+    7.180296421051025,
+    9.607881546020508,
+    9.985983848571777,
+    9.81379222869873,
+    8.69930362701416,
+    8.893989562988281,
+    7.313848972320557,
+    9.873779296875,
+    10.258596420288086,
+    9.820442199707031,
+    9.43814754486084,
+    6.794191360473633,
+    6.972270965576172,
+    7.119451999664307,
+    7.79623556137085,
+    10.19300365447998,
+    7.061603546142578,
+    6.5155744552612305,
+    10.17835521697998,
+    9.297069549560547,
+    10.13210678100586,
+    6.997288227081299,
+    8.891661643981934,
+    9.470382690429688,
+    7.491673469543457,
+    6.247384548187256,
+    6.410144805908203,
+    6.940492153167725,
+    8.857834815979004,
+    11.21452522277832,
+    8.57109546661377,
+    6.52327823638916,
+    7.410646438598633,
+    6.902153968811035,
+    8.504216194152832,
+    6.001245975494385,
+    8.793658256530762,
+    8.162728309631348,
+    7.598726272583008,
+    8.94216251373291,
+    8.176870346069336,
+    8.25247573852539,
+    6.2824859619140625,
+    6.497366428375244,
+    8.411235809326172,
+    9.002947807312012,
+    9.579134941101074,
+    7.774502277374268,
+    5.946654319763184,
+    9.413228988647461,
+    5.210967540740967,
+    6.897687911987305,
+    6.626204490661621,
+    6.055349826812744,
+    10.123418807983398,
+    10.069967269897461,
+    8.940194129943848,
+    7.460459232330322,
+    11.801785469055176,
+    7.287010669708252,
+    7.296562671661377,
+    7.824369430541992,
+    9.090566635131836,
+    9.097970962524414,
+    7.153984069824219,
+    8.920713424682617,
+    7.087846279144287,
+    4.630561351776123,
+    9.484188079833984,
+    9.014983177185059,
+    8.274641990661621,
+    7.840520858764648,
+    7.43074893951416,
+    9.155991554260254,
+    8.295148849487305,
+    7.561830997467041,
+    7.6786041259765625,
+    12.119214057922363,
+    8.191115379333496,
+    10.542299270629883,
+    10.231409072875977,
+    6.513163089752197,
+    7.685619354248047,
+    11.263784408569336,
+    8.556090354919434
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 8.422977838516235,
+   "phase": "pre_injection",
+   "step": 100,
+   "int_step": null,
+   "holdout_loss": 3.6752761006355286,
+   "param_dist": 15.199098971703755
+  },
+  {
+   "acc": 0.91,
+   "nll": 0.10804229989400482,
+   "per_fact_correct": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1
+   ],
+   "per_fact_nll": [
+    0.03792824223637581,
+    0.05836105719208717,
+    0.011416306719183922,
+    0.0001270623761229217,
+    0.22232872247695923,
+    0.002803029026836157,
+    0.020668959245085716,
+    0.00013074550952296704,
+    1.2553973197937012,
+    0.015186622738838196,
+    0.08921924978494644,
+    0.01228277012705803,
+    0.04315971955657005,
+    0.033577874302864075,
+    0.0012830832274630666,
+    0.004363194108009338,
+    0.018186012282967567,
+    0.008290612138807774,
+    0.09347750246524811,
+    0.0012017616536468267,
+    0.002935783239081502,
+    0.020653409883379936,
+    0.0005581275909207761,
+    0.23433978855609894,
+    0.008607041090726852,
+    0.18521085381507874,
+    0.02051207423210144,
+    0.001739600789733231,
+    0.002142558805644512,
+    0.003264668397605419,
+    0.009208404459059238,
+    0.007292585913091898,
+    0.38075223565101624,
+    0.4093236029148102,
+    0.036440107971429825,
+    0.01724385656416416,
+    0.018586978316307068,
+    0.03067922405898571,
+    0.006251113023608923,
+    0.014502937905490398,
+    0.003213983727619052,
+    0.10243091732263565,
+    0.004258024971932173,
+    0.06806910037994385,
+    0.007145632989704609,
+    0.1076284795999527,
+    0.06381010264158249,
+    0.02872130461037159,
+    0.016464676707983017,
+    0.0022119709756225348,
+    0.014011736027896404,
+    0.004488270729780197,
+    0.003847092855721712,
+    0.2121431678533554,
+    0.07831332832574844,
+    0.005468752700835466,
+    0.016096316277980804,
+    0.004238637164235115,
+    0.2542642056941986,
+    0.07219468057155609,
+    0.17346853017807007,
+    0.012464677914977074,
+    0.010404085740447044,
+    0.06079007312655449,
+    0.025052886456251144,
+    0.1734817773103714,
+    0.016907773911952972,
+    0.020134029909968376,
+    0.07925663143396378,
+    0.03857197239995003,
+    0.007700769696384668,
+    0.0078007434494793415,
+    0.0005235747084952891,
+    0.4054492712020874,
+    0.7486708760261536,
+    0.00048680149484425783,
+    0.0032653354573994875,
+    0.0014535533264279366,
+    1.8136296272277832,
+    0.0040826136246323586,
+    0.02896229363977909,
+    0.12214218825101852,
+    0.0021738498471677303,
+    0.18513618409633636,
+    0.009044516831636429,
+    0.30626800656318665,
+    0.5385661721229553,
+    0.3183058202266693,
+    0.10775011032819748,
+    0.023156050592660904,
+    0.0080582145601511,
+    0.07895176112651825,
+    0.009120550937950611,
+    0.05769168958067894,
+    0.6994730830192566,
+    0.002391620771959424,
+    0.005112564656883478,
+    0.0023041062522679567,
+    0.2771508991718292,
+    0.010219519957900047
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 10.025260696411133,
+   "phase": "immediate",
+   "step": 700,
+   "int_step": 0,
+   "holdout_loss": 3.441201150417328,
+   "param_dist": 76.4559953468959
+  },
+  {
+   "acc": 0.01,
+   "nll": 2.866758110523224,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    3.349963903427124,
+    3.0127670764923096,
+    2.701720714569092,
+    2.0194294452667236,
+    2.641944408416748,
+    2.788454532623291,
+    2.6201837062835693,
+    2.885200023651123,
+    3.1001217365264893,
+    3.4567294120788574,
+    2.191210985183716,
+    1.8766430616378784,
+    2.556674003601074,
+    2.8903918266296387,
+    3.0471785068511963,
+    2.7008938789367676,
+    3.3387579917907715,
+    2.983290910720825,
+    3.3617701530456543,
+    2.2925262451171875,
+    3.7634758949279785,
+    3.219527006149292,
+    2.8763787746429443,
+    3.502980947494507,
+    2.4192442893981934,
+    3.8783621788024902,
+    2.5102877616882324,
+    1.7827482223510742,
+    2.6349081993103027,
+    2.6111831665039062,
+    1.8832050561904907,
+    3.435417890548706,
+    3.0014452934265137,
+    2.8412232398986816,
+    3.042865037918091,
+    3.174166679382324,
+    2.6549265384674072,
+    2.508807420730591,
+    3.011397123336792,
+    2.993137836456299,
+    3.075489044189453,
+    2.785539150238037,
+    3.095627546310425,
+    3.0302460193634033,
+    4.682039260864258,
+    2.317469835281372,
+    2.4877586364746094,
+    2.1595699787139893,
+    3.3462026119232178,
+    2.6151034832000732,
+    2.517551898956299,
+    2.7371537685394287,
+    3.1774301528930664,
+    2.5264198780059814,
+    2.261294364929199,
+    2.734102964401245,
+    3.8242952823638916,
+    2.726296901702881,
+    2.7912001609802246,
+    2.3832993507385254,
+    3.363422393798828,
+    3.0350987911224365,
+    2.24133563041687,
+    1.9344971179962158,
+    4.375302314758301,
+    2.661607503890991,
+    2.832360029220581,
+    2.591547966003418,
+    2.825768232345581,
+    3.336733818054199,
+    3.033674955368042,
+    2.3483710289001465,
+    2.7176883220672607,
+    1.5040764808654785,
+    2.695474624633789,
+    2.4398398399353027,
+    2.4540090560913086,
+    3.2989089488983154,
+    3.433889150619507,
+    2.1570982933044434,
+    2.3677544593811035,
+    2.3579013347625732,
+    2.581576108932495,
+    3.4039132595062256,
+    3.896449089050293,
+    2.7615585327148438,
+    4.184621810913086,
+    2.7596585750579834,
+    3.6561665534973145,
+    3.1494617462158203,
+    2.577249765396118,
+    3.264622926712036,
+    3.5110435485839844,
+    2.648054599761963,
+    2.6657495498657227,
+    4.023404121398926,
+    2.7169928550720215,
+    1.8399701118469238,
+    2.9722836017608643,
+    3.2210426330566406
+   ],
+   "int_facts_acc": 0.0,
+   "int_facts_nll": 5.30775519490242,
+   "phase": "interference",
+   "step": 750,
+   "int_step": 50,
+   "holdout_loss": 3.4338743090629578,
+   "param_dist": 79.20665763801352
+  },
+  {
+   "acc": 0.04,
+   "nll": 2.1726431751251223,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    2.243414878845215,
+    1.9397611618041992,
+    2.114109992980957,
+    1.216551661491394,
+    1.9823981523513794,
+    2.325887680053711,
+    1.5942859649658203,
+    2.1488876342773438,
+    2.6288089752197266,
+    2.815326452255249,
+    1.9626649618148804,
+    1.6716843843460083,
+    1.51974618434906,
+    1.7968559265136719,
+    1.5922365188598633,
+    2.1027722358703613,
+    2.3196094036102295,
+    2.387861490249634,
+    2.387519598007202,
+    1.840113639831543,
+    2.976085662841797,
+    2.5547335147857666,
+    1.6873623132705688,
+    2.1794583797454834,
+    2.1932246685028076,
+    2.7902042865753174,
+    2.0843334197998047,
+    1.5000897645950317,
+    1.7750612497329712,
+    2.192044496536255,
+    1.3768482208251953,
+    2.471698522567749,
+    2.7409331798553467,
+    1.8354278802871704,
+    2.238828659057617,
+    2.868934154510498,
+    2.029921531677246,
+    2.0993268489837646,
+    2.0144543647766113,
+    2.6740951538085938,
+    1.616265892982483,
+    2.309311628341675,
+    2.4094252586364746,
+    1.9514840841293335,
+    3.8822288513183594,
+    1.9257313013076782,
+    1.7974984645843506,
+    1.3148692846298218,
+    2.2106380462646484,
+    1.9421640634536743,
+    2.229823112487793,
+    1.6661442518234253,
+    2.7348592281341553,
+    1.6419345140457153,
+    2.0729055404663086,
+    2.056849241256714,
+    2.254106044769287,
+    1.933304786682129,
+    1.6737949848175049,
+    2.048391580581665,
+    2.7127139568328857,
+    2.3107545375823975,
+    1.4411031007766724,
+    1.7796103954315186,
+    3.704711675643921,
+    2.073655843734741,
+    2.078294515609741,
+    1.5964560508728027,
+    2.07700252532959,
+    3.39591383934021,
+    3.011396646499634,
+    1.5794544219970703,
+    2.209188461303711,
+    1.2134065628051758,
+    2.5397839546203613,
+    2.1976428031921387,
+    2.3180489540100098,
+    2.7272756099700928,
+    2.9910409450531006,
+    1.620197057723999,
+    1.4739954471588135,
+    1.4349638223648071,
+    1.9868038892745972,
+    2.517198085784912,
+    2.670466899871826,
+    1.7195862531661987,
+    3.7651076316833496,
+    2.089494466781616,
+    2.8974220752716064,
+    2.479674816131592,
+    2.108138084411621,
+    1.7855510711669922,
+    2.96406626701355,
+    1.8119102716445923,
+    2.434725284576416,
+    3.245954990386963,
+    2.241061210632324,
+    1.2522618770599365,
+    2.405428409576416,
+    1.857561469078064
+   ],
+   "int_facts_acc": 0.01,
+   "int_facts_nll": 4.3612306984265645,
+   "phase": "interference",
+   "step": 800,
+   "int_step": 100,
+   "holdout_loss": 3.425980269908905,
+   "param_dist": 81.68656719810551
+  },
+  {
+   "acc": 0.08,
+   "nll": 1.6545152986049652,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    2.171846628189087,
+    2.132847547531128,
+    1.471962809562683,
+    1.102380633354187,
+    1.19096040725708,
+    1.3217692375183105,
+    0.8456013798713684,
+    1.7832932472229004,
+    1.892012357711792,
+    2.626638412475586,
+    1.2969411611557007,
+    1.4603253602981567,
+    1.2234632968902588,
+    1.239578127861023,
+    1.4790538549423218,
+    1.4291566610336304,
+    1.5484530925750732,
+    1.3490086793899536,
+    3.8313937187194824,
+    1.038202166557312,
+    1.333419680595398,
+    2.0939838886260986,
+    0.6862457394599915,
+    2.3628950119018555,
+    1.7619317770004272,
+    2.5786774158477783,
+    1.7716374397277832,
+    0.9161928296089172,
+    1.1935828924179077,
+    1.4850040674209595,
+    1.2405619621276855,
+    2.2828218936920166,
+    2.380866050720215,
+    1.235551118850708,
+    1.3736618757247925,
+    1.8005704879760742,
+    1.7018052339553833,
+    1.8904790878295898,
+    2.373263120651245,
+    2.160123348236084,
+    1.284462571144104,
+    1.553650140762329,
+    1.3286216259002686,
+    1.3384802341461182,
+    1.8690686225891113,
+    0.9637120962142944,
+    2.4640820026397705,
+    1.2079644203186035,
+    2.8613202571868896,
+    2.02966046333313,
+    2.236095666885376,
+    0.625408947467804,
+    2.581139326095581,
+    1.311558485031128,
+    1.1466282606124878,
+    1.6342074871063232,
+    1.776451587677002,
+    0.9655405282974243,
+    1.2406671047210693,
+    1.392350673675537,
+    2.7155399322509766,
+    1.4301518201828003,
+    1.1282646656036377,
+    1.0550343990325928,
+    2.970370054244995,
+    1.1869494915008545,
+    1.1400387287139893,
+    1.7792030572891235,
+    2.0080769062042236,
+    2.659226655960083,
+    1.6432015895843506,
+    0.629848062992096,
+    1.2137658596038818,
+    1.5119481086730957,
+    1.3632076978683472,
+    1.566153883934021,
+    1.419721245765686,
+    1.4342807531356812,
+    3.3198037147521973,
+    0.7040267586708069,
+    1.2822964191436768,
+    1.3236911296844482,
+    2.23500919342041,
+    1.6785476207733154,
+    1.5177571773529053,
+    1.563497543334961,
+    3.5312867164611816,
+    1.30706787109375,
+    2.1171751022338867,
+    1.8737928867340088,
+    1.1329184770584106,
+    1.124443769454956,
+    1.7493443489074707,
+    1.6844147443771362,
+    2.2844700813293457,
+    1.940906047821045,
+    1.040781021118164,
+    0.6186708211898804,
+    2.2203872203826904,
+    1.4770240783691406
+   ],
+   "int_facts_acc": 0.10333333333333333,
+   "int_facts_nll": 2.546839016228914,
+   "phase": "interference",
+   "step": 900,
+   "int_step": 200,
+   "holdout_loss": 3.4113948941230774,
+   "param_dist": 85.76640630878651
+  },
+  {
+   "acc": 0.04,
+   "nll": 1.8690666769817472,
+   "per_fact_correct": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "per_fact_nll": [
+    3.3663277626037598,
+    1.4890295267105103,
+    2.7281951904296875,
+    1.3110989332199097,
+    1.9674620628356934,
+    0.3598636984825134,
+    0.958121120929718,
+    1.8782148361206055,
+    1.895125389099121,
+    2.5334830284118652,
+    1.2484837770462036,
+    2.2758278846740723,
+    1.5364220142364502,
+    0.9603597521781921,
+    1.1905068159103394,
+    0.7983310222625732,
+    2.8114306926727295,
+    1.685580849647522,
+    2.6630375385284424,
+    2.515562057495117,
+    0.5296608805656433,
+    2.365246534347534,
+    0.7509448528289795,
+    1.5859581232070923,
+    1.2370867729187012,
+    2.847196578979492,
+    2.8030076026916504,
+    1.1575878858566284,
+    1.4596467018127441,
+    2.543537139892578,
+    1.3108644485473633,
+    1.851028323173523,
+    2.1438169479370117,
+    1.8364746570587158,
+    1.798708438873291,
+    3.228013515472412,
+    2.0055885314941406,
+    2.1886866092681885,
+    1.519359827041626,
+    3.0517220497131348,
+    1.122789740562439,
+    2.803903102874756,
+    2.441661834716797,
+    0.5549298524856567,
+    1.8146045207977295,
+    1.4025596380233765,
+    2.708927631378174,
+    0.6623754501342773,
+    4.077150821685791,
+    2.302507162094116,
+    2.1258769035339355,
+    0.4340364933013916,
+    1.5537666082382202,
+    0.9108946323394775,
+    2.321624755859375,
+    2.2769837379455566,
+    1.3441636562347412,
+    1.5645357370376587,
+    1.2971012592315674,
+    0.5835283994674683,
+    2.0521466732025146,
+    1.689941644668579,
+    1.1331173181533813,
+    1.0158151388168335,
+    3.7740118503570557,
+    0.5114783644676208,
+    2.3883936405181885,
+    3.3794474601745605,
+    2.5564701557159424,
+    2.7629597187042236,
+    1.4133743047714233,
+    1.5455245971679688,
+    2.117807149887085,
+    5.4509100914001465,
+    2.514251947402954,
+    1.9568125009536743,
+    1.623963475227356,
+    0.033256758004426956,
+    3.540952205657959,
+    0.830294132232666,
+    2.2686829566955566,
+    3.002030372619629,
+    2.5591254234313965,
+    0.5875064730644226,
+    1.7492895126342773,
+    2.349668264389038,
+    4.0753607749938965,
+    2.4341695308685303,
+    0.5667809247970581,
+    1.4001758098602295,
+    1.4205875396728516,
+    2.0326485633850098,
+    1.2903385162353516,
+    1.5053702592849731,
+    2.2981436252593994,
+    0.8255562782287598,
+    1.6839582920074463,
+    1.1130125522613525,
+    0.9900320768356323,
+    1.7727785110473633
+   ],
+   "int_facts_acc": 0.6133333333333333,
+   "int_facts_nll": 0.5114967659697868,
+   "phase": "interference",
+   "step": 1100,
+   "int_step": 400,
+   "holdout_loss": 3.3958188891410828,
+   "param_dist": 92.45621862675613
+  }
+ ],
+ "train_loss": [
+  [
+   0,
+   4.383634090423584
+  ],
+  [
+   25,
+   3.908411741256714
+  ],
+  [
+   50,
+   3.651949644088745
+  ],
+  [
+   75,
+   3.7587473392486572
+  ],
+  [
+   100,
+   3.9945459365844727
+  ],
+  [
+   125,
+   3.602426052093506
+  ],
+  [
+   150,
+   3.800316572189331
+  ],
+  [
+   175,
+   3.65285587310791
+  ],
+  [
+   200,
+   3.8436625003814697
+  ],
+  [
+   225,
+   3.8136367797851562
+  ],
+  [
+   250,
+   3.7203285694122314
+  ],
+  [
+   275,
+   3.5780014991760254
+  ],
+  [
+   300,
+   3.4937758445739746
+  ],
+  [
+   325,
+   3.5344722270965576
+  ],
+  [
+   350,
+   3.6151821613311768
+  ],
+  [
+   375,
+   3.3723583221435547
+  ],
+  [
+   400,
+   3.1327738761901855
+  ],
+  [
+   425,
+   3.4483819007873535
+  ],
+  [
+   450,
+   3.4201407432556152
+  ],
+  [
+   475,
+   3.394390106201172
+  ],
+  [
+   500,
+   3.597383737564087
+  ],
+  [
+   525,
+   3.31527042388916
+  ],
+  [
+   550,
+   3.234981060028076
+  ],
+  [
+   575,
+   3.005094289779663
+  ],
+  [
+   600,
+   3.375840663909912
+  ],
+  [
+   625,
+   3.446803092956543
+  ],
+  [
+   650,
+   3.6328368186950684
+  ],
+  [
+   675,
+   3.5386862754821777
+  ],
+  [
+   700,
+   3.3587076663970947
+  ],
+  [
+   725,
+   3.49588942527771
+  ],
+  [
+   750,
+   3.510756015777588
+  ],
+  [
+   775,
+   3.5769200325012207
+  ],
+  [
+   800,
+   3.3905177116394043
+  ],
+  [
+   825,
+   3.317535400390625
+  ],
+  [
+   850,
+   3.3147099018096924
+  ],
+  [
+   875,
+   3.460897445678711
+  ],
+  [
+   900,
+   3.075883150100708
+  ],
+  [
+   925,
+   3.542436122894287
+  ],
+  [
+   950,
+   3.048957109451294
+  ],
+  [
+   975,
+   3.1501331329345703
+  ],
+  [
+   1000,
+   3.250232696533203
+  ],
+  [
+   1025,
+   2.9326391220092773
+  ],
+  [
+   1050,
+   2.4557576179504395
+  ],
+  [
+   1075,
+   2.7653353214263916
+  ]
+ ],
+ "guards": {
+  "param_dist_immediate": 76.4559953468959,
+  "optimizer_steps": 1100,
+  "fact_tokens_seen": 27984,
+  "int_exposures": 1200,
+  "filler_tokens_seen": 1056000,
+  "exposures": 600,
+  "param_dist_end": 92.45621862675613,
+  "wall_seconds": 415.22479701042175,
+  "max_facts_in_one_step": 5
+ }
+}

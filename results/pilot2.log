@@ -1,0 +1,17 @@
+=== pilot2 k=4 lr=1e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.211 holdout=3.675 |dθ|=15.20 B_acc=0.000
+[eval]  immediate step=  700 acc=0.430 nll=0.572 holdout=3.442 |dθ|=76.74 B_acc=0.000
+[eval] interference step=  750 acc=0.000 nll=2.860 holdout=3.429 |dθ|=79.43 B_acc=0.000
+[eval] interference step=  800 acc=0.020 nll=2.447 holdout=3.425 |dθ|=81.88 B_acc=0.000
+[eval] interference step=  900 acc=0.010 nll=2.018 holdout=3.409 |dθ|=86.06 B_acc=0.067
+[eval] interference step= 1100 acc=0.000 nll=2.507 holdout=3.390 |dθ|=92.81 B_acc=0.590
+=== pilot2 k=6 lr=1e-4 ===
+[eval] pretrained step=    0 acc=0.000 nll=8.315 holdout=4.427 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.211 holdout=3.675 |dθ|=15.20 B_acc=0.000
+[eval]  immediate step=  700 acc=0.910 nll=0.108 holdout=3.441 |dθ|=76.46 B_acc=0.000
+[eval] interference step=  750 acc=0.010 nll=2.867 holdout=3.434 |dθ|=79.21 B_acc=0.000
+[eval] interference step=  800 acc=0.040 nll=2.173 holdout=3.426 |dθ|=81.69 B_acc=0.010
+[eval] interference step=  900 acc=0.080 nll=1.655 holdout=3.411 |dθ|=85.77 B_acc=0.103
+[eval] interference step= 1100 acc=0.040 nll=1.869 holdout=3.396 |dθ|=92.46 B_acc=0.613
+PILOT2_DONE

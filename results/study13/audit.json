@@ -1,0 +1,3213 @@
+{
+  "status": "PASS",
+  "audit_type": "post-run verification, no inference/training",
+  "seeds": {
+    "12": {
+      "eligible_count": 145,
+      "common_accuracy": 0.725,
+      "common_nll": 0.3720593328152609,
+      "last_exposure_accuracy": 0.81,
+      "prefix_wall_seconds": 326.7286419868469,
+      "arms": {
+        "uniform": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1241,
+          "fact_tokens": 4353,
+          "filler_tokens": 1440000,
+          "wall_seconds": 593.1023590564728,
+          "replay_counts": [
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "13": {
+                "available": 17,
+                "required": 1
+              },
+              "15": {
+                "available": 33,
+                "required": 6
+              },
+              "14": {
+                "available": 21,
+                "required": 1
+              },
+              "19": {
+                "available": 2,
+                "required": 1
+              },
+              "18": {
+                "available": 12,
+                "required": 4
+              },
+              "16": {
+                "available": 30,
+                "required": 3
+              },
+              "17": {
+                "available": 19,
+                "required": 2
+              },
+              "12": {
+                "available": 5,
+                "required": 1
+              },
+              "20": {
+                "available": 5,
+                "required": 1
+              }
+            },
+            {
+              "16": {
+                "available": 27,
+                "required": 4
+              },
+              "14": {
+                "available": 20,
+                "required": 3
+              },
+              "20": {
+                "available": 4,
+                "required": 1
+              },
+              "15": {
+                "available": 27,
+                "required": 5
+              },
+              "13": {
+                "available": 16,
+                "required": 4
+              },
+              "17": {
+                "available": 17,
+                "required": 2
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              }
+            },
+            {
+              "14": {
+                "available": 17,
+                "required": 3
+              },
+              "15": {
+                "available": 22,
+                "required": 5
+              },
+              "17": {
+                "available": 15,
+                "required": 4
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              },
+              "13": {
+                "available": 12,
+                "required": 1
+              },
+              "16": {
+                "available": 23,
+                "required": 3
+              },
+              "18": {
+                "available": 8,
+                "required": 2
+              },
+              "20": {
+                "available": 3,
+                "required": 1
+              }
+            },
+            {
+              "13": {
+                "available": 11,
+                "required": 3
+              },
+              "12": {
+                "available": 2,
+                "required": 1
+              },
+              "14": {
+                "available": 14,
+                "required": 5
+              },
+              "16": {
+                "available": 20,
+                "required": 5
+              },
+              "17": {
+                "available": 11,
+                "required": 5
+              },
+              "20": {
+                "available": 2,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "template_counts": [
+            21,
+            12,
+            18,
+            14,
+            15
+          ],
+          "length_counts": {
+            "12": 4,
+            "13": 9,
+            "14": 12,
+            "15": 16,
+            "16": 15,
+            "17": 13,
+            "18": 6,
+            "19": 1,
+            "20": 4
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 0.8764287597590737,
+          "replay_gradient_mean": 2.0188408508896827,
+          "replay_clip_scale_mean": 0.5012172015692726,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.061907679738562094,
+          "clipped_replay_coefficient_mean": 0.03106475581616315,
+          "final_displacement": 118.28540301505501,
+          "eligible_retention": 0.5682758620689655,
+          "initially_unlearned_retention": 0.09090909090909091,
+          "retention_foil_nll": 3.2606079290509222
+        },
+        "prioritized": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1241,
+          "fact_tokens": 4353,
+          "filler_tokens": 1440000,
+          "wall_seconds": 592.7779159545898,
+          "replay_counts": [
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "13": {
+                "available": 17,
+                "required": 1
+              },
+              "15": {
+                "available": 33,
+                "required": 6
+              },
+              "14": {
+                "available": 21,
+                "required": 1
+              },
+              "19": {
+                "available": 2,
+                "required": 1
+              },
+              "18": {
+                "available": 12,
+                "required": 4
+              },
+              "16": {
+                "available": 30,
+                "required": 3
+              },
+              "17": {
+                "available": 19,
+                "required": 2
+              },
+              "12": {
+                "available": 5,
+                "required": 1
+              },
+              "20": {
+                "available": 5,
+                "required": 1
+              }
+            },
+            {
+              "16": {
+                "available": 27,
+                "required": 4
+              },
+              "14": {
+                "available": 20,
+                "required": 3
+              },
+              "20": {
+                "available": 4,
+                "required": 1
+              },
+              "15": {
+                "available": 27,
+                "required": 5
+              },
+              "13": {
+                "available": 16,
+                "required": 4
+              },
+              "17": {
+                "available": 17,
+                "required": 2
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              }
+            },
+            {
+              "14": {
+                "available": 17,
+                "required": 3
+              },
+              "15": {
+                "available": 22,
+                "required": 5
+              },
+              "17": {
+                "available": 15,
+                "required": 4
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              },
+              "13": {
+                "available": 12,
+                "required": 1
+              },
+              "16": {
+                "available": 23,
+                "required": 3
+              },
+              "18": {
+                "available": 8,
+                "required": 2
+              },
+              "20": {
+                "available": 3,
+                "required": 1
+              }
+            },
+            {
+              "13": {
+                "available": 11,
+                "required": 3
+              },
+              "12": {
+                "available": 2,
+                "required": 1
+              },
+              "14": {
+                "available": 14,
+                "required": 5
+              },
+              "16": {
+                "available": 20,
+                "required": 5
+              },
+              "17": {
+                "available": 11,
+                "required": 5
+              },
+              "20": {
+                "available": 2,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            2,
+            3,
+            3,
+            4
+          ],
+          "template_counts": [
+            19,
+            15,
+            16,
+            14,
+            16
+          ],
+          "length_counts": {
+            "12": 4,
+            "13": 9,
+            "14": 12,
+            "15": 16,
+            "16": 15,
+            "17": 13,
+            "18": 6,
+            "19": 1,
+            "20": 4
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 1.273069512611255,
+          "replay_gradient_mean": 2.056866855919361,
+          "replay_clip_scale_mean": 0.4921406521101199,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.061907679738562094,
+          "clipped_replay_coefficient_mean": 0.030493809308364588,
+          "final_displacement": 118.25156043734428,
+          "eligible_retention": 0.6537931034482758,
+          "initially_unlearned_retention": 0.10545454545454545,
+          "retention_foil_nll": 3.09062987190485
+        }
+      },
+      "pre_replay_drift": {
+        "50": {
+          "accuracy": 0.0,
+          "nll": 2.7149915693414073e-07,
+          "max_per_fact_nll": 1.7642974853515625e-05,
+          "correctness_disagreements": 0
+        },
+        "100": {
+          "accuracy": 0.0,
+          "nll": 1.4486908912481056e-06,
+          "max_per_fact_nll": 1.5676021575927734e-05,
+          "correctness_disagreements": 0
+        }
+      }
+    },
+    "13": {
+      "eligible_count": 142,
+      "common_accuracy": 0.71,
+      "common_nll": 0.4075137389980955,
+      "last_exposure_accuracy": 0.835,
+      "prefix_wall_seconds": 315.4326910972595,
+      "arms": {
+        "uniform": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1247,
+          "fact_tokens": 4359,
+          "filler_tokens": 1440000,
+          "wall_seconds": 555.7798562049866,
+          "replay_counts": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "15": {
+                "available": 35,
+                "required": 4
+              },
+              "19": {
+                "available": 1,
+                "required": 1
+              },
+              "17": {
+                "available": 28,
+                "required": 6
+              },
+              "16": {
+                "available": 31,
+                "required": 4
+              },
+              "18": {
+                "available": 7,
+                "required": 1
+              },
+              "13": {
+                "available": 13,
+                "required": 1
+              },
+              "14": {
+                "available": 17,
+                "required": 2
+              },
+              "12": {
+                "available": 5,
+                "required": 1
+              }
+            },
+            {
+              "15": {
+                "available": 31,
+                "required": 4
+              },
+              "11": {
+                "available": 1,
+                "required": 1
+              },
+              "16": {
+                "available": 27,
+                "required": 2
+              },
+              "14": {
+                "available": 15,
+                "required": 3
+              },
+              "20": {
+                "available": 4,
+                "required": 2
+              },
+              "17": {
+                "available": 22,
+                "required": 7
+              },
+              "13": {
+                "available": 12,
+                "required": 1
+              }
+            },
+            {
+              "16": {
+                "available": 25,
+                "required": 5
+              },
+              "15": {
+                "available": 27,
+                "required": 6
+              },
+              "14": {
+                "available": 12,
+                "required": 3
+              },
+              "13": {
+                "available": 11,
+                "required": 2
+              },
+              "17": {
+                "available": 15,
+                "required": 3
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              }
+            },
+            {
+              "17": {
+                "available": 12,
+                "required": 4
+              },
+              "16": {
+                "available": 20,
+                "required": 5
+              },
+              "13": {
+                "available": 9,
+                "required": 2
+              },
+              "15": {
+                "available": 21,
+                "required": 5
+              },
+              "20": {
+                "available": 2,
+                "required": 1
+              },
+              "18": {
+                "available": 6,
+                "required": 1
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              },
+              "14": {
+                "available": 9,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "template_counts": [
+            14,
+            17,
+            20,
+            18,
+            11
+          ],
+          "length_counts": {
+            "11": 1,
+            "12": 3,
+            "13": 6,
+            "14": 9,
+            "15": 19,
+            "16": 16,
+            "17": 20,
+            "18": 2,
+            "19": 1,
+            "20": 3
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 0.9624205964624707,
+          "replay_gradient_mean": 2.0103912353515625,
+          "replay_clip_scale_mean": 0.5011427901095411,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.06204554738562092,
+          "clipped_replay_coefficient_mean": 0.03111667232676632,
+          "final_displacement": 118.10478372527825,
+          "eligible_retention": 0.5873239436619718,
+          "initially_unlearned_retention": 0.07241379310344828,
+          "retention_foil_nll": 3.219090552911162
+        },
+        "prioritized": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1247,
+          "fact_tokens": 4359,
+          "filler_tokens": 1440000,
+          "wall_seconds": 554.7039742469788,
+          "replay_counts": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "15": {
+                "available": 35,
+                "required": 4
+              },
+              "19": {
+                "available": 1,
+                "required": 1
+              },
+              "17": {
+                "available": 28,
+                "required": 6
+              },
+              "16": {
+                "available": 31,
+                "required": 4
+              },
+              "18": {
+                "available": 7,
+                "required": 1
+              },
+              "13": {
+                "available": 13,
+                "required": 1
+              },
+              "14": {
+                "available": 17,
+                "required": 2
+              },
+              "12": {
+                "available": 5,
+                "required": 1
+              }
+            },
+            {
+              "15": {
+                "available": 31,
+                "required": 4
+              },
+              "11": {
+                "available": 1,
+                "required": 1
+              },
+              "16": {
+                "available": 27,
+                "required": 2
+              },
+              "14": {
+                "available": 15,
+                "required": 3
+              },
+              "20": {
+                "available": 4,
+                "required": 2
+              },
+              "17": {
+                "available": 22,
+                "required": 7
+              },
+              "13": {
+                "available": 12,
+                "required": 1
+              }
+            },
+            {
+              "16": {
+                "available": 25,
+                "required": 5
+              },
+              "15": {
+                "available": 27,
+                "required": 6
+              },
+              "14": {
+                "available": 12,
+                "required": 3
+              },
+              "13": {
+                "available": 11,
+                "required": 2
+              },
+              "17": {
+                "available": 15,
+                "required": 3
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              }
+            },
+            {
+              "17": {
+                "available": 12,
+                "required": 4
+              },
+              "16": {
+                "available": 20,
+                "required": 5
+              },
+              "13": {
+                "available": 9,
+                "required": 2
+              },
+              "15": {
+                "available": 21,
+                "required": 5
+              },
+              "20": {
+                "available": 2,
+                "required": 1
+              },
+              "18": {
+                "available": 6,
+                "required": 1
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              },
+              "14": {
+                "available": 9,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            4,
+            8,
+            3,
+            5
+          ],
+          "template_counts": [
+            15,
+            17,
+            17,
+            19,
+            12
+          ],
+          "length_counts": {
+            "11": 1,
+            "12": 3,
+            "13": 6,
+            "14": 9,
+            "15": 19,
+            "16": 16,
+            "17": 20,
+            "18": 2,
+            "19": 1,
+            "20": 3
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 1.4713833043024351,
+          "replay_gradient_mean": 2.0594430059194564,
+          "replay_clip_scale_mean": 0.4903354078883584,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.06204554738562092,
+          "clipped_replay_coefficient_mean": 0.030448889967055554,
+          "final_displacement": 118.08918024806546,
+          "eligible_retention": 0.6253521126760564,
+          "initially_unlearned_retention": 0.05517241379310345,
+          "retention_foil_nll": 3.1913773125708103
+        }
+      },
+      "pre_replay_drift": {
+        "50": {
+          "accuracy": 0.0,
+          "nll": 1.22435390947917e-06,
+          "max_per_fact_nll": 8.821487426757812e-06,
+          "correctness_disagreements": 0
+        },
+        "100": {
+          "accuracy": 0.0,
+          "nll": -4.225224257137228e-07,
+          "max_per_fact_nll": 8.404254913330078e-06,
+          "correctness_disagreements": 0
+        }
+      }
+    },
+    "14": {
+      "eligible_count": 130,
+      "common_accuracy": 0.65,
+      "common_nll": 0.49120566998063625,
+      "last_exposure_accuracy": 0.74,
+      "prefix_wall_seconds": 319.6271710395813,
+      "arms": {
+        "uniform": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1222,
+          "fact_tokens": 4394,
+          "filler_tokens": 1440000,
+          "wall_seconds": 598.1871857643127,
+          "replay_counts": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "14": {
+                "available": 20,
+                "required": 4
+              },
+              "15": {
+                "available": 23,
+                "required": 3
+              },
+              "16": {
+                "available": 23,
+                "required": 5
+              },
+              "17": {
+                "available": 18,
+                "required": 4
+              },
+              "13": {
+                "available": 22,
+                "required": 2
+              },
+              "19": {
+                "available": 3,
+                "required": 2
+              }
+            },
+            {
+              "13": {
+                "available": 20,
+                "required": 6
+              },
+              "16": {
+                "available": 18,
+                "required": 4
+              },
+              "15": {
+                "available": 20,
+                "required": 2
+              },
+              "20": {
+                "available": 3,
+                "required": 1
+              },
+              "18": {
+                "available": 13,
+                "required": 2
+              },
+              "17": {
+                "available": 14,
+                "required": 5
+              }
+            },
+            {
+              "16": {
+                "available": 14,
+                "required": 3
+              },
+              "15": {
+                "available": 18,
+                "required": 3
+              },
+              "14": {
+                "available": 16,
+                "required": 5
+              },
+              "13": {
+                "available": 14,
+                "required": 4
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              },
+              "17": {
+                "available": 9,
+                "required": 3
+              },
+              "18": {
+                "available": 11,
+                "required": 1
+              }
+            },
+            {
+              "17": {
+                "available": 6,
+                "required": 2
+              },
+              "13": {
+                "available": 10,
+                "required": 4
+              },
+              "14": {
+                "available": 11,
+                "required": 5
+              },
+              "15": {
+                "available": 15,
+                "required": 4
+              },
+              "18": {
+                "available": 10,
+                "required": 4
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            20,
+            20,
+            20,
+            20
+          ],
+          "template_counts": [
+            14,
+            18,
+            17,
+            15,
+            16
+          ],
+          "length_counts": {
+            "12": 2,
+            "13": 16,
+            "14": 14,
+            "15": 12,
+            "16": 12,
+            "17": 14,
+            "18": 7,
+            "19": 2,
+            "20": 1
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 1.0268509234416114,
+          "replay_gradient_mean": 1.9718338996171951,
+          "replay_clip_scale_mean": 0.5096330692082565,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.06204554738562092,
+          "clipped_replay_coefficient_mean": 0.031641136255554814,
+          "final_displacement": 118.63552400188033,
+          "eligible_retention": 0.536923076923077,
+          "initially_unlearned_retention": 0.04285714285714286,
+          "retention_foil_nll": 3.27540040487051
+        },
+        "prioritized": {
+          "continuation_steps": 1500,
+          "replay_exposures": 80,
+          "replay_tokens": 1222,
+          "fact_tokens": 4394,
+          "filler_tokens": 1440000,
+          "wall_seconds": 602.8344330787659,
+          "replay_counts": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "distinct_replayed": 80,
+          "cumulative_distinct": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "bucket_capacities": [
+            {
+              "14": {
+                "available": 20,
+                "required": 4
+              },
+              "15": {
+                "available": 23,
+                "required": 3
+              },
+              "16": {
+                "available": 23,
+                "required": 5
+              },
+              "17": {
+                "available": 18,
+                "required": 4
+              },
+              "13": {
+                "available": 22,
+                "required": 2
+              },
+              "19": {
+                "available": 3,
+                "required": 2
+              }
+            },
+            {
+              "13": {
+                "available": 20,
+                "required": 6
+              },
+              "16": {
+                "available": 18,
+                "required": 4
+              },
+              "15": {
+                "available": 20,
+                "required": 2
+              },
+              "20": {
+                "available": 3,
+                "required": 1
+              },
+              "18": {
+                "available": 13,
+                "required": 2
+              },
+              "17": {
+                "available": 14,
+                "required": 5
+              }
+            },
+            {
+              "16": {
+                "available": 14,
+                "required": 3
+              },
+              "15": {
+                "available": 18,
+                "required": 3
+              },
+              "14": {
+                "available": 16,
+                "required": 5
+              },
+              "13": {
+                "available": 14,
+                "required": 4
+              },
+              "12": {
+                "available": 4,
+                "required": 1
+              },
+              "17": {
+                "available": 9,
+                "required": 3
+              },
+              "18": {
+                "available": 11,
+                "required": 1
+              }
+            },
+            {
+              "17": {
+                "available": 6,
+                "required": 2
+              },
+              "13": {
+                "available": 10,
+                "required": 4
+              },
+              "14": {
+                "available": 11,
+                "required": 5
+              },
+              "15": {
+                "available": 15,
+                "required": 4
+              },
+              "18": {
+                "available": 10,
+                "required": 4
+              },
+              "12": {
+                "available": 3,
+                "required": 1
+              }
+            }
+          ],
+          "zero_score_slots": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "uniform_overlap": [
+            4,
+            5,
+            5,
+            4
+          ],
+          "template_counts": [
+            20,
+            19,
+            16,
+            14,
+            11
+          ],
+          "length_counts": {
+            "12": 2,
+            "13": 16,
+            "14": 14,
+            "15": 12,
+            "16": 12,
+            "17": 14,
+            "18": 7,
+            "19": 2,
+            "20": 1
+          },
+          "replay_count_histogram": {
+            "0": 120,
+            "1": 80
+          },
+          "replay_mean_deterioration": 1.47873314498936,
+          "replay_gradient_mean": 2.0066237673163414,
+          "replay_clip_scale_mean": 0.5008138100623475,
+          "replay_clipped_fraction": 1,
+          "replay_coefficient_mean": 0.06204554738562092,
+          "clipped_replay_coefficient_mean": 0.03108927572685093,
+          "final_displacement": 118.62717527535264,
+          "eligible_retention": 0.6076923076923078,
+          "initially_unlearned_retention": 0.045714285714285714,
+          "retention_foil_nll": 3.2592401258349417
+        }
+      },
+      "pre_replay_drift": {
+        "50": {
+          "accuracy": 0.0,
+          "nll": -3.434903919075083e-07,
+          "max_per_fact_nll": 1.1920928955078125e-05,
+          "correctness_disagreements": 0
+        },
+        "100": {
+          "accuracy": 0.0,
+          "nll": 9.419396518328682e-08,
+          "max_per_fact_nll": 1.0251998901367188e-05,
+          "correctness_disagreements": 0
+        }
+      }
+    }
+  },
+  "metrics": {
+    "retention_accuracy": {
+      "uniform": {
+        "values": [
+          0.437,
+          0.438,
+          0.364
+        ],
+        "mean": 0.413,
+        "sample_sd": 0.04243819034784589,
+        "min": 0.364,
+        "max": 0.438
+      },
+      "prioritized": {
+        "values": [
+          0.503,
+          0.46,
+          0.411
+        ],
+        "mean": 0.458,
+        "sample_sd": 0.04603259714593563,
+        "min": 0.411,
+        "max": 0.503
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.066,
+          0.02200000000000002,
+          0.046999999999999986
+        ],
+        "mean": 0.045000000000000005,
+        "sample_sd": 0.022068076490713903,
+        "min": 0.02200000000000002,
+        "max": 0.066
+      }
+    },
+    "retention_nll": {
+      "uniform": {
+        "values": [
+          0.9032525471053087,
+          0.9053614883351838,
+          1.1587455736268384
+        ],
+        "mean": 0.9891198696891103,
+        "sample_sd": 0.14690395326727973,
+        "min": 0.9032525471053087,
+        "max": 1.1587455736268384
+      },
+      "prioritized": {
+        "values": [
+          0.7893030819650739,
+          0.8579746639590011,
+          1.059480611163308
+        ],
+        "mean": 0.9022527856957944,
+        "sample_sd": 0.14042573969653624,
+        "min": 0.7893030819650739,
+        "max": 1.059480611163308
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.11394946514023474,
+          -0.04738682437618269,
+          -0.09926496246353045
+        ],
+        "mean": -0.08686708399331595,
+        "sample_sd": 0.034970370734276134,
+        "min": -0.11394946514023474,
+        "max": -0.04738682437618269
+      }
+    },
+    "retention_discrimination": {
+      "uniform": {
+        "values": [
+          2.357355381945614,
+          2.3137290645759783,
+          2.1166548312436717
+        ],
+        "mean": 2.262579759255088,
+        "sample_sd": 0.12824343005847044,
+        "min": 2.1166548312436717,
+        "max": 2.357355381945614
+      },
+      "prioritized": {
+        "values": [
+          2.3013267899397762,
+          2.333402648611809,
+          2.199759514671634
+        ],
+        "mean": 2.27816298440774,
+        "sample_sd": 0.06976778072565014,
+        "min": 2.199759514671634,
+        "max": 2.333402648611809
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.05602859200583765,
+          0.01967358403583086,
+          0.08310468342796229
+        ],
+        "mean": 0.015583225152651833,
+        "sample_sd": 0.06965676822878959,
+        "min": -0.05602859200583765,
+        "max": 0.08310468342796229
+      }
+    },
+    "terminal_accuracy": {
+      "uniform": {
+        "values": [
+          0.395,
+          0.455,
+          0.415
+        ],
+        "mean": 0.4216666666666667,
+        "sample_sd": 0.030550504633038936,
+        "min": 0.395,
+        "max": 0.455
+      },
+      "prioritized": {
+        "values": [
+          0.48,
+          0.45,
+          0.445
+        ],
+        "mean": 0.4583333333333333,
+        "sample_sd": 0.018929694486000896,
+        "min": 0.445,
+        "max": 0.48
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.08499999999999996,
+          -0.0050000000000000044,
+          0.030000000000000027
+        ],
+        "mean": 0.03666666666666666,
+        "sample_sd": 0.04536885862938731,
+        "min": -0.0050000000000000044,
+        "max": 0.08499999999999996
+      }
+    },
+    "terminal_nll": {
+      "uniform": {
+        "values": [
+          0.942061328215059,
+          0.8991778102441458,
+          1.0463319084842806
+        ],
+        "mean": 0.9625236823144951,
+        "sample_sd": 0.07568099569036368,
+        "min": 0.8991778102441458,
+        "max": 1.0463319084842806
+      },
+      "prioritized": {
+        "values": [
+          0.8098623560054693,
+          0.7967645559675293,
+          0.8710008606179326
+        ],
+        "mean": 0.8258759241969771,
+        "sample_sd": 0.03962427294859711,
+        "min": 0.7967645559675293,
+        "max": 0.8710008606179326
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.13219897220958965,
+          -0.10241325427661652,
+          -0.175331047866348
+        ],
+        "mean": -0.13664775811751806,
+        "sample_sd": 0.03666190021725018,
+        "min": -0.175331047866348,
+        "max": -0.10241325427661652
+      }
+    },
+    "new_fact_accuracy": {
+      "uniform": {
+        "values": [
+          0.94,
+          0.98,
+          1.0
+        ],
+        "mean": 0.9733333333333333,
+        "sample_sd": 0.03055050463303896,
+        "min": 0.94,
+        "max": 1.0
+      },
+      "prioritized": {
+        "values": [
+          0.96,
+          0.96,
+          1.0
+        ],
+        "mean": 0.9733333333333333,
+        "sample_sd": 0.023094010767585053,
+        "min": 0.96,
+        "max": 1.0
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.020000000000000018,
+          -0.020000000000000018,
+          0.0
+        ],
+        "mean": 0.0,
+        "sample_sd": 0.020000000000000018,
+        "min": -0.020000000000000018,
+        "max": 0.020000000000000018
+      }
+    },
+    "new_fact_nll": {
+      "uniform": {
+        "values": [
+          0.05468256497755647,
+          0.048763452911225615,
+          0.029831126689678057
+        ],
+        "mean": 0.044425714859486716,
+        "sample_sd": 0.01298115845362751,
+        "min": 0.029831126689678057,
+        "max": 0.05468256497755647
+      },
+      "prioritized": {
+        "values": [
+          0.05374235024661175,
+          0.0368076130724512,
+          0.018085969110543373
+        ],
+        "mean": 0.03621197747653544,
+        "sample_sd": 0.017835651523072676,
+        "min": 0.018085969110543373,
+        "max": 0.05374235024661175
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.0009402147309447162,
+          -0.011955839838774414,
+          -0.011745157579134684
+        ],
+        "mean": -0.008213737382951272,
+        "sample_sd": 0.006299936156864693,
+        "min": -0.011955839838774414,
+        "max": -0.0009402147309447162
+      }
+    },
+    "filler_loss": {
+      "uniform": {
+        "values": [
+          3.443098783493042,
+          3.4392537474632263,
+          3.418059825897217
+        ],
+        "mean": 3.4334707856178284,
+        "sample_sd": 0.013484040015899515,
+        "min": 3.418059825897217,
+        "max": 3.443098783493042
+      },
+      "prioritized": {
+        "values": [
+          3.443303406238556,
+          3.4389395117759705,
+          3.419188439846039
+        ],
+        "mean": 3.4338104526201882,
+        "sample_sd": 0.012849643454029806,
+        "min": 3.419188439846039,
+        "max": 3.443303406238556
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.00020462274551391602,
+          -0.0003142356872558594,
+          0.0011286139488220215
+        ],
+        "mean": 0.00033966700236002606,
+        "sample_sd": 0.0007308429937837928,
+        "min": -0.0003142356872558594,
+        "max": 0.0011286139488220215
+      }
+    },
+    "floor_checkpoints": {
+      "uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "prioritized": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "ceiling_checkpoints": {
+      "uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "prioritized": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    }
+  },
+  "direction": "positive_directional_signal",
+  "guard_summaries": {
+    "distinct_replayed": {
+      "uniform": {
+        "values": [
+          80,
+          80,
+          80
+        ],
+        "mean": 80,
+        "sample_sd": 0.0,
+        "min": 80,
+        "max": 80
+      },
+      "prioritized": {
+        "values": [
+          80,
+          80,
+          80
+        ],
+        "mean": 80,
+        "sample_sd": 0.0,
+        "min": 80,
+        "max": 80
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "replay_mean_deterioration": {
+      "uniform": {
+        "values": [
+          0.8764287597590737,
+          0.9624205964624707,
+          1.0268509234416114
+        ],
+        "mean": 0.9552334265543853,
+        "sample_sd": 0.07546819456035639,
+        "min": 0.8764287597590737,
+        "max": 1.0268509234416114
+      },
+      "prioritized": {
+        "values": [
+          1.273069512611255,
+          1.4713833043024351,
+          1.47873314498936
+        ],
+        "mean": 1.4077286539676834,
+        "sample_sd": 0.11667612567560129,
+        "min": 1.273069512611255,
+        "max": 1.47873314498936
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.39664075285218126,
+          0.5089627078399644,
+          0.4518822215477485
+        ],
+        "mean": 0.45249522741329806,
+        "sample_sd": 0.056163486583480526,
+        "min": 0.39664075285218126,
+        "max": 0.5089627078399644
+      }
+    },
+    "replay_gradient_mean": {
+      "uniform": {
+        "values": [
+          2.0188408508896827,
+          2.0103912353515625,
+          1.9718338996171951
+        ],
+        "mean": 2.00035532861948,
+        "sample_sd": 0.02505898910440717,
+        "min": 1.9718338996171951,
+        "max": 2.0188408508896827
+      },
+      "prioritized": {
+        "values": [
+          2.056866855919361,
+          2.0594430059194564,
+          2.0066237673163414
+        ],
+        "mean": 2.040977876385053,
+        "sample_sd": 0.02977940134781833,
+        "min": 2.0066237673163414,
+        "max": 2.0594430059194564
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.038026005029678345,
+          0.04905177056789389,
+          0.03478986769914627
+        ],
+        "mean": 0.040622547765572836,
+        "sample_sd": 0.00747709796604891,
+        "min": 0.03478986769914627,
+        "max": 0.04905177056789389
+      }
+    },
+    "replay_clip_scale_mean": {
+      "uniform": {
+        "values": [
+          0.5012172015692726,
+          0.5011427901095411,
+          0.5096330692082565
+        ],
+        "mean": 0.5039976869623567,
+        "sample_sd": 0.00488052600232662,
+        "min": 0.5011427901095411,
+        "max": 0.5096330692082565
+      },
+      "prioritized": {
+        "values": [
+          0.4921406521101199,
+          0.4903354078883584,
+          0.5008138100623475
+        ],
+        "mean": 0.49442995668694195,
+        "sample_sd": 0.005601777808344286,
+        "min": 0.4903354078883584,
+        "max": 0.5008138100623475
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.009076549459152705,
+          -0.010807382221182715,
+          -0.008819259145908975
+        ],
+        "mean": -0.009567730275414799,
+        "sample_sd": 0.0010812503347083415,
+        "min": -0.010807382221182715,
+        "max": -0.008819259145908975
+      }
+    },
+    "replay_clipped_fraction": {
+      "uniform": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0,
+        "min": 1,
+        "max": 1
+      },
+      "prioritized": {
+        "values": [
+          1,
+          1,
+          1
+        ],
+        "mean": 1,
+        "sample_sd": 0.0,
+        "min": 1,
+        "max": 1
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "mean": 0,
+        "sample_sd": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "replay_coefficient_mean": {
+      "uniform": {
+        "values": [
+          0.061907679738562094,
+          0.06204554738562092,
+          0.06204554738562092
+        ],
+        "mean": 0.061999591503267976,
+        "sample_sd": 7.95979231419518e-05,
+        "min": 0.061907679738562094,
+        "max": 0.06204554738562092
+      },
+      "prioritized": {
+        "values": [
+          0.061907679738562094,
+          0.06204554738562092,
+          0.06204554738562092
+        ],
+        "mean": 0.061999591503267976,
+        "sample_sd": 7.95979231419518e-05,
+        "min": 0.061907679738562094,
+        "max": 0.06204554738562092
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "sample_sd": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      }
+    },
+    "clipped_replay_coefficient_mean": {
+      "uniform": {
+        "values": [
+          0.03106475581616315,
+          0.03111667232676632,
+          0.031641136255554814
+        ],
+        "mean": 0.0312741881328281,
+        "sample_sd": 0.0003188448284005868,
+        "min": 0.03106475581616315,
+        "max": 0.031641136255554814
+      },
+      "prioritized": {
+        "values": [
+          0.030493809308364588,
+          0.030448889967055554,
+          0.03108927572685093
+        ],
+        "mean": 0.030677325000757025,
+        "sample_sd": 0.00035746606461716293,
+        "min": 0.030448889967055554,
+        "max": 0.03108927572685093
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.0005709465077985629,
+          -0.0006677823597107668,
+          -0.000551860528703884
+        ],
+        "mean": -0.0005968631320710712,
+        "sample_sd": 6.21548170800852e-05,
+        "min": -0.0006677823597107668,
+        "max": -0.000551860528703884
+      }
+    },
+    "final_displacement": {
+      "uniform": {
+        "values": [
+          118.28540301505501,
+          118.10478372527825,
+          118.63552400188033
+        ],
+        "mean": 118.34190358073786,
+        "sample_sd": 0.26984355790674974,
+        "min": 118.10478372527825,
+        "max": 118.63552400188033
+      },
+      "prioritized": {
+        "values": [
+          118.25156043734428,
+          118.08918024806546,
+          118.62717527535264
+        ],
+        "mean": 118.32263865358746,
+        "sample_sd": 0.2759506241425589,
+        "min": 118.08918024806546,
+        "max": 118.62717527535264
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.03384257771072896,
+          -0.015603477212792427,
+          -0.008348726527685812
+        ],
+        "mean": -0.0192649271504024,
+        "sample_sd": 0.013135401545822864,
+        "min": -0.03384257771072896,
+        "max": -0.008348726527685812
+      }
+    },
+    "eligible_retention": {
+      "uniform": {
+        "values": [
+          0.5682758620689655,
+          0.5873239436619718,
+          0.536923076923077
+        ],
+        "mean": 0.5641742942180048,
+        "sample_sd": 0.02544953803382266,
+        "min": 0.536923076923077,
+        "max": 0.5873239436619718
+      },
+      "prioritized": {
+        "values": [
+          0.6537931034482758,
+          0.6253521126760564,
+          0.6076923076923078
+        ],
+        "mean": 0.6289458412722133,
+        "sample_sd": 0.02325955730985646,
+        "min": 0.6076923076923078,
+        "max": 0.6537931034482758
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.08551724137931027,
+          0.03802816901408457,
+          0.0707692307692308
+        ],
+        "mean": 0.06477154705420855,
+        "sample_sd": 0.024306010696667057,
+        "min": 0.03802816901408457,
+        "max": 0.08551724137931027
+      }
+    },
+    "initially_unlearned_retention": {
+      "uniform": {
+        "values": [
+          0.09090909090909091,
+          0.07241379310344828,
+          0.04285714285714286
+        ],
+        "mean": 0.06872667562322735,
+        "sample_sd": 0.02423723487490872,
+        "min": 0.04285714285714286,
+        "max": 0.09090909090909091
+      },
+      "prioritized": {
+        "values": [
+          0.10545454545454545,
+          0.05517241379310345,
+          0.045714285714285714
+        ],
+        "mean": 0.06878041498731154,
+        "sample_sd": 0.032110869356568365,
+        "min": 0.045714285714285714,
+        "max": 0.10545454545454545
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          0.014545454545454542,
+          -0.017241379310344834,
+          0.0028571428571428567
+        ],
+        "mean": 5.373936408418813e-05,
+        "sample_sd": 0.016077779853036878,
+        "min": -0.017241379310344834,
+        "max": 0.014545454545454542
+      }
+    },
+    "retention_foil_nll": {
+      "uniform": {
+        "values": [
+          3.2606079290509222,
+          3.219090552911162,
+          3.27540040487051
+        ],
+        "mean": 3.251699628944198,
+        "sample_sd": 0.029192776760947368,
+        "min": 3.219090552911162,
+        "max": 3.27540040487051
+      },
+      "prioritized": {
+        "values": [
+          3.09062987190485,
+          3.1913773125708103,
+          3.2592401258349417
+        ],
+        "mean": 3.180415770103534,
+        "sample_sd": 0.08483791011416378,
+        "min": 3.09062987190485,
+        "max": 3.2592401258349417
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.16997805714607228,
+          -0.02771324034035194,
+          -0.01616027903556816
+        ],
+        "mean": -0.07128385884066413,
+        "sample_sd": 0.08566665811789252,
+        "min": -0.16997805714607228,
+        "max": -0.01616027903556816
+      }
+    },
+    "wall_seconds": {
+      "uniform": {
+        "values": [
+          593.1023590564728,
+          555.7798562049866,
+          598.1871857643127
+        ],
+        "mean": 582.3564670085907,
+        "sample_sd": 23.156015352751783,
+        "min": 555.7798562049866,
+        "max": 598.1871857643127
+      },
+      "prioritized": {
+        "values": [
+          592.7779159545898,
+          554.7039742469788,
+          602.8344330787659
+        ],
+        "mean": 583.4387744267782,
+        "sample_sd": 25.38798810849259,
+        "min": 554.7039742469788,
+        "max": 602.8344330787659
+      },
+      "prioritized_minus_uniform": {
+        "values": [
+          -0.32444310188293457,
+          -1.0758819580078125,
+          4.647247314453125
+        ],
+        "mean": 1.0823074181874592,
+        "sample_sd": 3.110106499239786,
+        "min": -1.0758819580078125,
+        "max": 4.647247314453125
+      }
+    }
+  },
+  "common_summaries": {
+    "eligible_count": {
+      "values": [
+        145,
+        142,
+        130
+      ],
+      "mean": 139,
+      "sample_sd": 7.937253933193772,
+      "min": 130,
+      "max": 145
+    },
+    "common_accuracy": {
+      "values": [
+        0.725,
+        0.71,
+        0.65
+      ],
+      "mean": 0.695,
+      "sample_sd": 0.03968626966596883,
+      "min": 0.65,
+      "max": 0.725
+    },
+    "common_nll": {
+      "values": [
+        0.3720593328152609,
+        0.4075137389980955,
+        0.49120566998063625
+      ],
+      "mean": 0.42359291393133086,
+      "sample_sd": 0.06117897772014105,
+      "min": 0.3720593328152609,
+      "max": 0.49120566998063625
+    },
+    "last_exposure_accuracy": {
+      "values": [
+        0.81,
+        0.835,
+        0.74
+      ],
+      "mean": 0.795,
+      "sample_sd": 0.04924428900898052,
+      "min": 0.74,
+      "max": 0.835
+    },
+    "prefix_wall_seconds": {
+      "values": [
+        326.7286419868469,
+        315.4326910972595,
+        319.6271710395813
+      ],
+      "mean": 320.59616804122925,
+      "sample_sd": 5.709977497056766,
+      "min": 315.4326910972595,
+      "max": 326.7286419868469
+    }
+  },
+  "limitations": [
+    "No new model evaluation: NLL values verified by aggregation, not by recomputing logits.",
+    "Old AND new generated-answer correctness and per-item NLL/foil aggregates verified; filler loss is logged only, not freshly evaluated.",
+    "Saved fork and logged branch-state hashes verify common initialization; final branch weights were not saved.",
+    "Read-only secondary guard summaries are post-run reporting, not new primary tests."
+  ]
+}

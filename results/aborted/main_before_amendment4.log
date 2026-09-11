@@ -1,0 +1,9 @@
+=== massed seed=0  ===
+[eval] pretrained step=    0 acc=0.000 nll=8.512 holdout=4.391 |dθ|=0.00 B_acc=0.000
+[eval] pre_injection step=  100 acc=0.000 nll=8.447 holdout=3.700 |dθ|=15.30 B_acc=0.000
+[eval]  immediate step=  800 acc=0.020 nll=5.014 holdout=3.579 |dθ|=80.98 B_acc=0.000
+[eval] interference step=  850 acc=0.015 nll=4.830 holdout=3.557 |dθ|=83.28 B_acc=0.000
+[eval] interference step=  900 acc=0.005 nll=4.327 holdout=3.543 |dθ|=85.34 B_acc=0.020
+[eval] interference step= 1000 acc=0.000 nll=4.165 holdout=3.529 |dθ|=89.48 B_acc=0.020
+[eval] interference step= 1200 acc=0.000 nll=4.018 holdout=3.502 |dθ|=96.37 B_acc=0.100
+[eval] interference step= 1600 acc=0.000 nll=4.147 holdout=3.463 |dθ|=107.01 B_acc=0.220

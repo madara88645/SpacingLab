@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+results/runs/*/checkpoints/
+results/study12/seed_*/fork.pt
+results/study13/seed_*/fork.pt

@@ -1,0 +1,7 @@
+=== massed_matched seed=0 K=10 ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+=== massed_matched seed=0 K=20 ===
+Traceback (most recent call last):
+AssertionError: injection window too narrow for the range of p_i
+CONTINGENCY_DONE
