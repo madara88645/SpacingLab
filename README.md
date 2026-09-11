@@ -8,7 +8,7 @@
 > separation were mixed. Both prior policies changed; this is not an unchanged
 > Study 12 replication or a mediation test. No new training is authorized.
 > [Study 13 write-up](results/study13/WRITEUP.md) · [Audit](results/study13/AUDIT.md)
-> · [Registration](docs/STUDY13_PREREGISTRATION.md). See current RESUME.md.
+> · [Registration](docs/STUDY13_PREREGISTRATION.md). See `PUBLICATION.md`.
 
 > **Completed earlier (10 September): Study 12 selective-replay screen.**
 > Prioritized-minus-uniform all-fact accuracy: +3.23 percentage points, sample SD
@@ -47,7 +47,7 @@ This clarifies an existing guard, not a new independent finding or a changed pri
 > and compared fixed gaps [64,64,64,64] to permuted [32,32,64,128] in six fresh runs.
 > [Study 9 registration](docs/STUDY9_PREREGISTRATION.md). See the current status above.
 > These synthetic-fact experiments do not establish personalization or PEFT benefits.
-> Check `RESUME.md` before launching any training command.
+> Check `PUBLICATION.md` before launching any training command.
 
 > **Status correction, 8 September 2026:** Study 6b reused a spaced control from
 > before the filler cache grew. A registered provenance audit reproduces changed
@@ -372,8 +372,9 @@ optimal gap.
 
 ## Study 6: two checks the external review asked for (Amendment 9, pre-registered)
 
-An outside review (ChatGPT Pro, filed in `docs/external_review_chatgpt_pro_2026-09-07.md`)
-raised two objections worth answering before anything else.
+An outside review raised two objections worth answering before anything else.
+The exported review transcript is not included in this public snapshot; see
+[Amendment 9](PREREGISTRATION.md#amendment-9-2026-09-07-after-the-external-review-study-6-written-before-any-of-its-numbers).
 
 **6a. Did only the gap change?** The per-step loss is a mean over sequences (15 filler
 plus n facts), so one fact exposure weighs 1/(15 + n) in its step. Massed exposures
@@ -438,8 +439,9 @@ not outrun validation of the practical baseline.
 ## What this does not show
 
 One model (GPT-2 124M), one fact format (single-sentence synthetic paired associates),
-one filler and interference corpus (WikiText-103), one learning rate, K = 5, gaps up to
-64 steps of a 700-step window. Nothing here speaks to larger models, real-world facts,
+one filler and interference corpus (WikiText-103), one learning rate, K = 5. Studies 1–4
+test gaps up to 64 steps in a 700-step window; Study 5 extends gaps to 256 in a
+1,400-step window. Nothing here speaks to larger models, real-world facts,
 or other interference domains. The mechanism story (why consecutive identical steps leave
 a fragile trace) is a hypothesis; Study 2a tests one piece of it and no more.
 
@@ -458,7 +460,7 @@ scripts/main_runs.sh            # 17 runs, ~2.7 h on an M-series laptop
 uv run python -m spacinglab.analyze   # Study 1 pre-registered analysis
 uv run python -m spacinglab.explore   # Study 1 exploratory analyses
 uv run python -m spacinglab.plot      # results/retention.png
-scripts/study2_runs.sh scripts/study2b_runs.sh scripts/study2d_runs.sh   # Study 2 (~3.5 h)
+scripts/study2_runs.sh && scripts/study2b_runs.sh && scripts/study2d_runs.sh   # Study 2 (~3.5 h)
 uv run python -m spacinglab.analyze2  # Study 2 paired analysis, Amendment 5 rules
 uv run python -m spacinglab.plot2     # results/study2.png
 scripts/study3_runs.sh && uv run python -m spacinglab.analyze3   # Study 3 (~1 h)
