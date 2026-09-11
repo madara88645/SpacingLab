@@ -57,36 +57,78 @@ This clarifies an existing guard, not a new independent finding or a changed pri
 > [Current audit and limitations](docs/PROVENANCE_AUDIT_2026-09-08.md) ·
 > [Kısa Türkçe durum](docs/DURUM_2026-09-08_TR.md).
 
-**Question.** When a small language model is fine-tuned to absorb new facts, each shown
-five times, does *spreading* the five exposures apart in training (other data in
-between) protect the fact against later forgetting, compared with showing them in
-five consecutive steps — everything else equal?
+## The idea in one concrete example
 
-This borrows the **spacing effect** from human memory research, one of its most
-replicated findings: the same number of study repetitions gives better long-term
-retention when they are spread out than when they are massed.
+I give the model this fact to learn:
 
-**Answer (GPT-2 124M, synthetic facts, one protocol):** the pre-registered hypothesis was **not supported as written**. Study 1 found higher later exact-match accuracy with spaced repetition, but acquisition was unequal too. At each fact's fifth exposure, massed accuracy averaged 43% (seed range 26–64%) versus spaced 81% (78–85%). At window end these were 3% (2–4%) and 65% (62–68%). These observations do not isolate slower forgetting after equal learning, and loss of correct output is not proof of erasing an internal representation. Full paired results and failed decision rules are retained below.
+> **The capital of Sheipiakvuk is Prothkunshend.**
 
-The design, prediction, decision rule and named traps were committed before any
-number existed ([PREREGISTRATION.md](PREREGISTRATION.md)); the four amendments made
-during calibration are recorded there with the pilot numbers that forced them.
+In both conditions, I show it the exact same sentence five times. Only the timing
+changes:
 
-## Setup in one paragraph
+| schedule | simplified view | gap between exposures |
+|---|---|---|
+| Massed | `fact → fact → fact → fact → fact` | 1 training step |
+| Spaced | `fact → … → fact → … → fact …` | 64 training steps |
 
-GPT-2 (124M), full fine-tuning on Apple-Silicon MPS, AdamW lr 1e-4, dropout off.
-200 synthetic paired-associate facts per seed ("The capital of Sheipiakvuk is
-Prothkunshend.") with invented names, so the pretrained model scores exactly 0 on
-them. Each fact is shown 5 times inside a 700-step "injection window" on top of a
-fixed WikiText-103 filler stream (15 chunks of 64 tokens per step). The only thing
-that differs between conditions is the *gap* between a fact's five exposures:
-1 step (massed), 4, 16, or 64 steps (spaced). Each fact's **last** exposure step is
-drawn once per seed and shared by all conditions, so time-since-last-exposure is
-identical across conditions. After the window come 1500 steps of interference:
-filler plus 50 *new* facts of the same kind (the classic learn-A-then-B paradigm).
-Retention is measured as exact-match accuracy (and answer NLL) at 7 checkpoints.
-Five seeds for massed vs spaced, three for the intermediate gaps, one replicate run
-to check repeatability (one repeat cannot estimate a noise distribution). The audit inventories 73 main logs, including that repeat and two single-seed contingency runs, plus 12 preserved pilot logs. These are not 73 independent replications.
+![Technical diagram of massed versus spaced repetition](results/spacing-effect-diagram.png)
+
+*The diagram is conceptual. In the real experiment, the gaps contain other training
+data; the model is not explicitly quizzed between exposures.*
+
+The intuition behind my test is simple: five updates arriving back-to-back can leave
+a fragile memory. The same five updates separated by other training data may leave a
+more durable trace. That is the idea I test here, not a universal rule.
+
+## What did I test?
+
+I asked whether spreading five exposures apart helps a small language model keep a
+new fact through later fine-tuning, compared with showing the same five exposures
+consecutively. Here, *later fine-tuning* means 1,500 steps of filler plus new facts
+that can interfere with the old ones.
+
+I borrow the **spacing effect** from human memory research: the same number of study
+repetitions often gives better long-term retention when the repetitions are spread
+out instead of massed.
+
+## Short answer
+
+My pre-registered hypothesis was **not supported as written**. Spaced repetition
+looked better, but the two conditions did not learn the facts equally in Study 1:
+
+- right after each fact's fifth exposure: massed **43%**, spaced **81%**;
+- at the end of the injection window: massed **3%**, spaced **65%**;
+- after 1,500 interference steps: massed **0%**, spaced **14%**.
+
+I therefore treat the observed difference as a combination of learning and
+durability. I do not interpret it as slower forgetting after equal learning, and a
+lost correct output is not proof that an internal representation was erased. I keep
+the full paired results and failed decision rules below.
+
+I committed the design, prediction, decision rule and named traps before any number
+existed ([PREREGISTRATION.md](PREREGISTRATION.md)); the four amendments made during
+calibration are recorded there with the pilot numbers that forced them.
+
+## Experiment setup
+
+- **Model:** GPT-2 (124M), full fine-tuning on Apple-Silicon MPS, AdamW `lr=1e-4`,
+  dropout off.
+- **Facts:** I use 200 invented paired-associate facts per seed, such as the example
+  above. The pretrained model scores exactly 0 on them.
+- **Injection window:** each fact is shown five times in 700 steps, mixed with a
+  fixed WikiText-103 filler stream (15 chunks of 64 tokens per step).
+- **Schedules:** the gap between exposures is 1 step (massed), 4, 16, or 64 steps
+  (spaced). Each fact's final exposure step is shared across conditions, so the
+  time since the final exposure is matched.
+- **Interference:** 1,500 further steps of filler plus 50 new facts of the same kind.
+- **Measurement:** exact-match accuracy and answer NLL at seven checkpoints.
+- **Runs:** I ran five seeds for massed and gap 64, three seeds for the intermediate
+  gaps, plus one repeat run. I inventory 73 main logs, but these are not 73
+  independent replications.
+
+The later audit also found small differences in per-exposure batch weight. That is
+why the comparison is described as a schedule-policy effect rather than a perfectly
+isolated gap-only mechanism; see Study 6a.
 
 
 ## Study 1: the pre-registered comparison
