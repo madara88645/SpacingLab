@@ -57,6 +57,10 @@ This clarifies an existing guard, not a new independent finding or a changed pri
 > [Current audit and limitations](docs/PROVENANCE_AUDIT_2026-09-08.md) ·
 > [Kısa Türkçe durum](docs/DURUM_2026-09-08_TR.md).
 
+### Additional observation: does repetition cause topic drift?
+
+I compared synthetic-fact training with ordinary-text controls matched for repetition timing and training budget. Across three seeds, short prompts with an EOS prefix (a special boundary token) triggered learned-topic intrusion in the consecutive synthetic-fact condition, but none was detected in the spaced or ordinary-text conditions. Repetitive output still occurred with ordinary text. No detected intrusion does not mean the answers were good.
+
 ## The idea in one concrete example
 
 I give the model this fact to learn:
