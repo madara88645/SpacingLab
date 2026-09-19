@@ -1,5 +1,13 @@
 # SpacingLab: does spacing repetitions protect fine-tuned facts?
 
+## Local playground
+
+An [English-language GPT-2 playground](playground/README.md) lets you inspect the
+model architecture, try independent text completions and read saved Study 12/13
+records. Run it locally; inference requires separately available model files.
+This is published source code, not a hosted chat service or a new experiment.
+
+
 > **Completed and audited (10 September): Study 13 equal-coverage replay.**
 > Both arms replayed 80 distinct learned facts once, with matched token/step budgets.
 > Priority-minus-random delayed accuracy: **+4.50 percentage points, sample SD 2.21**;

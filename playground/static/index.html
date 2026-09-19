@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>SpacingLab · Local GPT-2 playground</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <a class="brand-name" href="/">SpacingLab</a>
+          <p class="brand-context">Local GPT-2 playground</p>
+        </div>
+      </div>
+
+      <div class="header-status" aria-live="polite">
+        <span class="status-dot" id="connection-dot"></span>
+        <span id="connection-label">Waiting for model information</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="header-toggle" id="architecture-toggle" type="button" aria-expanded="true" aria-controls="architecture-panel">Architecture</button>
+        <button class="header-toggle" id="logs-toggle" type="button" aria-expanded="true" aria-controls="logs-panel">Records</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel architecture-panel" id="architecture-panel" aria-labelledby="architecture-title">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Model schematic</p>
+            <h1 id="architecture-title">How does text flow?</h1>
+          </div>
+          <button class="mobile-close" type="button" data-close-panel="architecture-panel" aria-label="Close architecture panel">×</button>
+        </div>
+
+        <p class="panel-intro">A simplified diagram of the model layers, not a live view of neuron activity.</p>
+
+        <div class="architecture-diagram" aria-label="GPT-2 architecture flow">
+          <button class="architecture-node architecture-node--input" type="button" data-detail="input">
+            <span class="node-index">01</span>
+            <span class="node-name">Text</span>
+            <span class="node-caption">input prefix</span>
+          </button>
+          <div class="flow-line" aria-hidden="true"></div>
+          <button class="architecture-node architecture-node--token" type="button" data-detail="token">
+            <span class="node-index">02</span>
+            <span class="node-name">Tokens</span>
+            <span class="node-caption">split into pieces</span>
+          </button>
+          <div class="flow-line" aria-hidden="true"></div>
+          <button class="architecture-node architecture-node--embedding" type="button" data-detail="embedding">
+            <span class="node-index">03</span>
+            <span class="node-name">Embedding</span>
+            <span class="node-caption">number vectors</span>
+          </button>
+          <div class="flow-line" aria-hidden="true"></div>
+          <div class="transformer-zone">
+            <div class="zone-heading">
+              <span>Transformer blocks</span>
+              <span class="dimension-label" id="block-count-label">12 blocks</span>
+            </div>
+            <div class="transformer-stack" id="transformer-stack" aria-label="Transformer blocks"></div>
+            <div class="operation-tabs" aria-label="Transformer operations">
+              <button type="button" data-detail="attention">Attention</button>
+              <button type="button" data-detail="feedforward">Feedforward</button>
+              <button type="button" data-detail="residual">Norm. + skip</button>
+            </div>
+          </div>
+          <div class="flow-line" aria-hidden="true"></div>
+          <button class="architecture-node architecture-node--output" type="button" data-detail="output">
+            <span class="node-index">04</span>
+            <span class="node-name">Probabilities</span>
+            <span class="node-caption">next-token distribution</span>
+          </button>
+        </div>
+
+        <section class="architecture-detail" aria-live="polite">
+          <p class="detail-label" id="detail-label">Select part of the diagram</p>
+          <h2 id="detail-title">Explore the model</h2>
+          <p id="detail-copy">Click a diagram element for a short explanation in plain language.</p>
+        </section>
+
+        <div class="architecture-specs" aria-label="Model dimensions">
+          <div><strong id="spec-layers">12</strong><span>blocks</span></div>
+          <div><strong id="spec-heads">12</strong><span>heads / block</span></div>
+          <div><strong id="spec-width">768</strong><span>width</span></div>
+          <div><strong id="spec-vocab">50,257</strong><span>vocabulary</span></div>
+          <div><strong id="spec-context">1,024</strong><span>context limit</span></div>
+        </div>
+        <p class="architecture-source" id="architecture-source">Waiting for architecture information.</p>
+      </aside>
+
+      <section class="panel playground-panel" aria-labelledby="playground-title">
+        <div class="playground-heading">
+          <div>
+            <p class="section-kicker">Independent completion</p>
+            <h1 id="playground-title">Generate a continuation</h1>
+            <p class="heading-copy">See how a saved model continues an English text prefix.</p>
+          </div>
+          <div class="model-badge" id="model-badge">Loading model information</div>
+        </div>
+
+        <div class="notice" id="bootstrap-notice" hidden></div>
+
+        <div class="control-strip">
+          <div class="field-group field-group--model">
+            <label for="model-select">Model</label>
+            <select id="model-select" disabled>
+              <option>Waiting for model information…</option>
+            </select>
+            <p class="field-help" id="model-stage">Waiting for model availability.</p>
+          </div>
+
+          <button class="button button--quiet" id="unload-button" type="button" disabled>Unload model</button>
+        </div>
+
+        <section class="facts-section" aria-labelledby="facts-title">
+          <div class="section-row">
+            <div>
+              <h2 id="facts-title">Learned prefixes</h2>
+              <p class="section-description">Select an example to insert only its prefix into the input.</p>
+            </div>
+            <span class="fact-note">No training</span>
+          </div>
+          <label class="search-field" for="fact-search">
+            <span class="sr-only">Search prefixes</span>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="fact-search" type="search" placeholder="Search prefixes" autocomplete="off" disabled>
+          </label>
+          <div class="fact-list" id="fact-list" aria-live="polite">
+            <p class="empty-state">Examples will appear here after you select a model.</p>
+          </div>
+        </section>
+
+        <section class="prompt-section" aria-labelledby="prompt-title">
+          <div class="section-row section-row--prompt">
+            <div>
+              <h2 id="prompt-title">English prefix</h2>
+              <p class="section-description">Each request is independent. Previous attempts are not sent to the model. No special token is prepended.</p>
+            </div>
+            <span class="char-count" id="prompt-count">0 / 2,000</span>
+          </div>
+          <textarea id="prompt-input" maxlength="2000" rows="5" placeholder="e.g. The most important lesson is" disabled></textarea>
+          <p class="input-note">Typing here does not retrain the model. It only changes the prefix to complete.</p>
+          <p class="input-note">The boundary token has been removed. In our checks this reduced trained-topic intrusion, but also made taught facts harder to retrieve. Historical scores used a different input format.</p>
+          <div class="prompt-actions">
+            <div class="settings-fields">
+              <div class="field-group field-group--compact">
+                <label for="length-input">Output length</label>
+                <input id="length-input" type="number" min="1" max="64" step="1" value="24" required disabled>
+                <p class="field-help">Maximum number of new tokens to generate.</p>
+              </div>
+              <div class="field-group field-group--compact">
+                <label for="temperature-input">Sampling / temperature</label>
+                <input id="temperature-input" type="number" min="0" max="1.5" step="0.1" value="0" required disabled>
+                <p class="field-help">0 selects the most likely next token. This setting does not train the model.</p>
+              </div>
+              <div class="field-group field-group--compact">
+                <label for="seed-input">Random seed</label>
+                <input id="seed-input" type="number" min="0" max="2147483647" step="1" value="42" required disabled>
+                <p class="field-help">For comparisons with the same settings.</p>
+              </div>
+            </div>
+            <button class="button button--primary" id="generate-button" type="button" disabled>
+              <span id="generate-label">Generate continuation</span>
+              <span class="button-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="generation-status" id="generation-status" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="conversation-section" aria-labelledby="conversation-title">
+          <div class="section-row">
+            <div>
+              <h2 id="conversation-title">Attempts</h2>
+              <p class="section-description">These entries are visible history for this page only.</p>
+            </div>
+            <button class="text-button" id="clear-chat-button" type="button" disabled>Clear visible history</button>
+          </div>
+          <div class="conversation" id="conversation" aria-live="polite">
+            <div class="empty-conversation" id="empty-conversation">
+              <span class="empty-glyph" aria-hidden="true">↳</span>
+              <p>No attempts yet.</p>
+              <span>Write a prefix or choose an example above.</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="panel logs-panel" id="logs-panel" aria-labelledby="logs-title">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Read-only history</p>
+            <h1 id="logs-title">Evaluation records</h1>
+          </div>
+          <button class="mobile-close" type="button" data-close-panel="logs-panel" aria-label="Close records panel">×</button>
+        </div>
+        <p class="panel-intro">Shows saved records for the selected experiment, independently of the live model.</p>
+
+        <div class="log-controls">
+          <div class="field-group">
+            <label for="study-select">Study</label>
+            <select id="study-select">
+              <option value="13">Study 13</option>
+              <option value="12">Study 12</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="log-seed-select">Seed</label>
+            <select id="log-seed-select">
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="arm-select">Policy</label>
+            <select id="arm-select">
+              <option value="uniform">Uniform random</option>
+              <option value="prioritized">Forgetting-prioritized</option>
+            </select>
+          </div>
+        </div>
+        <p class="log-history-label" id="log-history-label">Study 13 · seed 12 · Uniform random · historical record</p>
+
+        <div class="logs-status" id="logs-status" role="status" aria-live="polite"></div>
+        <div class="log-summary" id="log-summary"></div>
+        <div class="log-table-wrap" id="log-table-wrap">
+          <table>
+            <caption class="sr-only">Evaluation metrics for the selected study</caption>
+            <thead>
+              <tr><th scope="col">Step</th><th scope="col">Acc.</th><th scope="col">NLL ↓</th><th scope="col">Disc.</th></tr>
+            </thead>
+            <tbody id="log-table-body"></tbody>
+          </table>
+        </div>
+        <details class="raw-log-details">
+          <summary>Show compact raw JSON</summary>
+          <pre id="raw-log">Waiting for records.</pre>
+        </details>
+        <div class="log-help">
+          <p><strong>Acc.</strong> is the fraction of correct answers. <strong>NLL</strong> measures how little probability the model assigns to the correct answer; lower is better.</p>
+          <p><strong>Disc.</strong> measures the separation between the correct answer and an incorrect alternative; higher means a stronger relative preference for the correct answer. These are read-only experimental results.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="playground-credit">This playground was built by GPT Astra to help me explore my SpacingLab experiments.</footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
